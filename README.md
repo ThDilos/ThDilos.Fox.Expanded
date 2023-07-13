@@ -144,7 +144,7 @@ Cooldown Indicator On
 	Will glow the hit/passed-to mobs, including you for 2 seconds.
 
 -Active Skill 4
-	**Railgun**
+	**Railgun** (inspired from an anime uwu, and a minecraft mod about that anime. They actually used coins to shoot, but Idk how to add new item into the game so...)
 	[Right Click with iron nugget and Left Click during a suitable time.]
 	
 	Cooldown 10s
