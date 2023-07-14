@@ -180,9 +180,12 @@ Cooldown Indicator On
 
 	Whether this power works as intended is a mystery, cuz I got no one to test with...
 
-	When attacking with empty hand, iron-made stuffs, lightning rod or copper ingot, 99% to deal 3 lightning damage after 10 ticks, 1% to summon a lightning bolt.
+	When attacking with empty hand, iron-made stuffs, lightning rod or copper ingot:
+ 	99% to deal 3 lightning damage after 10 ticks
+  	1% to summon a lightning bolt.
 	
-	When attacked with stuff other than empty hand, iron-made stuffs, lightning rod or copper ingot, or wearing armors other than iron armor/naked: 	19% to deal 2 lightning damage
+	When attacked with stuff other than empty hand, iron-made stuffs, lightning rod or copper ingot, or wearing armors other than iron armor/naked: 
+ 	19% to deal 2 lightning damage
 	20% to apply slowness 1 for 5s
 	1% to drop whatever the attacker is holding
 	60% nothing happens.
@@ -197,7 +200,7 @@ Cooldown Indicator On
 	Deal 4 lightning damage and apply slowness 1 for 5s.
 
 	When sneaking, arrow/trident damage done to you reduced to 50%,
-	When sneaking, damage other than projectile/fire/tag:bypasses_chield done to you reduced to 30%.
+	When sneaking, damage other than projectile/fire/tag:bypasses_shield done to you reduced to 30%.
 
 -Passive Skill 3
 	**Agility++**
@@ -209,7 +212,7 @@ Cooldown Indicator On
 -Passive Skill 4
 	**Timidity++**
 
-	(Removed Dimensional Fear)
+	(Removed Dimensional Fear and Lightning Fear)
 
 	When meeting certain conditions, add "fear" effect **every tick**:
 	-16 blocks around a Polar bear
@@ -218,7 +221,6 @@ Cooldown Indicator On
 	-30 blocks around a Warden  (No longer applies when killed 3 wardens)
 	-50 blocks around a Wither  (No longer applies when killed 1 wither)
 	-150 blocks around an Ender dragon  (No longer applies when killed 1 Ender dragon)
-	-Spawn of lightning (No longer applies when struck by lightning 16 times)
 	-Health < 6 (3 hearts) (No longer applies when died 8 times)
 	
 	Fear Effect:
@@ -339,15 +341,16 @@ Cooldown Indicator On
 	**ThTrackers**
 	
 	Provides trackers to support Passive Skill 4 Timidity++.
-	This power is granted by it, with source "thorigins:global".
+	This power is granted by it, with source "thorigins:foxes".
 	This power still follows you even you no longer a lightning fox origin, you can do /power remove @s thorigins:thtrackers to remove it.
+ 	This power is shared by the foxes origin, so your trackers are saved upon switching forms.
 
 -Hidden Skill 3&4
 	**ThTransform_2** & **ThTransformCD**
 	Provides support to transform back to the red fox.
 
-	ThTransformCD is granted by ThTransform_2, with source "thorigins:global".
-	These power still follow you even you no longer a Red fox origin and will not work, you can do /power revokeall @s thorigins:global to remove them, including the Hidden Skill 2.
+	ThTransformCD is granted by ThTransform_2, with source "thorigins:foxes".
+	These power may still follow you even you no longer a lightning fox origin and will not work, you can do /power revokeall @s thorigins:foxes to remove them, including the Hidden Skill 2.
 
 
 **Since the 3 hidden skills are granted via commands, stuff may break. In that case, I have written a function for you to revoke them all and reset:**
