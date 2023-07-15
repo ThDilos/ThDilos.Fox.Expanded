@@ -75,6 +75,7 @@ Cooldown Indicator On
 	You start glowing.
 
 	After discharge, you get blindness 1 and slowness 1 for 1 second. (Faint effect lol)
+	Mobs will know its you if you damage them with this skill.
 	
 	When you move, charge is disrupted.
 	When you get hit, charge is disrupted.
@@ -142,6 +143,8 @@ Cooldown Indicator On
 	Will turn normal creeper into a charged creeper if they are hit/passed-to.
 
 	Will glow the hit/passed-to mobs, including you for 2 seconds.
+	
+	Only the mob you hit directly will know its you who hit them, but the subsequent damages will make the mob damaged angered at the mob nearest to them, misunderstood that they have hit them.
 
 -Active Skill 4
 	**Railgun** (inspired from an anime uwu, and a minecraft mod about that anime. They actually used coins to shoot, but Idk how to add new item into the game so...)
@@ -165,6 +168,8 @@ Cooldown Indicator On
 	If successful launched, apply 40 exhaustion.
 
 	This skill can only be used if foodlevel > 0.
+
+**ACTIVE SKILL 1, 3 & 4 CANNOT BE USED AT THE SAME TIME**
 
 -Passive Skill 1
 	**Enhanced Bioelectricity**
