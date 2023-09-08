@@ -106,8 +106,9 @@ Cooldown Indicator On
 	When swimming past an entity in 3 blocks, summon lightning on them and apply 8 damage(this may not work cuz damage tick exists)
 	When swimming constantly replace fire with air in 3 blocks radius. (protect the environment),also fire may still exist after you summoned lightning_bolt, you can just swim back and extinguish them.
 
-	When in water, takes 2 damage.
+	When in water, takes 2 (x1.5? idk I never tested lmao) damage.
 	Can be delayed by enchantment "water_protection"
+	Take 150% damage from any source when the skill is activated, make a fox screech sound when hurt by the 150% modifier.
 
 	Make nearby 50 blocks mobs glow for you:
 	Hostle mobs/Endermen/Wolves/Polar bears glow red
@@ -117,6 +118,7 @@ Cooldown Indicator On
 	(Copy-and-pasted from my first mod, cuz why not)
 
 	This skill can only be used if foodlevel > 6.
+	You cannot use this skill if you wear any armor piece that is heavier than iron armor.
 
 -Active Skill 3
 	**Electric Beam**
@@ -150,7 +152,7 @@ Cooldown Indicator On
 	**Railgun** (inspired from an anime uwu, and a minecraft mod about that anime. They actually used coins to shoot, but Idk how to add new item into the game so...)
 	[Right Click with iron nugget and Left Click during a suitable time.]
 	
-	Cooldown 10s
+	Cooldown 20s
 	Cooldown Indicator On
 
 	Right click with an iron nugget.
@@ -178,7 +180,7 @@ Cooldown Indicator On
 	Attack speed increased by 35%.
 	Mining speed increased by 35%.
 	Base movement speed increased by 10%.
-	Base exhaustion speed increased by 75% when foodlevel > 6.
+	Base exhaustion speed increased by 150% when foodlevel > 6.
 
 -Passive Skill 2
 	**Lightning Combat**
