@@ -44,11 +44,11 @@ Anyways, hope you have fun with this mod ;)
 >4. [Unique Taste](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#unique-taste)
 >4. [Weak++](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#weak)
 * Hidden Skills
->1. [Fox Sound Pack](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/Hidden-Skills-%E2%80%90-General#fox-sound-pack)
->2. [ThTrackers](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/Hidden-Skills-%E2%80%90-General#thtrackers)
->3. [ThTransform](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/Hidden-Skills-%E2%80%90-General#thtransform)
->4. [ThKarma](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/Hidden-Skills-%E2%80%90-General#thkarma)
->5. [Loadin_*](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/Hidden-Skills-%E2%80%90-General#loadin_)
+>1. [Fox Sound Pack](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#fox-sound-pack)
+>2. [ThTrackers](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#thtrackers)
+>3. [ThTransform](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#thtransform)
+>4. [ThKarma](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#thkarma)
+>5. [Loadin_*](https://github.com/ThDilos/UnRealistic-Fox-Origin/wiki/General-Skills#loadin_)
 
 ### Lightning Fox
 * Active Skills
