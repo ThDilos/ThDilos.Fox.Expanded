@@ -1,0 +1,137 @@
+{
+	"origin.thorigins.element_fox.name": "Element Fox",
+	"origin.thorigins.element_fox.description": "You Have Enabled One of Your Element Power and Become the Actual Non-Average Fox",
+
+	"origin.thorigins.default_fox.name": "Fox",
+	"origin.thorigins.default_fox.description": "Just an Ordinary Fox, With Little to No Ability in Commiting Crimes ;)",
+
+	"origin.thorigins.lightning_fox.name": "Lightning Fox",
+	"origin.thorigins.lightning_fox.description": "Foxes Who Can Withstand Hundreds of Thunder Struck",
+
+	"power.thorigins.default_fox/loadin_default.name": "§6§l§nChange Form",
+	"power.thorigins.default_fox/loadin_default.description": "Become a fox with paranormal abilities!",
+
+	"power.thorigins.lightning_fox/thbecome_lightning.name": "§6§l§nBecome Lightning",
+	"power.thorigins.lightning_fox/thbecome_lightning.description": "Become lightning，fly freely and struck whoever you want. Remember to do adequate water protection，water is lethal to you in this state.",
+
+	"power.thorigins.lightning_fox/thdischarge.name": "§6§l§nDischarge",
+	"power.thorigins.lightning_fox/thdischarge.description": "Keep sneaking to charge for an AOE attack.",
+
+	"power.thorigins.lightning_fox/thelectric_beam.name": "§6§l§nElectric Beam",
+	"power.thorigins.lightning_fox/thelectric_beam.description": "Attack your enermy with Electric beam. The attack can be passed among entities nearby, can cause damage at most 4 times.",
+
+	"power.thorigins.lightning_fox/thlightning_traits.name": "§e§nEnhanced Bioelectricity",
+	"power.thorigins.lightning_fox/thlightning_traits.description": "Faster movement speed, faster attack speed, faster mining speed, and faster foodlevel consumption as well.",
+
+	"power.thorigins.lightning_fox/thrailgun.name": "§6§l§nRailgun",
+	"power.thorigins.lightning_fox/thrailgun.description": "By manipulating electromagnetic field, launch an iron nugget at an insanely high speed that will destroy everything in its path.",
+
+	"power.thorigins.lightning_fox/thlightning_combat.name": "§a§nLightning Combat",
+	"power.thorigins.lightning_fox/thlightning_combat.description": "Apply your lightning abilities in combat.",
+
+	"death.attack.thorigins:foxie_zap": "%s tried to become a battery but failed horribly.",
+	"death.attack.thorigins:foxie_zap.player": "%s received too many charges from %s.",
+
+	"power.thorigins.thswift_2.name": "§a§nAgility++",
+	"power.thorigins.thswift_2.description": "Even faster sprinting speed and higher jumping height, along with more fall distance endurance.",
+
+	"origins.thorigins.discharge1": "Active ability, double tap and hold [",
+	"origins.thorigins.discharge2": "] to charge\nPress [",
+	"origins.thorigins.discharge3": "] to activate.",
+	"origins.thorigins.railgun1": "Active ability, press [",
+	"origins.thorigins.railgun2": "] with iron nugget and [",
+	"origins.thorigins.railgun3": "] during a suitable time.",
+
+	"origins.thorigins.firearm1": "Press [",
+	"origins.thorigins.firearm2": "] to choose a weaponry, press [",
+	"origins.thorigins.firearm3": "] to fire",
+	"origins.thorigins.laser_shoot1": "Press [",
+	"origins.thorigins.laser_shoot2": "] to shoot",
+
+	"origin.thorigins.fire_fox.name": "Fire Fox",
+	"origin.thorigins.fire_fox.description": "Not a browser",
+
+	"power.thorigins.fire_fox/thcannon.name": "§6§l§nFirearms",
+	"power.thorigins.fire_fox/thcannon.description": "Vent out the heat stored in your body and commit an adequate amount of arson.",
+
+	"power.thorigins.fire_fox/ththrust.name": "§6§l§nRocket Fox",
+	"power.thorigins.fire_fox/ththrust.description": "Use flame as propellant, fly freely like a rocket fox.",
+	"origin.thorigins.thrust": "Press %s when falling to fly. Use it again to thrust forward",
+
+	"power.thorigins.fire_fox/thfire_aspect.name": "§a§nAspect of the Fire",
+	"power.thorigins.fire_fox/thfire_aspect.description": "Embrace the inferno.",
+
+	"power.thorigins.fire_fox/thtemperature.name": "§e§nInternal Heat",
+	"power.thorigins.fire_fox/thtemperature.description": "Heat is your major source of energy. Keep it as high as possible at all cost.",
+
+	"origin.thorigins.kitsune.name": "Kitsune",
+	"origin.thorigins.kitsune.description": "Aspect of The Life, Health and Nature. The Being Above All Creatures",
+
+	"origin.thorigins.general": "Active ability, press [",
+
+	"power.thorigins.kitsune/thchoice.name": "§6§l§nPower Array",
+	"power.thorigins.kitsune/thchoice.description": "Switch among all your active abilities freely.",
+
+	"origin.thorigins.thchoice1": "] to switch to the next active ability\nPress [",
+	"origin.thorigins.thchoice2": "] to activated the current active ability",
+
+	"power.thorigins.kitsune/thdash2.name": "§6§l§nPounce++",
+	"power.thorigins.kitsune/thdash2.description": "You have specialised in travelling by pouncing.",
+
+	"power.thorigins.kitsune/thhunt2.name": "§6§l§nHunt++",
+	"power.thorigins.kitsune/thhunt2.description": "You can now notice the creatures within a further distance.",
+
+	"power.thorigins.kitsune/thstorage2.name": "§6§l§nTail Pouch",
+	"power.thorigins.kitsune/thstorage2.description": "Hide items in your tails.",
+	"thorigins.fox.container.inventory2": "Tails always come in handy",
+
+	"power.thorigins.kitsune/thphasing.name": "§6§l§nYūrei Form",
+	"power.thorigins.kitsune/thphasing.description": "For a short time, being able to walk through walls.",
+
+	"power.thorigins.kitsune/thheal.name": "§6§l§nLife Manipulation",
+	"power.thorigins.kitsune/thheal.description": "Channeling with the essence of life.",
+	"origin.thorigins.thheal1": "] to start emitting healing aura",
+	"origin.thorigins.thheal2": "] against a mob with empty hands to heal it",
+	"origin.thorigins.thheal3": "] while crouching to boost the moral of all living beings around you",
+
+	"power.thorigins.thweak2.name": "§c§nWeak++",
+	"power.thorigins.thweak2.description": "You are now strong enough to wear the heaviest armor.",
+
+	"power.thorigins.kitsune/thshy2.name": "§c§nTimidity++",
+	"power.thorigins.kitsune/thshy2.description": "Out of the foodchain, you no longer fear your natural predators.",
+
+	"power.thorigins.kitsune/thfoxiality2.name": "§e§nFoxiality++",
+	"power.thorigins.kitsune/thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
+
+	"origin.thorigins.ninetails.name": "Ninetails",
+	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
+
+	"power.thorigins.ninetails/thdash3.name": "§6§l§nPounce++",
+	"power.thorigins.ninetails/thdash3.description": "You have specialised in killing creatures by pouncing.",
+
+	"power.thorigins.ninetails/thsoul_power.name": "§6§l§nSoul Power",
+	"power.thorigins.ninetails/thsoul_power.description": "You can use the souls collected as your advantage.",
+	"origin.thorigins.thsoul_power1": "Kill mobs to collect their souls\nOr stand under the sun or moon to slowly collect nature essence as substitute of soul power",
+	"origin.thorigins.thsoul_power2": "] to shoot a soul beam",
+	"origin.thorigins.thsoul_power3": "] while crouching to buff yourself with soul power",
+	"origin.thorigins.thsoul_power4": "] while crouching against a mob with empty hands to forcefully collect the soul out of them",
+	"origin.thorigins.thsoul_power5": "] while holding an empty bottle will turn it into experience bottle",
+
+	"power.thorigins.ninetails/thhunt3.name": "§6§l§nHunt++",
+	"power.thorigins.ninetails/thhunt3.description": "You know every weak spot on your preys.",
+
+	"power.thorigins.ninetails/thphasing.name": "§6§l§nWraith Form",
+	"power.thorigins.ninetails/thphasing.description": "Use soul power to sustain your wraith form, being able to walk through walls.",
+
+	"power.thorigins.ninetails/thfoxiality3.name": "§e§nFoxiality++",
+	"power.thorigins.ninetails/thfoxiality3.description": "You are able to see clearer in the dark.",
+
+	"layer.thorigins.origin.name": "element",
+
+	"origins.thorigins.no_element": "You havn't unlocked a special fox!",
+	"origins.thorigins.untransformable": "Your ability to transform has been turned off by an admin!",
+	"origins.thorigins.unlock.lightning": "You have unlocked Lightning Fox!",
+	"origins.thorigins.unlock.fire": "You have unlocked Fire Fox!",
+	"origins.thorigins.unlock.kitsune": "You have unlocked Kitsune!",
+	"origins.thorigins.unlock.ninetails": "You have unlocked Ninetails!"
+}
