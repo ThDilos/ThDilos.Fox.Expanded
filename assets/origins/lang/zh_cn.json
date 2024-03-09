@@ -1,0 +1,137 @@
+{
+	"origin.thorigins.element_fox.name": "元素狐狸",
+	"origin.thorigins.element_fox.description": "你激活了一个元素之力，成为了真正不一般的狐狸。",
+
+	"origin.thorigins.default_fox.name": "狐狸",
+	"origin.thorigins.default_fox.description": "只是一只普通的小狐狸，脑袋里没有坏主意。",
+
+	"origin.thorigins.lightning_fox.name": "闪电狐狸",
+	"origin.thorigins.lightning_fox.description": "比不一般的狐狸更不一般的闪电狐狸。",
+
+	"power.thorigins.default_fox/loadin_default.name": "§6§l§n变换",
+	"power.thorigins.default_fox/loadin_default.description": "变成更不一般的狐狸",
+
+	"power.thorigins.lightning_fox/thbecome_lightning.name": "§6§l§n化身闪电",
+	"power.thorigins.lightning_fox/thbecome_lightning.description": "成为闪电，拥有飞行和伤害飞行沿途一切的能力。记得防水，否则在这个状态之下，你的能量会被水迅速分散。",
+
+	"power.thorigins.lightning_fox/thdischarge.name": "§6§l§n放电",
+	"power.thorigins.lightning_fox/thdischarge.description": "保持下蹲蓄力释放一次大范围雷电攻击。",
+
+	"power.thorigins.lightning_fox/thelectric_beam.name": "§6§l§n闪电链",
+	"power.thorigins.lightning_fox/thelectric_beam.description": "释放一道闪电攻击敌人，闪电会在敌人间传开，至多攻击四次。",
+
+	"power.thorigins.lightning_fox/thlightning_traits.name": "§e§n生物电强化",
+	"power.thorigins.lightning_fox/thlightning_traits.description": "更快的基础速度，更高的挖掘速度和攻击速度，但饱食度消耗也成倍上升。",
+
+	"power.thorigins.lightning_fox/thrailgun.name": "§6§l§n电磁炮",
+	"power.thorigins.lightning_fox/thrailgun.description": "通过操纵电磁场，将铁粒以极高的速度弹射出去，摧毁一切拦路之物。",
+
+	"power.thorigins.lightning_fox/thlightning_combat.name": "§a§n电之战技",
+	"power.thorigins.lightning_fox/thlightning_combat.description": "对于雷电的掌控让你能把闪电能力运用到战斗之中。",
+
+	"death.attack.thorigins:foxie_zap": "%s发现自己无法变成电池。",
+	"death.attack.thorigins:foxie_zap.player": "%s无法承受%s的电荷。",
+
+	"power.thorigins.thswift_2.name": "§a§n灵跃++",
+	"power.thorigins.thswift_2.description": "闪电给予了你比之前更快的速度和更强的跳跃能力，能承受的摔伤高度也提升了一半。",
+
+	"origins.thorigins.discharge1": "主动能力，双击按住[",
+	"origins.thorigins.discharge2": "] 蓄力\n按下[",
+	"origins.thorigins.discharge3": "]使用",
+	"origins.thorigins.railgun1": "主动能力，手持铁粒[",
+	"origins.thorigins.railgun2": "]并在合适的时机[",
+	"origins.thorigins.railgun3": "]使用",
+
+	"origins.thorigins.firearm1": "主动能力，按下[",
+	"origins.thorigins.firearm2": "]选择火焰形态，长按[",
+	"origins.thorigins.firearm3": "]发射",
+	"origins.thorigins.laser_shoot1": "按下[",
+	"origins.thorigins.laser_shoot2": "]发射",
+
+	"origin.thorigins.fire_fox.name": "火焰狐狸",
+	"origin.thorigins.fire_fox.description": "纵火犯狐狸>:3",
+
+	"power.thorigins.fire_fox/thcannon.name": "§6§l§n控火术",
+	"power.thorigins.fire_fox/thcannon.description": "发射火焰炮弹激光什么什么的，对面直呼太烧了。",
+
+	"power.thorigins.fire_fox/ththrust.name": "§6§l§n火箭狐",
+	"power.thorigins.fire_fox/ththrust.description": "以烈焰为染料，像一枚导弹一样迅速到达目的地。",
+	"origin.thorigins.thrust": "在半空中按%s滑翔，再次使用可向前推进",
+
+	"power.thorigins.fire_fox/thfire_aspect.name": "§a§n火之化身",
+	"power.thorigins.fire_fox/thfire_aspect.description": "烈焰为父，熔岩为母。",
+
+	"power.thorigins.fire_fox/thtemperature.name": "§e§n热能",
+	"power.thorigins.fire_fox/thtemperature.description": "不惜一切代价让体内的热能越高越好。",
+
+	"origin.thorigins.kitsune.name": "灵狐",
+	"origin.thorigins.kitsune.description": "参透了因果，生命与自然，屹立于万兽之上",
+
+	"origin.thorigins.general": "主动能力，按下[",
+
+	"power.thorigins.kitsune/thchoice.name": "§6§l§n技能组",
+	"power.thorigins.kitsune/thchoice.description": "随意选择当前激活的主动能力。",
+
+	"origin.thorigins.thchoice1": "]切换到下一个主动能力\n按下[",
+	"origin.thorigins.thchoice2": "]使用当前主动能力",
+
+	"power.thorigins.kitsune/thdash2.name": "§6§l§n掠袭++",
+	"power.thorigins.kitsune/thdash2.description": "更强，更高效的扑击和更远的打击范围",
+
+	"power.thorigins.kitsune/thhunt2.name": "§6§l§n狩猎++",
+	"power.thorigins.kitsune/thhunt2.description": "你现在能感应到更远范围内的生命力。",
+
+	"power.thorigins.kitsune/thstorage2.name": "§6§l§n尾巴空间",
+	"power.thorigins.kitsune/thstorage2.description": "把东西存在尾巴里",
+	"thorigins.fox.container.inventory2": "尾巴总能派上用场",
+
+	"power.thorigins.kitsune/thphasing.name": "§6§l§n灵体形态",
+	"power.thorigins.kitsune/thphasing.description": "短时间内拥有浮空与穿墙的能力。",
+
+	"power.thorigins.kitsune/thheal.name": "§6§l§n生命操纵",
+	"power.thorigins.kitsune/thheal.description": "把生命的本质掌握在爪心。",
+	"origin.thorigins.thheal1": "]散发出治愈光环",
+	"origin.thorigins.thheal2": "]并保持空手可以治愈该生物",
+	"origin.thorigins.thheal3": "]并保持蹲下可以激发周围生物的斗志",
+
+	"power.thorigins.thweak2.name": "§c§n羸弱++",
+	"power.thorigins.thweak2.description": "你现在拥有足够的力量穿着重甲。",
+
+	"power.thorigins.kitsune/thshy2.name": "§c§n胆小++",
+	"power.thorigins.kitsune/thshy2.description": "脱离食物链之外，你不再畏惧你的天敌。",
+
+	"power.thorigins.kitsune/thfoxiality2.name": "§e§n狐狸本性++",
+	"power.thorigins.kitsune/thfoxiality2.description": "你的天敌不再视你为食物，你也能更好地看清黑暗。",
+
+	"origin.thorigins.ninetails.name": "Ninetails",
+	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
+
+	"power.thorigins.ninetails/thdash3.name": "§6§l§n掠袭++",
+	"power.thorigins.ninetails/thdash3.description": "你擅长用掠袭快速结束猎物的生命。",
+
+	"power.thorigins.ninetails/thsoul_power.name": "§6§l§n灵魂之力",
+	"power.thorigins.ninetails/thsoul_power.description": "你能在战斗中使用收集到的灵魂。",
+	"origin.thorigins.thsoul_power1": "击杀生物收集他们的灵魂\n或者在阳光/月光下缓慢吸收自然精华作为替代",
+	"origin.thorigins.thsoul_power2": "]发射一道灵魂光束",
+	"origin.thorigins.thsoul_power3": "]并保持蹲下可以短时间内强化自己",
+	"origin.thorigins.thsoul_power4": "]并保持蹲下、空手和静止不动，可以强行吞噬该生物的灵魂",
+	"origin.thorigins.thsoul_power5": "]并手持玻璃瓶，可以将其变为附魔之瓶",
+
+	"power.thorigins.ninetails/thhunt3.name": "§6§l§n狩猎++",
+	"power.thorigins.ninetails/thhunt3.description": "你对猎物的弱点了如指掌。",
+
+	"power.thorigins.ninetails/thphasing.name": "§6§l§n鬼魂形态",
+	"power.thorigins.ninetails/thphasing.description": "使用灵魂之力维持鬼混形态，能够无视一切障碍。",
+
+	"power.thorigins.ninetails/thfoxiality3.name": "§e§n狐狸本性++",
+	"power.thorigins.ninetails/thfoxiality3.description": "你能更好地看清黑暗。",
+
+	"layer.thorigins.origin.name": "元素之力",
+
+	"origins.thorigins.no_element": "你还没有解锁别的狐狸!",
+	"origins.thorigins.untransformable": "管理员限制了你的变换能力!",
+	"origins.thorigins.unlock.lightning": "你解锁了闪电狐狸!",
+	"origins.thorigins.unlock.fire": "你解锁了火焰狐狸!",
+	"origins.thorigins.unlock.kitsune": "你解锁了灵狐!",
+	"origins.thorigins.unlock.ninetails": "你解锁了九尾!"
+}
