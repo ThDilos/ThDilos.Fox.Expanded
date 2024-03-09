@@ -1,0 +1,667 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "origins.gui.badge.active"
+		}
+	],
+	"hidden": true,
+
+	"auto_decrement": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_cooldown",
+			"change": -1
+		}
+	},
+
+	"temperature": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 21000,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 15,
+			"condition": {
+				"type": "origins:origin",
+				"layer": "thorigins:origin",
+				"origin": "thorigins:fire_fox"
+			}
+		},
+		"start_value": 10500
+	},
+
+	"souls": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1000,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 0,
+			"condition": {
+				"type": "origins:or",
+				"conditions": [
+					{
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:ninetails/thchoice_choice",
+										"compare_to": 1,
+										"comparison": "=="
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:ninetails/thchoice_choice",
+										"compare_to": 3,
+										"comparison": "=="
+									}
+								]
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:ninetails/thchoice_showtime",
+								"compare_to": 0,
+								"comparison": ">"
+							}
+						]
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:ninetails/thsoul_power_show_soul",
+						"compare_to": 0,
+						"comparison": ">"
+					}
+				]
+			}
+		}
+	},
+
+	"transform": {
+		"type": "origins:active_self",
+		"key": {
+			"key": "key.loadToolbarActivator"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thkarma_unlockable",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thkarma_show_karma",
+						"change": 60,
+						"operation": "set"
+					}
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_cooldown",
+								"compare_to": 0,
+								"comparison": "!="
+							},
+							"action": {
+								"type": "origins:nothing"
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_transformable",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"origins.thorigins.untransformable\",\"color\":\"red\",\"bold\":\"true\"}"
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:or",
+										"conditions": [
+											{
+												"type": "origins:resource",
+												"resource": "*:*_lock_lightning",
+												"compare_to": 0,
+												"comparison": "=="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:*_lock_fire",
+												"compare_to": 0,
+												"comparison": "=="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:*_lock_kitsune",
+												"compare_to": 0,
+												"comparison": "=="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:*_lock_ninetails",
+												"compare_to": 0,
+												"comparison": "=="
+											}
+										]
+									},
+									{
+										"type": "origins:or",
+										"conditions": [
+											{
+												"type": "origins:origin",
+												"origin": "thorigins:fox",
+												"layer": "origins:origin"
+											},
+											{
+												"type": "origins:origin",
+												"origin": "thorigins:element_fox",
+												"layer": "origins:origin"
+											}
+										]
+									}
+								]
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/origin set @s origins:origin thorigins:element_fox"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/origin gui @s thorigins:origin"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/scale reset pehkui:reach @s"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_cooldown",
+										"change": 600,
+										"operation": "set"
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:constant",
+								"value": true
+							},
+							"action": {
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"origins.thorigins.no_element\",\"color\":\"red\",\"bold\":\"true\"}"
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"cooldown": {
+		"type": "origins:resource",
+		"max": 600,
+		"min": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+			"bar_index": 9,
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:*_cooldown",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					{
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_lock_lightning",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_lock_fire",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_lock_kitsune",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_lock_ninetails",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+
+	"remove_power_if_not_foxie": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:revoke_power",
+					"power": "thorigins:thtransform",
+					"source": "thorigins:universal"
+				},
+				{
+					"type": "origins:revoke_power",
+					"power": "thorigins:thtransform",
+					"source": "minecraft:universal"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:fox",
+					"layer": "origins:origin"
+				},
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:element_fox",
+					"layer": "origins:origin"
+				},
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:default_fox",
+					"layer": "thorigins:origin"
+				},
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:lightning_fox",
+					"layer": "thorigins:origin"
+				},
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:fire_fox",
+					"layer": "thorigins:origin"
+				},
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:kitsune",
+					"layer": "thorigins:origin"
+				},
+				{
+					"type": "origins:origin",
+					"origin": "thorigins:ninetails",
+					"layer": "thorigins:origin"
+				}
+			],
+			"inverted": true
+		}
+	},
+
+	"remove_cd_for_cheat": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_cooldown",
+			"change": 0,
+			"operation": "set"
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thtrackers_no_cd",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:power_active",
+							"power": "*:fox/thtrackers_cheat_mode"
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:*_cooldown",
+							"compare_to": 0,
+							"comparison": "!="
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"lock_lightning": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.lightning\",\"color\":\"yellow\",\"bold\":\"true\"}"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"volume": 1.0,
+					"pitch": 1.0
+				}
+			]
+		},
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"unlocker_lightning": {
+		"type": "origins:action_when_damage_taken",
+		"cooldown": 0,
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "lightningBolt"
+		},
+		"entity_action": {
+			"type": "origins:choice",
+			"actions": [
+				{
+					"weight": 1,
+					"element": {
+						"type": "origins:change_resource",
+						"resource": "*:*_lock_lightning",
+						"change": -1
+					}
+				},
+				{
+					"weight": 99,
+					"element": {
+						"type": "origins:nothing"
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_lock_lightning",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thtrackers_thunderstruck",
+					"compare_to": 16,
+					"comparison": ">"
+				}
+			]
+		}
+	},
+
+	"lock_fire": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.fire\",\"color\":\"yellow\",\"bold\":\"true\"}"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"volume": 1.0,
+					"pitch": 1.0
+				}
+			]
+		}
+	},
+
+	"unlocker_fire": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_lock_fire",
+			"change": -1
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_lock_fire",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/root"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/return_to_sender"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/find_bastion"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/obtain_ancient_debris"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/fast_travel"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/find_fortress"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/obtain_crying_obsidian"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/distract_piglin"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/ride_strider"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/uneasy_alliance"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/loot_bastion"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/use_lodestone"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/netherite_armor"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/get_wither_skull"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/obtain_blaze_rod"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/charge_respawn_anchor"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/ride_strider_in_overworld_lava"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/explore_nether"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/summon_wither"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/brew_potion"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/create_beacon"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/all_potions"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/create_full_beacon"
+				},
+				{
+					"type": "origins:advancement",
+					"advancement": "nether/all_effects"
+				}
+			]
+		}
+	},
+
+	"lock_kitsune": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.kitsune\",\"color\":\"yellow\",\"bold\":\"true\"}"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"volume": 1.0,
+					"pitch": 1.0
+				}
+			]
+		},
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"lock_ninetails": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\":\"true\"}"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"volume": 1.0,
+					"pitch": 1.0
+				}
+			]
+		},
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"give_thkarma": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:power",
+				"power": "thorigins:thkarma",
+				"source": "thorigins:universal",
+				"inverted": true
+			},
+			"if_action": {
+				"type": "origins:grant_power",
+				"power": "thorigins:thkarma",
+				"source": "thorigins:universal"
+			}
+		}
+	},
+
+	"transformable": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"hud_render": {
+			"should_render": false
+		}
+	}
+}

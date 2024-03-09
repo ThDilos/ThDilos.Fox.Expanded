@@ -1,0 +1,908 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "origins.gui.badge.active"
+		}
+	],
+
+	"auto_decrement": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_cooldown",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_hit_cooldown",
+					"change": -1
+				}
+			]
+		}
+	},
+
+	"turnoff_toggle": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource":"*:fox/thfoxify_afk_timer",
+							"compare_to": 1,
+							"comparison": "<="
+						},
+						{
+							"type": "origins:food_level",
+							"compare_to": 6,
+							"comparison": "<="
+						},
+						{
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "head",
+									"item_condition": {
+										"type": "origins:armor_value",
+										"comparison": ">",
+										"compare_to": 2
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "chest",
+									"item_condition": {
+										"type": "origins:armor_value",
+										"comparison": ">",
+										"compare_to": 6
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "legs",
+									"item_condition": {
+										"type": "origins:armor_value",
+										"comparison": ">",
+										"compare_to": 5
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "feet",
+									"item_condition": {
+										"type": "origins:armor_value",
+										"comparison": ">",
+										"compare_to": 2
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"entity_action": {
+			"type": "origins:toggle",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"toggle_effect": {
+		"type": "origins:active_self",
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource":"*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": ">"
+				},
+				{
+					"type": "origins:food_level",
+					"comparison": ">",
+					"compare_to": 6
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_cooldown",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "head",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": "<=",
+						"compare_to": 2
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "chest",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": "<=",
+						"compare_to": 6
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "legs",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": "<=",
+						"compare_to": 5
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "feet",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": "<=",
+						"compare_to": 2
+					}
+				}
+			]
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:toggle",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_cooldown",
+					"change": 20,
+					"operation": "set"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.lightning_bolt.thunder",
+					"volume": 0.5
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.lightning_bolt.impact",
+					"volume": 0.5
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "electric_spark",
+					"speed": 5,
+					"count": 50
+				}
+			]
+		}
+	},
+
+	"toggle": {
+		"type": "origins:toggle",
+		"active_by_default": false,
+		"retain_state": true,
+		"key": "nuh.uh"
+	},
+
+	"cooldown": {
+		"type": "origins:resource",
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"inverted": true,
+			"bar_index": 8,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_cooldown",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		},
+		"max": 20,
+		"min": 0
+	},
+
+	"constant_hunger_consume": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"entity_action": {
+			"type": "origins:exhaust",
+			"amount": 0.1
+		}
+	},
+
+	"avoid_getting_water": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:fox/thfluffy_wetness",
+			"change": 0,
+			"operation": "set"
+		}
+	},
+
+	"hungry_cannot_use_sound": {
+		"type": "origins:active_self",
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource":"*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": "<="
+				},
+				{
+					"type": "origins:food_level",
+					"comparison": "<=",
+					"compare_to": 6
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "head",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": ">",
+						"compare_to": 2
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "chest",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": ">",
+						"compare_to": 6
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "legs",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": ">",
+						"compare_to": 5
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "feet",
+					"item_condition": {
+						"type": "origins:armor_value",
+						"comparison": ">",
+						"compare_to": 2
+					}
+				}
+			]
+		},
+		"entity_action": {
+			"type": "origins:play_sound",
+			"sound": "minecraft:entity.fox.sleep",
+			"volume": 1
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"cooldown": 40
+	},
+
+	"player_model": {
+		"type": "origins:model_color",
+		"alpha": 0.3,
+		"blue": 1,
+		"green": 0.7,
+		"red": 0.7,
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"remove_cape": {
+		"type": "origins:prevent_feature_render",
+		"feature": "cape",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"flying": {
+		"type": "origins:swimming",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"flying_speed": {
+		"type": "origins:modify_swim_speed",
+		"modifier": {
+			"operation": "multiply_base",
+			"value": 10
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"no_touching_ground": {
+		"type": "origins:climbing",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"prevent_dolphin": {
+		"type": "origins:effect_immunity",
+		"effect": "dolphins_grace",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		}
+	},
+
+	"effect_overlay": {
+		"type": "origins:overlay",
+		"visible_in_third_person": true,
+		"texture": "minecraft:textures/misc/nausea.png",
+		"red": 0.2,
+		"green": 0.2,
+		"blue": 0.5,
+		"strength": 0.8,
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"draw_mode": "nausea",
+		"draw_phase": "above_hud"
+	},
+
+	"exhaustion": {
+		"type": "origins:modify_exhaustion",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"modifier": {
+			"value": 19,
+			"operation": "multiply_base"
+		}
+	},
+
+	"particles": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"entity_action": {
+			"type": "origins:spawn_particles",
+			"particle": "minecraft:electric_spark",
+			"count": 10,
+			"spread": {
+				"x": 1,
+				"y": 0.5,
+				"z": 1
+			}
+		}
+	},
+
+	"damage_bonus": {
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"operation": "multiply_base",
+			"value": 0.5
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "hurt_by_water",
+			"inverted": true
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:play_sound",
+				"sound": "minecraft:entity.fox.screech",
+				"pitch": 1.5,
+				"volume": 1.5
+			}
+		}
+	},
+
+	"check_nearby_mobs": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:swimming"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_hit_cooldown",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		},
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/execute as @e[distance=1..3,type=!lightning_bolt,type=!arrow,type=!trident,type=!item] run tag @s add hit"
+		}
+	},
+
+	"hit": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e[tag=hit] run resource set @s thorigins:lightning_fox/thbecome_lightning_hit_cooldown 20"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=hit] run summon minecraft:lightning_bolt ~ ~ ~"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=hit] run damage @s 2 minecraft:lightning_bolt"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @e[tag=hit] remove hit"
+				}
+			]
+		}
+	},
+
+	"hit_cooldown": {
+		"type": "origins:resource",
+		"hud_render": {
+			"should_render": true,
+			"bar_index": 3,
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:power_active",
+						"power": "*:*_toggle"
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:*_hit_cooldown",
+						"compare_to": 0,
+						"comparison": ">"
+					}
+				]
+			}
+		},
+		"max": 20,
+		"min": 0
+	},
+
+	"put_out_fire_with_swoosh_uwu": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:swimming"
+				}
+			]
+		},
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/fill ~3 ~3 ~3 ~-3 ~-3 ~-3 air replace fire"
+		}
+	},
+
+	"water_damage": {
+		"type": "origins:damage_over_time",
+		"interval": 1,
+		"damage": 2,
+		"damage_easy": 1,
+		"damage_type": "origins:hurt_by_water",
+		"protection_effectiveness": 0.2,
+		"protection_enchantment": "origins:water_protection",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:water",
+					"comparison": ">",
+					"compare_to": 0.0
+				}
+			]
+		}
+	},
+
+	"sense": {
+		"type": "origins:entity_glow",
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:distance",
+					"comparison": "<=",
+					"compare_to": 50
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:entity_group",
+								"group": "undead"
+							},
+							{
+								"type": "origins:entity_group",
+								"group": "illager"
+							},
+							{
+								"type": "origins:entity_group",
+								"group": "arthropod"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "creeper"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "witch"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "enderman"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "endermite"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "guardian"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "elder_guardian"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "warden"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "blaze"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "ghast"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "hoglin"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "magma_cube"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "shulker"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "silverfish"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "slime"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "wolf"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "polar_bear"
+							},
+							{
+								"type": "origins:entity_type",
+								"entity_type": "ender_dragon"
+							}
+						]
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"use_teams": false,
+		"red": 0.8,
+		"green": 0.5,
+		"blue": 0.5
+	},
+
+	"glow1": {
+		"type": "origins:entity_glow",
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:distance",
+					"comparison": "<=",
+					"compare_to": 50
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:entity_type",
+								"entity_type": "player"
+							}
+						]
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"use_teams": false,
+		"red": 0.5,
+		"green": 0.5,
+		"blue": 0.8
+	},
+
+	"glow2": {
+		"type": "origins:entity_glow",
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:distance",
+					"comparison": "<=",
+					"compare_to": 50
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:entity_type",
+								"entity_type": "fox"
+							}
+						]
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"use_teams": false,
+		"red": 0.5,
+		"green": 0.8,
+		"blue": 0.5
+	},
+
+	"glow3": {
+		"type": "origins:entity_glow",
+		"entity_condition": {
+			"type": "origins:or",
+			"inverted": true,
+			"conditions": [
+				{
+					"type": "origins:entity_type",
+					"entity_type": "item"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "arrow"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "trident"
+				},
+				{
+					"type": "origins:entity_group",
+					"group": "undead"
+				},
+				{
+					"type": "origins:entity_group",
+					"group": "illager"
+				},
+				{
+					"type": "origins:entity_group",
+					"group": "arthropod"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "fox"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "player"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "creeper"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "witch"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "enderman"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "endermite"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "guardian"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "elder_guardian"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "warden"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "blaze"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "ghast"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "hoglin"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "magma_cube"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "shulker"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "silverfish"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "slime"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "wolf"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "ender_dragon"
+				}
+			]
+		},
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:distance",
+					"comparison": "<=",
+					"compare_to": 50
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"use_teams": false,
+		"red": 1,
+		"green": 1,
+		"blue": 1
+	},
+
+	"clear_wetness": {
+		"type": "origins:action_over_time",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
+		},
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:fox/thfluffy_wetness",
+			"change": 0,
+			"operation": "set"
+		}
+	},
+
+	"no_cd_cheat": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_hit_cooldown",
+			"change": 0,
+			"operation": "set"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:fox/thtrackers_no_cd",
+			"compare_to": 1,
+			"comparison": "=="
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"powers": [
+		"thorigins:lightning_fox/thdischarge",
+		"thorigins:lightning_fox/thbecome_lightning",
+		"thorigins:lightning_fox/thlightning_ambient",
+		"thorigins:lightning_fox/thelectric_beam",
+		"thorigins:lightning_fox/thrailgun",
+		"thorigins:fox/thfoxify",
+		"thorigins:lightning_fox/thlightning_combat",
+		"thorigins:thswift_2",
+		"thorigins:lightning_fox/thlightning_traits",
+		"thorigins:fox/thfoxiality",
+		"thorigins:fox/thfluffy",
+		"thorigins:fox/thsmol",
+		"thorigins:fox/thfood",
+		"thorigins:fox/thshy",
+		"thorigins:thweak2",
+		"thorigins:fox/thsound",
+
+		"thorigins:lightning_fox/loadin_lightning"
+	],
+	"icon": "minecraft:glow_berries",
+	"impact": 3,
+	"unchoosable": false,
+	"order": 1
+}

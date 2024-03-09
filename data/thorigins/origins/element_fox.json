@@ -1,0 +1,9 @@
+{
+    "powers": [
+        "thorigins:element_fox/loadin_element"
+    ],
+    "icon": "minecraft:sweet_berries",
+    "impact": 0,
+    "unchoosable": true,
+    "order": 1
+}

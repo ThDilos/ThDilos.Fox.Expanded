@@ -1,0 +1,155 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"set_origin": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:delay",
+					"ticks": 10,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "/origin set @s origins:origin thorigins:element_fox"
+					}
+				}
+			]
+		}
+	},
+
+	"give_transform": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:grant_power",
+			"power": "thorigins:thtransform",
+			"source": "universal"
+		},
+		"condition": {
+			"type": "origins:power",
+			"power": "thorigins:thtransform",
+			"source": "universal",
+			"inverted": true
+		}
+	},
+
+	"unlock_if_command_set_origin": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_lock_kitsune",
+			"change": -1
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:thtransform_lock_kitsune",
+			"compare_to": 1,
+			"comparison": "=="
+		}
+	},
+
+	"foxify_kitsune": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 1,
+								"comparison": "<="
+							},
+							{
+								"type": "origins:power_active",
+								"power": "*:kitsune/thhunt2_le_switch",
+								"inverted": true
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={Sleeping:1b,NoAI:1b,NoGravity:1b},tag=sleepin,distance=..0.2,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @e[type=fox,nbt={Sleeping:1b,NoAI:1b,NoGravity:1b},tag=sleepin,distance=..0.2,limit=1]",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:kitsune/thshy2_shakingtimer",
+										"comparison": ">",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:and",
+										"conditions": [
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer",
+												"compare_to": 28,
+												"comparison": "<="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer",
+												"compare_to": 0,
+												"comparison": ">"
+											}
+										]
+									},
+									{
+										"type": "origins:and",
+										"conditions": [
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer2",
+												"compare_to": 28,
+												"comparison": "<="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer2",
+												"compare_to": 0,
+												"comparison": ">"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={Sleeping:1b,NoAI:1b,NoGravity:1b},tag=sleepin,distance=..0.2,limit=1] thorigins:fox/thsleepin_fox_shake_timer 3"
+					}
+				}
+			]
+		}
+	}
+}

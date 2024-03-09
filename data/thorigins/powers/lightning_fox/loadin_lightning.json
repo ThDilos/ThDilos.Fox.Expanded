@@ -1,0 +1,98 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"set_origin": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/origin set @s origins:origin thorigins:element_fox"
+				}
+			]
+		}
+	},
+
+	"no_cd_cheat_lightning": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:fox/thtrackers_no_cd",
+			"compare_to": 1,
+			"comparison": "=="
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thelectric_beam_cooldown",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thbecome_lightning_cooldown",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thdischarge_cooldown",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thrailgun_cooldown",
+					"change": 0,
+					"operation": "set"
+				}
+			]
+		}
+	},
+
+	"give_transform": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:grant_power",
+			"power": "thorigins:thtransform",
+			"source": "universal"
+		},
+		"condition": {
+			"type": "origins:power",
+			"power": "thorigins:thtransform",
+			"source": "universal",
+			"inverted": true
+		}
+	},
+
+	"unlock_if_command_set_origin": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_lock_lightning",
+			"change": -1
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:thtransform_lock_lightning",
+			"compare_to": 1,
+			"comparison": "=="
+		}
+	},
+
+	"keep_sleepin_fox_shown":{
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/resource set @e[type=fox,nbt={Sleeping:1b,NoAI:1b,NoGravity:1b},tag=sleepin,distance=..0.2,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+		}
+	}
+}

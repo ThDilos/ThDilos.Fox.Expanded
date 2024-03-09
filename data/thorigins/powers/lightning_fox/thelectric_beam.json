@@ -1,0 +1,452 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "origins.gui.badge.active"
+		}
+	],
+
+	"auto_decrement": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_cooldown",
+			"change": -1
+		}
+	},
+
+	"cooldown": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 80,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"bar_index": 2,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_cooldown",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		}
+	},
+
+	"electric_beam": {
+		"type": "origins:active_self",
+		"cooldown": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_cooldown",
+					"change": 80,
+					"operation": "set"
+				},
+				{
+					"type": "origins:raycast",
+					"distance": 30,
+					"block": true,
+					"entity": true,
+					"shape_type": "visual",
+					"fluid_handling": "any",
+					"command_along_ray": "/particle minecraft:electric_spark ~ ~ ~ 0.05 0.05 0.05 0 2",
+					"command_step": 1,
+					"before_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.villager.death",
+								"pitch": 2,
+								"volume": 0.5
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tag @s add shoot0"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 2,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/tag @s remove shoot0"
+								}
+							}
+						]
+					},
+					"block_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/particle wax_off ~ ~ ~ 0 0 0 20 30"
+							},
+							{
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/tag @e[distance=..3,type=!item] add hit1"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/execute at @e[tag=hit1] run particle electric_spark ~ ~1 ~ 0 0 0 2 10"
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/execute as @e[tag=hit1] run damage @s 1 thorigins:foxie_zap by @p[tag=shoot0]"
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/execute as @e[tag=hit1] at @s run tag @e[distance=..5,type=!item] add hit2"
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 3,
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:delay",
+													"ticks": 1,
+													"action": {
+														"type": "origins:execute_command",
+														"command": "/execute as @e[tag=hit2] run damage @s 1 thorigins:foxie_zap by @e[limit=1,sort=nearest]"
+													}
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/execute at @e[tag=hit2] run particle electric_spark ~ ~1 ~ 0 0 0 2 10"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/execute as @e[tag=hit2] run tag @e[distance=..4,type=!item] add hit3"
+												},
+												{
+													"type": "origins:delay",
+													"ticks": 4,
+													"action": {
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:delay",
+																"ticks": 1,
+																"action": {
+																	"type": "origins:execute_command",
+																	"command": "/execute as @e[tag=hit3] run damage @s 1 thorigins:foxie_zap by @e[limit=1,sort=nearest]"
+																}
+															},
+															{
+																"type": "origins:execute_command",
+																"command": "/execute as @e[tag=hit3] run tag @e[distance=..3,type=!item] add hit4"
+															},
+															{
+																"type": "origins:execute_command",
+																"command": "/execute at @e[tag=hit3] run particle electric_spark ~ ~1 ~ 0 0 0 2 10"
+															},
+															{
+																"type": "origins:delay",
+																"ticks": 6,
+																"action": {
+																	"type": "origins:and",
+																	"actions": [
+																		{
+																			"type": "origins:execute_command",
+																			"command": "/execute as @e[tag=hit4] run damage @s 1 thorigins:foxie_zap by @e[limit=1,sort=nearest]"
+																		},
+																		{
+																			"type": "origins:delay",
+																			"ticks": 1,
+																			"action": {
+																				"type": "origins:and",
+																				"actions": [
+																					{
+																						"type": "origins:execute_command",
+																						"command": "/tag @e remove hit1"
+																					},
+																					{
+																						"type": "origins:execute_command",
+																						"command": "/tag @e remove hit2"
+																					},
+																					{
+																						"type": "origins:execute_command",
+																						"command": "/tag @e remove hit3"
+																					},
+																					{
+																						"type": "origins:execute_command",
+																						"command": "/tag @e remove hit4"
+																					}
+																				]
+																			}
+																		}
+																	]
+																}
+															}
+														]
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						]
+					},
+					"bientity_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/tag @s add hit1"
+										},
+										{
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.experience_orb.pickup",
+											"volume": 2
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/execute at @e[tag=hit1] run particle electric_spark ~ ~1 ~ 0 0 0 2 10"
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 1,
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/execute as @e[tag=hit1] run damage @s 1 thorigins:foxie_zap by @p[tag=shoot0]"
+											}
+										},
+										{
+											"type": "origins:set_on_fire",
+											"duration": 5
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/execute as @e[tag=hit1] at @s run tag @e[distance=..5,type=!item] add hit2"
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 4,
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:delay",
+														"ticks": 1,
+														"action": {
+															"type": "origins:execute_command",
+															"command": "/execute as @e[tag=hit2] run damage @s 1 thorigins:foxie_zap by @e[limit=1,sort=nearest]"
+														}
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/execute at @e[tag=hit2] run particle electric_spark ~ ~1 ~ 0 0 0 2 10"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/execute as @e[tag=hit2] run tag @e[distance=..4,type=!item] add hit3"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 4,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:delay",
+																	"ticks": 1,
+																	"action": {
+																		"type": "origins:execute_command",
+																		"command": "/execute as @e[tag=hit3] run damage @s 1 thorigins:foxie_zap by @e[limit=1,sort=nearest]"
+																	}
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "/execute as @e[tag=hit3] run tag @e[distance=..3,type=!item] add hit4"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "/execute at @e[tag=hit3] run particle electric_spark ~ ~1 ~ 0 0 0 2 10"
+																},
+																{
+																	"type": "origins:delay",
+																	"ticks": 6,
+																	"action": {
+																		"type": "origins:and",
+																		"actions": [
+																			{
+																				"type": "origins:execute_command",
+																				"command": "/execute as @e[tag=hit4] run damage @s 1 thorigins:foxie_zap by @e[limit=1,sort=nearest]"
+																			},
+																			{
+																				"type": "origins:delay",
+																				"ticks": 1,
+																				"action": {
+																					"type": "origins:and",
+																					"actions": [
+																						{
+																							"type": "origins:execute_command",
+																							"command": "/tag @e remove hit1"
+																						},
+																						{
+																							"type": "origins:execute_command",
+																							"command": "/tag @e remove hit2"
+																						},
+																						{
+																							"type": "origins:execute_command",
+																							"command": "/tag @e remove hit3"
+																						},
+																						{
+																							"type": "origins:execute_command",
+																							"command": "/tag @e remove hit4"
+																						}
+																					]
+																				}
+																			}
+																		]
+																	}
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					"bientity_condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:origin",
+							"origin": "thorigins:lightning_fox",
+							"inverted": true
+						}
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource":"*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": ">"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_cooldown",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:lightning_fox/thdischarge_charging",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:lightning_fox/thrailgun_ready",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
+		}
+	},
+
+	"power_creeper": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=hit1,type=creeper] run data modify entity @s powered set value 1"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=hit2,type=creeper] run data modify entity @s powered set value 1"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=hit3,type=creeper] run data modify entity @s powered set value 1"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=hit4,type=creeper] run data modify entity @s powered set value 1"
+				}
+			]
+		}
+	},
+
+	"hit_particle": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e[tag=hit1,tag=!hit2,tag=!hit3] run particle electric_spark ~ ~1 ~ 2 1 2 0 20"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e[tag=hit1,tag=hit2,tag=!hit3] run particle electric_spark ~ ~1 ~ 1 1 1 0 15"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e[tag=hit1,tag=hit2,tag=hit3,tag=!hit4] run particle electric_spark ~ ~1 ~ 0.45 1 0.45 0 10"
+				}
+			]
+		}
+	},
+
+	"hit_glow": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/effect give @e[tag=hit1] glowing 2 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/effect give @e[tag=hit2] glowing 2 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/effect give @e[tag=hit3] glowing 2 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/effect give @e[tag=hit4] glowing 2 0"
+				}
+			]
+		}
+	}
+}

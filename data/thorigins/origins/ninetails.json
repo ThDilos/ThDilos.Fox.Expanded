@@ -1,0 +1,25 @@
+{
+	"powers": [
+		"thorigins:ninetails/thchoice",
+		"thorigins:ninetails/thdash3",
+        "thorigins:ninetails/thphasing",
+		"thorigins:ninetails/thstorage2",		
+		"thorigins:ninetails/thsoul_power",
+		"thorigins:fox/thfoxify",
+		"thorigins:ninetails/thhunt3",
+		"thorigins:thswift_2",
+		"thorigins:ninetails/thfoxiality3",
+		"thorigins:fox/thfluffy",
+		"thorigins:fox/thsmol",
+		"thorigins:fox/thfood",
+		"thorigins:kitsune/thshy2",
+		"thorigins:thweak2",
+		"thorigins:fox/thsound",
+
+		"thorigins:ninetails/loadin_ninetails"
+	],
+	"icon": "minecraft:bone_block",
+	"impact": 3,
+	"unchoosable": false,
+	"order": 1
+}
