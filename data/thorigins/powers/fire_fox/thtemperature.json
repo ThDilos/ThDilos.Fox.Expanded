@@ -1,0 +1,694 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "minecraft:textures/item/fire_charge.png",
+			"text": "origin.thorigin.passive"
+		}
+	],
+
+	"in_nether_rise_temp": {
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": 2
+		},
+		"condition": {
+			"type": "origins:dimension",
+			"dimension": "minecraft:the_nether"
+		}
+	},
+
+	"magma_block_rise_temp": {
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": 3
+		},
+		"condition": {
+			"type": "origins:on_block",
+			"block_condition": {
+				"type": "origins:block",
+				"block": "magma_block"
+			}
+		}
+	},
+
+	"fire_rise_temp": {
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": 5
+		},
+		"condition": {
+			"type": "origins:on_fire"
+		}
+	},
+
+	"lava_rise_temp": {
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": 20
+		},
+		"condition": {
+			"type": "origins:fluid_height",
+			"fluid": "minecraft:lava",
+			"compare_to": 0.1,
+			"comparison": ">="
+		}
+	},
+
+	"fire_protection_rise_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 4
+					},
+					"condition": {
+						"type": "origins:enchantment",
+						"enchantment": "fire_protection",
+						"calculation": "sum",
+						"compare_to": 16,
+						"comparison": "=="
+					}
+				},
+				{
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 3
+					},
+					"condition": {
+						"type": "origins:enchantment",
+						"enchantment": "fire_protection",
+						"calculation": "sum",
+						"compare_to": 12,
+						"comparison": ">="
+					}
+				},
+				{
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 2
+					},
+					"condition": {
+						"type": "origins:enchantment",
+						"enchantment": "fire_protection",
+						"calculation": "sum",
+						"compare_to": 8,
+						"comparison": ">="
+					}
+				},
+				{
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 1
+					},
+					"condition": {
+						"type": "origins:enchantment",
+						"enchantment": "fire_protection",
+						"calculation": "sum",
+						"compare_to": 4,
+						"comparison": ">="
+					}
+				}
+			]
+		}
+	},
+
+	"rain_lower_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": -10
+		},
+		"condition": {
+			"type": "origins:in_rain"
+		}
+	},
+
+	"snowfall_lower_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": -15
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:predicate",
+					"predicate": "thorigins:weather/is_raining"
+				},
+				{
+					"type": "origins:in_rain",
+					"inverted": true
+				},
+				{
+					"type": "origins:exposed_to_sky"
+				},
+				{
+					"type": "origins:biome",
+					"condition": {
+						"type": "origins:in_tag",
+						"tag": "minecraft:snownt",
+						"inverted": true
+					}
+				}
+			]
+		}
+	},
+
+	"food_add_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:food_level",
+										"compare_to": 10,
+										"comparison": ">="
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:thtransform_temperature",
+										"compare_to": 10500,
+										"comparison": "<"
+									}
+								]
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": 3
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:food_level",
+										"compare_to": 15,
+										"comparison": ">="
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:thtransform_temperature",
+										"compare_to": 21000,
+										"comparison": "<"
+									}
+								]
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": 2
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"food_add_temp_drawback1": {
+		"type": "origins:modify_exhaustion",
+		"modifier": {
+			"value": 0.5,
+			"operation": "multiply_total"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:food_level",
+					"compare_to": 10,
+					"comparison": ">="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 10500,
+					"comparison": "<"
+				}
+			]
+		}
+	},
+
+	"food_add_temp_drawback2": {
+		"type": "origins:modify_exhaustion",
+		"modifier": {
+			"value": 0.25,
+			"operation": "multiply_total"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:food_level",
+					"compare_to": 15,
+					"comparison": ">="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 21000,
+					"comparison": "<"
+				}
+			]
+		}
+	},
+
+	"ambient_lower_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": -1
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:dimension",
+					"dimension": "minecraft:the_nether",
+					"inverted": true
+				},
+				{
+					"type": "origins:food_level",
+					"compare_to": 10,
+					"comparison": "<"
+				}
+			]
+		}
+	},
+
+	"water_lower_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": -50
+		},
+		"condition": {
+			"type": "origins:fluid_height",
+			"fluid": "minecraft:water",
+			"compare_to": 0.1,
+			"comparison": ">="
+		}
+	},
+
+	"powered_snow_lower_temp": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:thtransform_temperature",
+			"change": -100
+		},
+		"condition": {
+			"type": "origins:in_block_anywhere",
+			"compare_to": 0,
+			"comparison": ">",
+			"block_condition": {
+				"type": "origins:block",
+				"block": "powder_snow"
+			}
+		}
+	},
+
+	"low_temp_penalty": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 3000,
+						"comparison": "<="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "slowness",
+										"amplifier": 2,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "weakness",
+										"amplifier": 2,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "hunger",
+										"amplifier": 2,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 4500,
+						"comparison": "<="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "slowness",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "weakness",
+										"amplifier": 2,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "hunger",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 6000,
+						"comparison": "<="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "slowness",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "weakness",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "hunger",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 7500,
+						"comparison": "<="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "slowness",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "hunger",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"high_temp_reward": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 18000,
+						"comparison": ">="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "speed",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "strength",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "saturation",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "regeneration",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 16500,
+						"comparison": ">="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "speed",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "strength",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "regeneration",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 15000,
+						"comparison": ">="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "speed",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "strength",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 13500,
+						"comparison": ">="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "speed",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"shaking": {
+		"type": "origins:shaking",
+		"condition": {
+			"type": "origins:resource",
+			"compare_to": 7500,
+			"comparison": "<=",
+			"resource": "*:thtransform_temperature"
+		}
+	}
+}

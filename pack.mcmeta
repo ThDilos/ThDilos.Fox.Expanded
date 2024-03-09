@@ -1,0 +1,11 @@
+{
+    "pack": {
+        "name": "ThDilos Origins Expanded",
+        "id": "thorigins2",
+        "pack_format": 15,
+        "authors": [
+            "ThDilos"
+        ],
+        "description": "ThDilos自己做的Origin起源包的扩展"
+    }
+}

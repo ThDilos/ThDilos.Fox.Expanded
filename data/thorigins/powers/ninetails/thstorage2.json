@@ -1,0 +1,16 @@
+{
+	"type": "origins:inventory",
+	"container_type": "dispenser",
+	"drop_on_death": false,
+	"recoverable": true,
+	"key": "key.origins.primary_active",
+	"title": "thorigins.fox.container.inventory2",
+	"name": "power.thorigins.kitsune/thstorage2.name",
+	"description": "power.thorigins.kitsune/thstorage2.description",
+	"condition": {
+		"type": "origins:resource",
+		"resource": "*:ninetails/thchoice_choice",
+		"compare_to": 2,
+		"comparison": "=="
+	}
+}

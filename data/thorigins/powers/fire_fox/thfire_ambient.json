@@ -1,0 +1,42 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+
+    "particles":{
+        "type": "origins:action_over_time",
+        "interval": 8,
+        "entity_action":{
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:flame",
+                    "spread": {
+                        "x": 0.25,
+                        "y": 0.35,
+                        "z": 0.25
+                    },
+                    "count": 2,
+                    "offset_y": 0.275,
+                    "speed": 0.01
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 4,
+                    "action":{
+                        "type": "origins:spawn_particles",
+                        "particle": "minecraft:flame",
+                        "spread": {
+                            "x": 0.25,
+                            "y": 0.35,
+                            "z": 0.25
+                        },
+                        "count": 2,
+                        "offset_y": 0.275,
+                        "speed": 0.01
+                    }
+                }
+            ]
+        } 
+    }
+}

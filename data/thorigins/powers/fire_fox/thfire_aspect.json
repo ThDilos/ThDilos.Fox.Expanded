@@ -1,0 +1,258 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "minecraft:textures/item/lava_bucket.png",
+			"text": "origin.thorigin.passive"
+		}
+	],
+
+	"fire_proof": {
+		"type": "origins:invulnerability",
+		"damage_condition": {
+			"type": "origins:fire"
+		}
+	},
+
+	"less_explosion_dmg": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:explosive"
+		},
+		"modifier": {
+			"value": -0.8,
+			"operation": "multiply_base"
+		}
+	},
+
+	"lava_swimmer": {
+		"type": "origins:modify_lava_speed",
+		"modifier": {
+			"value": 1,
+			"operation": "multiply_base"
+		}
+	},
+
+	"lava_swimming": {
+		"type": "origins:creative_flight",
+		"condition": {
+			"type": "origins:fluid_height",
+			"fluid": "minecraft:lava",
+			"compare_to": 0.5,
+			"comparison": ">="
+		}
+	},
+
+	"lava_vision": {
+		"type": "origins:lava_vision",
+		"s": 0.0,
+		"v": 50
+	},
+
+	"lava_heal": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:fluid_height",
+			"fluid": "minecraft:lava",
+			"compare_to": 0.1,
+			"comparison": ">="
+		},
+		"entity_action": {
+			"type": "origins:apply_effect",
+			"effect": {
+				"effect": "regeneration",
+				"amplifier": 0,
+				"duration": 10,
+				"show_icon": true,
+				"show_particles": false,
+				"is_ambient": true
+			}
+		}
+	},
+
+	"fire_acceleration": {
+		"type": "origins:modify_attribute",
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:on_block",
+					"block_condition": {
+						"type": "origins:block",
+						"block": "magma_block"
+					}
+				},
+				{
+					"type": "origins:on_fire"
+				}
+			]
+		},
+		"attribute": "minecraft:generic.movement_speed",
+		"modifier": {
+			"value": 0.2,
+			"operation": "addition"
+		}
+	},
+
+	"fire_aspect_punch": {
+		"type": "origins:action_on_hit",
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:set_on_fire",
+				"duration": 3
+			}
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:equipped_item",
+				"item_condition": {
+					"type": "origins:empty"
+				},
+				"equipment_slot": "mainhand"
+			}
+		}
+	},
+
+	"fire_thorn": {
+		"type": "origins:action_when_hit",
+		"cooldown": 10,
+		"damage_condition": {
+			"type": "origins:projectile",
+			"inverted": true
+		},
+		"bientity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:thtransform_temperature",
+							"compare_to": 18000,
+							"comparison": ">"
+						}
+					},
+					"action": {
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:set_on_fire",
+							"duration": 5
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:thtransform_temperature",
+							"compare_to": 16500,
+							"comparison": ">"
+						}
+					},
+					"action": {
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:set_on_fire",
+							"duration": 3
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:thtransform_temperature",
+							"compare_to": 15000,
+							"comparison": "<"
+						}
+					},
+					"action": {
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:set_on_fire",
+							"duration": 2
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:thtransform_temperature",
+							"compare_to": 13500,
+							"comparison": ">"
+						}
+					},
+					"action": {
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:set_on_fire",
+							"duration": 1
+						}
+					}
+				}
+			]
+		}
+	},
+
+	"use_blaze_rod": {
+		"type": "origins:active_self",
+		"key": {
+			"key": "key.use"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "blaze_rod"
+						}
+					}
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 20999,
+					"comparison": "<"
+				}
+			]
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_temperature",
+					"change": 2100,
+					"operation": "add"
+				},
+				{
+					"type": "origins:modify_inventory",
+					"slot": "weapon.mainhand",
+					"item_action": {
+						"type": "origins:consume",
+						"amount": 1
+					},
+					"entity_action": {
+						"type": "origins:play_sound",
+						"sound": "minecraft:entity.fox.eat",
+						"volume": 0.7
+					},
+					"inventory_type": "inventory"
+				}
+			]
+		}
+	}
+}

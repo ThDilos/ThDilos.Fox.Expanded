@@ -1,0 +1,10 @@
+{
+    "origins": [
+        "thorigins:element_fox"
+    ],
+    "enabled": true,
+    "missing_name": "MISSING NAME",
+    "missing_description": "MISSING DESCRIPTION",
+    "allow_random": true,
+    "hidden": false
+}

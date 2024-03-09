@@ -1,0 +1,781 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"karma_p": {
+		"type": "origins:resource",
+		"min": -1,
+		"max": 1000,
+		"start_value": 0,
+		"max_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_unlockable",
+				"compare_to": 1,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:change_resource",
+						"resource": "*:*_unlockable",
+						"change": 0,
+						"operation": "set"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_lock_kitsune",
+						"change": 0,
+						"operation": "set"
+					}
+				]
+			}
+		},
+		"hud_render": {
+			"should_render": true,
+			"bar_index": 14,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:*_show_karma",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:thtransform_lock_kitsune",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:*_check_state",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:*_unlockable",
+						"compare_to": 1,
+						"comparison": "=="
+					}
+				]
+			}
+		}
+	},
+
+	"karma_n": {
+		"type": "origins:resource",
+		"min": -1,
+		"max": 1000,
+		"start_value": -1,
+		"max_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_unlockable",
+				"compare_to": 1,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:change_resource",
+						"resource": "*:*_unlockable",
+						"change": 0,
+						"operation": "set"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_lock_ninetails",
+						"change": 0,
+						"operation": "set"
+					}
+				]
+			}
+		},
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 19,
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:*_show_karma",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:thtransform_lock_ninetails",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:*_check_state",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:*_unlockable",
+						"compare_to": 1,
+						"comparison": "=="
+					}
+				]
+			}
+		}
+	},
+
+	"show_karma": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 60,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"unlockable": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"auto_in_decrement": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_show_karma",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_show_karma",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_unlockable",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"change": 1,
+						"resource": "*:*_live_check"
+					}
+				}
+			]
+		}
+	},
+
+	"live_check": {
+		"type": "origins:resource",
+		"min": -1,
+		"max": 24000,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_unlockable",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"action": {
+						"type": "origins:nothing"
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_karma_p",
+						"compare_to": 0,
+						"comparison": ">="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_p",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_show_karma",
+								"change": 60,
+								"operation": "set"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_karma_n",
+						"compare_to": 0,
+						"comparison": ">="
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_n",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_show_karma",
+								"change": 60,
+								"operation": "set"
+							}
+						]
+					}
+				}
+			]
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_live_check",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_unlockable",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:nothing"
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_karma_p",
+								"compare_to": 0,
+								"comparison": ">="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_karma_p",
+										"change": 200,
+										"operation": "add"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_show_karma",
+										"change": 60,
+										"operation": "set"
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_karma_n",
+								"compare_to": 0,
+								"comparison": ">="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_karma_n",
+										"change": 200,
+										"operation": "add"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_show_karma",
+										"change": 60,
+										"operation": "set"
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"death_clear_karma": {
+		"type": "origins:self_action_when_hit",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_live_check",
+			"change": -1,
+			"operation": "set"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_unlockable",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:nbt",
+					"nbt": "{Health:0.0f}"
+				}
+			]
+		}
+	},
+
+	"absorb_moon_essence": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_live_check",
+			"change": 4,
+			"operation": "add"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "/time query daytime",
+					"compare_to": 14000,
+					"comparison": ">="
+				},
+				{
+					"type": "origins:command",
+					"command": "/time query daytime",
+					"compare_to": 22000,
+					"comparison": "<"
+				},
+				{
+					"type": "origins:exposed_to_sky"
+				},
+				{
+					"type": "origins:moving",
+					"inverted": true
+				}
+			]
+		}
+	},
+
+	"check_state": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"check_middle": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:thtransform_lock_kitsune",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_karma_p",
+								"compare_to": -1,
+								"comparison": ">"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_p",
+								"change": -1,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_n",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_check_state",
+								"change": 0,
+								"operation": "set"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:thtransform_lock_ninetails",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_karma_n",
+								"compare_to": -1,
+								"comparison": ">"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_n",
+								"change": -1,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_p",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_check_state",
+								"change": 1,
+								"operation": "set"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_karma_p",
+								"compare_to": -1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_check_state",
+								"compare_to": 1,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_check_state",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_n",
+								"change": 0,
+								"operation": "set"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_karma_n",
+								"compare_to": -1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_check_state",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_check_state",
+								"change": 1,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_karma_p",
+								"change": 0,
+								"operation": "set"
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"kill_undead_mobs": {
+		"type": "origins:self_action_on_kill",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_check_state",
+				"compare_to": 1,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_karma_p",
+				"change": 5
+			},
+			"else_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_karma_n",
+				"change": 5
+			}
+		},
+		"target_condition": {
+			"type": "origins:entity_group",
+			"group": "undead"
+		}
+	},
+
+	"kill_other_mobs": {
+		"type": "origins:self_action_on_kill",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_check_state",
+				"compare_to": 1,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_karma_p",
+				"change": -5
+			},
+			"else_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_karma_n",
+				"change": 5
+			}
+		},
+		"target_condition": {
+			"type": "origins:entity_group",
+			"group": "undead",
+			"inverted": true
+		}
+	},
+
+	"kill_bosses": {
+		"type": "origins:self_action_on_kill",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_show_karma",
+					"change": 60,
+					"operation": "set"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_check_state",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_karma_p",
+						"change": 200
+					},
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_karma_n",
+						"change": 200
+					}
+				}
+			]
+		},
+		"target_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:entity_type",
+					"entity_type": "ender_dragon"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "wither"
+				},
+				{
+					"type": "origins:entity_type",
+					"entity_type": "warden"
+				}
+			]
+		}
+	},
+
+	"kill_pet": {
+		"type": "origins:self_action_on_kill",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_show_karma",
+					"change": 60,
+					"operation": "set"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_check_state",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_karma_p",
+						"change": -200
+					},
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_karma_n",
+						"change": 200
+					}
+				}
+			]
+		},
+		"target_condition": {
+			"type": "origins:tamed"
+		}
+	},
+
+	"eat_golden_food": {
+		"type": "origins:action_on_item_use",
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_check_state",
+				"compare_to": 1,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_karma_p",
+				"change": 20
+			},
+			"else_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_karma_n",
+				"change": -20
+			}
+		},
+		"item_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:food"
+				},
+				{
+					"type": "origins:ingredient",
+					"ingredient": [
+						{
+							"item": "golden_carrot"
+						},
+						{
+							"item": "golden_apple"
+						},
+						{
+							"item": "enchanted_golden_apple"
+						}
+					]
+				}
+			]
+		}
+	}
+}

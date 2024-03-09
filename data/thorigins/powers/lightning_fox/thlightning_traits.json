@@ -1,0 +1,104 @@
+{
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "text": "origin.thorigin.passive",
+            "sprite":"minecraft:textures/item/gold_ingot.png"
+        }
+    ],
+
+    "immunity":{
+        "type": "origins:invulnerability",
+        "damage_condition":{
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:name",
+                    "name": "lightningBolt"
+                },
+                {
+                    "type": "origins:name",
+                    "name": "thorigins:foxie_zap"
+                }                
+            ]
+        } 
+
+    },
+
+    "temperal_timer":{
+        "type": "origins:cooldown",
+        "hud_render": {
+            "should_render": false
+        },
+        "cooldown": 10
+    },
+
+    "reset_temperal_timer":{
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "*:lightnin_fox/thbecome_lightning_toggle"
+        },
+        "entity_action": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_temperal_timer"
+        }
+    },
+
+    "temperal_fire_immunity":{
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "inFire"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource":"*:*_temperal_timer",
+            "compare_to": 0,
+            "comparison": ">"
+        }
+    },
+
+    "exhaustion":{
+        "type": "origins:modify_exhaustion",
+        "modifier": {
+            "name": "Origin modifier",
+            "operation": "multiply_base",
+            "value": 1.5
+        },
+        "condition": {
+            "type": "origins:food_level",
+            "comparison": ">=",
+            "compare_to": 6
+        }
+    },
+
+    "fasterattack": {
+        "type": "origins:attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.attack_speed",
+            "name": "Origin modifier",
+            "operation": "multiply_base",
+            "value": 0.35
+        }
+    },
+
+    "faster_mining":{
+        "type": "origins:modify_break_speed",
+        "modifier": {
+            "value": 0.35,
+            "operation":"multiply_base"
+        }
+    },
+
+    "zoomies":{
+        "type": "origins:modify_attribute",
+        "attribute": "minecraft:generic.movement_speed",
+        "modifier": {
+            "operation":"multiply_base",
+            "value": 0.1
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+	"type": "origins:multiple",
+	"name": "power.thorigins.default_fox/loadin_default.name",
+	"description": "power.thorigins.default_fox/loadin_default.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "origins.gui.badge.active"
+		}
+	],
+
+	"to_show_key": {
+		"type": "origins:active_self",
+		"key": {
+			"key": "key.loadToolbarActivator"
+		},
+		"entity_action": {
+			"type": "origins:nothing"
+		}
+	}
+}

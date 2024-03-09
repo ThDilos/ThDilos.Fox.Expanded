@@ -1,0 +1,382 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "origin.thorigins.thrust"
+		}
+	],
+
+	"thrust": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": true,
+			"bar_index": 2
+		},
+		"key": {
+			"key": "key.jump"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:add_velocity",
+					"z": 3,
+					"space": "local"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.firework_rocket.launch",
+					"volume": 0.8,
+					"pitch": 1.4
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_temperature",
+					"change": -50
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:flame",
+					"spread": {
+						"x": 0.2,
+						"y": 0.2,
+						"z": 0.2
+					},
+					"count": 20,
+					"speed": 3,
+					"force": true,
+					"offset_y": 0.2
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:fall_flying"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 50,
+					"comparison": ">"
+				}
+			]
+		}
+	},
+
+	"switch": {
+		"type": "origins:toggle",
+		"active_by_default": false,
+		"key": "nuh.uh",
+		"retain_state": true
+	},
+
+	"flight": {
+		"type": "origins:elytra_flight",
+		"render_elytra": false,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_switch"
+				},
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:equipped_item",
+					"inverted": true,
+					"equipment_slot": "chest",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "elytra"
+						}
+					}
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 50,
+					"comparison": ">"
+				}
+			]
+		}
+	},
+
+	"repeating": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:power_active",
+								"power": "*:*_switch"
+							},
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "chest",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "elytra"
+									}
+								},
+								"inverted": true
+							},
+							{
+								"type": "origins:fall_flying"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": -5
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 50,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:power_active",
+							"power": "*:*_switch",
+							"inverted": true
+						},
+						"if_action": {
+							"type": "origins:toggle",
+							"power": "*:*_switch"
+						}
+					},
+					"else_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:power_active",
+							"power": "*:*_switch"
+						},
+						"if_action": {
+							"type": "origins:toggle",
+							"power": "*:*_switch"
+						}
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "chest",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "elytra"
+									}
+								},
+								"inverted": true
+							},
+							{
+								"type": "origins:fall_flying"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:spawn_particles",
+								"particle": "minecraft:flame",
+								"spread": {
+									"x": 0.2,
+									"y": 0.1,
+									"z": 0.2
+								},
+								"count": 5,
+								"speed": 0.1,
+								"force": true,
+								"offset_y": 0.3
+							},
+							{
+								"type": "origins:spawn_particles",
+								"particle": "minecraft:soul_fire_flame",
+								"spread": {
+									"x": 0.1,
+									"y": 0.1,
+									"z": 0.1
+								},
+								"count": 2,
+								"speed": 0.1,
+								"force": true,
+								"offset_y": 0.3
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"immune_velocity": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:name",
+							"name": "flyIntoWall"
+						},
+						{
+							"type": "origins:name",
+							"name": "flyIntoWall.player"
+						}
+					]
+				},
+				{
+					"type": "origins:amount",
+					"compare_to": 4,
+					"comparison": ">"
+				}
+			]
+		},
+		"modifier": {
+			"value": -0.8,
+			"operation": "multiply_total"
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:explode",
+						"damage_self": false,
+						"create_fire": true,
+						"destruction_type": "destroy",
+						"power": 5
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "/particle minecraft:explosion_emitter ~ ~ ~ ~ ~ ~ 0 0 normal"
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "/playsound minecraft:entity.generic.explode player @s ~ ~ ~ 1.5 0.8"
+					}
+				]
+			}
+		}
+	},
+
+	"fall_flying_check": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 5,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"fall_flying_checker": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:fall_flying"
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_fall_flying_check",
+				"change": 1
+			},
+			"else_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_fall_flying_check",
+				"change": -1
+			}
+		}
+	},
+
+	"immune_fall": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:amount",
+					"compare_to": 1,
+					"comparison": ">"
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:name",
+							"name": "fall"
+						},
+						{
+							"type": "origins:name",
+							"name": "fall.player"
+						}
+					]
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_fall_flying_check",
+			"compare_to": 0,
+			"comparison": ">"
+		},
+		"modifier": {
+			"value": -0.8,
+			"operation": "multiply_total"
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:explode",
+						"damage_self": false,
+						"create_fire": true,
+						"destruction_type": "destroy",
+						"power": 5
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "/particle minecraft:explosion_emitter ~ ~ ~ ~ ~ ~ 0 0 normal"
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "/playsound minecraft:entity.generic.explode player @s ~ ~ ~ 1.5 0.8"
+					}
+				]
+			}
+		}
+	}
+}

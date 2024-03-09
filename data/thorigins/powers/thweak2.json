@@ -1,0 +1,43 @@
+{
+    "type": "origins:multiple",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "sprite": "minecraft:textures/item/kelp.png",
+            "text": "origin.thorigin.passive"
+        }
+    ],
+
+    "disable_shield": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "shield"
+            }
+        }
+    },
+
+    "small_lungs": {
+        "type": "origins:action_over_time",
+        "interval": 3,
+        "entity_action": {
+            "type": "origins:gain_air",
+            "value": -2
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water"
+                },
+                {
+                    "type": "origins:air",
+                    "compare_to": 0,
+                    "comparison": ">"
+                }
+            ]
+        }
+    }
+}
