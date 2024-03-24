@@ -156,6 +156,38 @@
 		}
 	},
 
+	"check_unlockable":{
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_unlockable",
+			"change": 1
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_lock_kitsune",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_lock_ninetails",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_unlockable",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
+		}
+	},
+
 	"auto_in_decrement": {
 		"type": "origins:action_over_time",
 		"interval": 1,
