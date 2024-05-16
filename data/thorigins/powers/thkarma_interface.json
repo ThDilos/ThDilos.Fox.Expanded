@@ -1,0 +1,21 @@
+{
+    "type": "origins:simple",
+    "hidden": false,
+    "badges": [
+		{
+			"type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": [
+                {
+                    "translate": "power.thorigins.thkarma_interface_activation_0"
+                },
+                {
+                    "keybind": "key.loadToolbarActivator"
+                },
+                {
+                    "translate": "power.thorigins.thkarma_interface_activation_1"
+                }
+            ]
+		}
+    ]
+}
