@@ -1228,6 +1228,9 @@
 										"type": "origins:or",
 										"conditions": [
 											{
+												"type": "origins:sneaking"
+											},
+											{
 												"type": "origins:resource",
 												"resource": "*:ninetails/thhunt3_timer",
 												"compare_to": 49,
@@ -1263,6 +1266,9 @@
 									{
 										"type": "origins:or",
 										"conditions": [
+											{
+												"type": "origins:sneaking"
+											},
 											{
 												"type": "origins:resource",
 												"resource": "*:ninetails/thhunt3_timer",
