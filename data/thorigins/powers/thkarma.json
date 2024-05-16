@@ -1,11 +1,11 @@
 {
 	"type": "origins:multiple",
-	"hidden": true,
+	"hidden": false,
 
 	"karma_p": {
 		"type": "origins:resource",
 		"min": -1,
-		"max": 1000,
+		"max": 2000,
 		"start_value": 0,
 		"max_action": {
 			"type": "origins:if_else",
@@ -72,7 +72,7 @@
 	"karma_n": {
 		"type": "origins:resource",
 		"min": -1,
-		"max": 1000,
+		"max": 2000,
 		"start_value": -1,
 		"max_action": {
 			"type": "origins:if_else",
@@ -153,6 +153,38 @@
 		"start_value": 1,
 		"hud_render": {
 			"should_render": false
+		}
+	},
+
+	"check_unlockable":{
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_unlockable",
+			"change": 1
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_lock_kitsune",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_lock_ninetails",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_unlockable",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
 		}
 	},
 

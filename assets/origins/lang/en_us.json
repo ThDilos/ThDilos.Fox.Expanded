@@ -11,6 +11,12 @@
 	"power.thorigins.default_fox/loadin_default.name": "§6§l§nChange Form",
 	"power.thorigins.default_fox/loadin_default.description": "Become a fox with paranormal abilities!",
 
+	"power.thorigins.thkarma_interface.name": "§6§l§nKarma",
+	"power.thorigins.thkarma_interface.description": "Your deeds weave your fate, as unseen forces tally your karmic path.",
+
+	"power.thorigins.thkarma_interface_activation_0": "Press [",
+	"power.thorigins.thkarma_interface_activation_1": "] while sneaking to glimpse your current karmic alignment.",
+
 	"power.thorigins.lightning_fox/thbecome_lightning.name": "§6§l§nBecome Lightning",
 	"power.thorigins.lightning_fox/thbecome_lightning.description": "Become lightning，fly freely and struck whoever you want. Remember to do adequate water protection，water is lethal to you in this state.",
 
@@ -43,26 +49,30 @@
 	"origins.thorigins.railgun3": "] during a suitable time.",
 
 	"origins.thorigins.firearm1": "Press [",
-	"origins.thorigins.firearm2": "] to choose a weaponry, press [",
-	"origins.thorigins.firearm3": "] to fire",
+	"origins.thorigins.firearm2": "] to choose a fire form, hold [",
+	"origins.thorigins.firearm3": "] to cast",
 	"origins.thorigins.laser_shoot1": "Press [",
-	"origins.thorigins.laser_shoot2": "] to shoot",
+	"origins.thorigins.laser_shoot2": "] to cast",
 
 	"origin.thorigins.fire_fox.name": "Fire Fox",
-	"origin.thorigins.fire_fox.description": "Not a browser",
+	"origin.thorigins.fire_fox.description": "Foxes Who Can Thrive in Scorching Hell and Dance with the Eternal Flame.",
 
-	"power.thorigins.fire_fox/thcannon.name": "§6§l§nFirearms",
-	"power.thorigins.fire_fox/thcannon.description": "Vent out the heat stored in your body and commit an adequate amount of arson.",
+	"power.thorigins.fire_fox/thcannon.name": "§6§l§nInferno Cannon",
+	"power.thorigins.fire_fox/thcannon.description": "Unleash the heat stored within your body to incinerate everything in your path.",
 
-	"power.thorigins.fire_fox/ththrust.name": "§6§l§nRocket Fox",
-	"power.thorigins.fire_fox/ththrust.description": "Use flame as propellant, fly freely like a rocket fox.",
-	"origin.thorigins.thrust": "Press %s when falling to fly. Use it again to thrust forward",
+	"power.thorigins.fire_fox/ththrust.name": "§6§l§nFlame Wings",
+	"power.thorigins.fire_fox/ththrust.description": "Temporarily create a pair of flame wings to soar the skies.",
+	"origin.thorigins.fly": "At the cost of stored temperature, press %s when falling to fly.",
+	"origin.thorigins.thrust": "Press %s while flying to thrust forward.\nHold it for a continuous small thrust.",
+	"origin.thorigins.close_wing_0": "When flying with flame wings, press [",
+	"origin.thorigins.close_wing_1": "] to close them in mid-air",
+	"origin.thorigins.impact": "If you've activated [Inferno Cannon] and are holding %s,\nyou would create an explosion upon high-speed impact.",
 
 	"power.thorigins.fire_fox/thfire_aspect.name": "§a§nAspect of the Fire",
-	"power.thorigins.fire_fox/thfire_aspect.description": "Embrace the inferno.",
+	"power.thorigins.fire_fox/thfire_aspect.description": "Wield fire and flames against your enermies.",
 
 	"power.thorigins.fire_fox/thtemperature.name": "§e§nInternal Heat",
-	"power.thorigins.fire_fox/thtemperature.description": "Heat is your major source of energy. Keep it as high as possible at all cost.",
+	"power.thorigins.fire_fox/thtemperature.description": "Your temperature greatly affects your combat performance.",
 
 	"origin.thorigins.kitsune.name": "Kitsune",
 	"origin.thorigins.kitsune.description": "Aspect of The Life, Health and Nature. The Being Above All Creatures",
@@ -97,8 +107,8 @@
 	"power.thorigins.thweak2.name": "§c§nWeak++",
 	"power.thorigins.thweak2.description": "You are now strong enough to wear the heaviest armor.",
 
-	"power.thorigins.kitsune/thshy2.name": "§c§nTimidity++",
-	"power.thorigins.kitsune/thshy2.description": "Out of the foodchain, you no longer fear your natural predators.",
+	"power.thorigins.thshy2.name": "§c§nTimidity++",
+	"power.thorigins.thshy2.description": "Out of the foodchain, you no longer fear your natural predators.",
 
 	"power.thorigins.kitsune/thfoxiality2.name": "§e§nFoxiality++",
 	"power.thorigins.kitsune/thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
@@ -130,6 +140,7 @@
 
 	"origins.thorigins.no_element": "You havn't unlocked a special fox!",
 	"origins.thorigins.untransformable": "Your ability to transform has been turned off by an admin!",
+	"origins.thorigins.sleepin_notransform": "You are sleeping, wake up to transform!",
 	"origins.thorigins.unlock.lightning": "You have unlocked Lightning Fox!",
 	"origins.thorigins.unlock.fire": "You have unlocked Fire Fox!",
 	"origins.thorigins.unlock.kitsune": "You have unlocked Kitsune!",

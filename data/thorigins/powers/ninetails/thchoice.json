@@ -130,8 +130,8 @@
 		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
-			"bar_index": 19,
+			"sprite_location": "origins:textures/thdilos_resource_bar.png",
+			"bar_index": 2,
 			"condition": {
 				"type": "origins:and",
 				"conditions": [
@@ -155,12 +155,12 @@
 	"renderer_thstorage3": {
 		"type": "origins:resource",
 		"min": 0,
-		"max": 7,
+		"max": 6,
 		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
-			"bar_index": 8,
+			"sprite_location": "origins:textures/thdilos_resource_bar.png",
+			"bar_index": 1,
 			"condition": {
 				"type": "origins:and",
 				"conditions": [
@@ -188,8 +188,8 @@
 		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
-			"bar_index": 12,
+			"sprite_location": "origins:textures/thdilos_resource_bar.png",
+			"bar_index": 3,
 			"condition": {
 				"type": "origins:and",
 				"conditions": [
