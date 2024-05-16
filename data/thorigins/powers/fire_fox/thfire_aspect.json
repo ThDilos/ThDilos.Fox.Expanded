@@ -21,7 +21,7 @@
 			"type": "origins:explosive"
 		},
 		"modifier": {
-			"value": -0.8,
+			"value": -0.7,
 			"operation": "multiply_base"
 		}
 	},
@@ -91,7 +91,7 @@
 		},
 		"attribute": "minecraft:generic.movement_speed",
 		"modifier": {
-			"value": 0.2,
+			"value": 0.05,
 			"operation": "addition"
 		}
 	},
@@ -133,8 +133,8 @@
 						"condition": {
 							"type": "origins:resource",
 							"resource": "*:thtransform_temperature",
-							"compare_to": 18000,
-							"comparison": ">"
+							"compare_to": 9000,
+							"comparison": ">="
 						}
 					},
 					"action": {
@@ -151,8 +151,8 @@
 						"condition": {
 							"type": "origins:resource",
 							"resource": "*:thtransform_temperature",
-							"compare_to": 16500,
-							"comparison": ">"
+							"compare_to": 7000,
+							"comparison": ">="
 						}
 					},
 					"action": {
@@ -169,8 +169,8 @@
 						"condition": {
 							"type": "origins:resource",
 							"resource": "*:thtransform_temperature",
-							"compare_to": 15000,
-							"comparison": "<"
+							"compare_to": 5000,
+							"comparison": ">="
 						}
 					},
 					"action": {
@@ -187,8 +187,8 @@
 						"condition": {
 							"type": "origins:resource",
 							"resource": "*:thtransform_temperature",
-							"compare_to": 13500,
-							"comparison": ">"
+							"compare_to": 5000,
+							"comparison": "<"
 						}
 					},
 					"action": {
@@ -224,7 +224,7 @@
 				{
 					"type": "origins:resource",
 					"resource": "*:thtransform_temperature",
-					"compare_to": 20999,
+					"compare_to": 9999,
 					"comparison": "<"
 				}
 			]
@@ -235,7 +235,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:thtransform_temperature",
-					"change": 2100,
+					"change": 1000,
 					"operation": "add"
 				},
 				{

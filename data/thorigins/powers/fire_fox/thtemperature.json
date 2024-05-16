@@ -58,7 +58,7 @@
 		"entity_action": {
 			"type": "origins:change_resource",
 			"resource": "*:thtransform_temperature",
-			"change": 20
+			"change": 10
 		},
 		"condition": {
 			"type": "origins:fluid_height",
@@ -140,7 +140,7 @@
 		"entity_action": {
 			"type": "origins:change_resource",
 			"resource": "*:thtransform_temperature",
-			"change": -10
+			"change": -5
 		},
 		"condition": {
 			"type": "origins:in_rain"
@@ -153,7 +153,7 @@
 		"entity_action": {
 			"type": "origins:change_resource",
 			"resource": "*:thtransform_temperature",
-			"change": -15
+			"change": -8
 		},
 		"condition": {
 			"type": "origins:and",
@@ -168,6 +168,54 @@
 				},
 				{
 					"type": "origins:exposed_to_sky"
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:command",
+							"command": "/execute if blocks ~ ~ ~ ~ 319 ~ ~ ~ ~ masked",
+							"compare_to": 0,
+							"comparison": "=="
+						},
+						{
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:in_block_anywhere",
+									"compare_to": 0,
+									"comparison": ">",
+									"block_condition": {
+										"type": "origins:or",
+										"inverted": true,
+										"conditions": [
+											{
+												"type": "origins:fluid",
+												"fluid_condition": {
+													"type": "origins:empty",
+													"inverted": true
+												}
+											},
+											{
+												"type": "origins:block",
+												"block": "air"
+											},
+											{
+												"type": "origins:in_tag",
+												"tag": "minecraft:trapdoors"
+											}
+										]
+									}
+								},
+								{
+									"type": "origins:command",
+									"command": "/execute unless blocks ~ ~1 ~ ~ 319 ~ ~ ~ ~ masked",
+									"compare_to": 0,
+									"comparison": "=="
+								}
+							]
+						}
+					]
 				},
 				{
 					"type": "origins:biome",
@@ -202,7 +250,7 @@
 									{
 										"type": "origins:resource",
 										"resource": "*:thtransform_temperature",
-										"compare_to": 10500,
+										"compare_to": 5000,
 										"comparison": "<"
 									}
 								]
@@ -225,7 +273,7 @@
 									{
 										"type": "origins:resource",
 										"resource": "*:thtransform_temperature",
-										"compare_to": 21000,
+										"compare_to": 10000,
 										"comparison": "<"
 									}
 								]
@@ -259,7 +307,7 @@
 				{
 					"type": "origins:resource",
 					"resource": "*:thtransform_temperature",
-					"compare_to": 10500,
+					"compare_to": 5000,
 					"comparison": "<"
 				}
 			]
@@ -283,7 +331,7 @@
 				{
 					"type": "origins:resource",
 					"resource": "*:thtransform_temperature",
-					"compare_to": 21000,
+					"compare_to": 10000,
 					"comparison": "<"
 				}
 			]
@@ -360,158 +408,85 @@
 					"condition": {
 						"type": "origins:resource",
 						"resource": "*:thtransform_temperature",
+						"compare_to": 1000,
+						"comparison": "<="
+					},
+					"action": {
+						"type": "origins:apply_effect",
+						"effects": [
+							{
+								"effect": "slowness",
+								"amplifier": 1,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							},
+							{
+								"effect": "weakness",
+								"amplifier": 1,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							},
+							{
+								"effect": "hunger",
+								"amplifier": 1,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
+						"compare_to": 2000,
+						"comparison": "<="
+					},
+					"action": {
+						"type": "origins:apply_effect",
+						"effects": [
+							{
+								"effect": "weakness",
+								"amplifier": 1,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							},
+							{
+								"effect": "hunger",
+								"amplifier": 1,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_temperature",
 						"compare_to": 3000,
 						"comparison": "<="
 					},
 					"action": {
-						"type": "origins:and",
-						"actions": [
+						"type": "origins:apply_effect",
+						"effects": [
 							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "slowness",
-										"amplifier": 2,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "weakness",
-										"amplifier": 2,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "hunger",
-										"amplifier": 2,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 4500,
-						"comparison": "<="
-					},
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "slowness",
-										"amplifier": 1,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "weakness",
-										"amplifier": 2,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "hunger",
-										"amplifier": 1,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 6000,
-						"comparison": "<="
-					},
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "slowness",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "weakness",
-										"amplifier": 1,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "hunger",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 7500,
-						"comparison": "<="
-					},
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "slowness",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "hunger",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
+								"effect": "weakness",
+								"amplifier": 1,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
 							}
 						]
 					}
@@ -530,48 +505,35 @@
 					"condition": {
 						"type": "origins:resource",
 						"resource": "*:thtransform_temperature",
-						"compare_to": 18000,
+						"compare_to": 9000,
 						"comparison": ">="
 					},
 					"action": {
-						"type": "origins:and",
-						"actions": [
+						"type": "origins:apply_effect",
+						"effects": [
 							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "speed",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "strength",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "saturation",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "regeneration",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
+								"effect": "minecraft:resistance",
+								"amplifier": 0,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							},
+							{
+								"effect": "strength",
+								"amplifier": 0,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							},
+							{
+								"effect": "regeneration",
+								"amplifier": 0,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
 							}
 						]
 					}
@@ -580,40 +542,27 @@
 					"condition": {
 						"type": "origins:resource",
 						"resource": "*:thtransform_temperature",
-						"compare_to": 16500,
+						"compare_to": 8000,
 						"comparison": ">="
 					},
 					"action": {
-						"type": "origins:and",
-						"actions": [
+						"type": "origins:apply_effect",
+						"effects": [
 							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "speed",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "strength",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "regeneration",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
+								"effect": "minecraft:resistance",
+								"amplifier": 0,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
+							},
+							{
+								"effect": "regeneration",
+								"amplifier": 0,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
 							}
 						]
 					}
@@ -622,58 +571,19 @@
 					"condition": {
 						"type": "origins:resource",
 						"resource": "*:thtransform_temperature",
-						"compare_to": 15000,
+						"compare_to": 7000,
 						"comparison": ">="
 					},
 					"action": {
-						"type": "origins:and",
-						"actions": [
+						"type": "origins:apply_effect",
+						"effects": [
 							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "speed",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "strength",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 13500,
-						"comparison": ">="
-					},
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "speed",
-										"amplifier": 0,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
+								"effect": "minecraft:resistance",
+								"amplifier": 0,
+								"duration": 10,
+								"show_icon": true,
+								"show_particles": false,
+								"is_ambient": true
 							}
 						]
 					}
@@ -686,9 +596,19 @@
 		"type": "origins:shaking",
 		"condition": {
 			"type": "origins:resource",
-			"compare_to": 7500,
+			"compare_to": 1000,
 			"comparison": "<=",
 			"resource": "*:thtransform_temperature"
+		}
+	},
+
+	"low_temp_freezing": {
+		"type": "origins:freeze",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:thtransform_temperature",
+			"compare_to": 100,
+			"comparison": "<="
 		}
 	}
 }
