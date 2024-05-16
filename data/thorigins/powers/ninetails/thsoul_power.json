@@ -76,7 +76,7 @@
 			"actions": [
 				{
 					"type": "origins:change_resource",
-					"resource": "*:*_show_soul",
+					"resource": "*:thtransform_show_soul",
 					"change": -1
 				},
 				{
@@ -85,15 +85,6 @@
 					"change": -1
 				}
 			]
-		}
-	},
-
-	"show_soul": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 100,
-		"hud_render": {
-			"should_render": false
 		}
 	},
 
@@ -110,7 +101,7 @@
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:*_show_soul",
+					"resource": "*:thtransform_show_soul",
 					"change": 100,
 					"operation": "set"
 				},
@@ -156,7 +147,7 @@
 		"cooldown": 0,
 		"entity_action": {
 			"type": "origins:change_resource",
-			"resource": "*:*_show_soul",
+			"resource": "*:thtransform_show_soul",
 			"change": 100,
 			"operation": "set"
 		},
@@ -227,52 +218,45 @@
 										"type": "origins:and",
 										"actions": [
 											{
+												"type": "origins:if_else",
+												"condition": {
+													"type": "origins:power",
+													"power": "thorigins:ninetails/thcurse",
+													"source": "thorigins:universal"
+												},
+												"if_action": {
+													"type": "origins:change_resource",
+													"resource": "*:ninetails/thcurse_timer",
+													"change": 200,
+													"operation": "set"
+												},
+												"else_action": {
+													"type": "origins:grant_power",
+													"power": "thorigins:ninetails/thcurse",
+													"source": "thorigins:universal"
+												}
+											},
+											{
 												"type": "origins:damage",
-												"amount": 8,
+												"damage_type": "minecraft:magic",
+												"amount": 4,
 												"source": {
 													"name": "minecraft:magic",
 													"magic": true,
-													"damage_type": "minecraft:magic",
 													"bypasses_armor": true,
 													"unblockable": true
 												}
 											},
 											{
 												"type": "origins:apply_effect",
-												"effects": [
-													{
-														"effect": "minecraft:weakness",
-														"amplifier": 0,
-														"duration": 200,
-														"show_icon": true,
-														"show_particles": false,
-														"is_ambient": true
-													},
-													{
-														"effect": "minecraft:nausea",
-														"amplifier": 0,
-														"duration": 200,
-														"show_icon": true,
-														"show_particles": false,
-														"is_ambient": true
-													},
-													{
-														"effect": "minecraft:blindness",
-														"amplifier": 0,
-														"duration": 100,
-														"show_icon": true,
-														"show_particles": false,
-														"is_ambient": true
-													},
-													{
-														"effect": "minecraft:regeneration",
-														"amplifier": 0,
-														"duration": 100,
-														"show_icon": true,
-														"show_particles": false,
-														"is_ambient": true
-													}
-												]
+												"effect": {
+													"effect": "minecraft:wither",
+													"amplifier": 0,
+													"duration": 200,
+													"show_icon": true,
+													"show_particles": false,
+													"is_ambient": true
+												}
 											}
 										]
 									}
@@ -450,7 +434,7 @@
 								},
 								{
 									"type": "origins:change_resource",
-									"resource": "*:*_show_soul",
+									"resource": "*:thtransform_show_soul",
 									"change": 100,
 									"operation": "set"
 								}
@@ -561,7 +545,7 @@
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:*_show_soul",
+					"resource": "*:thtransform_show_soul",
 					"change": 100,
 					"operation": "set"
 				}
