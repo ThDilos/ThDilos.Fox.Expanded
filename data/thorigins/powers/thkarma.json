@@ -1,11 +1,11 @@
 {
 	"type": "origins:multiple",
-	"hidden": true,
+	"hidden": false,
 
 	"karma_p": {
 		"type": "origins:resource",
 		"min": -1,
-		"max": 1000,
+		"max": 2000,
 		"start_value": 0,
 		"max_action": {
 			"type": "origins:if_else",
@@ -72,7 +72,7 @@
 	"karma_n": {
 		"type": "origins:resource",
 		"min": -1,
-		"max": 1000,
+		"max": 2000,
 		"start_value": -1,
 		"max_action": {
 			"type": "origins:if_else",
