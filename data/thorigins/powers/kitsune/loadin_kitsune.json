@@ -102,7 +102,7 @@
 								"conditions": [
 									{
 										"type": "origins:resource",
-										"resource": "*:kitsune/thshy2_shakingtimer",
+										"resource": "*:thshy2_shakingtimer",
 										"comparison": ">",
 										"compare_to": 0
 									},

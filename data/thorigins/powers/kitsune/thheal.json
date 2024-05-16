@@ -48,25 +48,7 @@
 		}
 	],
 
-	"energy": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 1000,
-		"start_value": 1000,
-		"hud_render": {
-			"should_render": true,
-			"bar_index": 14,
-			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_energy",
-				"compare_to": 1000,
-				"comparison": "<"
-			}
-		}
-	},
-
-	"energy_regen_delay": {
+	"soul_regen_delay": {
 		"type": "origins:resource",
 		"min": 0,
 		"max": 100,
@@ -76,26 +58,26 @@
 		}
 	},
 
-	"energy_regen": {
+	"soul_regen": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
 			"type": "origins:if_else",
 			"condition": {
 				"type": "origins:resource",
-				"resource": "*:*_energy_regen_delay",
+				"resource": "*:*_soul_regen_delay",
 				"compare_to": 0,
 				"comparison": "=="
 			},
 			"if_action": {
 				"type": "origins:change_resource",
-				"resource": "*:*_energy",
+				"resource": "*:thtransform_souls",
 				"change": 5,
 				"operation": "add"
 			},
 			"else_action": {
 				"type": "origins:change_resource",
-				"resource": "*:*_energy_regen_delay",
+				"resource": "*:*_soul_regen_delay",
 				"change": -1,
 				"operation": "add"
 			}
@@ -139,7 +121,7 @@
 					},
 					{
 						"type": "origins:resource",
-						"resource": "*:*_energy",
+						"resource": "*:thtransform_souls",
 						"compare_to": 0,
 						"comparison": ">"
 					}
@@ -159,12 +141,12 @@
 					"actions": [
 						{
 							"type": "origins:change_resource",
-							"resource": "*:*_energy",
+							"resource": "*:thtransform_souls",
 							"change": -100
 						},
 						{
 							"type": "origins:change_resource",
-							"resource": "*:*_energy_regen_delay",
+							"resource": "*:*_soul_regen_delay",
 							"change": 100,
 							"operation": "set"
 						},
@@ -224,7 +206,7 @@
 						"actions": [
 							{
 								"type": "origins:change_resource",
-								"resource": "*:*_energy_regen_delay",
+								"resource": "*:*_soul_regen_delay",
 								"change": 100,
 								"operation": "set"
 							},
@@ -260,12 +242,37 @@
 							},
 							{
 								"type": "origins:change_resource",
-								"resource": "*:*_energy",
-								"change": -10
+								"resource": "*:thtransform_souls",
+								"change": -20
 							},
 							{
 								"type": "origins:execute_command",
 								"command": "/effect give @e[distance=0.1..10] minecraft:regeneration 1 0 true"
+							},
+							{
+								"type": "origins:area_of_effect",
+								"radius": 10,
+								"bientity_condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:entity_group",
+										"group": "undead"
+									}
+								},
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:damage",
+										"amount": 3,
+										"damage_type": "minecraft:magic",
+										"source": {
+											"name": "minecraft:magic",
+											"magic": true,
+											"bypasses_armor": true,
+											"unblockable": true
+										}
+									}
+								}
 							}
 						]
 					}
@@ -280,7 +287,7 @@
 								"conditions": [
 									{
 										"type": "origins:resource",
-										"resource": "*:*_energy",
+										"resource": "*:thtransform_souls",
 										"compare_to": 0,
 										"comparison": "=="
 									},
@@ -342,14 +349,14 @@
 						"actions": [
 							{
 								"type": "origins:change_resource",
-								"resource": "*:*_energy_regen_delay",
+								"resource": "*:*_soul_regen_delay",
 								"change": 100,
 								"operation": "set"
 							},
 							{
 								"type": "origins:change_resource",
-								"resource": "*:*_energy",
-								"change": -50
+								"resource": "*:thtransform_souls",
+								"change": -100
 							},
 							{
 								"type": "origins:heal",
@@ -393,6 +400,89 @@
 					}
 				}
 			]
+		}
+	},
+
+	"sweet_berries_magic": {
+		"type": "origins:item_on_item",
+		"using_item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": [
+				{
+					"item": "minecraft:melon_seeds"
+				},
+				{
+					"item": "minecraft:wheat_seeds"
+				},
+				{
+					"item": "minecraft:pumpkin_seeds"
+				},
+				{
+					"item": "minecraft:beetroot_seeds"
+				}
+			]
+		},
+		"on_item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": [
+				{
+					"item": "minecraft:melon_seeds"
+				},
+				{
+					"item": "minecraft:wheat_seeds"
+				},
+				{
+					"item": "minecraft:pumpkin_seeds"
+				},
+				{
+					"item": "minecraft:beetroot_seeds"
+				}
+			]
+		},
+		"using_item_action": {
+			"type": "origins:consume",
+			"amount": 1
+		},
+		"on_item_action": {
+			"type": "origins:consume",
+			"amount": 1
+		},
+		"result": {
+			"item": "minecraft:sweet_berries",
+			"amount": 1
+		}
+	},
+
+	"glow_berries_magic": {
+		"type": "origins:item_on_item",
+		"using_item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": [
+				{
+					"item": "minecraft:glow_ink_sac"
+				},
+				{
+					"item": "minecraft:glowstone_dust"
+				}
+			]
+		},
+		"on_item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": {
+				"item": "minecraft:sweet_berries"
+			}
+		},
+		"using_item_action": {
+			"type": "origins:consume",
+			"amount": 1
+		},
+		"on_item_action": {
+			"type": "origins:consume",
+			"amount": 1
+		},
+		"result": {
+			"item": "minecraft:glow_berries",
+			"amount": 1
 		}
 	}
 }
