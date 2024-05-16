@@ -1,42 +1,131 @@
 {
-    "type": "origins:multiple",
-    "hidden": true,
+	"type": "origins:multiple",
+	"hidden": true,
 
-    "particles":{
-        "type": "origins:action_over_time",
-        "interval": 8,
-        "entity_action":{
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:spawn_particles",
-                    "particle": "minecraft:flame",
-                    "spread": {
-                        "x": 0.25,
-                        "y": 0.35,
-                        "z": 0.25
-                    },
-                    "count": 2,
-                    "offset_y": 0.275,
-                    "speed": 0.01
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 4,
-                    "action":{
-                        "type": "origins:spawn_particles",
-                        "particle": "minecraft:flame",
-                        "spread": {
-                            "x": 0.25,
-                            "y": 0.35,
-                            "z": 0.25
-                        },
-                        "count": 2,
-                        "offset_y": 0.275,
-                        "speed": 0.01
-                    }
-                }
-            ]
-        } 
-    }
+	"ambient_flame_particle": {
+		"type": "origins:particle",
+		"visible_in_first_person": false,
+		"visible_while_invisible": false,
+		"particle": "minecraft:flame",
+		"frequency": 15,
+		"offset_y": 0.6,
+		"spread": {
+			"x": 0.15,
+			"y": 0.35,
+			"z": 0.15
+		},
+		"count": 2,
+		"speed": 0.01,
+		"force": false,
+		"condition": {
+			"type": "origins:status_effect",
+			"effect": "minecraft:invisibility",
+			"inverted": true
+		}
+	},
+
+	"soul_fire_flame_particle": {
+		"type": "origins:particle",
+		"visible_in_first_person": false,
+		"visible_while_invisible": false,
+		"particle": "minecraft:soul_fire_flame",
+		"frequency": 30,
+		"offset_y": 0.6,
+		"spread": {
+			"x": 0.15,
+			"y": 0.35,
+			"z": 0.15
+		},
+		"count": 2,
+		"speed": 0.01,
+		"force": false,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"comparison": ">=",
+					"compare_to": 9000
+				},
+				{
+					"type": "origins:status_effect",
+					"effect": "minecraft:invisibility",
+					"inverted": true
+				}
+			]
+		}
+	},
+
+	"ambient_flame_particle_sleepin": {
+		"type": "origins:particle",
+		"visible_in_first_person": false,
+		"visible_while_invisible": true,
+		"particle": "minecraft:flame",
+		"frequency": 15,
+		"offset_y": 0.2,
+		"spread": {
+			"x": 0.25,
+			"y": 0.15,
+			"z": 0.25
+		},
+		"count": 2,
+		"speed": 0.01,
+		"force": false,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": "<="
+				},
+				{
+					"type": "origins:status_effect",
+					"effect": "minecraft:invisibility",
+					"inverted": true
+				}
+			]
+		}
+	},
+
+	"soul_fire_flame_particle_sleepin": {
+		"type": "origins:particle",
+		"visible_in_first_person": false,
+		"visible_while_invisible": true,
+		"particle": "minecraft:soul_fire_flame",
+		"frequency": 30,
+		"offset_y": 0.2,
+		"spread": {
+			"x": 0.25,
+			"y": 0.15,
+			"z": 0.25
+		},
+		"count": 2,
+		"speed": 0.01,
+		"force": false,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"comparison": ">=",
+					"compare_to": 9000
+				},
+				{
+					"type": "origins:status_effect",
+					"effect": "minecraft:invisibility",
+					"inverted": true
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": "<="
+				}
+			]
+		}
+	}
 }
