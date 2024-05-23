@@ -1,0 +1,158 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"timer": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 200,
+		"start_value": 200,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/power remove @s thorigins:ninetails/thcurse"
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:soul_fire_flame",
+					"count": 5,
+					"speed": 1
+				}
+			]
+		},
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"effect_cooldown": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 10,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+
+	"auto_decrement": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_timer",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_effect_cooldown",
+					"change": -1
+				}
+			]
+		}
+	},
+
+	"curse_effects": {
+		"type": "origins:modify_damage_taken",
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:actor_condition",
+					"condition": {
+						"type": "origins:origin",
+						"origin": "thorigins:ninetails",
+						"layer": "thorigins:origin"
+					}
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_effect_cooldown",
+						"compare_to": 0,
+						"comparison": "=="
+					}
+				}
+			]
+		},
+		"modifier": {
+			"operation": "multiply_base",
+			"value": 0.25
+		},
+		"self_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_effect_cooldown",
+					"change": 10,
+					"operation": "set"
+				},
+				{
+					"type": "origins:apply_effect",
+					"effects": [
+						{
+							"effect": "minecraft:weakness",
+							"duration": 60,
+							"amplifier": 0,
+							"show_icon": true,
+							"is_ambient": true,
+							"show_particles": false
+						},
+						{
+							"effect": "minecraft:slowness",
+							"duration": 60,
+							"amplifier": 0,
+							"show_icon": true,
+							"is_ambient": true,
+							"show_particles": false
+						}
+					]
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.allay.item_given",
+					"pitch": 2,
+					"volume": 1
+				}
+			]
+		},
+		"attacker_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_souls",
+					"change": 10
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_show_soul",
+					"change": 100,
+					"operation": "set"
+				}
+			]
+		}
+	},
+
+	"sfx": {
+		"type": "origins:action_over_time",
+		"interval": 4,
+		"entity_action": {
+			"type": "origins:spawn_particles",
+			"particle": "minecraft:soul",
+			"count": 1,
+			"spread": {
+				"x": 0.5,
+				"y": 0.5,
+				"z": 0.5
+			},
+			"speed": 0.1
+		}
+	}
+}

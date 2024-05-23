@@ -6,10 +6,16 @@
 	"origin.thorigins.default_fox.description": "只是一只普通的小狐狸，脑袋里没有坏主意。",
 
 	"origin.thorigins.lightning_fox.name": "闪电狐狸",
-	"origin.thorigins.lightning_fox.description": "比不一般的狐狸更不一般的闪电狐狸。",
+	"origin.thorigins.lightning_fox.description": "掌握了雷电之力的狐狸。",
 
 	"power.thorigins.default_fox/loadin_default.name": "§6§l§n变换",
-	"power.thorigins.default_fox/loadin_default.description": "变成更不一般的狐狸",
+	"power.thorigins.default_fox/loadin_default.description": "变成更不一般的狐狸。",
+
+	"power.thorigins.thkarma_interface.name": "§6§l§n业报",
+	"power.thorigins.thkarma_interface.description": "你的所作所为会决定你的命运。",
+
+	"power.thorigins.thkarma_interface_activation_0": "蹲下并按[",
+	"power.thorigins.thkarma_interface_activation_1": "]来查看你的业报倾向。",
 
 	"power.thorigins.lightning_fox/thbecome_lightning.name": "§6§l§n化身闪电",
 	"power.thorigins.lightning_fox/thbecome_lightning.description": "成为闪电，拥有飞行和伤害飞行沿途一切的能力。记得防水，否则在这个状态之下，你的能量会被水迅速分散。",
@@ -49,14 +55,18 @@
 	"origins.thorigins.laser_shoot2": "]发射",
 
 	"origin.thorigins.fire_fox.name": "火焰狐狸",
-	"origin.thorigins.fire_fox.description": "纵火犯狐狸>:3",
+	"origin.thorigins.fire_fox.description": "浴火重生的烈焰狐狸，将给敌人带来炼狱式的打击。",
 
-	"power.thorigins.fire_fox/thcannon.name": "§6§l§n控火术",
-	"power.thorigins.fire_fox/thcannon.description": "发射火焰炮弹激光什么什么的，对面直呼太烧了。",
+	"power.thorigins.fire_fox/thcannon.name": "§6§l§n焚焰炮",
+	"power.thorigins.fire_fox/thcannon.description": "释放体内储存的热量，焚尽沿途的一切。",
 
-	"power.thorigins.fire_fox/ththrust.name": "§6§l§n火箭狐",
-	"power.thorigins.fire_fox/ththrust.description": "以烈焰为染料，像一枚导弹一样迅速到达目的地。",
-	"origin.thorigins.thrust": "在半空中按%s滑翔，再次使用可向前推进",
+	"power.thorigins.fire_fox/ththrust.name": "§6§l§n烈焰之翼",
+	"power.thorigins.fire_fox/ththrust.description": "临时制造一双助你翱翔的炽热羽翼。",
+	"origin.thorigins.fly": "以烈焰为原料，在下落时按下%s飞行。",
+	"origin.thorigins.thrust": "飞行时按下%s向前推进\n持续按住以获得持续性的推进。",
+	"origin.thorigins.close_wing_0": "使用烈焰之翼飞行时，按下[",
+	"origin.thorigins.close_wing_1": "]终止飞行。",
+	"origin.thorigins.impact": "如果你激活了[焚焰炮]并按住%s,\n你会在高速度碰撞时产生爆炸。",
 
 	"power.thorigins.fire_fox/thfire_aspect.name": "§a§n火之化身",
 	"power.thorigins.fire_fox/thfire_aspect.description": "烈焰为父，熔岩为母。",
@@ -103,8 +113,8 @@
 	"power.thorigins.kitsune/thfoxiality2.name": "§e§n狐狸本性++",
 	"power.thorigins.kitsune/thfoxiality2.description": "你的天敌不再视你为食物，你也能更好地看清黑暗。",
 
-	"origin.thorigins.ninetails.name": "Ninetails",
-	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
+	"origin.thorigins.ninetails.name": "九尾",
+	"origin.thorigins.ninetails.description": "熟练了屠杀与欺骗的技巧，这个生物注定会成为其他生灵的噩梦。",
 
 	"power.thorigins.ninetails/thdash3.name": "§6§l§n掠袭++",
 	"power.thorigins.ninetails/thdash3.description": "你擅长用掠袭快速结束猎物的生命。",
@@ -130,6 +140,7 @@
 
 	"origins.thorigins.no_element": "你还没有解锁别的狐狸!",
 	"origins.thorigins.untransformable": "管理员限制了你的变换能力!",
+	"origins.thorigins.sleepin_notransform": "你睡着了，醒着才能变换!",
 	"origins.thorigins.unlock.lightning": "你解锁了闪电狐狸!",
 	"origins.thorigins.unlock.fire": "你解锁了火焰狐狸!",
 	"origins.thorigins.unlock.kitsune": "你解锁了灵狐!",

@@ -114,7 +114,7 @@
 										"duration": 102,
 										"show_icon": true,
 										"show_particles": false,
-										"is_ambient": false
+										"is_ambient": true
 									},
 									{
 										"effect": "weakness",
@@ -122,7 +122,7 @@
 										"duration": 102,
 										"show_icon": true,
 										"show_particles": false,
-										"is_ambient": false
+										"is_ambient": true
 									}
 								]
 							},
@@ -158,7 +158,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/execute at @e[type=villager,distance=..16,sort=nearest,limit=1] run resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/execute at @e[type=villager,distance=..16,sort=nearest,limit=1] run resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
@@ -171,7 +171,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/execute at @e[type=warden,distance=..30,sort=nearest,limit=1] run resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/execute at @e[type=warden,distance=..30,sort=nearest,limit=1] run resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
@@ -184,7 +184,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/execute at @e[type=wither,distance=..50,sort=nearest,limit=1] run resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/execute at @e[type=wither,distance=..50,sort=nearest,limit=1] run resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
@@ -197,7 +197,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/execute at @e[type=ender_dragon,distance=..150,sort=nearest,limit=1] run resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/execute at @e[type=ender_dragon,distance=..150,sort=nearest,limit=1] run resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
@@ -210,7 +210,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/execute at @e[type=lightning_bolt,sort=nearest,limit=1] run resource change @s thorigins:kitsune/thshy2_fear 5"
+						"command": "/execute at @e[type=lightning_bolt,sort=nearest,limit=1] run resource change @s thorigins:thshy2_fear 5"
 					}
 				},
 				{
@@ -233,7 +233,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
@@ -271,7 +271,7 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
@@ -297,12 +297,48 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/resource change @s thorigins:kitsune/thshy2_fear 1"
+						"command": "/resource change @s thorigins:thshy2_fear 1"
 					}
 				},
 				{
 					"type": "origins:execute_command",
-					"command": "/execute if entity @e[tag=foxiefear,tag=!foxietrust,distance=..18] run resource change @s thorigins:kitsune/thshy2_fear 1"
+					"command": "/execute if entity @e[tag=foxiefear,tag=!foxietrust,distance=..18] run resource change @s thorigins:thshy2_fear 1"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @p[tag=!foxietrust,distance=..18,nbt={cardinal_components:{\"origins:origin\":{OriginLayers:[{Origin:\"origins:enderian\"}]}}}]",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @p[tag=!foxietrust,distance=..18,nbt={cardinal_components:{\"origins:origin\":{OriginLayers:[{Origin:\"origins:shulk\"}]}}}]",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @p[tag=!foxietrust,distance=..18,nbt={cardinal_components:{\"origins:origin\":{OriginLayers:[{Origin:\"origins:blazeborn\"}]}}}]",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @p[tag=!foxietrust,distance=..18,nbt={cardinal_components:{\"origins:origin\":{OriginLayers:[{Origin:\"origins:human\"}]}}}]",
+								"compare_to": 0,
+								"comparison": ">"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource change @s thorigins:thshy2_fear 1"
+					}
 				},
 				{
 					"type": "origins:if_else",
@@ -357,6 +393,51 @@
 					}
 				}
 			]
+		}
+	},
+
+	"check_wolf_tame": {
+		"type": "origins:action_on_entity_use",
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:entity_type",
+						"entity_type": "minecraft:wolf"
+					}
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:tamed",
+						"inverted": true
+					}
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:command",
+						"command": "/data get entity @s AngerTime",
+						"compare_to": 0,
+						"comparison": "=="
+					}
+				}
+			]
+		},
+		"item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": {
+				"item": "minecraft:bone"
+			}
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:execute_command",
+				"command": "/power grant @s thorigins:fox/wolf_collar thorigins:universal"
+			}
 		}
 	},
 

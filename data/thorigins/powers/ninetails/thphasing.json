@@ -133,9 +133,13 @@
 					},
 					{
 						"type": "origins:change_resource",
-						"resource": "*:ninetails/thsoul_power_show_soul",
+						"resource": "*:thtransform_show_soul",
 						"change": 100,
 						"operation": "set"
+					},
+					{
+						"type": "origins:set_fall_distance",
+						"fall_distance": 0
 					}
 				]
 			}
