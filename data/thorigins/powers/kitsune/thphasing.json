@@ -26,40 +26,11 @@
 				},
 				{
 					"type": "origins:resource",
-					"resource": "*:*_timelimit",
-					"compare_to": 600,
-					"comparison": "<"
+					"resource": "*:thtransform_souls",
+					"compare_to": 0,
+					"comparison": ">"
 				}
 			]
-		}
-	},
-
-	"timelimit": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 600,
-		"max_action": {
-			"type": "origins:if_else",
-			"condition": {
-				"type": "origins:power_active",
-				"power": "*:*_toggle"
-			},
-			"if_action": {
-				"type": "origins:toggle",
-				"power": "*:*_toggle"
-			}
-		},
-		"hud_render": {
-			"should_render": true,
-			"inverted": true,
-			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
-			"bar_index": 7,
-			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_timelimit",
-				"compare_to": 0,
-				"comparison": ">"
-			}
 		}
 	},
 
@@ -117,16 +88,25 @@
 						"power": "*:*_toggle"
 					},
 					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_timelimit",
-						"change": 1,
-						"operation": "add"
-					},
-					"else_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_timelimit",
-						"change": -1,
-						"operation": "add"
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_souls",
+								"change": -1,
+								"operation": "add"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:kitsune/thheal_soul_regen_delay",
+								"change": 100,
+								"operation": "set"
+							},
+							{
+								"type": "origins:set_fall_distance",
+								"fall_distance": 0
+							}
+						]
 					}
 				},
 				{
@@ -143,6 +123,28 @@
 								"resource": "*:kitsune/thchoice_choice",
 								"compare_to": 1,
 								"comparison": "!="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:toggle",
+						"power": "*:*_toggle"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:power_active",
+								"power": "*:*_toggle"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:thtransform_souls",
+								"compare_to": 0,
+								"comparison": "=="
 							}
 						]
 					},
