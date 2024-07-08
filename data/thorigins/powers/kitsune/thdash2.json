@@ -636,14 +636,41 @@
 		"retain_state": true
 	},
 
+	"falling": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"hud_render": { "should_render": false }
+	},
+
+	"check_falling": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:fall_distance",
+				"compare_to": 0.5,
+				"comparison": ">="
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_falling",
+				"change": 1,
+				"operation": "set"
+			}
+		}
+	}, 
+
 	"crits": {
 		"type": "origins:modify_damage_dealt",
 		"damage_condition": {
 			"type": "origins:attacker",
 			"entity_condition": {
-				"type": "origins:fall_distance",
-				"compare_to": 0.5,
-				"comparison": ">="
+				"type": "origins:resource",
+				"resource": "*:*_falling",
+				"compare_to": 1,
+				"comparison": "=="
 			}
 		},
 		"modifier": {
@@ -957,9 +984,10 @@
 				{
 					"type": "origins:attacker",
 					"entity_condition": {
-						"type": "origins:fall_distance",
-						"compare_to": 0.5,
-						"comparison": ">="
+						"type": "origins:resource",
+						"resource": "*:*_falling",
+						"compare_to": 1,
+						"comparison": "=="
 					}
 				}
 			]
@@ -1062,9 +1090,10 @@
 		"damage_condition": {
 			"type": "origins:attacker",
 			"entity_condition": {
-				"type": "origins:fall_distance",
-				"compare_to": 0.5,
-				"comparison": ">="
+				"type": "origins:resource",
+				"resource": "*:*_falling",
+				"compare_to": 1,
+				"comparison": "=="
 			}
 		},
 		"modifier": {
@@ -1108,9 +1137,10 @@
 		"damage_condition": {
 			"type": "origins:attacker",
 			"entity_condition": {
-				"type": "origins:fall_distance",
-				"compare_to": 0.2,
-				"comparison": ">="
+				"type": "origins:resource",
+				"resource": "*:*_falling",
+				"compare_to": 1,
+				"comparison": "=="
 			}
 		},
 		"modifier": {

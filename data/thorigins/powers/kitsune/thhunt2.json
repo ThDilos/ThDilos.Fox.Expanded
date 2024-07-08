@@ -284,7 +284,7 @@
 				{
 					"type": "origins:fall_distance",
 					"comparison": ">=",
-					"compare_to": 3
+					"compare_to": 2.5
 				},
 				{
 					"type": "origins:sneaking",
