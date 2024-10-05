@@ -149,7 +149,7 @@
 								"conditions": [
 									{
 										"type": "origins:resource",
-										"resource": "*:fox/thshy2_fear_timer",
+										"resource": "*:fox/thshy_fear_timer",
 										"comparison": ">",
 										"compare_to": 0
 									},
