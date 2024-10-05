@@ -209,7 +209,7 @@
 			"conditions": [
 				{
 					"type": "origins:resource",
-					"resource": "*:thshy2_fear_time",
+					"resource": "*:thshy2_fear_timer",
 					"compare_to": 0,
 					"comparison": ">"
 				},
