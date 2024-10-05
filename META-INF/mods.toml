@@ -14,7 +14,7 @@ displayName="ThDilos Fox Origins Expanded"
 [[dependencies.thorigins2]]
 modId="thorigins"
 mandatory=true
-versionRange="[3.8.9,)"
+versionRange="[4.0.1,)"
 ordering="NONE"
 side="BOTH"
 
