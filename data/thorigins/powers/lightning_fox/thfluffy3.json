@@ -1,0 +1,211 @@
+{
+	"type": "origins:multiple",
+	"name": "lightning_fox.thfluffy3.name",
+	"description": "lightning_fox.thfluffy3.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"text": "origin.thorigin.passive",
+			"sprite": "minecraft:textures/block/yellow_wool.png"
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": [
+				{
+					"translate": "thfluffy3.info"
+				},
+				{
+					"text": "\n"
+				},
+				{
+					"translate": "thfluffy.info"
+				}
+			]
+		}
+	],
+
+	"original_thfluffy_power": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:grant_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:temporal"
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:temporal"
+		}
+	},
+
+	"spikey_fluff": {
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "origins:area_of_effect",
+			"radius": 0.5,
+			"shape": "sphere",
+			"bientity_action": {
+				"type": "origins:if_else_list",
+				"actions": [
+					{
+						"condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:sprinting"
+									}
+								},
+								{
+									"type": "origins:actor_condition",
+									"condition": {
+										"type": "origins:sprinting"
+									}
+								}
+							]
+						},
+						"action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:play_sound",
+										"sound": "minecraft:entity.player.hurt_sweet_berry_bush",
+										"pitch": 1.5,
+										"volume": 0.8,
+										"category": "players"
+									}
+								},
+								{
+									"type": "origins:damage",
+									"amount": 1,
+									"damage_type": "minecraft:cactus",
+									"source": {
+										"name": "cactus.player"
+									}
+								}
+							]
+						}
+					},
+					{
+						"condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:moving"
+									}
+								},
+								{
+									"type": "origins:actor_condition",
+									"condition": {
+										"type": "origins:moving"
+									}
+								}
+							]
+						},
+						"action": {
+							"type": "origins:chance",
+							"chance": 0.2,
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.player.hurt_sweet_berry_bush",
+											"pitch": 1.7,
+											"volume": 1,
+											"category": "players"
+										}
+									},
+									{
+										"type": "origins:damage",
+										"amount": 1,
+										"damage_type": "minecraft:cactus",
+										"source": {
+											"name": "cactus.player"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			"bientity_condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:riding",
+						"inverted": true
+					},
+					{
+						"type": "origins:invert",
+						"condition": {
+							"type": "origins:riding",
+							"inverted": true
+						}
+					},
+					{
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:actor_condition",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:fox/thfoxify_afk_timer",
+									"compare_to": 0,
+									"comparison": ">"
+								}
+							},
+							{
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:actor_condition",
+										"condition": {
+											"type": "origins:resource",
+											"resource": "*:fox/thfoxify_afk_timer",
+											"compare_to": 0,
+											"comparison": "=="
+										}
+									},
+									{
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:riding",
+											"bientity_condition": {
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:nbt",
+													"nbt": "{\"Tags\":[\"sleepin\"]}"
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:living"
+						}
+					}
+				]
+			}
+		},
+		"condition": {
+			"type": "origins:sneaking",
+			"inverted": true
+		}
+	}
+}

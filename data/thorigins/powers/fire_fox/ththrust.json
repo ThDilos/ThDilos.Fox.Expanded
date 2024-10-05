@@ -1,37 +1,244 @@
 {
 	"type": "origins:multiple",
+	"name": "fire_fox.ththrust.name",
+	"description": "fire_fox.ththrust.description",
 	"badges": [
 		{
-			"type": "origins:keybind",
+			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": "origin.thorigins.fly"
-		},
-		{
-			"type": "origins:keybind",
-			"sprite": "origins:textures/gui/badge/active.png",
-			"text": "origin.thorigins.thrust"
+			"text": [
+				{
+					"translate": "ththrust.key0"
+				},
+				{
+					"keybind": "key.jump",
+					"color": "aqua"
+				},
+				{
+					"translate": "ththrust.key1"
+				},
+				{
+					"keybind": "key.jump",
+					"color": "aqua"
+				},
+				{
+					"translate": "ththrust.key2"
+				},
+				{
+					"keybind": "key.sneak",
+					"color": "aqua"
+				},
+				{
+					"translate": "ththrust.key3"
+				}
+			]
 		},
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/toggle.png",
 			"text": [
 				{
-					"translate": "origin.thorigins.close_wing_0"
+					"translate": "ththrust.key4"
 				},
 				{
-					"keybind": "key.sneak"
+					"keybind": "key.jump",
+					"color": "aqua"
 				},
 				{
-					"translate": "origin.thorigins.close_wing_1"
+					"translate": "ththrust.key5"
 				}
 			]
 		},
 		{
 			"type": "origins:keybind",
 			"sprite": "origins:textures/gui/badge/info.png",
-			"text": "origin.thorigins.impact"
+			"text": "ththrust.info"
 		}
 	],
+
+	"thrust_indicator": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 7,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"bar_index": 0,
+			"sprite_location": "origins:textures/thdilos_resource_bar.png"
+		}
+	},
+
+	"clear_delay": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 5,
+		"max_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_thrust_indicator",
+			"change": 1,
+			"operation": "set"
+		},
+		"min_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_thrust_indicator",
+			"change": 0,
+			"operation": "set"
+		}
+	},
+
+	"fall_flying_check": {
+		"type": "origins:cooldown",
+		"cooldown": 3,
+		"hud_render": { "should_render": false }
+	},
+
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:fall_flying"
+							},
+							{
+								"type": "origins:power_active",
+								"power": "*:*_flight"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:power",
+									"power": "*:fire_fox/ththrust_elytra_texture",
+									"inverted": true
+								},
+								"if_action": {
+									"type": "origins:grant_power",
+									"power": "*:fire_fox/ththrust_elytra_texture",
+									"source": "thorigins:fire_fox"
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:in_rain"
+								},
+								"if_action": {
+									"type": "origins:change_resource",
+									"resource": "*:thtransform_temperature",
+									"change": -20
+								},
+								"else_action": {
+									"type": "origins:change_resource",
+									"resource": "*:thtransform_temperature",
+									"change": -10
+								}
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:power",
+							"power": "*:fire_fox/ththrust_elytra_texture"
+						},
+						"if_action": {
+							"type": "origins:revoke_power",
+							"power": "*:fire_fox/ththrust_elytra_texture",
+							"source": "thorigins:fire_fox"
+						}
+					}
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_clear_delay",
+					"change": -1
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:fall_flying"
+					},
+					"if_action": {
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_fall_flying_check"
+					}
+				}
+			]
+		}
+	},
+
+	"flight": {
+		"type": "origins:elytra_flight",
+		"render_elytra": false,
+		"texture_location": "origins:textures/flame_wing.png",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:equipped_item",
+					"inverted": true,
+					"equipment_slot": "chest",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "elytra"
+						}
+					}
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 50,
+					"comparison": ">"
+				},
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:lava",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:water",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
+		}
+	},
+
+	"elytra_texture": {
+		"type": "origins:elytra_flight",
+		"texture_location": "origins:textures/flame_wing.png",
+		"render_elytra": true,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:fall_flying"
+				},
+				{
+					"type": "origins:power_active",
+					"power": "*:*_flight"
+				}
+			]
+		}
+	},
 
 	"thrust": {
 		"type": "origins:active_self",
@@ -85,12 +292,6 @@
 					"resource": "*:thtransform_temperature",
 					"compare_to": 50,
 					"comparison": ">"
-				},
-				{
-					"type": "origins:fluid_height",
-					"fluid": "minecraft:lava",
-					"compare_to": 0,
-					"comparison": "=="
 				}
 			]
 		}
@@ -131,254 +332,6 @@
 					"resource": "*:thtransform_temperature",
 					"compare_to": 50,
 					"comparison": ">"
-				}
-			]
-		}
-	},
-
-	"thrust_indicator": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 7,
-		"start_value": 0,
-		"hud_render": {
-			"should_render": true,
-			"bar_index": 0,
-			"sprite_location": "origins:textures/thdilos_resource_bar.png"
-		}
-	},
-
-	"clear_delay": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 5,
-		"max_action": {
-			"type": "origins:change_resource",
-			"resource": "*:*_thrust_indicator",
-			"change": 1,
-			"operation": "set"
-		},
-		"hud_render": {
-			"should_render": false
-		}
-	},
-
-	"switch": {
-		"type": "origins:toggle",
-		"active_by_default": false,
-		"key": "nuh.uh",
-		"retain_state": true
-	},
-
-	"flight": {
-		"type": "origins:elytra_flight",
-		"render_elytra": false,
-		"texture_location": "origins:textures/flame_wing.png",
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:power_active",
-					"power": "*:*_switch"
-				},
-				{
-					"type": "origins:sneaking",
-					"inverted": true
-				},
-				{
-					"type": "origins:equipped_item",
-					"inverted": true,
-					"equipment_slot": "chest",
-					"item_condition": {
-						"type": "origins:ingredient",
-						"ingredient": {
-							"item": "elytra"
-						}
-					}
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:thtransform_temperature",
-					"compare_to": 50,
-					"comparison": ">"
-				},
-				{
-					"type": "origins:fluid_height",
-					"fluid": "minecraft:lava",
-					"compare_to": 0,
-					"comparison": "=="
-				},
-				{
-					"type": "origins:fluid_height",
-					"fluid": "minecraft:water",
-					"compare_to": 0,
-					"comparison": "=="
-				}
-			]
-		}
-	},
-
-	"elytra_texture": {
-		"type": "origins:elytra_flight",
-		"texture_location": "origins:textures/flame_wing.png",
-		"render_elytra": true,
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:power_active",
-					"power": "*:*_switch"
-				},
-				{
-					"type": "origins:sneaking",
-					"inverted": true
-				},
-				{
-					"type": "origins:equipped_item",
-					"inverted": true,
-					"equipment_slot": "chest",
-					"item_condition": {
-						"type": "origins:ingredient",
-						"ingredient": {
-							"item": "elytra"
-						}
-					}
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:thtransform_temperature",
-					"compare_to": 50,
-					"comparison": ">"
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "chest",
-					"item_condition": {
-						"type": "origins:ingredient",
-						"ingredient": {
-							"item": "minecraft:elytra"
-						}
-					},
-					"inverted": true
-				},
-				{
-					"type": "origins:fall_flying"
-				},
-				{
-					"type": "origins:fluid_height",
-					"fluid": "minecraft:lava",
-					"compare_to": 0,
-					"comparison": "=="
-				},
-				{
-					"type": "origins:fluid_height",
-					"fluid": "minecraft:water",
-					"compare_to": 0,
-					"comparison": "=="
-				}
-			]
-		}
-	},
-
-	"repeating": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:power_active",
-								"power": "*:*_switch"
-							},
-							{
-								"type": "origins:equipped_item",
-								"equipment_slot": "chest",
-								"item_condition": {
-									"type": "origins:ingredient",
-									"ingredient": {
-										"item": "elytra"
-									}
-								},
-								"inverted": true
-							},
-							{
-								"type": "origins:fall_flying"
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:if_else",
-						"condition": {
-							"type": "origins:in_rain"
-						},
-						"if_action": {
-							"type": "origins:change_resource",
-							"resource": "*:thtransform_temperature",
-							"change": -8
-						},
-						"else_action": {
-							"type": "origins:change_resource",
-							"resource": "*:thtransform_temperature",
-							"change": -5
-						}
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 50,
-						"comparison": ">"
-					},
-					"if_action": {
-						"type": "origins:if_else",
-						"condition": {
-							"type": "origins:power_active",
-							"power": "*:*_switch",
-							"inverted": true
-						},
-						"if_action": {
-							"type": "origins:toggle",
-							"power": "*:*_switch"
-						}
-					},
-					"else_action": {
-						"type": "origins:if_else",
-						"condition": {
-							"type": "origins:power_active",
-							"power": "*:*_switch"
-						},
-						"if_action": {
-							"type": "origins:toggle",
-							"power": "*:*_switch"
-						}
-					}
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_clear_delay",
-					"change": -1
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_clear_delay",
-						"compare_to": 1,
-						"comparison": "<"
-					},
-					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_thrust_indicator",
-						"change": 0,
-						"operation": "set"
-					}
 				}
 			]
 		}
@@ -456,28 +409,27 @@
 		}
 	},
 
-	"immune_velocity": {
-		"type": "origins:modify_damage_taken",
+	"impact_bomb": {
+		"type": "origins:action_when_damage_taken",
+		"cooldown": 10,
 		"damage_condition": {
-			"type": "origins:and",
+			"type": "origins:or",
 			"conditions": [
 				{
-					"type": "origins:or",
-					"conditions": [
-						{
-							"type": "origins:name",
-							"name": "flyIntoWall"
-						},
-						{
-							"type": "origins:name",
-							"name": "flyIntoWall.player"
-						}
-					]
+					"type": "origins:name",
+					"name": "fall"
 				},
 				{
-					"type": "origins:amount",
-					"compare_to": 4,
-					"comparison": ">"
+					"type": "origins:name",
+					"name": "fall.player"
+				},
+				{
+					"type": "origins:name",
+					"name": "flyIntoWall"
+				},
+				{
+					"type": "origins:name",
+					"name": "flyIntoWall.player"
 				}
 			]
 		},
@@ -498,140 +450,75 @@
 				}
 			]
 		},
-		"modifier": {
-			"value": -0.3,
-			"operation": "multiply_total"
-		},
-		"bientity_action": {
-			"type": "origins:target_action",
-			"action": {
-				"type": "origins:and",
-				"actions": [
-					{
-						"type": "origins:explode",
-						"damage_self": false,
-						"create_fire": true,
-						"destruction_type": "destroy",
-						"power": 5
-					},
-					{
-						"type": "origins:execute_command",
-						"command": "/particle minecraft:explosion_emitter ~ ~ ~ ~ ~ ~ 0 0 normal"
-					},
-					{
-						"type": "origins:execute_command",
-						"command": "/playsound minecraft:entity.generic.explode player @s ~ ~ ~ 1.5 0.8"
-					}
-				]
-			}
-		}
-	},
-
-	"fall_flying_check": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 5,
-		"hud_render": {
-			"should_render": false
-		}
-	},
-
-	"fall_flying_checker": {
-		"type": "origins:action_over_time",
-		"interval": 1,
 		"entity_action": {
-			"type": "origins:if_else",
-			"condition": {
-				"type": "origins:fall_flying"
-			},
-			"if_action": {
-				"type": "origins:change_resource",
-				"resource": "*:*_fall_flying_check",
-				"change": 1
-			},
-			"else_action": {
-				"type": "origins:change_resource",
-				"resource": "*:*_fall_flying_check",
-				"change": -1
-			}
-		}
-	},
-
-	"immune_fall": {
-		"type": "origins:modify_damage_taken",
-		"damage_condition": {
 			"type": "origins:and",
-			"conditions": [
+			"actions": [
 				{
-					"type": "origins:amount",
-					"compare_to": 4,
-					"comparison": ">"
-				},
-				{
-					"type": "origins:or",
-					"conditions": [
-						{
-							"type": "origins:name",
-							"name": "fall"
-						},
-						{
-							"type": "origins:name",
-							"name": "fall.player"
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:fire_fox/thcannon_ammo",
+						"compare_to": 2,
+						"comparison": "<="
+					},
+					"if_action": {
+						"type": "origins:area_of_effect",
+						"radius": 8,
+						"bientity_action": {
+							"type": "origins:damage",
+							"amount": 0.01,
+							"damage_type": "minecraft:explosion",
+							"source": {
+								"name": "explosion.player"
+							}
 						}
-					]
-				}
-			]
-		},
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource": "*:*_fall_flying_check",
-					"compare_to": 0,
-					"comparison": ">"
-				},
-
-				{
-					"type": "origins:resource",
-					"resource": "*:fire_fox/thcannon_ammo",
-					"compare_to": 0,
-					"comparison": ">"
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_clear_delay",
-					"compare_to": 1,
-					"comparison": ">="
-				}
-			]
-		},
-		"modifier": {
-			"value": -0.8,
-			"operation": "multiply_total"
-		},
-		"bientity_action": {
-			"type": "origins:target_action",
-			"action": {
-				"type": "origins:and",
-				"actions": [
-					{
+					},
+					"else_action": {
 						"type": "origins:explode",
 						"damage_self": false,
 						"create_fire": true,
 						"destruction_type": "destroy",
 						"power": 5
-					},
-					{
-						"type": "origins:execute_command",
-						"command": "/particle minecraft:explosion_emitter ~ ~ ~ ~ ~ ~ 0 0 normal"
-					},
-					{
-						"type": "origins:execute_command",
-						"command": "/playsound minecraft:entity.generic.explode player @s ~ ~ ~ 1.5 0.8"
 					}
-				]
-			}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:explosion_emitter ~ ~ ~ ~ ~ ~ 0 0 normal"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/playsound minecraft:entity.generic.explode player @s ~ ~ ~ 1.5 0.8"
+				}
+			]
+		}
+	},
+
+	"damage_reduction": {
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"value": -0.7,
+			"operation": "multiply_total"
+		},
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:name",
+					"name": "fall"
+				},
+				{
+					"type": "origins:name",
+					"name": "fall.player"
+				},
+				{
+					"type": "origins:name",
+					"name": "flyIntoWall"
+				},
+				{
+					"type": "origins:name",
+					"name": "flyIntoWall.player"
+				}
+			]
 		}
 	}
 }

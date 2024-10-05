@@ -1,6 +1,6 @@
 {
 	"powers": [
-		"thorigins:element_fox/loadin_element",
+		"thorigins:thtransform_interface",
 		"thorigins:thkarma_interface"
 	],
 	"icon": "minecraft:sweet_berries",

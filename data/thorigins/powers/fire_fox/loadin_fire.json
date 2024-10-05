@@ -1,62 +1,164 @@
 {
-    "type": "origins:multiple",
-    "hidden": true,
+	"type": "origins:multiple",
+	"hidden": true,
 
-    "set_origin":{
-        "type": "origins:action_on_callback",
-        "entity_action_chosen": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:delay",
-                    "ticks": 10,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "/origin set @s origins:origin thorigins:element_fox"
-                    }
-                }
-            ]
-        }
-    },
+	"__init__": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fox/thfluffy_timer",
+					"change": -30
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fox/thfluffy_timer2",
+					"change": -30
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fox/thshy_fear_timer",
+					"change": -100
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fire_fox/ththrust_thrust_burst",
+					"change": -20
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/origin set @s origins:origin thorigins:element_fox"
+				}
+			]
+		},
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_lock_fire",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_lock_fire",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "thorigins:fox/thtrackers",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:fox/thtrackers",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "thorigins:fox/universal_settings",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:fox/universal_settings",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "thorigins:thtransform",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:thtransform",
+						"source": "thorigins:universal"
+					}
+				}
+			]
+		}
+	},
 
-    "give_transform":{
-        "type": "origins:action_over_time",
-        "interval": 1,
-        "entity_action": {
-            "type": "origins:grant_power",
-            "power": "thorigins:thtransform",
-            "source": "universal"
-        },
-        "condition": {
-            "type": "origins:power",
-            "power": "thorigins:thtransform",
-            "source": "universal",
-            "inverted": true
-        }
-    },
-    
-    "unlock_if_command_set_origin":{
-        "type": "origins:action_over_time",
-        "interval": 1,
-        "entity_action": {
-            "type": "origins:change_resource",
-            "resource": "*:thtransform_lock_fire",
-            "change": -1
-        },
-        "condition": {
-            "type": "origins:resource",
-            "resource": "*:thtransform_lock_fire",
-            "compare_to": 1,
-            "comparison": "=="
-        }
-    },
-
-	"keep_sleepin_fox_shown":{
+	"foxify_fire_fox": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
-			"type": "origins:execute_command",
-			"command": "/resource set @e[type=fox,nbt={Sleeping:1b,NoAI:1b,NoGravity:1b},tag=sleepin,distance=..0.2,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..0.2,limit=1]",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:fox/thshy2_fear_timer",
+										"comparison": ">",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:power_active",
+										"power": "*:fox/thfluffy_shake"
+									},
+									{
+										"type": "origins:power_active",
+										"power": "*:fire_fox/thtemperature_shaking"
+									}
+								]
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_shake_timer 3"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:fox/thfoxify_afk_timer",
+						"compare_to": 1,
+						"comparison": "<="
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+					}
+				}
+			]
 		}
 	}
 }

@@ -1,258 +1,265 @@
 {
 	"type": "origins:multiple",
+	"name": "lightning_fox.thdischarge.name",
+	"description": "lightning_fox.thdischarge.description",
 	"badges": [
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
 			"text": [
 				{
-					"translate": "origins.thorigins.discharge1"
+					"translate": "thdischarge.key0"
 				},
 				{
-					"keybind": "key.sneak"
+					"keybind": "key.sneak",
+					"color": "aqua"
 				},
 				{
-					"translate": "origins.thorigins.discharge2"
+					"translate": "thdischarge.key1"
 				},
 				{
-					"keybind": "key.origins.primary_active"
+					"keybind": "key.origins.primary_active",
+					"color": "aqua"
 				},
 				{
-					"translate": "origins.thorigins.discharge3"
+					"translate": "thdischarge.key2"
 				}
 			]
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": {
+				"translate": "thdischarge.info"
+			}
 		}
 	],
 
-	"auto_decrement": {
+	"ticks": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_double_tap_window",
-					"change": -1
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:power_active",
+								"power": "*:*_switch"
+							},
+							{
+								"type": "origins:sneaking",
+								"inverted": true
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:toggle",
+						"power": "*:*_switch"
+					}
 				},
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_cooldown",
-					"change": -1
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 1,
+								"comparison": "<="
+							},
+							{
+								"type": "origins:power_active",
+								"power": "*:*_switch",
+								"inverted": true
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_charging",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_charge_lvl",
+								"change": 0,
+								"operation": "set"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:power_active",
+								"power": "*:*_switch"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_cooldown",
+								"comparison": "==",
+								"compare_to": 0
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_charging",
+						"change": 1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_charging",
+								"comparison": "==",
+								"compare_to": 33
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_charging",
+								"comparison": "==",
+								"compare_to": 66
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_charging",
+								"comparison": "==",
+								"compare_to": 99
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_charge_lvl",
+						"change": 1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:moving"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_charging",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_charge_lvl",
+								"change": 0,
+								"operation": "set"
+							}
+						]
+					}
 				}
 			]
 		}
 	},
 
-	"double_tap_window": {
-		"type": "origins:resource",
-		"max": 11,
-		"min": 0,
+	"cooldown": {
+		"type": "origins:cooldown",
+		"cooldown": 200,
 		"hud_render": {
-			"should_render": false
+			"should_render": true,
+			"bar_index": 0,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png"
 		}
 	},
 
-	"le_switch": {
+	"double_tap_check_window": {
+		"type": "origins:cooldown",
+		"cooldown": 10
+	},
+
+	"switch": {
 		"type": "origins:toggle",
 		"active_by_default": false,
-		"key": "nuh.uh",
-		"retain_state": false
+		"key": "nuh.uh"
 	},
 
-	"activate_le_switch": {
+	"double_tap_check": {
 		"type": "origins:active_self",
-		"key": {
-			"key": "key.sneak"
-		},
+		"cooldown": 1,
+		"key": "key.sneak",
 		"entity_action": {
-			"type": "origins:toggle",
-			"power": "*:*_le_switch"
-		},
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource":"*:fox/thfoxify_afk_timer",
-					"compare_to": 1,
-					"comparison": ">"
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_double_tap_check_window",
+				"compare_to": 0,
+				"comparison": ">"
+			},
+			"else_action": {
+				"type": "origins:trigger_cooldown",
+				"power": "*:*_double_tap_check_window"
+			},
+			"if_action": {
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/thfoxify_afk_timer",
+							"compare_to": 1,
+							"comparison": ">"
+						},
+						{
+							"type": "origins:power_active",
+							"power": "*:*_switch",
+							"inverted": true
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:*_double_tap_check_window",
+							"comparison": ">",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:power_active",
+							"power": "*:lightning_fox/thbecome_lightning_toggle",
+							"inverted": true
+						},
+						{
+							"type": "origins:food_level",
+							"comparison": ">",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:lightning_fox/thrailgun_ready",
+							"compare_to": 0,
+							"comparison": "=="
+						}
+					]
 				},
-				{
-					"type": "origins:power_active",
-					"power": "le_switch",
-					"inverted": true
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_double_tap_window",
-					"comparison": ">",
-					"compare_to": 0
-				},
-				{
-					"type": "origins:power_active",
-					"power": "*:lightning_fox/thbecome_lightning_toggle",
-					"inverted": true
-				},
-				{
-					"type": "origins:food_level",
-					"comparison": ">",
-					"compare_to": 0
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:lightning_fox/thrailgun_ready",
-					"compare_to": 0,
-					"comparison": "=="
+				"if_action": {
+					"type": "origins:toggle",
+					"power": "*:*_switch"
 				}
-			]
-		}
-	},
-
-	"activate_cooldown": {
-		"type": "origins:active_self",
-		"key": {
-			"key": "key.sneak"
-		},
-		"entity_action": {
-			"type": "origins:delay",
-			"ticks": 1,
-			"action": {
-				"type": "origins:change_resource",
-				"resource": "*:*_double_tap_window",
-				"change": 11,
-				"operation": "set"
 			}
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_double_tap_window",
-			"comparison": "==",
-			"compare_to": 0
-		}
-	},
-
-	"hungry_cannot_use_sound": {
-		"type": "origins:active_self",
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:power_active",
-					"power": "le_switch",
-					"inverted": true
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_double_tap_window",
-					"comparison": ">",
-					"compare_to": 0
-				},
-				{
-					"type": "origins:power_active",
-					"power": "*:lightning_fox/thbecome_lightning_toggle",
-					"inverted": true
-				},
-				{
-					"type": "origins:food_level",
-					"comparison": "==",
-					"compare_to": 0
-				}
-			]
-		},
-		"entity_action": {
-			"type": "origins:play_sound",
-			"sound": "minecraft:entity.fox.sleep",
-			"volume": 1
-		},
-		"key": {
-			"key": "key.sneak"
-		},
-		"cooldown": 40
-	},
-
-	"reset_le_switch": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:toggle",
-			"power": "*:*_le_switch"
-		},
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:power_active",
-					"power": "*:*_le_switch"
-				},
-				{
-					"type": "origins:sneaking",
-					"inverted": true
-				}
-			]
-		}
-	},
-
-	"reset": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_charging",
-					"change": 0,
-					"operation": "set"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_charge_lvl",
-					"change": 0,
-					"operation": "set"
-				}
-			]
-		},
-		"condition": {
-			"type": "origins:or",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource":"*:fox/thfoxify_afk_timer",
-					"compare_to": 1,
-					"comparison": "<="
-				},
-				{
-					"type": "origins:power_active",
-					"power": "*:*_le_switch",
-					"inverted": true
-				}
-			]
-		}
-	},
-
-	"add_charging": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:*_charging",
-			"change": 1
-		},
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:power_active",
-					"power": "*:*_le_switch"
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_cooldown",
-					"comparison": "==",
-					"compare_to": 0
-				}
-			]
 		}
 	},
 
@@ -273,7 +280,7 @@
 					},
 					{
 						"type": "origins:power_active",
-						"power": "*:*_le_switch"
+						"power": "*:*_switch"
 					},
 					{
 						"type": "origins:resource",
@@ -309,7 +316,7 @@
 					},
 					{
 						"type": "origins:power_active",
-						"power": "*:*_le_switch"
+						"power": "*:*_switch"
 					},
 					{
 						"type": "origins:resource",
@@ -328,454 +335,349 @@
 		}
 	},
 
-	"charge_lvl_detector": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:*_charge_lvl",
-			"change": 1
-		},
-		"condition": {
-			"type": "origins:or",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource": "*:*_charging",
-					"comparison": "==",
-					"compare_to": 33
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_charging",
-					"comparison": "==",
-					"compare_to": 66
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_charging",
-					"comparison": "==",
-					"compare_to": 99
-				}
-			]
-		}
-	},
-
-	"discharge_lvl1": {
+	"discharge": {
 		"type": "origins:active_self",
-		"key": {
-			"key": "key.origins.primary_active"
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"compare_to": 1,
-			"comparison": "=="
-		},
+		"key": "key.origins.primary_active",
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:execute_command",
-					"command": "/tag @s add shoot2"
+					"type": "origins:trigger_cooldown",
+					"power": "*:lightning_fox/thlightning_combat_buff_duration"
 				},
 				{
-					"type": "origins:execute_command",
-					"command": "/function thorigins:discharge_lvl/discharge_lvl_1"
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/fill ~15 ~5 ~15 ~-15 ~-5 ~-15 air replace fire"
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/kill @e[type=lightning_bolt,distance=..20]"
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/execute as @e[distance=..10,type=!item] run damage @s 10 thorigins:foxie_zap by @p[tag=shoot2]"
-					}
-				},
-				{
-					"type": "origins:toggle",
-					"power": "*:*_le_switch"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_cooldown",
-					"change": 200,
-					"operation": "set"
-				},
-				{
-					"type": "origins:exhaust",
-					"amount": 10
-				},
-				{
-					"type": "origins:apply_effect",
-					"effects": [
+					"type": "origins:if_else_list",
+					"actions": [
 						{
-							"effect": "blindness",
-							"amplifier": 0,
-							"duration": 20,
-							"show_particles": false
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_charge_lvl",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:area_of_effect",
+										"radius": 10,
+										"shape": "sphere",
+										"bientity_action": {
+											"type": "origins:damage",
+											"amount": 10,
+											"damage_type": "thorigins:foxie_zap",
+											"source": {
+												"name": "thorigins:foxie_zap.player"
+											}
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/function thorigins:discharge_lvl/discharge_lvl_1"
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/fill ~15 ~5 ~15 ~-15 ~-5 ~-15 air replace fire"
+										}
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/kill @e[type=lightning_bolt,distance=..20]"
+										}
+									},
+									{
+										"type": "origins:toggle",
+										"power": "*:*_switch"
+									},
+									{
+										"type": "origins:trigger_cooldown",
+										"power": "*:*_cooldown"
+									},
+									{
+										"type": "origins:exhaust",
+										"amount": 10
+									},
+									{
+										"type": "origins:apply_effect",
+										"effects": [
+											{
+												"effect": "blindness",
+												"amplifier": 0,
+												"duration": 20,
+												"show_particles": false
+											},
+											{
+												"effect": "slowness",
+												"amplifier": 0,
+												"duration": 20,
+												"show_particles": false
+											}
+										]
+									}
+								]
+							}
 						},
 						{
-							"effect": "slowness",
-							"amplifier": 0,
-							"duration": 20,
-							"show_particles": false
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_charge_lvl",
+								"compare_to": 2,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:area_of_effect",
+										"radius": 20,
+										"shape": "sphere",
+										"bientity_action": {
+											"type": "origins:damage",
+											"amount": 20,
+											"damage_type": "thorigins:foxie_zap",
+											"source": {
+												"name": "thorigins:foxie_zap.player"
+											}
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/function thorigins:discharge_lvl/discharge_lvl_2"
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/fill ~25 ~5 ~25 ~-25 ~-5 ~-25 air replace fire"
+										}
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/kill @e[type=lightning_bolt,distance=..30]"
+										}
+									},
+									{
+										"type": "origins:toggle",
+										"power": "*:*_switch"
+									},
+									{
+										"type": "origins:trigger_cooldown",
+										"power": "*:*_cooldown"
+									},
+									{
+										"type": "origins:exhaust",
+										"amount": 20
+									},
+									{
+										"type": "origins:apply_effect",
+										"effects": [
+											{
+												"effect": "blindness",
+												"amplifier": 0,
+												"duration": 20,
+												"show_particles": false
+											},
+											{
+												"effect": "slowness",
+												"amplifier": 0,
+												"duration": 20,
+												"show_particles": false
+											}
+										]
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_charge_lvl",
+								"compare_to": 3,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:area_of_effect",
+										"radius": 20,
+										"shape": "sphere",
+										"bientity_action": {
+											"type": "origins:damage",
+											"amount": 30,
+											"damage_type": "thorigins:foxie_zap",
+											"source": {
+												"name": "thorigins:foxie_zap.item"
+											}
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/function thorigins:discharge_lvl/discharge_lvl_2"
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/fill ~25 ~5 ~25 ~-25 ~-5 ~-25 air replace fire"
+										}
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/kill @e[type=lightning_bolt,distance=..20]"
+										}
+									},
+									{
+										"type": "origins:toggle",
+										"power": "*:*_switch"
+									},
+									{
+										"type": "origins:trigger_cooldown",
+										"power": "*:*_cooldown"
+									},
+									{
+										"type": "origins:exhaust",
+										"amount": 40
+									},
+									{
+										"type": "origins:apply_effect",
+										"effects": [
+											{
+												"effect": "blindness",
+												"amplifier": 0,
+												"duration": 20,
+												"show_particles": false
+											},
+											{
+												"effect": "slowness",
+												"amplifier": 0,
+												"duration": 20,
+												"show_particles": false
+											}
+										]
+									}
+								]
+							}
 						}
 					]
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 2,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s remove shoot2"
-					}
 				}
 			]
-		}
-	},
-
-	"discharge_lvl2": {
-		"type": "origins:active_self",
-		"key": {
-			"key": "key.origins.primary_active"
 		},
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:*_charge_lvl",
-			"compare_to": 2,
-			"comparison": "=="
-		},
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:execute_command",
-					"command": "/tag @s add shoot2"
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/function thorigins:discharge_lvl/discharge_lvl_2"
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/fill ~25 ~5 ~25 ~-25 ~-5 ~-25 air replace fire"
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/kill @e[type=lightning_bolt,distance=..30]"
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/execute as @e[distance=..20,type=!item] run damage @s 20 thorigins:foxie_zap by @p[tag=shoot2]"
-					}
-				},
-				{
-					"type": "origins:toggle",
-					"power": "*:*_le_switch"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_cooldown",
-					"change": 200,
-					"operation": "set"
-				},
-				{
-					"type": "origins:exhaust",
-					"amount": 20
-				},
-				{
-					"type": "origins:apply_effect",
-					"effects": [
-						{
-							"effect": "blindness",
-							"amplifier": 0,
-							"duration": 20,
-							"show_particles": false
-						},
-						{
-							"effect": "slowness",
-							"amplifier": 0,
-							"duration": 20,
-							"show_particles": false
-						}
-					]
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 2,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s remove shoot2"
-					}
-				}
-			]
+			"compare_to": 0,
+			"comparison": ">"
 		}
 	},
 
-	"discharge_lvl3": {
-		"type": "origins:active_self",
-		"key": {
-			"key": "key.origins.primary_active"
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"compare_to": 3,
-			"comparison": "=="
-		},
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:execute_command",
-					"command": "/tag @s add shoot2"
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/function thorigins:discharge_lvl/discharge_lvl_2"
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/fill ~25 ~5 ~25 ~-25 ~-5 ~-25 air replace fire"
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/kill @e[type=lightning_bolt,distance=..20]"
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/execute as @e[distance=..20,type=!item] run damage @s 30 thorigins:foxie_zap by @p[tag=shoot2]"
-					}
-				},
-				{
-					"type": "origins:toggle",
-					"power": "*:*_le_switch"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_cooldown",
-					"change": 200,
-					"operation": "set"
-				},
-				{
-					"type": "origins:exhaust",
-					"amount": 40
-				},
-				{
-					"type": "origins:apply_effect",
-					"effects": [
-						{
-							"effect": "blindness",
-							"amplifier": 0,
-							"duration": 20,
-							"show_particles": false
-						},
-						{
-							"effect": "slowness",
-							"amplifier": 0,
-							"duration": 20,
-							"show_particles": false
-						}
-					]
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 2,
-					"action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s remove shoot2"
-					}
-				}
-			]
-		}
-	},
-
-	"reset_when_moving": {
+	"particles": {
 		"type": "origins:action_over_time",
-		"interval": 4,
-		"condition": {
-			"type": "origins:moving"
-		},
+		"interval": 10,
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_charging",
-					"change": 0,
-					"operation": "set"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_charge_lvl",
-					"change": 0,
-					"operation": "set"
-				}
-			]
-		}
-	},
-
-	"particles_lvl1": {
-		"type": "origins:action_over_time",
-		"interval": 8,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:delay",
-					"ticks": 4,
-					"action": {
-						"type": "origins:spawn_particles",
-						"particle": "minecraft:electric_spark",
-						"spread": {
-							"x": 10,
-							"y": 1,
-							"z": 10
-						},
-						"count": 20,
-						"offset_y": 1
-					}
-				},
-				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:electric_spark",
-					"spread": {
-						"x": 0.25,
-						"y": 0.35,
-						"z": 0.25
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_charge_lvl",
+						"comparison": ">=",
+						"compare_to": 1
 					},
-					"count": 2,
-					"offset_y": 0.3
-				}
-			]
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"comparison": ">=",
-			"compare_to": 1
-		}
-	},
-
-	"particles_lvl2": {
-		"type": "origins:action_over_time",
-		"interval": 6,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:delay",
-					"ticks": 4,
-					"action": {
-						"type": "origins:spawn_particles",
-						"particle": "minecraft:electric_spark",
-						"spread": {
-							"x": 20,
-							"y": 1,
-							"z": 20
-						},
-						"count": 20,
-						"offset_y": 1
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/particle minecraft:electric_spark ~ ~0.3 ~ 0.25 0.35 0.25 0 2"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 5,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/particle minecraft:electric_spark ~ ~1 ~ 10 1 10 0 20"
+								}
+							}
+						]
 					}
 				},
 				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:electric_spark",
-					"spread": {
-						"x": 0.35,
-						"y": 0.45,
-						"z": 0.35
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_charge_lvl",
+						"comparison": ">=",
+						"compare_to": 2
 					},
-					"count": 2,
-					"offset_y": 0.3
-				}
-			]
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"comparison": ">=",
-			"compare_to": 2
-		}
-	},
-
-	"particles_lvl3": {
-		"type": "origins:action_over_time",
-		"interval": 2,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:delay",
-					"ticks": 4,
-					"action": {
-						"type": "origins:spawn_particles",
-						"particle": "minecraft:electric_spark",
-						"spread": {
-							"x": 20,
-							"y": 1,
-							"z": 20
-						},
-						"count": 30,
-						"offset_y": 1
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:delay",
+								"ticks": 3,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/particle minecraft:electric_spark ~ ~0.3 ~ 0.25 0.35 0.25 0 2"
+								}
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 7,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/particle minecraft:electric_spark ~ ~1 ~ 20 1 20 0 20"
+								}
+							}
+						]
 					}
 				},
 				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:electric_spark",
-					"spread": {
-						"x": 0.45,
-						"y": 0.55,
-						"z": 0.45
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_charge_lvl",
+						"comparison": "==",
+						"compare_to": 3
 					},
-					"count": 4,
-					"offset_y": 0.3
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:delay",
+								"ticks": 2,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/particle minecraft:electric_spark ~ ~0.3 ~ 0.45 0.55 0.45 0 4"
+								}
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 9,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/particle minecraft:electric_spark ~ ~1 ~ 20 1 20 0 30"
+								}
+							}
+						]
+					}
 				}
 			]
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"comparison": "==",
-			"compare_to": 3
 		}
 	},
 
@@ -854,205 +756,164 @@
 		"red": 0.5
 	},
 
-	"disrupted_charge_and_deal_dmg_lvl1": {
+	"meleed_when_charging": {
 		"type": "origins:action_when_hit",
 		"damage_condition": {
 			"type": "origins:projectile",
 			"inverted": true
 		},
-		"bientity_condition": {
-			"type": "origins:target_condition",
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:resource",
-						"resource": "*:*_charge_lvl",
-						"compare_to": 1,
-						"comparison": "=="
-					}
-				]
-			}
-		},
 		"bientity_action": {
-			"type": "origins:and",
+			"type": "origins:if_else_list",
 			"actions": [
 				{
-					"type": "origins:target_action",
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_charge_lvl",
+							"compare_to": 1,
+							"comparison": "=="
+						}
+					},
 					"action": {
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:change_resource",
-								"resource": "*:*_cooldown",
-								"change": 200,
-								"operation": "set"
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:trigger_cooldown",
+											"power": "*:*_cooldown"
+										},
+										{
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:electric_spark",
+											"count": 10,
+											"speed": 10
+										}
+									]
+								}
 							},
 							{
-								"type": "origins:spawn_particles",
-								"particle": "minecraft:electric_spark",
-								"count": 10,
-								"speed": 10
+								"type": "origins:invert",
+								"action": {
+									"type": "origins:damage",
+									"amount": 1,
+									"damage_type": "thorigins:foxie_zap"
+								}
+							},
+							{
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:play_sound",
+									"sound": "minecraft:item.totem.use",
+									"volume": 0.5,
+									"pitch": 1.8
+								}
 							}
 						]
 					}
 				},
 				{
-					"type": "origins:actor_action",
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_charge_lvl",
+							"compare_to": 2,
+							"comparison": "=="
+						}
+					},
 					"action": {
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:damage",
-								"amount": 1,
-								"source": {
-									"name": "thorigins:foxie_zap"
-								},
-								"damage_type": "thorigins:foxie_zap"
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:trigger_cooldown",
+											"power": "*:*_cooldown"
+										},
+										{
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:electric_spark",
+											"count": 20,
+											"speed": 10
+										}
+									]
+								}
 							},
 							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:item.totem.use",
-								"volume": 0.5,
-								"pitch": 1.8
-							}
-						]
-					}
-				}
-			]
-		}
-	},
-
-	"disrupted_charge_and_deal_dmg_lvl2": {
-		"type": "origins:action_when_hit",
-		"damage_condition": {
-			"type": "origins:projectile",
-			"inverted": true
-		},
-		"bientity_condition": {
-			"type": "origins:target_condition",
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:resource",
-						"resource": "*:*_charge_lvl",
-						"compare_to": 2,
-						"comparison": "=="
-					}
-				]
-			}
-		},
-		"bientity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:target_action",
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_cooldown",
-								"change": 200,
-								"operation": "set"
+								"type": "origins:invert",
+								"action": {
+									"type": "origins:damage",
+									"amount": 2,
+									"damage_type": "thorigins:foxie_zap"
+								}
 							},
 							{
-								"type": "origins:spawn_particles",
-								"particle": "minecraft:electric_spark",
-								"count": 20,
-								"speed": 10
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:play_sound",
+									"sound": "minecraft:item.totem.use",
+									"volume": 0.5,
+									"pitch": 1.4
+								}
 							}
 						]
 					}
 				},
 				{
-					"type": "origins:actor_action",
+					"condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_charge_lvl",
+							"compare_to": 3,
+							"comparison": "=="
+						}
+					},
 					"action": {
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:damage",
-								"amount": 2,
-								"source": {
-									"name": "thorigins:foxie_zap"
-								},
-								"damage_type": "thorigins:foxie_zap"
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:trigger_cooldown",
+											"power": "*:*_cooldown"
+										},
+										{
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:electric_spark",
+											"count": 50,
+											"speed": 10
+										}
+									]
+								}
 							},
 							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:item.totem.use",
-								"volume": 0.5,
-								"pitch": 1.4
-							}
-						]
-					}
-				}
-			]
-		}
-	},
-
-	"disrupted_charge_and_deal_dmg_lvl3": {
-		"type": "origins:action_when_hit",
-		"damage_condition": {
-			"type": "origins:projectile",
-			"inverted": true
-		},
-		"bientity_condition": {
-			"type": "origins:target_condition",
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:resource",
-						"resource": "*:*_charge_lvl",
-						"compare_to": 3,
-						"comparison": "=="
-					}
-				]
-			}
-		},
-		"bientity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:target_action",
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_cooldown",
-								"change": 200,
-								"operation": "set"
+								"type": "origins:invert",
+								"action": {
+									"type": "origins:damage",
+									"amount": 3,
+									"damage_type": "thorigins:foxie_zap"
+								}
 							},
 							{
-								"type": "origins:spawn_particles",
-								"particle": "minecraft:electric_spark",
-								"count": 50,
-								"speed": 10
-							}
-						]
-					}
-				},
-				{
-					"type": "origins:actor_action",
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:damage",
-								"amount": 3,
-								"source": {
-									"name": "thorigins:foxie_zap"
-								},
-								"damage_type": "thorigins:foxie_zap"
-							},
-							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:item.totem.use",
-								"volume": 0.5,
-								"pitch": 1
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:play_sound",
+									"sound": "minecraft:item.totem.use",
+									"volume": 0.5,
+									"pitch": 1
+								}
 							}
 						]
 					}
@@ -1070,10 +931,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_cooldown",
-					"change": 200,
-					"operation": "set"
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_cooldown"
 				},
 				{
 					"type": "origins:spawn_particles",
@@ -1092,23 +951,6 @@
 		}
 	},
 
-	"cooldown": {
-		"type": "origins:resource",
-		"max": 200,
-		"min": 0,
-		"hud_render": {
-			"should_render": true,
-			"bar_index": 0,
-			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
-			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_cooldown",
-				"compare_to": 0,
-				"comparison": ">"
-			}
-		}
-	},
-
 	"no_pushing": {
 		"type": "origins:prevent_entity_collision",
 		"bientity_condition": {
@@ -1122,51 +964,97 @@
 		}
 	},
 
-	"constant_damage_and_slowdown_nearby_lvl1": {
+	"constant_damage_and_slowdown": {
 		"type": "origins:action_over_time",
 		"interval": 5,
 		"entity_action": {
-			"type": "origins:and",
+			"type": "origins:if_else_list",
 			"actions": [
 				{
-					"type": "origins:execute_command",
-					"command": "/execute as @e[distance=..2,type=!item] run damage @s 1 thorigins:foxie_zap"
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_charge_lvl",
+						"comparison": "==",
+						"compare_to": 1
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:area_of_effect",
+								"shape": "sphere",
+								"radius": 2,
+								"bientity_action": {
+									"type": "origins:damage",
+									"amount": 1,
+									"damage_type": "thorigins:foxie_zap"
+								}
+							},
+							{
+								"type": "origins:area_of_effect",
+								"shape": "sphere",
+								"radius": 10,
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:apply_effect",
+										"effect": {
+											"effect": "minecraft:slowness",
+											"amplifier": 1,
+											"duration": 2,
+											"is_ambient": true,
+											"show_icon": true,
+											"show_particles": false
+										}
+									}
+								}
+							}
+						]
+					}
 				},
 				{
-					"type": "origins:execute_command",
-					"command": "/effect give @e[distance=..10] slowness 1 2 true"
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_charge_lvl",
+						"comparison": ">=",
+						"compare_to": 2
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:area_of_effect",
+								"shape": "sphere",
+								"radius": 2,
+								"bientity_action": {
+									"type": "origins:damage",
+									"amount": 1,
+									"damage_type": "thorigins:foxie_zap"
+								}
+							},
+							{
+								"type": "origins:area_of_effect",
+								"shape": "sphere",
+								"radius": 20,
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:apply_effect",
+										"effect": {
+											"effect": "minecraft:slowness",
+											"amplifier": 1,
+											"duration": 2,
+											"is_ambient": true,
+											"show_icon": true,
+											"show_particles": false
+										}
+									}
+								}
+							}
+						]
+					}
 				}
 			]
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"comparison": "==",
-			"compare_to": 1
-		}
-	},
-
-	"constant_damage_and_slowdown_nearby_lvl2_and_3": {
-		"type": "origins:action_over_time",
-		"interval": 5,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:execute_command",
-					"command": "/execute as @e[distance=..2,type=!item] run damage @s 1 thorigins:foxie_zap"
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/effect give @e[distance=..20] slowness 1 2 true"
-				}
-			]
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_charge_lvl",
-			"comparison": ">=",
-			"compare_to": 2
 		}
 	}
 }
