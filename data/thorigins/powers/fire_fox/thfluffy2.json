@@ -21,9 +21,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:grant_power",
-					"power": "*:fox/thfluffy",
-					"source": "thorigins:temporal"
+					"type": "origins:execute_command",
+					"command": "/power grant @s thorigins:fox/thfluffy thorigins:fire_fox"
 				},
 				{
 					"type": "origins:delay",
@@ -43,11 +42,6 @@
 					}
 				}
 			]
-		},
-		"entity_action_lost": {
-			"type": "origins:revoke_power",
-			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
 		}
 	},
 

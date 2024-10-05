@@ -395,7 +395,7 @@
 			"type": "origins:resource",
 			"resource": "*:*_fear_timer",
 			"comparison": ">",
-			"compare_to": 0
+			"compare_to": 1
 		}
 	},
 

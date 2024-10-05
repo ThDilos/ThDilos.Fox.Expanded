@@ -28,14 +28,8 @@
 	"original_thfluffy_power": {
 		"type": "origins:action_on_callback",
 		"entity_action_added": {
-			"type": "origins:grant_power",
-			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
-		},
-		"entity_action_lost": {
-			"type": "origins:revoke_power",
-			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
+			"type": "origins:execute_command",
+			"command": "/power grant @s thorigins:fox/thfluffy thorigins:kitsune"
 		}
 	},
 
