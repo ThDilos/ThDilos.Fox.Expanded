@@ -1,43 +1,49 @@
 {
-    "type": "origins:multiple",
-    "badges": [
-        {
-            "type": "origins:keybind",
-            "sprite": "minecraft:textures/item/kelp.png",
-            "text": "origin.thorigin.passive"
-        }
-    ],
+	"type": "origins:multiple",
+	"name": "thweak2.name",
+	"description": "thweak2.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "minecraft:textures/item/kelp.png",
+			"text": "origin.thorigin.passive"
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "thweak2.info"
+		}
+	],
 
-    "disable_shield": {
-        "type": "origins:prevent_item_use",
-        "item_condition": {
-            "type": "origins:ingredient",
-            "ingredient": {
-                "item": "shield"
-            }
-        }
-    },
-
-    "small_lungs": {
-        "type": "origins:action_over_time",
-        "interval": 3,
-        "entity_action": {
-            "type": "origins:gain_air",
-            "value": -2
-        },
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:submerged_in",
-                    "fluid": "minecraft:water"
-                },
-                {
-                    "type": "origins:air",
-                    "compare_to": 0,
-                    "comparison": ">"
-                }
-            ]
-        }
-    }
+	"original_thweak_power": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:grant_power",
+					"power": "*:fox/thweak",
+					"source": "thorigins:temporal"
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/power remove @s thorigins:fox/thweak_heavy_armor"
+							}
+						]
+					}
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thweak",
+			"source": "thorigins:temporal"
+		}
+	}
 }

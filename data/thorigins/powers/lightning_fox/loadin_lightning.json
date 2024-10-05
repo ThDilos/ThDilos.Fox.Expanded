@@ -2,97 +2,214 @@
 	"type": "origins:multiple",
 	"hidden": true,
 
-	"set_origin": {
+	"__init__": {
 		"type": "origins:action_on_callback",
 		"entity_action_chosen": {
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:execute_command",
-					"command": "/origin set @s origins:origin thorigins:element_fox"
-				}
-			]
-		}
-	},
-
-	"no_cd_cheat_lightning": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:fox/thtrackers_no_cd",
-			"compare_to": 1,
-			"comparison": "=="
-		},
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
 					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thelectric_beam_cooldown",
-					"change": 0,
-					"operation": "set"
+					"resource": "*:fox/thfluffy_timer",
+					"change": -30
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thbecome_lightning_cooldown",
-					"change": 0,
-					"operation": "set"
+					"resource": "*:fox/thfluffy_timer2",
+					"change": -30
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thdischarge_cooldown",
-					"change": 0,
-					"operation": "set"
+					"resource": "*:fox/thshy_fear_timer",
+					"change": -100
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thelectric_beam",
+					"change": -80
 				},
 				{
 					"type": "origins:change_resource",
 					"resource": "*:lightning_fox/thrailgun_cooldown",
-					"change": 0,
-					"operation": "set"
+					"change": -300
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thdischarge_cooldown",
+					"change": -200
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thbecome_lightning_hit_cooldown",
+					"change": -20
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thbecome_lightning_toggle_effect",
+					"change": -20
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:lightning_fox/thlightning_combat_buff_duration",
+					"change": -3
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/origin set @s origins:origin thorigins:element_fox"
+				}
+			]
+		},
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_lock_lightning",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_lock_lightning",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "thorigins:fox/thtrackers",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:fox/thtrackers",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "thorigins:fox/universal_settings",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:fox/universal_settings",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "thorigins:thtransform",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:thtransform",
+						"source": "thorigins:universal"
+					}
 				}
 			]
 		}
 	},
 
-	"give_transform": {
+	"foxify_lightning_fox": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
-			"type": "origins:grant_power",
-			"power": "thorigins:thtransform",
-			"source": "universal"
-		},
-		"condition": {
-			"type": "origins:power",
-			"power": "thorigins:thtransform",
-			"source": "universal",
-			"inverted": true
-		}
-	},
-
-	"unlock_if_command_set_origin": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_lock_lightning",
-			"change": -1
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:thtransform_lock_lightning",
-			"compare_to": 1,
-			"comparison": "=="
-		}
-	},
-
-	"keep_sleepin_fox_shown":{
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:execute_command",
-			"command": "/resource set @e[type=fox,nbt={Sleeping:1b,NoAI:1b,NoGravity:1b},tag=sleepin,distance=..0.2,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..0.2,limit=1]",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:fox/thshy2_fear_timer",
+										"comparison": ">",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:and",
+										"conditions": [
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer",
+												"compare_to": 28,
+												"comparison": "<="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer",
+												"compare_to": 0,
+												"comparison": ">"
+											}
+										]
+									},
+									{
+										"type": "origins:and",
+										"conditions": [
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer2",
+												"compare_to": 28,
+												"comparison": "<="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thfluffy_timer2",
+												"compare_to": 0,
+												"comparison": ">"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_shake_timer 3"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:fox/thfoxify_afk_timer",
+						"compare_to": 1,
+						"comparison": "<="
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+					}
+				}
+			]
 		}
 	}
 }

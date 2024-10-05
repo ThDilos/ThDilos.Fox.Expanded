@@ -1,34 +1,47 @@
 {
 	"type": "origins:multiple",
+	"name": "thchoice.name",
+	"description": "thchoice.description",
 	"badges": [
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
 			"text": [
 				{
-					"translate": "origin.thorigins.general"
+					"translate": "thorigins.press0"
 				},
 				{
-					"keybind": "key.origins.secondary_active"
+					"keybind": "key.origins.secondary_active",
+					"color": "aqua"
 				},
 				{
-					"translate": "origin.thorigins.thchoice1"
-				},
-				{
-					"keybind": "key.origins.primary_active"
-				},
-				{
-					"translate": "origin.thorigins.thchoice2"
+					"translate": "thchoice.key"
 				}
 			]
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "kitsune.thchoice.info"
 		}
 	],
 
+	"sneak_show": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"key": {
+			"key": "key.sneak",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:trigger_cooldown",
+			"power": "*:*_showtime"
+		}
+	},
+
 	"change_choice": {
 		"type": "origins:active_self",
-		"key": {
-			"key": "key.origins.secondary_active"
-		},
+		"key": "key.origins.secondary_active",
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
@@ -39,42 +52,17 @@
 					"operation": "add"
 				},
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_showtime",
-					"change": 100,
-					"operation": "set"
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_showtime"
 				}
 			]
 		}
 	},
 
 	"showtime": {
-		"type": "origins:resource",
-		"max": 100,
-		"min": 0,
-		"hud_render": {
-			"should_render": false
-		}
-	},
-
-	"showtime_elapse": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:if_else",
-			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_showtime",
-				"compare_to": 0,
-				"comparison": ">"
-			},
-			"if_action": {
-				"type": "origins:change_resource",
-				"resource": "*:*_showtime",
-				"change": -1,
-				"operation": "add"
-			}
-		}
+		"type": "origins:cooldown",
+		"cooldown": 30,
+		"hud_render": { "should_render": false }
 	},
 
 	"choice": {
@@ -87,9 +75,7 @@
 			"change": 0,
 			"operation": "set"
 		},
-		"hud_render": {
-			"should_render": false
-		}
+		"hud_render": { "should_render": false }
 	},
 
 	"renderer_thdash2": {

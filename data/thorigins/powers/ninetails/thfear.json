@@ -1,0 +1,91 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"notification": {
+		"type": "origins:action_on_callback",
+		"entity_action_gained": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"thfear.added\"}"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_timer",
+					"change": 100
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:execute_command",
+			"command": "/title @s actionbar {\"translate\":\"thfear.removed\"}"
+		}
+	},
+
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_timer",
+					"change": -1
+				},
+				{
+					"type": "origins:apply_effect",
+					"effects": [
+						{
+							"effect": "speed",
+							"amplifier": 0,
+							"duration": 3,
+							"show_icon": true,
+							"show_particles": false,
+							"is_ambient": true
+						},
+						{
+							"effect": "weakness",
+							"amplifier": 0,
+							"duration": 3,
+							"show_icon": true,
+							"show_particles": false,
+							"is_ambient": true
+						}
+					]
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_timer",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/power remove @s thorigins:ninetails/thfear"
+					}
+				}
+			]
+		}
+	},
+
+	"timer": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 100,
+		"start_value": 100,
+		"min_action": {
+			"type": "origins:revoke_power",
+			"power": "thorigins:ninetails/thfear",
+			"source": "thorigins:universal"
+		}
+	},
+
+	"shake": {
+		"type": "origins:shaking"
+	}
+}

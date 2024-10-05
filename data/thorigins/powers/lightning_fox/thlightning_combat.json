@@ -1,937 +1,452 @@
 {
-    "type": "origins:multiple",
-    "badges": [
-        {
-            "type": "origins:keybind",
-            "text": "origin.thorigin.passive",
-            "sprite": "minecraft:textures/item/golden_sword.png"
-        }
-    ],
+	"type": "origins:multiple",
+	"name": "lightning_fox.thlightning_combat.name",
+	"description": "lightning_fox.thlightning_combat.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"text": "origin.thorigin.passive",
+			"sprite": "minecraft:textures/item/golden_sword.png"
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": {
+				"translate": "thlightning_combat.info"
+			}
+		}
+	],
 
-    "attached_lightning":{
-        "type": "origins:action_on_hit",
-        "damage_condition": {
-            "type": "origins:projectile",
-            "inverted": true
-        },
-        "bientity_action": {
-            "type": "origins:choice",
-            "actions": [
-                {
-                    "element": {
-                        "type": "origins:target_action",
-                        "action": {
-                            "type": "origins:execute_command",
-                            "command": "/summon lightning_bolt ~ ~ ~"
-                        }
-                    },
-                    "weight": 1
-                },
-                {
-                    "element":{
-                        "type": "origins:and",
-                        "actions": [
-                            {
-                                "type": "origins:delay",
-                                "ticks": 5,
-                                "action": {
-                                    "type": "origins:target_action",
-                                    "action": {
-                                        "type": "origins:damage",
-                                        "amount": 1,
-                                        "source": {
-                                            "name": "thorigins:foxie_zap"
-                                        },
-                                        "damage_type": "thorigins:foxie_zap"
-                                    }
-                                }
-                            },
-                            {
-                                "type": "origins:target_action",
-                                "action": {
-                                    "type": "origins:spawn_particles",
-                                    "particle": "minecraft:electric_spark",
-                                    "count": 10,
-                                    "speed": 2,
-                                    "offset_y": 0.5
-                                }
-                            }      
-                        ]
-                    },
-                    "weight": 99
-                }
-            ]
-        },
-        "bientity_condition": {
-            "type": "origins:actor_condition",
-            "condition": {
-                "type": "origins:or",
-                "conditions": [
-                    {
-                        "type": "origins:equipped_item",
-                        "equipment_slot": "mainhand",
-                        "item_condition": {
-                            "type": "origins:empty"
-                        }
-                    },
-                    {
-                        "type": "origins:equipped_item",
-                        "equipment_slot": "mainhand",
-                        "item_condition": {
-                            "type": "origins:ingredient",
-                            "ingredient":[
-                                {
-                                    "item": "iron_sword"
-                                },
-                                {
-                                    "item": "iron_ingot"
-                                },
-                                {
-                                    "item": "iron_nugget"
-                                },
-                                {
-                                    "item": "iron_block"
-                                },
-                                {
-                                    "item": "iron_helmet"
-                                },
-                                {
-                                    "item": "iron_chestplate"
-                                },
-                                {
-                                    "item": "iron_leggings"
-                                },
-                                {
-                                    "item": "iron_boots"
-                                },
-                                {
-                                    "item": "iron_bars"
-                                },
-                                {
-                                    "item": "iron_door"
-                                },
-                                {
-                                    "item": "iron_bars"
-                                },
-                                {
-                                    "item": "iron_trapdoor"
-                                },
-                                {
-                                    "item": "iron_shovel"
-                                },
-                                {
-                                    "item": "iron_pickaxe"
-                                },
-                                {
-                                    "item": "iron_axe"
-                                },
-                                {
-                                    "item": "iron_hoe"
-                                },
-                                {
-                                    "item": "iron_horse_armor"
-                                },
-                                {
-                                    "item": "iron_boots"
-                                },
-                                {
-                                    "item": "iron_bars"
-                                },
-                                {
-                                    "item": "copper_ingot"
-                                },
-                                {
-                                    "item": "lightning_rod"
-                                },
-                                {
-                                    "item": "water_bucket"
-                                },
-                                {
-                                    "item": "lava_bucket"
-                                },
-                                {
-                                    "item": "powder_snow_bucket"
-                                },
-                                {
-                                    "item": "bucket"
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        }
-    },
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_buff_duration",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "apoli:apply_effect",
+						"effects": [
+							{
+								"effect": "minecraft:strength",
+								"amplifier": 0,
+								"duration": 100,
+								"is_ambient": true,
+								"show_icon": true,
+								"show_particles": false
+							},
+							{
+								"effect": "minecraft:speed",
+								"amplifier": 0,
+								"duration": 100,
+								"is_ambient": true,
+								"show_icon": true,
+								"show_particles": false
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @e[type=lightning_bolt,distance=..2]",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_buff_duration"
+					}
+				}
+			]
+		}
+	},
 
-    "lightning_thorn":{
-        "type": "origins:action_when_hit",
-        "bientity_action": {
-            "type": "origins:choice",
-            "actions": [
-                {
-                    "element": {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:and",
-                            "actions": [
-                                {
-                                    "type": "origins:damage",
-                                    "source": {
-                                        "name": "thorigins:foxie_zap",
-                                        "bypasses_armor": true
-                                    },
-                                    "amount": 1,
-                                    "damage_type": "thorigins:foxie_zap"
-                                },
-                                {
-                                    "type": "origins:play_sound",
-                                    "sound": "minecraft:entity.elder_guardian.hurt",
-                                    "pitch": 2
-                                }
-                            ]
-                        }
-                    },
-                    "weight": 19
-                },
-                {
-                    "element": {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:apply_effect",
-                            "effect": {
-                                "effect": "slowness",
-                                "amplifier": 0,
-                                "duration": 100
-                            }
-                        }
-                    },
-                    "weight": 20
-                },
-                {
-                    "element": {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:and",
-                            "actions": [
-                                {
-                                    "type": "origins:drop_inventory",
-                                    "slot":"weapon.mainhand",
-                                    "retain_ownership": true,
-                                    "inventory_type": "inventory"
-                                }
-                            ]
-                        }
-                    },
-                    "weight": 1
-                },
-                {
-                    "element": {
-                        "type": "origins:nothing"
-                    },
-                    "weight": 60
-                }
-            ]
-        },
-        "damage_condition":{
-            "type": "origins:or",
-            "conditions": [
-                {
-                    "type": "origins:projectile"
-                },
-                {
-                    "type": "origins:explosive"
-                }
-            ],
-            "inverted": true
-        },
-        "bientity_condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:target_condition",
-                    "condition": {
-                        "type": "origins:and",
-                        "inverted": true,
-                        "conditions": [
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "head",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_helmet"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "chest",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_chestplate"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "legs",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_leggings"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "feet",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_boots"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "type": "origins:actor_condition",
-                    "condition": {
-                        "type": "origins:equipped_item",
-                        "equipment_slot": "mainhand",
-                        "item_condition":{
-                            "type": "origins:or",
-                            "conditions": [
-                                {
-                                    "type": "origins:empty"
-                                },
-                                {
-                                    "type": "origins:ingredient",
-                                    "ingredient":[
-                                        {
-                                            "item": "iron_sword"
-                                        },
-                                        {
-                                            "item": "iron_ingot"
-                                        },
-                                        {
-                                            "item": "iron_nugget"
-                                        },
-                                        {
-                                            "item": "iron_block"
-                                        },
-                                        {
-                                            "item": "iron_helmet"
-                                        },
-                                        {
-                                            "item": "iron_chestplate"
-                                        },
-                                        {
-                                            "item": "iron_leggings"
-                                        },
-                                        {
-                                            "item": "iron_boots"
-                                        },
-                                        {
-                                            "item": "iron_bars"
-                                        },
-                                        {
-                                            "item": "iron_door"
-                                        },
-                                        {
-                                            "item": "iron_bars"
-                                        },
-                                        {
-                                            "item": "iron_trapdoor"
-                                        },
-                                        {
-                                            "item": "iron_shovel"
-                                        },
-                                        {
-                                            "item": "iron_pickaxe"
-                                        },
-                                        {
-                                            "item": "iron_axe"
-                                        },
-                                        {
-                                            "item": "iron_hoe"
-                                        },
-                                        {
-                                            "item": "iron_horse_armor"
-                                        },
-                                        {
-                                            "item": "iron_boots"
-                                        },
-                                        {
-                                            "item": "iron_bars"
-                                        },
-                                        {
-                                            "item": "copper_ingot"
-                                        },
-                                        {
-                                            "item": "lightning_rod"
-                                        },
-                                        {
-                                            "item": "water_bucket"
-                                        },
-                                        {
-                                            "item": "lava_bucket"
-                                        },
-                                        {
-                                            "item": "powder_snow_bucket"
-                                        },
-                                        {
-                                            "item": "bucket"
-                                        }
-                                    ]
-                                }
-                            ]
-                        } 
-                    },
-                    "inverted": true
-                }
-            ]
-        }
-    },
+	"buff_duration": {
+		"type": "origins:cooldown",
+		"cooldown": 3,
+		"hud_render": { "should_render": false }
+	},
 
-    "lightning_thorn_specialised":{
-        "type": "origins:action_when_hit",
-        "bientity_action": {
-            "type": "origins:choice",
-            "actions": [
-                {
-                    "element": {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:and",
-                            "actions": [
-                                {
-                                    "type": "origins:damage",
-                                    "source": {
-                                        "name": "thorigins:foxie_zap",
-                                        "bypasses_armor": true
-                                    },
-                                    "amount": 1,
-                                    "damage_type": "thorigins:foxie_zap"
-                                },
-                                {
-                                    "type": "origins:play_sound",
-                                    "sound": "minecraft:entity.elder_guardian.hurt",
-                                    "pitch": 2
-                                }
-                            ]
-                        }
-                    },
-                    "weight": 39
-                },
-                {
-                    "element": {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:apply_effect",
-                            "effect": {
-                                "effect": "slowness",
-                                "amplifier": 0,
-                                "duration": 100
-                            }
-                        }
-                    },
-                    "weight": 39
-                },
-                {
-                    "element": {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:and",
-                            "actions": [
-                                {
-                                    "type": "origins:drop_inventory",
-                                    "slot":"weapon.mainhand",
-                                    "retain_ownership": true,
-                                    "inventory_type": "inventory"
-                                }
-                            ]
-                        }
-                    },
-                    "weight": 2
-                },
-                {
-                    "element": {
-                        "type": "origins:nothing"
-                    },
-                    "weight": 20
-                }
-            ]
-        },
-        "damage_condition":{
-            "type": "origins:or",
-            "inverted": true,
-            "conditions": [
-                {
-                    "type": "origins:projectile"
-                },
-                {
-                    "type": "origins:explosive"
-                }
-            ]
-        },
-        "bientity_condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:target_condition",
-                    "condition": {
-                        "type": "origins:and",
-                        "conditions": [
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "head",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_helmet"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "chest",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_chestplate"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "legs",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_leggings"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "feet",
-                                "item_condition": {
-                                    "type": "origins:or",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:ingredient",
-                                            "ingredient":{
-                                                "item": "iron_boots"
-                                            }
-                                        },
-                                        {
-                                            "type": "origins:empty"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "origins:and",
-                                "inverted": true,
-                                "conditions": [
-                                    {
-                                        "type": "origins:equipped_item",
-                                        "equipment_slot": "head",
-                                        "item_condition": {
-                                            "type": "origins:empty"
-                                        }
-                                    },
-                                    {
-                                        "type": "origins:equipped_item",
-                                        "equipment_slot": "chest",
-                                        "item_condition": {
-                                            "type": "origins:empty"
-                                        }
-                                    },
-                                    {
-                                        "type": "origins:equipped_item",
-                                        "equipment_slot": "legs",
-                                        "item_condition": {
-                                            "type": "origins:empty"
-                                        }
-                                    },
-                                    {
-                                        "type": "origins:equipped_item",
-                                        "equipment_slot": "feet",
-                                        "item_condition": {
-                                            "type": "origins:empty"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                },
-                {
-                    "type": "origins:actor_condition",
-                    "condition": {
-                        "type": "origins:equipped_item",
-                        "equipment_slot": "mainhand",
-                        "item_condition": {
-                            "type": "origins:ingredient",
-                            "ingredient":[
-                                {
-                                    "item": "iron_sword"
-                                },
-                                {
-                                    "item": "iron_ingot"
-                                },
-                                {
-                                    "item": "iron_nugget"
-                                },
-                                {
-                                    "item": "iron_block"
-                                },
-                                {
-                                    "item": "iron_helmet"
-                                },
-                                {
-                                    "item": "iron_chestplate"
-                                },
-                                {
-                                    "item": "iron_leggings"
-                                },
-                                {
-                                    "item": "iron_boots"
-                                },
-                                {
-                                    "item": "iron_bars"
-                                },
-                                {
-                                    "item": "iron_door"
-                                },
-                                {
-                                    "item": "iron_bars"
-                                },
-                                {
-                                    "item": "iron_trapdoor"
-                                },
-                                {
-                                    "item": "iron_shovel"
-                                },
-                                {
-                                    "item": "iron_pickaxe"
-                                },
-                                {
-                                    "item": "iron_axe"
-                                },
-                                {
-                                    "item": "iron_hoe"
-                                },
-                                {
-                                    "item": "iron_horse_armor"
-                                },
-                                {
-                                    "item": "iron_boots"
-                                },
-                                {
-                                    "item": "iron_bars"
-                                },
-                                {
-                                    "item": "copper_ingot"
-                                },
-                                {
-                                    "item": "lightning_rod"
-                                },
-                                {
-                                    "item": "water_bucket"
-                                },
-                                {
-                                    "item": "lava_bucket"
-                                },
-                                {
-                                    "item": "powder_snow_bucket"
-                                },
-                                {
-                                    "item": "bucket"
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
+	"attached_lightning": {
+		"type": "origins:action_on_hit",
+		"damage_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:name",
+					"name": "player"
+				},
+				{
+					"type": "origins:projectile",
+					"inverted": true
+				}
+			]
+		},
+		"bientity_action": {
+			"type": "origins:choice",
+			"actions": [
+				{
+					"element": {
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:execute_command",
+							"command": "/summon lightning_bolt ~ ~ ~"
+						}
+					},
+					"weight": 1
+				},
+				{
+					"element": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:delay",
+								"ticks": 10,
+								"action": {
+									"type": "origins:damage",
+									"amount": 1,
+									"damage_type": "thorigins:foxie_zap",
+									"source": {
+										"name": "thorigins:foxie_zap.player"
+									}
+								}
+							},
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:spawn_particles",
+									"particle": "minecraft:electric_spark",
+									"count": 5,
+									"speed": 1,
+									"offset_y": 0.5
+								}
+							}
+						]
+					},
+					"weight": 99
+				}
+			]
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:empty"
+				}
+			}
+		}
+	},
 
-    "lightning_thorn_super_specialised":{
-        "type": "origins:action_when_hit",
-        "bientity_action":{
-            "type": "origins:actor_action",
-            "action": {
-                "type": "origins:and",
-                "actions": [
-                    {
-                        "type": "origins:damage",
-                        "source": {
-                            "name": "thorigins:foxie_zap"
-                        },
-                        "amount": 1,
-                        "damage_type": "thorigins:foxie_zap"
-                    },
-                    {
-                        "type": "origins:play_sound",
-                        "sound": "minecraft:entity.elder_guardian.hurt",
-                        "pitch": 2
-                    },
-                    {
-                        "type": "origins:apply_effect",
-                        "effect": {
-                            "effect": "slowness",
-                            "amplifier": 0,
-                            "duration": 100
-                        }
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle": "minecraft:electric_spark",
-                        "count": 20,
-                        "speed": 5
-                    }
-                ]
-            }
-        },
-        "damage_condition":{
-            "type": "origins:or",
-            "conditions": [
-                {
-                    "type": "origins:projectile"
-                },
-                {
-                    "type": "origins:explosive"
-                }
-            ],
-            "inverted": true
-        },
-        "bientity_condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:actor_condition",
-                    "condition": {
-                        "type": "origins:equipped_item",
-                        "equipment_slot": "mainhand",
-                        "item_condition": {
-                            "type": "origins:empty"
-                        }
-                    }
-                },
-                {
-                    "type": "origins:target_condition",
-                    "condition": {
-                        "type": "origins:or",
-                        "conditions": [
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "head",
-                                "item_condition": {
-                                    "type": "origins:empty"
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "chest",
-                                "item_condition": {
-                                    "type": "origins:empty"
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "legs",
-                                "item_condition": {
-                                    "type": "origins:empty"
-                                }
-                            },
-                            {
-                                "type": "origins:equipped_item",
-                                "equipment_slot": "feet",
-                                "item_condition": {
-                                    "type": "origins:empty"
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    },
+	"lightning_thorn": {
+		"type": "origins:action_when_hit",
+		"bientity_action": {
+			"type": "origins:choice",
+			"actions": [
+				{
+					"element": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:invert",
+								"action": {
+									"type": "origins:damage",
+									"damage_type": "thorigins:foxie_zap",
+									"amount": 2,
+									"source": {
+										"name": "thorigins:foxie_zap.player"
+									}
+								}
+							},
+							{
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:play_sound",
+									"sound": "minecraft:entity.elder_guardian.hurt",
+									"pitch": 2
+								}
+							}
+						]
+					},
+					"weight": 20
+				},
+				{
+					"element": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:invert",
+								"action": {
+									"type": "origins:damage",
+									"damage_type": "thorigins:foxie_zap",
+									"amount": 1,
+									"source": {
+										"name": "thorigins:foxie_zap.player"
+									}
+								}
+							},
+							{
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:apply_effect",
+											"effect": {
+												"effect": "slowness",
+												"amplifier": 0,
+												"duration": 50
+											}
+										},
+										{
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.elder_guardian.hurt",
+											"pitch": 1.5,
+											"volume": 0.8,
+											"category": "players"
+										}
+									]
+								}
+							}
+						]
+					},
+					"weight": 20
+				},
+				{
+					"element": {
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:drop_inventory",
+							"slot": "weapon.mainhand",
+							"retain_ownership": true,
+							"inventory_type": "inventory"
+						}
+					},
+					"weight": 5
+				},
+				{
+					"element": {
+						"type": "origins:nothing"
+					},
+					"weight": 20
+				}
+			]
+		},
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:projectile"
+				},
+				{
+					"type": "origins:explosive"
+				}
+			],
+			"inverted": true
+		},
+		"bientity_condition": {
+			"type": "origins:target_condition",
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "head",
+						"item_condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "iron_helmet"
+									}
+								},
+								{
+									"type": "origins:empty"
+								}
+							]
+						}
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "chest",
+						"item_condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "iron_chestplate"
+									}
+								},
+								{
+									"type": "origins:empty"
+								}
+							]
+						}
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "legs",
+						"item_condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "iron_leggings"
+									}
+								},
+								{
+									"type": "origins:empty"
+								}
+							]
+						}
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "feet",
+						"item_condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "iron_boots"
+									}
+								},
+								{
+									"type": "origins:empty"
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	},
 
-    "lightning_shield_projectile":{
-        "type": "origins:modify_damage_taken",
-        "damage_condition": {
-            "type": "origins:or",
-            "conditions": [
-                {
-                    "type": "origins:projectile",
-                    "projectile": "arrow"
-                },
-                {
-                    "type": "origins:projectile",
-                    "projectile": "trident"
-                }
-            ]
-        },
-        "modifier": {
-            "value": -0.25,
-            "operation":"multiply_base"
-        },
-        "condition": {
-            "type": "origins:sneaking"
-        },
-        "bientity_action": {
-            "type": "origins:target_action",
-            "action":{
-                "type": "origins:and",
-                "actions": [
-                    {
-                        "type": "origins:play_sound",
-                        "sound": "minecraft:item.shield.block",
-                        "pitch": 1.2,
-                        "volume": 1
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle":"wax_off",
-                        "count": 5,
-                        "speed": 5
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle":"electric_spark",
-                        "count": 10,
-                        "speed": 5
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle":"wax_on",
-                        "count": 5,
-                        "speed": 5
-                    }
-                ]
-            } 
-        }
-    },
+	"lightning_shield_projectile": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:projectile",
+					"projectile": "arrow"
+				},
+				{
+					"type": "origins:projectile",
+					"projectile": "trident"
+				}
+			]
+		},
+		"modifier": {
+			"value": -0.25,
+			"operation": "multiply_base"
+		},
+		"condition": {
+			"type": "origins:sneaking"
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:play_sound",
+						"sound": "minecraft:item.shield.block",
+						"pitch": 1.2,
+						"volume": 1
+					},
+					{
+						"type": "origins:spawn_particles",
+						"particle": "wax_off",
+						"count": 5,
+						"speed": 5
+					},
+					{
+						"type": "origins:spawn_particles",
+						"particle": "electric_spark",
+						"count": 10,
+						"speed": 5
+					},
+					{
+						"type": "origins:spawn_particles",
+						"particle": "wax_on",
+						"count": 5,
+						"speed": 5
+					}
+				]
+			}
+		}
+	},
 
-    "lightning_shield_melee":{
-        "type": "origins:modify_damage_taken",
-        "damage_condition":
-        {
-            "type": "origins:or",
-            "conditions": [
-                {
-                    "type": "origins:projectile"
-                },
-                {
-                    "type": "origins:fire"
-                },
-                {
-                    "type": "origins:in_tag",
-                    "tag": "minecraft:bypasses_shield"
-                }
-            ],
-            "inverted": true
-        },
-        "modifier": {
-            "value": -0.1,
-            "operation":"multiply_base"
-        },
-        "condition": {
-            "type": "origins:sneaking"
-        },
-        "bientity_action": {
-            "type": "origins:target_action",
-            "action":{
-                "type": "origins:and",
-                "actions": [
-                    {
-                        "type": "origins:play_sound",
-                        "sound": "minecraft:item.shield.block",
-                        "pitch": 1.2,
-                        "volume": 1
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle":"wax_off",
-                        "count": 5,
-                        "speed": 5
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle":"electric_spark",
-                        "count": 10,
-                        "speed": 5
-                    },
-                    {
-                        "type": "origins:spawn_particles",
-                        "particle":"wax_on",
-                        "count": 5,
-                        "speed": 5
-                    }
-                ]
-            } 
-        }
-    }
+	"lightning_shield_melee": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:projectile"
+				},
+				{
+					"type": "origins:fire"
+				},
+				{
+					"type": "origins:unblockable"
+				}
+			],
+			"inverted": true
+		},
+		"modifier": {
+			"value": -0.2,
+			"operation": "multiply_base"
+		},
+		"condition": {
+			"type": "origins:sneaking"
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:play_sound",
+						"sound": "minecraft:item.shield.block",
+						"pitch": 1.2,
+						"volume": 1
+					},
+					{
+						"type": "origins:spawn_particles",
+						"particle": "wax_off",
+						"count": 5,
+						"speed": 5
+					},
+					{
+						"type": "origins:spawn_particles",
+						"particle": "electric_spark",
+						"count": 10,
+						"speed": 5
+					},
+					{
+						"type": "origins:spawn_particles",
+						"particle": "wax_on",
+						"count": 5,
+						"speed": 5
+					}
+				]
+			}
+		}
+	}
 }

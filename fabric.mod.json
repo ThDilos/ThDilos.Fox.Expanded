@@ -4,13 +4,14 @@
 	"depends": {
 		"fabric-api-base": "*",
 		"fabric": "*",
-		"minecraft": ">=1.19.4",
-		"origins": ">=1.0.0",
-		"thorigins": ">=3.8.9"
+		"origins": ">=1.6.2",
+		"pehkui": ">=3.6.0",
+		"minecraft": ">=1.19 <=1.19.3",
+		"thorigins": ">=4.0.1"
 	},
 	"name": "ThDilos' Custom Fox Origins Expanded",
 	"id": "thorigins2",
-	"version": "2.1.0",
+	"version": "3.0.0",
 	"description": "ThDilos' Custom Made Fox Origins Expanded.",
 	"license": "Unknown",
 	"pack_format": 15,

@@ -1,0 +1,304 @@
+{
+	"type": "origins:action_on_callback",
+	"hidden": true,
+	"entity_action_added": {
+		"type": "origins:and",
+		"actions": [
+			{
+				"type": "origins:apply_effect",
+				"effect": {
+					"effect": "minecraft:glowing",
+					"duration": 20,
+					"amplifier": 0,
+					"show_icon": true,
+					"is_ambient": true,
+					"show_particles": false
+				}
+			},
+			{
+				"type": "origins:execute_command",
+				"command": "/tag @e[type=!item,distance=..5,limit=5] add electric_target"
+			},
+			{
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:nbt",
+							"nbt": "{\"powered\":1b}",
+							"inverted": true
+						},
+						{
+							"type": "origins:entity_type",
+							"entity_type": "minecraft:creeper"
+						}
+					]
+				},
+				"if_action": {
+					"type": "origins:execute_command",
+					"command": "/data modify entity @s powered set value 1"
+				}
+			},
+			{
+				"type": "origins:delay",
+				"ticks": 1,
+				"action": {
+					"type": "origins:revoke_power",
+					"power": "thorigins:lightning_fox/tharc",
+					"source": "thorigins:universal"
+				}
+			},
+			{
+				"type": "origins:delay",
+				"ticks": 10,
+				"action": {
+					"type": "origins:area_of_effect",
+					"shape": "sphere",
+					"radius": 10,
+					"include_target": "true",
+					"bientity_condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:nbt",
+							"nbt": "{\"Tags\":[\"electric_target\"]}"
+						}
+					},
+					"bientity_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:damage",
+								"amount": 2,
+								"damage_type": "thorigins:foxie_zap",
+								"source": {
+									"name": "thorigins:foxie_zap"
+								}
+							},
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/tag @s remove electric_target"
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 1,
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/tag @e[type=!item,distance=..4,limit=1,sort=nearest,tag=!electric_target] add electric_target"
+											}
+										},
+										{
+											"type": "origins:apply_effect",
+											"effect": {
+												"effect": "minecraft:glowing",
+												"duration": 100,
+												"amplifier": 0,
+												"show_icon": true,
+												"is_ambient": true,
+												"show_particles": false
+											}
+										},
+										{
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.player.hurt_sweet_berry_bush",
+											"volume": 0.6,
+											"pitch": 1.6,
+											"category": "players"
+										},
+										{
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:electric_spark",
+											"offset_y": 1,
+											"count": 10,
+											"speed": 2
+										},
+										{
+											"type": "origins:if_else",
+											"condition": {
+												"type": "origins:entity_type",
+												"entity_type": "minecraft:creeper"
+											},
+											"if_action": {
+												"type": "origins:execute_command",
+												"command": "/data modify entity @s powered set value 1"
+											}
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 10,
+											"action": {
+												"type": "origins:area_of_effect",
+												"shape": "sphere",
+												"radius": 10,
+												"include_target": "true",
+												"bientity_condition": {
+													"type": "origins:target_condition",
+													"condition": {
+														"type": "origins:nbt",
+														"nbt": "{\"Tags\":[\"electric_target\"]}"
+													}
+												},
+												"bientity_action": {
+													"type": "origins:and",
+													"actions": [
+														{
+															"type": "origins:damage",
+															"amount": 1,
+															"damage_type": "thorigins:foxie_zap",
+															"source": {
+																"name": "thorigins:foxie_zap"
+															}
+														},
+														{
+															"type": "origins:target_action",
+															"action": {
+																"type": "origins:and",
+																"actions": [
+																	{
+																		"type": "origins:execute_command",
+																		"command": "/tag @s remove electric_target"
+																	},
+																	{
+																		"type": "origins:delay",
+																		"ticks": 1,
+																		"action": {
+																			"type": "origins:execute_command",
+																			"command": "/tag @e[type=!item,distance=..3,limit=1,sort=nearest,tag=!electric_target] add electric_target"
+																		}
+																	},
+																	{
+																		"type": "origins:apply_effect",
+																		"effect": {
+																			"effect": "minecraft:glowing",
+																			"duration": 100,
+																			"amplifier": 0,
+																			"show_icon": true,
+																			"is_ambient": true,
+																			"show_particles": false
+																		}
+																	},
+																	{
+																		"type": "origins:play_sound",
+																		"sound": "minecraft:entity.player.hurt_sweet_berry_bush",
+																		"volume": 0.4,
+																		"pitch": 1.5,
+																		"category": "players"
+																	},
+																	{
+																		"type": "origins:spawn_particles",
+																		"particle": "minecraft:electric_spark",
+																		"offset_y": 1,
+																		"count": 10,
+																		"speed": 2
+																	},
+																	{
+																		"type": "origins:if_else",
+																		"condition": {
+																			"type": "origins:entity_type",
+																			"entity_type": "minecraft:creeper"
+																		},
+																		"if_action": {
+																			"type": "origins:execute_command",
+																			"command": "/data modify entity @s powered set value 1"
+																		}
+																	},
+																	{
+																		"type": "origins:delay",
+																		"ticks": 10,
+																		"action": {
+																			"type": "origins:area_of_effect",
+																			"shape": "sphere",
+																			"radius": 10,
+																			"include_target": "true",
+																			"bientity_condition": {
+																				"type": "origins:target_condition",
+																				"condition": {
+																					"type": "origins:nbt",
+																					"nbt": "{\"Tags\":[\"electric_target\"]}"
+																				}
+																			},
+																			"bientity_action": {
+																				"type": "origins:and",
+																				"actions": [
+																					{
+																						"type": "origins:damage",
+																						"amount": 1,
+																						"damage_type": "thorigins:foxie_zap",
+																						"source": {
+																							"name": "thorigins:foxie_zap"
+																						}
+																					},
+																					{
+																						"type": "origins:target_action",
+																						"action": {
+																							"type": "origins:and",
+																							"actions": [
+																								{
+																									"type": "origins:apply_effect",
+																									"effect": {
+																										"effect": "minecraft:glowing",
+																										"duration": 100,
+																										"amplifier": 0,
+																										"show_icon": true,
+																										"is_ambient": true,
+																										"show_particles": false
+																									}
+																								},
+																								{
+																									"type": "origins:play_sound",
+																									"sound": "minecraft:entity.player.hurt_sweet_berry_bush",
+																									"volume": 0.3,
+																									"pitch": 1.3,
+																									"category": "players"
+																								},
+																								{
+																									"type": "origins:spawn_particles",
+																									"particle": "minecraft:electric_spark",
+																									"offset_y": 1,
+																									"count": 10,
+																									"speed": 2
+																								},
+																								{
+																									"type": "origins:if_else",
+																									"condition": {
+																										"type": "origins:entity_type",
+																										"entity_type": "minecraft:creeper"
+																									},
+																									"if_action": {
+																										"type": "origins:execute_command",
+																										"command": "/data modify entity @s powered set value 1"
+																									}
+																								},
+																								{
+																									"type": "origins:execute_command",
+																									"command": "/tag @e[type=!item,tag=electric_target] remove electric_target"
+																								}
+																							]
+																						}
+																					}
+																				]
+																			}
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

@@ -1,240 +1,193 @@
 {
 	"type": "origins:multiple",
+	"name": "fire_fox.thtemperature.name",
+	"description": "fire_fox.thtemperature.description",
 	"badges": [
 		{
 			"type": "origins:keybind",
 			"sprite": "minecraft:textures/item/fire_charge.png",
 			"text": "origin.thorigin.passive"
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "thtemperature.info"
 		}
 	],
 
-	"in_nether_rise_temp": {
+	"ticks": {
 		"type": "origins:action_over_time",
 		"interval": 2,
 		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": 2
-		},
-		"condition": {
-			"type": "origins:dimension",
-			"dimension": "minecraft:the_nether"
-		}
-	},
-
-	"magma_block_rise_temp": {
-		"type": "origins:action_over_time",
-		"interval": 2,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": 3
-		},
-		"condition": {
-			"type": "origins:on_block",
-			"block_condition": {
-				"type": "origins:block",
-				"block": "magma_block"
-			}
-		}
-	},
-
-	"fire_rise_temp": {
-		"type": "origins:action_over_time",
-		"interval": 2,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": 5
-		},
-		"condition": {
-			"type": "origins:on_fire"
-		}
-	},
-
-	"lava_rise_temp": {
-		"type": "origins:action_over_time",
-		"interval": 2,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": 10
-		},
-		"condition": {
-			"type": "origins:fluid_height",
-			"fluid": "minecraft:lava",
-			"compare_to": 0.1,
-			"comparison": ">="
-		}
-	},
-
-	"fire_protection_rise_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:if_else_list",
+			"type": "origins:and",
 			"actions": [
 				{
-					"action": {
-						"type": "origins:change_resource",
-						"resource": "*:thtransform_temperature",
-						"change": 4
+					"type": "origins:area_of_effect",
+					"radius": 1,
+					"shape": "sphere",
+					"bientity_condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:target_condition",
+								"condition": {
+									"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:living"
+										},
+										{
+											"type": "origins:nbt",
+											"nbt": "{\"NoAI\":1b}",
+											"inverted": true
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:actor_condition",
+								"condition": {
+									"type": "origins:power_active",
+									"power": "*:*_shaking"
+								}
+							}
+						]
 					},
-					"condition": {
-						"type": "origins:enchantment",
-						"enchantment": "fire_protection",
-						"calculation": "sum",
-						"compare_to": 16,
-						"comparison": "=="
+					"bientity_action": {
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:change_resource",
+							"resource": "*:thtransform_temperature",
+							"change": 15
+						}
 					}
 				},
 				{
-					"action": {
-						"type": "origins:change_resource",
-						"resource": "*:thtransform_temperature",
-						"change": 3
-					},
+					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:enchantment",
-						"enchantment": "fire_protection",
-						"calculation": "sum",
+						"type": "origins:brightness",
 						"compare_to": 12,
 						"comparison": ">="
-					}
-				},
-				{
-					"action": {
+					},
+					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
 						"change": 2
-					},
-					"condition": {
-						"type": "origins:enchantment",
-						"enchantment": "fire_protection",
-						"calculation": "sum",
-						"compare_to": 8,
-						"comparison": ">="
 					}
 				},
 				{
-					"action": {
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:dimension",
+						"dimension": "minecraft:the_nether"
+					},
+					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 1
-					},
-					"condition": {
-						"type": "origins:enchantment",
-						"enchantment": "fire_protection",
-						"calculation": "sum",
-						"compare_to": 4,
-						"comparison": ">="
+						"change": 3
 					}
-				}
-			]
-		}
-	},
-
-	"rain_lower_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": -5
-		},
-		"condition": {
-			"type": "origins:in_rain"
-		}
-	},
-
-	"snowfall_lower_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": -8
-		},
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:predicate",
-					"predicate": "thorigins:weather/is_raining"
 				},
 				{
-					"type": "origins:in_rain",
-					"inverted": true
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:on_block",
+						"block_condition": {
+							"type": "origins:block",
+							"block": "magma_block"
+						}
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 6
+					}
 				},
 				{
-					"type": "origins:exposed_to_sky"
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:on_fire"
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 10
+					}
 				},
 				{
-					"type": "origins:or",
-					"conditions": [
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:fluid_height",
+						"fluid": "minecraft:lava",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 20
+					}
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
 						{
-							"type": "origins:command",
-							"command": "/execute if blocks ~ ~ ~ ~ 319 ~ ~ ~ ~ masked",
-							"compare_to": 0,
-							"comparison": "=="
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": 4
+							},
+							"condition": {
+								"type": "origins:enchantment",
+								"enchantment": "fire_protection",
+								"calculation": "sum",
+								"compare_to": 16,
+								"comparison": "=="
+							}
 						},
 						{
-							"type": "origins:and",
-							"conditions": [
-								{
-									"type": "origins:in_block_anywhere",
-									"compare_to": 0,
-									"comparison": ">",
-									"block_condition": {
-										"type": "origins:or",
-										"inverted": true,
-										"conditions": [
-											{
-												"type": "origins:fluid",
-												"fluid_condition": {
-													"type": "origins:empty",
-													"inverted": true
-												}
-											},
-											{
-												"type": "origins:block",
-												"block": "air"
-											},
-											{
-												"type": "origins:in_tag",
-												"tag": "minecraft:trapdoors"
-											}
-										]
-									}
-								},
-								{
-									"type": "origins:command",
-									"command": "/execute unless blocks ~ ~1 ~ ~ 319 ~ ~ ~ ~ masked",
-									"compare_to": 0,
-									"comparison": "=="
-								}
-							]
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": 3
+							},
+							"condition": {
+								"type": "origins:enchantment",
+								"enchantment": "fire_protection",
+								"calculation": "sum",
+								"compare_to": 12,
+								"comparison": ">="
+							}
+						},
+						{
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": 2
+							},
+							"condition": {
+								"type": "origins:enchantment",
+								"enchantment": "fire_protection",
+								"calculation": "sum",
+								"compare_to": 8,
+								"comparison": ">="
+							}
+						},
+						{
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": 1
+							},
+							"condition": {
+								"type": "origins:enchantment",
+								"enchantment": "fire_protection",
+								"calculation": "sum",
+								"compare_to": 4,
+								"comparison": ">="
+							}
 						}
 					]
 				},
-				{
-					"type": "origins:biome",
-					"condition": {
-						"type": "origins:in_tag",
-						"tag": "minecraft:snownt",
-						"inverted": true
-					}
-				}
-			]
-		}
-	},
-
-	"food_add_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
 				{
 					"type": "origins:if_else_list",
 					"actions": [
@@ -258,7 +211,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 3
+								"change": 12
 							}
 						},
 						{
@@ -281,13 +234,349 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 2
+								"change": 8
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:in_rain"
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": -30
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:predicate",
+								"predicate": "thorigins:weather/is_raining"
+							},
+							{
+								"type": "origins:in_rain",
+								"inverted": true
+							},
+							{
+								"type": "origins:exposed_to_sky"
+							},
+							{
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:command",
+										"command": "/execute if blocks ~ ~ ~ ~ 319 ~ ~ ~ ~ masked",
+										"compare_to": 0,
+										"comparison": "=="
+									},
+									{
+										"type": "origins:and",
+										"conditions": [
+											{
+												"type": "origins:in_block_anywhere",
+												"compare_to": 0,
+												"comparison": ">",
+												"block_condition": {
+													"type": "origins:or",
+													"inverted": true,
+													"conditions": [
+														{
+															"type": "origins:fluid",
+															"fluid_condition": {
+																"type": "origins:empty",
+																"inverted": true
+															}
+														},
+														{
+															"type": "origins:block",
+															"block": "air"
+														},
+														{
+															"type": "origins:in_tag",
+															"tag": "minecraft:trapdoors"
+														}
+													]
+												}
+											},
+											{
+												"type": "origins:command",
+												"command": "/execute unless blocks ~ ~1 ~ ~ 319 ~ ~ ~ ~ masked",
+												"compare_to": 0,
+												"comparison": "=="
+											}
+										]
+									}
+								]
+							},
+							{
+								"type": "origins:biome",
+								"condition": {
+									"type": "origins:in_tag",
+									"tag": "minecraft:snownt",
+									"inverted": true
+								}
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": -50
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:dimension",
+								"dimension": "minecraft:the_nether",
+								"inverted": true
+							},
+							{
+								"type": "origins:food_level",
+								"compare_to": 10,
+								"comparison": "<"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": -2
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:fluid_height",
+						"fluid": "minecraft:water",
+						"compare_to": 0.1,
+						"comparison": ">="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": -80
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:in_block_anywhere",
+						"compare_to": 0,
+						"comparison": ">",
+						"block_condition": {
+							"type": "origins:block",
+							"block": "powder_snow"
+						}
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": -150
+					}
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thtransform_temperature",
+								"compare_to": 9000,
+								"comparison": ">="
+							},
+							"action": {
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "minecraft:resistance",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "strength",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "regeneration",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thtransform_temperature",
+								"compare_to": 8000,
+								"comparison": ">="
+							},
+							"action": {
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "minecraft:resistance",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "regeneration",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thtransform_temperature",
+								"compare_to": 7000,
+								"comparison": ">="
+							},
+							"action": {
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "minecraft:resistance",
+										"amplifier": 0,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thtransform_temperature",
+								"compare_to": 1000,
+								"comparison": "<="
+							},
+							"action": {
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "slowness",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "weakness",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "hunger",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thtransform_temperature",
+								"compare_to": 2000,
+								"comparison": "<="
+							},
+							"action": {
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "weakness",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									},
+									{
+										"effect": "hunger",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thtransform_temperature",
+								"compare_to": 3000,
+								"comparison": "<="
+							},
+							"action": {
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "weakness",
+										"amplifier": 1,
+										"duration": 10,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true
+									}
+								]
 							}
 						}
 					]
 				}
 			]
 		}
+	},
+
+	"blue_ification": {
+		"type": "origins:model_color",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:thtransform_temperature",
+			"compare_to": 500,
+			"comparison": "<="
+		},
+		"green": 0.5,
+		"red": 0.5
 	},
 
 	"food_add_temp_drawback1": {
@@ -338,260 +627,6 @@
 		}
 	},
 
-	"ambient_lower_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": -1
-		},
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:dimension",
-					"dimension": "minecraft:the_nether",
-					"inverted": true
-				},
-				{
-					"type": "origins:food_level",
-					"compare_to": 10,
-					"comparison": "<"
-				}
-			]
-		}
-	},
-
-	"water_lower_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": -50
-		},
-		"condition": {
-			"type": "origins:fluid_height",
-			"fluid": "minecraft:water",
-			"compare_to": 0.1,
-			"comparison": ">="
-		}
-	},
-
-	"powered_snow_lower_temp": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_temperature",
-			"change": -100
-		},
-		"condition": {
-			"type": "origins:in_block_anywhere",
-			"compare_to": 0,
-			"comparison": ">",
-			"block_condition": {
-				"type": "origins:block",
-				"block": "powder_snow"
-			}
-		}
-	},
-
-	"low_temp_penalty": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:if_else_list",
-			"actions": [
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 1000,
-						"comparison": "<="
-					},
-					"action": {
-						"type": "origins:apply_effect",
-						"effects": [
-							{
-								"effect": "slowness",
-								"amplifier": 1,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							},
-							{
-								"effect": "weakness",
-								"amplifier": 1,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							},
-							{
-								"effect": "hunger",
-								"amplifier": 1,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 2000,
-						"comparison": "<="
-					},
-					"action": {
-						"type": "origins:apply_effect",
-						"effects": [
-							{
-								"effect": "weakness",
-								"amplifier": 1,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							},
-							{
-								"effect": "hunger",
-								"amplifier": 1,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 3000,
-						"comparison": "<="
-					},
-					"action": {
-						"type": "origins:apply_effect",
-						"effects": [
-							{
-								"effect": "weakness",
-								"amplifier": 1,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							}
-						]
-					}
-				}
-			]
-		}
-	},
-
-	"high_temp_reward": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:if_else_list",
-			"actions": [
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 9000,
-						"comparison": ">="
-					},
-					"action": {
-						"type": "origins:apply_effect",
-						"effects": [
-							{
-								"effect": "minecraft:resistance",
-								"amplifier": 0,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							},
-							{
-								"effect": "strength",
-								"amplifier": 0,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							},
-							{
-								"effect": "regeneration",
-								"amplifier": 0,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 8000,
-						"comparison": ">="
-					},
-					"action": {
-						"type": "origins:apply_effect",
-						"effects": [
-							{
-								"effect": "minecraft:resistance",
-								"amplifier": 0,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							},
-							{
-								"effect": "regeneration",
-								"amplifier": 0,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							}
-						]
-					}
-				},
-				{
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_temperature",
-						"compare_to": 7000,
-						"comparison": ">="
-					},
-					"action": {
-						"type": "origins:apply_effect",
-						"effects": [
-							{
-								"effect": "minecraft:resistance",
-								"amplifier": 0,
-								"duration": 10,
-								"show_icon": true,
-								"show_particles": false,
-								"is_ambient": true
-							}
-						]
-					}
-				}
-			]
-		}
-	},
-
 	"shaking": {
 		"type": "origins:shaking",
 		"condition": {
@@ -607,7 +642,7 @@
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:thtransform_temperature",
-			"compare_to": 100,
+			"compare_to": 500,
 			"comparison": "<="
 		}
 	}

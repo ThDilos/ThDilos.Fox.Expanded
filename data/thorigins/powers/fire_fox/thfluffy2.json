@@ -1,0 +1,210 @@
+{
+	"type": "origins:multiple",
+	"name": "fire_fox.thfluffy2.name",
+	"description": "fire_fox.thfluffy2.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"text": "origin.thorigin.passive",
+			"sprite": "minecraft:textures/block/orange_wool.png"
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "thfluffy2.info"
+		}
+	],
+
+	"original_thfluffy_power": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:grant_power",
+					"power": "*:fox/thfluffy",
+					"source": "thorigins:temporal"
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/power remove @s thorigins:fox/thfluffy_more_fire_exp_dmg"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/power remove @s thorigins:fox/thfluffy_no_freezing"
+							}
+						]
+					}
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:temporal"
+		}
+	},
+
+	"conditional_freeze_immunity": {
+		"type": "origins:invulnerability",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "freeze"
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/thfluffy_wetness",
+							"compare_to": 100,
+							"comparison": "<"
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/thfluffy_snowness",
+							"compare_to": 100,
+							"comparison": "<"
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:thtransform_temperature",
+					"compare_to": 100,
+					"comparison": ">"
+				}
+			]
+		}
+	},
+
+	"magnified_freezing_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "freeze"
+		},
+		"modifier": {
+			"value": 3,
+			"operation": "multiply_total_multiplicative"
+		}
+	},
+
+	"fur_affected_temperature": {
+		"type": "origins:action_over_time",
+		"interval": 100,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:fox/thfluffy_wetness",
+						"compare_to": 100,
+						"comparison": ">="
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:thtransform_temperature",
+									"compare_to": 500,
+									"comparison": ">"
+								},
+								"if_action": {
+									"type": "origins:change_resource",
+									"resource": "*:fox/thfluffy_wetness",
+									"change": -50
+								}
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": -500
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.generic.extinguish_fire player @s ~ ~ ~ 1 2"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:fox/thfluffy_snowness",
+						"compare_to": 100,
+						"comparison": ">="
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:thtransform_temperature",
+									"compare_to": 500,
+									"comparison": ">"
+								},
+								"if_action": {
+									"type": "origins:change_resource",
+									"resource": "*:fox/thfluffy_snowness",
+									"change": -50
+								}
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": -1000
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.generic.extinguish_fire player @s ~ ~ ~ 1 2"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfluffy_snowness",
+								"compare_to": 20,
+								"comparison": "<="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thfluffy_wetness",
+								"compare_to": 20,
+								"comparison": "<="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_temperature",
+						"change": 250
+					}
+				}
+			]
+		}
+	}
+}

@@ -1,122 +1,68 @@
 {
 	"type": "origins:multiple",
+	"name": "ninetails.thsoul_power.name",
+	"description": "ninetails.thsoul_power.description",
 	"badges": [
 		{
 			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": [
+				{
+					"translate": "thorigins.press0"
+				},
+				{
+					"keybind": "key.origins.primary_active",
+					"color": "aqua"
+				},
+				{
+					"translate": "thsoul_power.key0"
+				},
+				{
+					"keybind": "key.origins.primary_active",
+					"color": "aqua"
+				},
+				{
+					"translate": "thsoul_power.key1"
+				},
+				{
+					"keybind": "key.use",
+					"color": "aqua"
+				},
+				{
+					"translate": "thsoul_power.key2"
+				},
+				{
+					"keybind": "key.use",
+					"color": "aqua"
+				},
+				{
+					"translate": "thsoul_power.key3"
+				}
+			]
+		},
+		{
+			"type": "origins:keybind",
 			"sprite": "origins:textures/gui/badge/info.png",
-			"text": { "translate": "origin.thorigins.thsoul_power1" }
+			"text": "thsoul_power.info0"
 		},
 		{
-			"type": "origins:tooltip",
-			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "origin.thorigins.general"
-				},
-				{
-					"keybind": "key.origins.primary_active"
-				},
-				{
-					"translate": "origin.thorigins.thsoul_power2"
-				}
-			]
-		},
-		{
-			"type": "origins:tooltip",
-			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "origin.thorigins.general"
-				},
-				{
-					"keybind": "key.origins.primary_active"
-				},
-				{
-					"translate": "origin.thorigins.thsoul_power3"
-				}
-			]
-		},
-		{
-			"type": "origins:tooltip",
-			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "origin.thorigins.general"
-				},
-				{
-					"keybind": "key.use"
-				},
-				{
-					"translate": "origin.thorigins.thsoul_power4"
-				}
-			]
-		},
-		{
-			"type": "origins:tooltip",
+			"type": "origins:keybind",
 			"sprite": "origins:textures/gui/badge/info.png",
-			"text": [
-				{
-					"translate": "origin.thorigins.general"
-				},
-				{
-					"keybind": "key.use"
-				},
-				{
-					"translate": "origin.thorigins.thsoul_power5"
-				}
-			]
+			"text": "thsoul_power.info1"
 		}
 	],
 
-	"auto_decrement": {
+	"ticks_2": {
 		"type": "origins:action_over_time",
-		"interval": 1,
+		"interval": 2,
 		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:thtransform_show_soul",
-					"change": -1
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_cancel",
-					"change": -1
-				}
-			]
+			"type": "origins:change_resource",
+			"resource": "*:*_cancel",
+			"change": -1
 		}
 	},
 
-	"get_soul_kill_": {
-		"type": "origins:self_action_on_kill",
-		"cooldown": 0,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:thtransform_souls",
-					"change": 50
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:thtransform_show_soul",
-					"change": 100,
-					"operation": "set"
-				},
-				{
-					"type": "origins:play_sound",
-					"sound": "minecraft:block.sculk.spread"
-				}
-			]
-		},
-		"target_condition": {
-			"type": "origins:living"
-		}
-	},
-
-	"get_soul_nature": {
+	"ticks_20": {
 		"type": "origins:action_over_time",
 		"interval": 20,
 		"entity_action": {
@@ -139,209 +85,242 @@
 		}
 	},
 
-	"show_soul_activate": {
-		"type": "origins:active_self",
-		"key": {
-			"key": "key.origins.primary_active"
-		},
-		"cooldown": 0,
-		"entity_action": {
-			"type": "origins:change_resource",
-			"resource": "*:thtransform_show_soul",
-			"change": 100,
-			"operation": "set"
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:ninetails/thchoice_choice",
-			"compare_to": 3,
-			"comparison": "=="
-		}
-	},
-
-	"soul_beam/buff": {
-		"type": "origins:active_self",
-		"key": {
-			"key": "key.origins.primary_active"
-		},
+	"cooldown": {
+		"type": "origins:cooldown",
 		"cooldown": 50,
 		"hud_render": {
 			"should_render": true,
 			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
 			"bar_index": 14
-		},
+		}
+	},
+
+	"get_soul_kill": {
+		"type": "origins:self_action_on_kill",
+		"cooldown": 0,
 		"entity_action": {
-			"type": "origins:if_else_list",
+			"type": "origins:and",
 			"actions": [
 				{
-					"condition": {
-						"type": "origins:sneaking",
-						"inverted": true
-					},
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:thtransform_souls",
-								"change": -100,
-								"operation": "add"
-							},
-							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:entity.allay.hurt",
-								"pitch": 2,
-								"volume": 0.8
-							},
-							{
-								"type": "origins:spawn_particles",
-								"particle": "minecraft:soul_fire_flame",
-								"count": 20,
-								"offset_y": 1,
-								"force": false,
-								"spread": {
-									"x": 0.2,
-									"y": 0.4,
-									"z": 0.2
-								}
-							},
-							{
-								"type": "origins:raycast",
-								"distance": 15,
-								"command_along_ray": "/particle minecraft:soul ~ ~ ~ 0 0 0 0 1 normal",
-								"command_step": 1,
-								"shape_type": "visual",
-								"fluid_handling": "any",
-								"bientity_action": {
-									"type": "origins:target_action",
-									"action": {
-										"type": "origins:and",
-										"actions": [
-											{
-												"type": "origins:if_else",
-												"condition": {
-													"type": "origins:power",
-													"power": "thorigins:ninetails/thcurse",
-													"source": "thorigins:universal"
-												},
-												"if_action": {
-													"type": "origins:change_resource",
-													"resource": "*:ninetails/thcurse_timer",
-													"change": 200,
-													"operation": "set"
-												},
-												"else_action": {
-													"type": "origins:grant_power",
-													"power": "thorigins:ninetails/thcurse",
-													"source": "thorigins:universal"
-												}
-											},
-											{
-												"type": "origins:damage",
-												"damage_type": "minecraft:magic",
-												"amount": 4,
-												"source": {
-													"name": "minecraft:magic",
-													"magic": true,
-													"bypasses_armor": true,
-													"unblockable": true
-												}
-											},
-											{
-												"type": "origins:apply_effect",
-												"effect": {
-													"effect": "minecraft:wither",
-													"amplifier": 0,
-													"duration": 200,
-													"show_icon": true,
-													"show_particles": false,
-													"is_ambient": true
-												}
-											}
-										]
-									}
-								}
-							}
-						]
-					}
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_souls",
+					"change": 50
 				},
 				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:thtransform_show_soul"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.sculk.spread",
+					"volume": 0.3,
+					"category": "players"
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:soul_fire_flame",
+					"count": 3,
+					"spread": {
+						"x": 0.25,
+						"y": 0.35,
+						"z": 0.25
+					},
+					"offset_y": 0.275
+				}
+			]
+		},
+		"target_condition": {
+			"type": "origins:living"
+		}
+	},
+
+	"active_self": {
+		"type": "origins:active_self",
+		"key": "key.origins.primary_active",
+		"cooldown": 1,
+		"hud_render": { "should_render": false },
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:thtransform_show_soul"
+				},
+				{
+					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:sneaking"
 					},
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:thtransform_souls",
-								"change": -100,
-								"operation": "add"
-							},
-							{
-								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "minecraft:strength",
-										"amplifier": 0,
-										"duration": 1200,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "minecraft:speed",
-										"amplifier": 0,
-										"duration": 1200,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "minecraft:resistance",
-										"amplifier": 0,
-										"duration": 1200,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "minecraft:haste",
-										"amplifier": 0,
-										"duration": 1200,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									},
-									{
-										"effect": "minecraft:luck",
-										"amplifier": 0,
-										"duration": 1200,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:thtransform_souls",
+							"compare_to": 750,
+							"comparison": ">="
+						},
+						"if_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:trigger_cooldown",
+									"power": "*:*_cooldown"
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "*:thtransform_souls",
+									"change": -750,
+									"operation": "add"
+								},
+								{
+									"type": "origins:apply_effect",
+									"effects": [
+										{
+											"effect": "minecraft:strength",
+											"amplifier": 0,
+											"duration": 1200,
+											"show_icon": true,
+											"show_particles": false,
+											"is_ambient": true
+										},
+										{
+											"effect": "minecraft:speed",
+											"amplifier": 0,
+											"duration": 1200,
+											"show_icon": true,
+											"show_particles": false,
+											"is_ambient": true
+										},
+										{
+											"effect": "minecraft:resistance",
+											"amplifier": 0,
+											"duration": 1200,
+											"show_icon": true,
+											"show_particles": false,
+											"is_ambient": true
+										},
+										{
+											"effect": "minecraft:haste",
+											"amplifier": 0,
+											"duration": 1200,
+											"show_icon": true,
+											"show_particles": false,
+											"is_ambient": true
+										},
+										{
+											"effect": "minecraft:luck",
+											"amplifier": 0,
+											"duration": 1200,
+											"show_icon": true,
+											"show_particles": false,
+											"is_ambient": true
+										}
+									]
+								},
+								{
+									"type": "origins:spawn_particles",
+									"particle": "minecraft:sculk_soul",
+									"count": 20,
+									"force": false,
+									"offset_y": 1,
+									"speed": 0.02,
+									"spread": {
+										"x": 0.2,
+										"y": 0.3,
+										"z": 0.2
 									}
-								]
-							},
-							{
-								"type": "origins:spawn_particles",
-								"particle": "minecraft:sculk_soul",
-								"count": 20,
-								"force": false,
-								"offset_y": 1,
-								"speed": 0.02,
-								"spread": {
-									"x": 0.2,
-									"y": 0.3,
-									"z": 0.2
+								},
+								{
+									"type": "origins:play_sound",
+									"sound": "minecraft:entity.zombie_villager.converted",
+									"pitch": 2
 								}
-							},
-							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:entity.zombie_villager.converted",
-								"pitch": 2
-							}
-						]
+							]
+						}
+					},
+					"else_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:thtransform_souls",
+							"compare_to": 200,
+							"comparison": ">="
+						},
+						"if_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:trigger_cooldown",
+									"power": "*:*_cooldown"
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "*:thtransform_souls",
+									"change": -200,
+									"operation": "add"
+								},
+								{
+									"type": "origins:play_sound",
+									"sound": "minecraft:entity.allay.hurt",
+									"pitch": 2,
+									"volume": 0.8
+								},
+								{
+									"type": "origins:spawn_particles",
+									"particle": "minecraft:soul_fire_flame",
+									"count": 20,
+									"offset_y": 1,
+									"force": false,
+									"spread": {
+										"x": 0.2,
+										"y": 0.4,
+										"z": 0.2
+									}
+								},
+								{
+									"type": "origins:raycast",
+									"distance": 15,
+									"command_along_ray": "/particle minecraft:soul ~ ~ ~ 0 0 0 0 1 normal",
+									"command_step": 1,
+									"shape_type": "visual",
+									"fluid_handling": "any",
+									"bientity_action": {
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:power",
+														"power": "thorigins:ninetails/thcurse",
+														"source": "thorigins:universal"
+													},
+													"if_action": {
+														"type": "origins:trigger_cooldown",
+														"power": "*:ninetails/thcurse_timer",
+														"change": 200
+													},
+													"else_action": {
+														"type": "origins:grant_power",
+														"power": "thorigins:ninetails/thcurse",
+														"source": "thorigins:universal"
+													}
+												},
+												{
+													"type": "origins:damage",
+													"damage_type": "minecraft:magic",
+													"amount": 4,
+													"source": {
+														"name": "magic.player"
+													}
+												}
+											]
+										}
+									}
+								}
+							]
+						}
 					}
 				}
 			]
@@ -357,147 +336,136 @@
 				},
 				{
 					"type": "origins:resource",
-					"resource": "*:thtransform_souls",
-					"compare_to": 100,
-					"comparison": ">"
+					"resource": "*:*_cooldown",
+					"compare_to": 0,
+					"comparison": "=="
 				}
 			]
 		}
 	},
 
 	"suck": {
-		"type": "origins:active_self",
-		"key": {
-			"key": "key.use",
-			"continuous": true
+		"type": "origins:action_on_entity_use",
+		"bientity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:actor_condition",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:ninetails/thchoice_choice",
+								"compare_to": 3,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:equipped_item",
+								"item_condition": {
+									"type": "origins:empty"
+								},
+								"equipment_slot": "mainhand"
+							},
+							{
+								"type": "origins:moving",
+								"inverted": true
+							},
+							{
+								"type": "origins:sneaking"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:living"
+					}
+				}
+			]
 		},
-		"entity_action": {
-			"type": "origins:raycast",
-			"distance": 2,
-			"shape_type": "visual",
-			"fluid_handling": "any",
-			"bientity_condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:actor_condition",
-						"condition": {
-							"type": "origins:and",
-							"conditions": [
-								{
-									"type": "origins:resource",
-									"resource": "*:ninetails/thchoice_choice",
-									"compare_to": 3,
-									"comparison": "=="
-								},
-								{
-									"type": "origins:equipped_item",
-									"item_condition": {
-										"type": "origins:empty"
-									},
-									"equipment_slot": "mainhand"
-								},
-								{
-									"type": "origins:moving",
-									"inverted": true
-								},
-								{
-									"type": "origins:sneaking"
-								}
-							]
-						}
-					},
-					{
-						"type": "origins:target_condition",
-						"condition": {
-							"type": "origins:living"
-						}
+		"bientity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:actor_action",
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_cooldown"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_souls",
+								"change": 100
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:thtransform_show_soul"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:ninetails/thhunt3_prepare_stage"
+							}
+						]
 					}
-				]
-			},
-			"bientity_action": {
-				"type": "origins:and",
-				"actions": [
-					{
-						"type": "origins:actor_action",
-						"action": {
-							"type": "origins:and",
-							"actions": [
-								{
-									"type": "origins:trigger_cooldown",
-									"power": "*:*_soul_beam/buff"
-								},
-								{
-									"type": "origins:change_resource",
-									"resource": "*:thtransform_souls",
-									"change": 50
-								},
-								{
-									"type": "origins:change_resource",
-									"resource": "*:thtransform_show_soul",
-									"change": 100,
-									"operation": "set"
-								}
-							]
-						}
-					},
-					{
-						"type": "origins:target_action",
-						"action": {
-							"type": "origins:and",
-							"actions": [
-								{
-									"type": "origins:apply_effect",
-									"effects": [
-										{
-											"effect": "minecraft:wither",
-											"amplifier": 0,
-											"duration": 100,
-											"show_icon": true,
-											"is_ambient": true,
-											"show_particles": false
-										}
-									]
-								},
-								{
-									"type": "origins:damage",
-									"amount": 4,
-									"source": {
-										"name": "minecraft:magic",
-										"magic": true,
-										"damage_type": "minecraft:magic",
-										"bypasses_armor": true,
-										"unblockable": true
+				},
+				{
+					"type": "origins:target_action",
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "minecraft:wither",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
 									}
-								},
-								{
-									"type": "origins:play_sound",
-									"sound": "minecraft:entity.wither.hurt",
-									"pitch": 2,
-									"volume": 0.2
-								},
-								{
-									"type": "origins:spawn_particles",
-									"particle": "minecraft:sculk_soul",
-									"count": 5,
-									"force": false,
-									"offset_y": 1,
-									"speed": 0.03,
-									"spread": {
-										"x": 0.2,
-										"y": 0.3,
-										"z": 0.2
-									}
+								]
+							},
+							{
+								"type": "origins:damage",
+								"amount": 4,
+								"damage_type": "minecraft:magic",
+								"source": {
+									"name": "magic.player"
 								}
-							]
-						}
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.wither.hurt",
+								"pitch": 2,
+								"volume": 0.2
+							},
+							{
+								"type": "origins:spawn_particles",
+								"particle": "minecraft:sculk_soul",
+								"count": 5,
+								"force": false,
+								"offset_y": 1,
+								"speed": 0.03,
+								"spread": {
+									"x": 0.2,
+									"y": 0.3,
+									"z": 0.2
+								}
+							}
+						]
 					}
-				]
-			}
+				}
+			]
 		},
 		"condition": {
 			"type": "origins:resource",
-			"resource": "*:*_soul_beam/buff",
+			"resource": "*:*_cooldown",
 			"compare_to": 0,
 			"comparison": "=="
 		}
@@ -544,10 +512,8 @@
 					"operation": "set"
 				},
 				{
-					"type": "origins:change_resource",
-					"resource": "*:thtransform_show_soul",
-					"change": 100,
-					"operation": "set"
+					"type": "origins:trigger_cooldown",
+					"power": "*:thtransform_show_soul"
 				}
 			]
 		}
@@ -556,10 +522,8 @@
 	"cancel": {
 		"type": "origins:resource",
 		"min": 0,
-		"max": 5,
-		"hud_render": {
-			"should_render": false
-		},
+		"max": 2,
+		"hud_render": { "should_render": false },
 		"min_action": {
 			"type": "origins:change_resource",
 			"resource": "*:*_confirmation_cd",
@@ -586,8 +550,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:*_cancel",
-					"change": 5,
-					"operation": "set"
+					"change": 5
 				}
 			]
 		},

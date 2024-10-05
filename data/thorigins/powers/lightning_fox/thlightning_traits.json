@@ -1,10 +1,19 @@
 {
     "type": "origins:multiple",
+    "name": "lightning_fox.thlightning_traits.name",
+    "description": "lightning_fox.thlightning_traits.description",
     "badges": [
         {
             "type": "origins:keybind",
             "text": "origin.thorigin.passive",
             "sprite":"minecraft:textures/item/gold_ingot.png"
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": {
+                "translate": "thlightning_traits.info"
+            }
         }
     ],
 
@@ -22,8 +31,7 @@
                     "name": "thorigins:foxie_zap"
                 }                
             ]
-        } 
-
+        }
     },
 
     "temperal_timer":{
@@ -32,19 +40,6 @@
             "should_render": false
         },
         "cooldown": 10
-    },
-
-    "reset_temperal_timer":{
-        "type": "origins:action_over_time",
-        "interval": 1,
-        "condition": {
-            "type": "origins:power_active",
-            "power": "*:lightnin_fox/thbecome_lightning_toggle"
-        },
-        "entity_action": {
-            "type": "origins:trigger_cooldown",
-            "power": "*:*_temperal_timer"
-        }
     },
 
     "temperal_fire_immunity":{

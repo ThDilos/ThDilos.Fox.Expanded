@@ -1,0 +1,58 @@
+{
+	"type": "origins:multiple",
+	"name": "thtransform_interface.name",
+	"description": "thtransform_interface.description",
+	"badges": [
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": [
+				{
+					"translate": "thorigins.press0"
+				},
+				{
+					"keybind": "key.loadToolbarActivator",
+					"color": "aqua"
+				},
+				{
+					"translate": "thtransform.key"
+				}
+			]
+		}
+	],
+
+	"change_origin": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:origin",
+						"layer": "thorigins:origin",
+						"origin": "thorigins:default_fox"
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/origin set @s origins:origin thorigins:fox"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/power has @s thorigins:thtransform",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "thorigins:thtransform",
+						"source": "thorigins:universal"
+					}
+				}
+			]
+		}
+	}
+}
