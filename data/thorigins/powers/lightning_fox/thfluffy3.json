@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "lightning_fox.thfluffy3.name",
-	"description": "lightning_fox.thfluffy3.description",
+	"name": { "translate": "lightning_fox.thfluffy3.name" },
+	"description": { "translate": "lightning_fox.thfluffy3.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -112,7 +112,7 @@
 						"action": {
 							"type": "origins:chance",
 							"chance": 0.2,
-							"action": {
+							"success_action": {
 								"type": "origins:and",
 								"actions": [
 									{

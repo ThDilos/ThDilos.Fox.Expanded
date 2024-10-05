@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "thtransform_interface.name",
-	"description": "thtransform_interface.description",
+	"name": { "translate": "thtransform_interface.name" },
+	"description": { "translate": "thtransform_interface.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",

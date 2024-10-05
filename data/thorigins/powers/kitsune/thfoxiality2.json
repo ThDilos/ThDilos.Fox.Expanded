@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "kitsune.thfoxiality2.name",
-	"description": "kitsune.thfoxiality2.description",
+	"name": { "translate": "kitsune.thfoxiality2.name" },
+	"description": { "translate": "kitsune.thfoxiality2.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",

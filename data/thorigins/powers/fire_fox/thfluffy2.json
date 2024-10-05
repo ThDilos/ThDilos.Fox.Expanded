@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "fire_fox.thfluffy2.name",
-	"description": "fire_fox.thfluffy2.description",
+	"name": { "translate": "fire_fox.thfluffy2.name" },
+	"description": { "translate": "fire_fox.thfluffy2.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -94,7 +94,7 @@
 			"name": "freeze"
 		},
 		"modifier": {
-			"value": 3,
+			"amount": 3,
 			"operation": "multiply_total_multiplicative"
 		}
 	},

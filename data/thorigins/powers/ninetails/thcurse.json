@@ -39,7 +39,7 @@
 					"type": "origins:apply_effect",
 					"effects": [
 						{
-							"effect": "minecraft:unluck",
+							"id": "minecraft:unluck",
 							"duration": 200,
 							"amplifier": 2,
 							"is_ambient": true,
@@ -47,7 +47,7 @@
 							"show_particles": false
 						},
 						{
-							"effect": "minecraft:wither",
+							"id": "minecraft:wither",
 							"duration": 200,
 							"amplifier": 0,
 							"show_icon": true,
@@ -104,7 +104,7 @@
 				"type": "origins:apply_effect",
 				"effects": [
 					{
-						"effect": "minecraft:unluck",
+						"id": "minecraft:unluck",
 						"duration": 200,
 						"amplifier": 2,
 						"is_ambient": true,
@@ -112,7 +112,7 @@
 						"show_particles": false
 					},
 					{
-						"effect": "minecraft:wither",
+						"id": "minecraft:wither",
 						"duration": 200,
 						"amplifier": 0,
 						"show_icon": true,
@@ -156,8 +156,8 @@
 			]
 		},
 		"modifier": {
-			"operation": "multiply_total",
-			"value": 0.25
+			"operation": "multiply_total_multiplicative",
+			"amount": 0.25
 		},
 		"self_action": {
 			"type": "origins:and",
@@ -170,7 +170,7 @@
 					"type": "origins:apply_effect",
 					"effects": [
 						{
-							"effect": "minecraft:weakness",
+							"id": "minecraft:weakness",
 							"duration": 60,
 							"amplifier": 0,
 							"show_icon": true,
@@ -178,7 +178,7 @@
 							"show_particles": false
 						},
 						{
-							"effect": "minecraft:slowness",
+							"id": "minecraft:slowness",
 							"duration": 60,
 							"amplifier": 0,
 							"show_icon": true,

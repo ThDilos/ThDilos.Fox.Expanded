@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "kitsune.thheal.name",
-	"description": "kitsune.thheal.description",
+	"name": { "translate": "kitsune.thheal.name" },
+	"description": { "translate": "kitsune.thheal.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -138,8 +138,8 @@
 									"condition": {
 										"type": "origins:target_condition",
 										"condition": {
-											"type": "origins:entity_group",
-											"group": "undead"
+											"type": "origins:in_tag",
+											"tag": "minecraft:undead"
 										}
 									},
 									"if_action": {
@@ -174,7 +174,7 @@
 												{
 													"type": "origins:apply_effect",
 													"effect": {
-														"effect": "minecraft:regeneration",
+														"id": "minecraft:regeneration",
 														"amplifier": 2,
 														"duration": 12,
 														"is_ambient": true,
@@ -310,8 +310,8 @@
 								"condition": {
 									"type": "origins:target_condition",
 									"condition": {
-										"type": "origins:entity_group",
-										"group": "undead"
+										"type": "origins:in_tag",
+										"tag": "minecraft:undead"
 									}
 								},
 								"if_action": {
@@ -322,7 +322,7 @@
 											{
 												"type": "origins:apply_effect",
 												"effect": {
-													"effect": "wither",
+													"id": "minecraft:wither",
 													"amplifier": 0,
 													"duration": 600,
 													"is_ambient": true,
@@ -346,7 +346,7 @@
 												"type": "origins:apply_effect",
 												"effects": [
 													{
-														"effect": "minecraft:strength",
+														"id": "minecraft:strength",
 														"duration": 600,
 														"amplifier": 0,
 														"is_ambient": true,
@@ -354,7 +354,7 @@
 														"show_particles": false
 													},
 													{
-														"effect": "minecraft:resistance",
+														"id": "minecraft:resistance",
 														"duration": 600,
 														"amplifier": 0,
 														"is_ambient": true,
@@ -362,7 +362,7 @@
 														"show_particles": false
 													},
 													{
-														"effect": "minecraft:speed",
+														"id": "minecraft:speed",
 														"duration": 600,
 														"amplifier": 0,
 														"is_ambient": true,
@@ -370,7 +370,7 @@
 														"show_particles": false
 													},
 													{
-														"effect": "minecraft:luck",
+														"id": "minecraft:luck",
 														"duration": 600,
 														"amplifier": 0,
 														"is_ambient": true,
@@ -493,7 +493,7 @@
 					"type": "origins:actor_action",
 					"action": {
 						"type": "origins:execute_command",
-						"command": "/tellraw @s {\"text\":\"\",\"extra\":[{\"text\":\"Boop-ed \",\"color\":\"light_purple\",\"bold\":\"true\"},{\"selector\":\"@e[tag=booped,limit=1,sort=nearest]\",\"color\":\"aqua\"}]}"
+						"command": "/tellraw @s {\"text\":\"\",\"extra\":[{\"text\":\"Boop-ed \",\"color\":\"light_purple\",\"bold\": true},{\"selector\":\"@e[tag=booped,limit=1,sort=nearest]\",\"color\":\"aqua\"}]}"
 					}
 				},
 				{
@@ -501,8 +501,8 @@
 					"condition": {
 						"type": "origins:target_condition",
 						"condition": {
-							"type": "origins:entity_group",
-							"group": "undead"
+							"type": "origins:in_tag",
+							"tag": "minecraft:undead"
 						}
 					},
 					"if_action": {
@@ -571,7 +571,7 @@
 								"if_action": {
 									"type": "origins:chance",
 									"chance": 0.33,
-									"action": {
+									"success_action": {
 										"type": "origins:tame"
 									}
 								}
@@ -595,8 +595,8 @@
 								"comparison": "<"
 							},
 							{
-								"type": "origins:entity_group",
-								"group": "undead"
+								"type": "origins:in_tag",
+								"tag": "minecraft:undead"
 							}
 						]
 					}
@@ -683,7 +683,7 @@
 			"amount": 1
 		},
 		"result": {
-			"item": "minecraft:sweet_berries",
+			"id": "minecraft:sweet_berries",
 			"amount": 1
 		}
 	},
@@ -716,7 +716,7 @@
 			"amount": 1
 		},
 		"result": {
-			"item": "minecraft:glow_berries",
+			"id": "minecraft:glow_berries",
 			"amount": 1
 		}
 	}

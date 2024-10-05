@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "fire_fox.ththrust.name",
-	"description": "fire_fox.ththrust.description",
+	"name": { "translate": "fire_fox.ththrust.name" },
+	"description": { "translate": "fire_fox.ththrust.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -496,8 +496,8 @@
 	"damage_reduction": {
 		"type": "origins:modify_damage_taken",
 		"modifier": {
-			"value": -0.7,
-			"operation": "multiply_total"
+			"amount": -0.7,
+			"operation": "multiply_total_multiplicative"
 		},
 		"damage_condition": {
 			"type": "origins:or",

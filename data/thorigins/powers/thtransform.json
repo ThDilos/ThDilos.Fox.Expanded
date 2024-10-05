@@ -439,7 +439,7 @@
 								},
 								{
 									"type": "origins:feed",
-									"food": 20,
+									"nutrition": 20,
 									"saturation": 20.0
 								},
 								{
@@ -479,7 +479,7 @@
 				},
 				"if_action": {
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.untransformable\",\"color\":\"red\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.untransformable\",\"color\":\"red\",\"bold\": true}"
 				},
 				"else_action": {
 					"type": "origins:if_else",
@@ -548,7 +548,7 @@
 						},
 						"if_action": {
 							"type": "origins:execute_command",
-							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.sleepin_notransform\",\"color\":\"red\",\"bold\":\"true\"}"
+							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.sleepin_notransform\",\"color\":\"red\",\"bold\": true}"
 						},
 						"else_action": {
 							"type": "origins:and",
@@ -588,7 +588,7 @@
 						},
 						"if_action": {
 							"type": "origins:execute_command",
-							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.no_element\",\"color\":\"red\",\"bold\":\"true\"}"
+							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.no_element\",\"color\":\"red\",\"bold\": true}"
 						}
 					}
 				}
@@ -663,7 +663,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.lightning\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.lightning\",\"color\":\"yellow\",\"bold\": true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -732,7 +732,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.fire\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.fire\",\"color\":\"yellow\",\"bold\": true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -754,7 +754,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.kitsune\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.kitsune\",\"color\":\"yellow\",\"bold\": true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -777,7 +777,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\": true}"
 				},
 				{
 					"type": "origins:play_sound",

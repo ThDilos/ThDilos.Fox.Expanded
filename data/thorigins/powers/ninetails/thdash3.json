@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "ninetails.thdash3.name",
-	"description": "ninetails.thdash3.description",
+	"name": { "translate": "ninetails.thdash3.name" },
+	"description": { "translate": "ninetails.thdash3.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -327,7 +327,7 @@
 						{
 							"condition": {
 								"type": "origins:status_effect",
-								"effect": "jump_boost",
+								"effect": "minecraft:jump_boost",
 								"min_amplifier": 1,
 								"max_amplifier": 127
 							},
@@ -354,7 +354,7 @@
 						{
 							"condition": {
 								"type": "origins:status_effect",
-								"effect": "jump_boost",
+								"effect": "minecraft:jump_boost",
 								"min_amplifier": 0,
 								"max_amplifier": 0
 							},
@@ -381,7 +381,7 @@
 						{
 							"condition": {
 								"type": "origins:status_effect",
-								"effect": "jump_boost",
+								"effect": "minecraft:jump_boost",
 								"inverted": true
 							},
 							"action": {
@@ -407,17 +407,8 @@
 					]
 				},
 				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:snowflake",
-					"count": 30,
-					"speed": 0,
-					"force": false,
-					"offset_y": 0,
-					"spread": {
-						"x": 0.8,
-						"y": 0.15,
-						"z": 0.8
-					}
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:snowflake ~ ~ ~ 0.8 0.15 0.8 0 30"
 				},
 				{
 					"type": "origins:play_sound",
@@ -578,17 +569,8 @@
 					]
 				},
 				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:snowflake",
-					"count": 30,
-					"speed": 0,
-					"force": false,
-					"offset_y": 0,
-					"spread": {
-						"x": 0.8,
-						"y": 0.15,
-						"z": 0.8
-					}
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:snowflake ~ ~ ~ 0.8 0.15 0.8 0 30"
 				},
 				{
 					"type": "origins:play_sound",
@@ -714,28 +696,26 @@
 		"type": "origins:modify_damage_dealt",
 		"modifiers": [
 			{
-				"operation": "multiply_base",
-				"value": 0.6,
+				"operation": "multiply_base_additive",
+				"amount": 0.6,
 				"modifier": {
-					"operation": "multiply_base",
-					"value": -1,
+					"operation": "multiply_base_additive",
+					"amount": -1,
 					"modifier": {
-						"operation": "addition",
+						"operation": "add_base_early",
 						"resource": "*:fox/universal_settings_op_ness",
-						"value": 0,
 						"modifier": {
-							"operation": "multiply_base",
-							"value": -0.99,
+							"operation": "multiply_base_additive",
+							"amount": -0.99,
 							"modifier": {
-								"operation": "addition",
-								"value": -0.01,
+								"operation": "add_base_early",
+								"amount": -0.01,
 								"modifier": {
-									"operation": "multiply_base",
-									"value": -1,
+									"operation": "multiply_base_additive",
+									"amount": -1,
 									"modifier": {
-										"operation": "addition",
-										"resource": "*:fox/universal_settings_damage_muffler",
-										"value": 0
+										"operation": "add_base_early",
+										"resource": "*:fox/universal_settings_damage_muffler"
 									}
 								}
 							}
@@ -744,28 +724,26 @@
 				}
 			},
 			{
-				"operation": "addition",
-				"value": 2.4,
+				"operation": "add_base_early",
+				"amount": 2.4,
 				"modifier": {
-					"operation": "multiply_base",
-					"value": -1,
+					"operation": "multiply_base_additive",
+					"amount": -1,
 					"modifier": {
-						"operation": "addition",
+						"operation": "add_base_early",
 						"resource": "*:fox/universal_settings_op_ness",
-						"value": 0,
 						"modifier": {
-							"operation": "multiply_base",
-							"value": -0.99,
+							"operation": "multiply_base_additive",
+							"amount": -0.99,
 							"modifier": {
-								"operation": "addition",
-								"value": -0.01,
+								"operation": "add_base_early",
+								"amount": -0.01,
 								"modifier": {
-									"operation": "multiply_base",
+									"operation": "multiply_base_additive",
 									"resource": "*:fox/universal_settings_damage_muffler",
-									"value": 0,
 									"modifier": {
-										"operation": "multiply_base",
-										"value": -2
+										"operation": "multiply_base_additive",
+										"amount": -2
 									}
 								}
 							}
@@ -837,18 +815,17 @@
 			}
 		},
 		"modifier": {
-			"operation": "multiply_base",
-			"value": 0.33,
+			"operation": "multiply_base_additive",
+			"amount": 0.33,
 			"modifier": {
-				"operation": "multiply_base",
-				"value": -1,
+				"operation": "multiply_base_additive",
+				"amount": -1,
 				"modifier": {
-					"operation": "addition",
+					"operation": "add_base_early",
 					"resource": "*:fox/universal_settings_op_ness",
-					"value": 0,
 					"modifier": {
-						"value": -0.99,
-						"operation": "multiply_base"
+						"amount": -0.99,
+						"operation": "multiply_base_additive"
 					}
 				}
 			}
@@ -878,7 +855,8 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:*_dash0",
-					"change": -20
+					"change": 0,
+					"operation": "set"
 				},
 				{
 					"type": "origins:play_sound",
@@ -952,28 +930,25 @@
 											}
 										},
 										{
-											"type": "origins:target_action",
-											"action": {
-												"type": "origins:choice",
-												"actions": [
-													{
-														"weight": 50,
-														"element": {
-															"type": "origins:damage",
-															"amount": 3,
-															"damage_type": "thorigins:foxie_bite"
-														}
-													},
-													{
-														"weight": 50,
-														"element": {
-															"type": "origins:damage",
-															"amount": 3,
-															"damage_type": "thorigins:foxie_bite_2"
-														}
+											"type": "origins:choice",
+											"actions": [
+												{
+													"weight": 50,
+													"element": {
+														"type": "origins:damage",
+														"amount": 4,
+														"damage_type": "thorigins:foxie_bite"
 													}
-												]
-											}
+												},
+												{
+													"weight": 50,
+													"element": {
+														"type": "origins:damage",
+														"amount": 4,
+														"damage_type": "thorigins:foxie_bite_2"
+													}
+												}
+											]
 										}
 									]
 								},
@@ -988,12 +963,9 @@
 											}
 										},
 										{
-											"type": "origins:target_action",
-											"action": {
-												"type": "origins:damage",
-												"amount": 3,
-												"damage_type": "thorigins:foxie_bite_item"
-											}
+											"type": "origins:damage",
+											"amount": 4,
+											"damage_type": "thorigins:foxie_bite_item"
 										}
 									]
 								}
@@ -1020,7 +992,7 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"effect": "minecraft:weakness",
+												"id": "minecraft:weakness",
 												"duration": 60,
 												"amplifier": 0,
 												"is_ambient": false,
@@ -1028,7 +1000,7 @@
 												"show_particles": false
 											},
 											{
-												"effect": "minecraft:nausea",
+												"id": "minecraft:nausea",
 												"duration": 100,
 												"amplifier": 0,
 												"is_ambient": false,
@@ -1036,7 +1008,7 @@
 												"show_particles": false
 											},
 											{
-												"effect": "minecraft:darkness",
+												"id": "minecraft:darkness",
 												"duration": 100,
 												"amplifier": 0,
 												"is_ambient": false,
@@ -1068,7 +1040,7 @@
 										},
 										{
 											"type": "origins:feed",
-											"food": 2,
+											"nutrition": 2,
 											"saturation": 2.5
 										},
 										{
@@ -1144,28 +1116,26 @@
 		"type": "origins:modify_damage_dealt",
 		"modifiers": [
 			{
-				"operation": "multiply_base",
-				"value": 0.125,
+				"operation": "multiply_base_additive",
+				"amount": 0.125,
 				"modifier": {
-					"operation": "multiply_base",
-					"value": -1,
+					"operation": "multiply_base_additive",
+					"amount": -1,
 					"modifier": {
-						"operation": "addition",
+						"operation": "add_base_early",
 						"resource": "*:fox/universal_settings_op_ness",
-						"value": 0,
 						"modifier": {
-							"operation": "multiply_base",
-							"value": -0.99,
+							"operation": "multiply_base_additive",
+							"amount": -0.99,
 							"modifier": {
-								"operation": "addition",
-								"value": -0.01,
+								"operation": "add_base_early",
+								"amount": -0.01,
 								"modifier": {
-									"operation": "multiply_base",
-									"value": -1,
+									"operation": "multiply_base_additive",
+									"amount": -1,
 									"modifier": {
-										"operation": "addition",
-										"resource": "*:fox/universal_settings_damage_muffler",
-										"value": 0
+										"operation": "add_base_early",
+										"resource": "*:fox/universal_settings_damage_muffler"
 									}
 								}
 							}
@@ -1174,28 +1144,26 @@
 				}
 			},
 			{
-				"operation": "addition",
-				"value": 1.5,
+				"operation": "add_base_early",
+				"amount": 1.5,
 				"modifier": {
-					"operation": "multiply_base",
-					"value": -1,
+					"operation": "multiply_base_additive",
+					"amount": -1,
 					"modifier": {
-						"operation": "addition",
+						"operation": "add_base_early",
 						"resource": "*:fox/universal_settings_op_ness",
-						"value": 0,
 						"modifier": {
-							"operation": "multiply_base",
-							"value": -0.99,
+							"operation": "multiply_base_additive",
+							"amount": -0.99,
 							"modifier": {
-								"operation": "addition",
-								"value": -0.01,
+								"operation": "add_base_early",
+								"amount": -0.01,
 								"modifier": {
-									"operation": "multiply_base",
+									"operation": "multiply_base_additive",
 									"resource": "*:fox/universal_settings_damage_muffler",
-									"value": 0,
 									"modifier": {
-										"operation": "multiply_base",
-										"value": -2
+										"operation": "multiply_base_additive",
+										"amount": -2
 									}
 								}
 							}
@@ -1241,28 +1209,26 @@
 		"type": "origins:modify_damage_dealt",
 		"modifiers": [
 			{
-				"operation": "multiply_base",
-				"value": 0.075,
+				"operation": "multiply_base_additive",
+				"amount": 0.075,
 				"modifier": {
-					"operation": "multiply_base",
-					"value": -1,
+					"operation": "multiply_base_additive",
+					"amount": -1,
 					"modifier": {
-						"operation": "addition",
+						"operation": "add_base_early",
 						"resource": "*:fox/universal_settings_op_ness",
-						"value": 0,
 						"modifier": {
-							"operation": "multiply_base",
-							"value": -0.99,
+							"operation": "multiply_base_additive",
+							"amount": -0.99,
 							"modifier": {
-								"operation": "addition",
-								"value": -0.01,
+								"operation": "add_base_early",
+								"amount": -0.01,
 								"modifier": {
-									"operation": "multiply_base",
-									"value": -1,
+									"operation": "multiply_base_additive",
+									"amount": -1,
 									"modifier": {
-										"operation": "addition",
-										"resource": "*:fox/universal_settings_damage_muffler",
-										"value": 0
+										"operation": "add_base_early",
+										"resource": "*:fox/universal_settings_damage_muffler"
 									}
 								}
 							}
@@ -1271,28 +1237,26 @@
 				}
 			},
 			{
-				"operation": "addition",
-				"value": 0.5,
+				"operation": "add_base_early",
+				"amount": 0.5,
 				"modifier": {
-					"operation": "multiply_base",
-					"value": -1,
+					"operation": "multiply_base_additive",
+					"amount": -1,
 					"modifier": {
-						"operation": "addition",
+						"operation": "add_base_early",
 						"resource": "*:fox/universal_settings_op_ness",
-						"value": 0,
 						"modifier": {
-							"operation": "multiply_base",
-							"value": -0.99,
+							"operation": "multiply_base_additive",
+							"amount": -0.99,
 							"modifier": {
-								"operation": "addition",
-								"value": -0.01,
+								"operation": "add_base_early",
+								"amount": -0.01,
 								"modifier": {
-									"operation": "multiply_base",
+									"operation": "multiply_base_additive",
 									"resource": "*:fox/universal_settings_damage_muffler",
-									"value": 0,
 									"modifier": {
-										"operation": "multiply_base",
-										"value": -2
+										"operation": "multiply_base_additive",
+										"amount": -2
 									}
 								}
 							}

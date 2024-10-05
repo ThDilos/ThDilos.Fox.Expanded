@@ -5,33 +5,8 @@
 	"__init__": {
 		"type": "origins:action_on_callback",
 		"entity_action_chosen": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer2",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thshy_fear_timer",
-					"change": -100
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fire_fox/ththrust_thrust_burst",
-					"change": -20
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/origin set @s origins:origin thorigins:element_fox"
-				}
-			]
+			"type": "origins:execute_command",
+			"command": "/origin set @s origins:origin thorigins:element_fox"
 		},
 		"entity_action_added": {
 			"type": "origins:and",

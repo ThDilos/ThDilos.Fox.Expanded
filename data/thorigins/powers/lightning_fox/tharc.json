@@ -7,7 +7,7 @@
 			{
 				"type": "origins:apply_effect",
 				"effect": {
-					"effect": "minecraft:glowing",
+					"id": "minecraft:glowing",
 					"duration": 20,
 					"amplifier": 0,
 					"show_icon": true,
@@ -92,7 +92,7 @@
 										{
 											"type": "origins:apply_effect",
 											"effect": {
-												"effect": "minecraft:glowing",
+												"id": "minecraft:glowing",
 												"duration": 100,
 												"amplifier": 0,
 												"show_icon": true,
@@ -168,7 +168,7 @@
 																	{
 																		"type": "origins:apply_effect",
 																		"effect": {
-																			"effect": "minecraft:glowing",
+																			"id": "minecraft:glowing",
 																			"duration": 100,
 																			"amplifier": 0,
 																			"show_icon": true,
@@ -232,7 +232,7 @@
 																								{
 																									"type": "origins:apply_effect",
 																									"effect": {
-																										"effect": "minecraft:glowing",
+																										"id": "minecraft:glowing",
 																										"duration": 100,
 																										"amplifier": 0,
 																										"show_icon": true,

@@ -1,7 +1,7 @@
 {
 	"type": "origins:inventory",
-	"name": "thstorage2.name",
-	"description": "thstorage2.description",
+	"name": { "translate": "thstorage2.name" },
+	"description": { "translate": "thstorage2.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",

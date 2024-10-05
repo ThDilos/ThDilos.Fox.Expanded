@@ -2,8 +2,8 @@
 	"powers": [
 		"thorigins:ninetails/thchoice",
 		"thorigins:ninetails/thdash3",
-        "thorigins:ninetails/thphasing",
-		"thorigins:thstorage2",		
+		"thorigins:ninetails/thphasing",
+		"thorigins:thstorage2",
 		"thorigins:ninetails/thsoul_power",
 		"thorigins:fox/thfoxify",
 		"thorigins:ninetails/thhunt3",
@@ -19,7 +19,9 @@
 
 		"thorigins:ninetails/loadin_ninetails"
 	],
-	"icon": "minecraft:bone_block",
+	"icon": {
+		"id": "minecraft:bone_block"
+	},
 	"impact": 3,
 	"unchoosable": false,
 	"order": 1

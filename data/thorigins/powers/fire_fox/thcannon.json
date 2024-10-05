@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "fire_fox.thcannon.name",
-	"description": "fire_fox.thcannon.description",
+	"name": { "translate": "fire_fox.thcannon.name" },
+	"description": { "translate": "fire_fox.thcannon.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -502,7 +502,7 @@
 											"actions": [
 												{
 													"type": "origins:explode",
-													"destruction_type": "break",
+													"destruction_type": "keep",
 													"create_fire": true,
 													"power": 0.25,
 													"damage_self": false
@@ -535,7 +535,7 @@
 										"bientity_action": {
 											"type": "origins:damage",
 											"amount": 1,
-											"damage_type": "minecraft:on_fire.player",
+											"damage_type": "minecraft:on_fire",
 											"source": {
 												"name": "onFire.player"
 											}
@@ -1060,30 +1060,23 @@
 			"comparison": ">"
 		},
 		"modifier": {
-			"value": -1,
-			"operation": "multiply_total"
+			"amount": 0,
+			"operation": "set_total"
 		}
 	},
 
-	"warmup_no_jumping": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:apply_effect",
-			"effect": {
-				"effect": "minecraft:jump_boost",
-				"amplifier": 128,
-				"duration": 5,
-				"is_ambient": true,
-				"show_icon": false,
-				"show_particles": false
-			}
-		},
+	"no_jump": {
+		"type": "origins:modify_attribute",
+		"attribute": "minecraft:generic.jump_strength",
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:*_turn_off_cd",
 			"compare_to": 0,
 			"comparison": ">"
+		},
+		"modifier": {
+			"amount": 0,
+			"operation": "set_total"
 		}
 	},
 

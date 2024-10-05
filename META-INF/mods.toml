@@ -14,27 +14,27 @@ displayName="ThDilos Fox Origins Expanded"
 [[dependencies.thorigins2]]
 modId="thorigins"
 mandatory=true
-versionRange="[3.8.9,)"
+versionRange="[4.0.1,)"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.thorigins2]]
+[[dependencies.thorigins]]
 modId="origins"
 mandatory=true
-versionRange="[1.9.0,)"
+versionRange="[1.12.0,)"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.thorigins2]]
+[[dependencies.thorigins]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.19.4,1.20.4]"
+versionRange="[1.21,)"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.thorigins2]]
+[[dependencies.thorigins]]
 modId="pehkui"
 mandatory=true
-versionRange="[3.6.0,)"
+versionRange="[3.3.3,)"
 ordering="NONE"
 side="BOTH"

@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "kitsune.thphasing.name",
-	"description": "kitsune.thphasing.description",
+	"name": { "translate": "kitsune.thphasing.name" },
+	"description": { "translate": "kitsune.thphasing.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -58,7 +58,7 @@
 					{
 						"type": "origins:apply_effect",
 						"effect": {
-							"effect": "weakness",
+							"id": "minecraft:weakness",
 							"amplifier": 99,
 							"duration": 5,
 							"is_ambient": true,
@@ -186,7 +186,7 @@
 		"axes": ["y"],
 		"modifier": {
 			"operation": "set_total",
-			"value": 0
+			"amount": 0
 		},
 		"condition": {
 			"type": "origins:and",
@@ -244,8 +244,8 @@
 	"damage_reduction": {
 		"type": "origins:modify_damage_taken",
 		"modifier": {
-			"value": -0.5,
-			"operation": "multiply_total"
+			"amount": -0.5,
+			"operation": "multiply_total_multiplicative"
 		},
 		"condition": {
 			"type": "origins:power_active",

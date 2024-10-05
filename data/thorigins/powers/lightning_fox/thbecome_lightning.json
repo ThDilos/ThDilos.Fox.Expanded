@@ -1,7 +1,9 @@
 {
 	"type": "origins:multiple",
-	"name": "lightning_fox.thbecome_lightning.name",
-	"description": "lightning_fox.thbecome_lightning.description",
+	"name": { "translate": "lightning_fox.thbecome_lightning.name" },
+	"description": {
+		"translate": "lightning_fox.thbecome_lightning.description"
+	},
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -36,7 +38,7 @@
 			"bar_index": 3
 		}
 	},
-	
+
 	"ticks": {
 		"type": "origins:action_over_time",
 		"interval": 1,
@@ -352,8 +354,9 @@
 	"flying_speed": {
 		"type": "origins:modify_swim_speed",
 		"modifier": {
-			"operation": "multiply_base",
-			"value": 10
+			"operation": "add_multiplied_base",
+			"amount": 10,
+			"id": "thorigins:lightning_fox/thbecome_lightning_flying_speed"
 		},
 		"condition": {
 			"type": "origins:power_active",
@@ -371,7 +374,7 @@
 
 	"prevent_dolphin": {
 		"type": "origins:effect_immunity",
-		"effect": "dolphins_grace",
+		"id": "minecraft:dolphins_grace",
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_toggle"
@@ -401,8 +404,8 @@
 			"power": "*:*_toggle"
 		},
 		"modifier": {
-			"value": 19,
-			"operation": "multiply_base"
+			"amount": 19,
+			"operation": "multiply_base_additive"
 		}
 	},
 
@@ -426,8 +429,8 @@
 	"damage_bonus": {
 		"type": "origins:modify_damage_taken",
 		"modifier": {
-			"operation": "multiply_base",
-			"value": 1
+			"operation": "multiply_base_additive",
+			"amount": 1
 		},
 		"condition": {
 			"type": "origins:power_active",

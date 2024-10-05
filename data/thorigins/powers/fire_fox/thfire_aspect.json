@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "fire_fox.thfire_aspect.name",
-	"description": "fire_fox.thfire_aspect.description",
+	"name": { "translate": "fire_fox.thfire_aspect.name" },
+	"description": { "translate": "fire_fox.thfire_aspect.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -28,16 +28,17 @@
 			"type": "origins:explosive"
 		},
 		"modifier": {
-			"value": -0.7,
-			"operation": "multiply_base"
+			"amount": -0.7,
+			"operation": "multiply_base_additive"
 		}
 	},
 
 	"lava_swimmer": {
 		"type": "origins:modify_lava_speed",
 		"modifier": {
-			"value": 1,
-			"operation": "multiply_base"
+			"amount": 1,
+			"operation": "add_multiplied_base",
+			"id": "thorigins:ninetails/thfire_aspect_lava_swimmer"
 		}
 	},
 
@@ -76,8 +77,8 @@
 		},
 		"attribute": "minecraft:generic.movement_speed",
 		"modifier": {
-			"value": 0.05,
-			"operation": "multiply_total"
+			"amount": 0.05,
+			"operation": "multiply_total_multiplicative"
 		}
 	},
 

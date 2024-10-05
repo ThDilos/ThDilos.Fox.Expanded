@@ -5,52 +5,8 @@
 	"__init__": {
 		"type": "origins:action_on_callback",
 		"entity_action_chosen": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer2",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:thshy2_fear_timer",
-					"change": -100
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:kitsune/thdash2_dash0",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:kitsune/thdash2_dash1",
-					"change": -30
-				},
-				{
-					"type": "origins:trigger_cooldown",
-					"power": "*:kitsune/thhunt2_prepare_stage"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:kitsune/thhunt2_hunt_stage",
-					"change": -100
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:kitsune/thheal_boop_cd",
-					"change": -60
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/origin set @s origins:origin thorigins:element_fox"
-				}
-			]
+			"type": "origins:execute_command",
+			"command": "/origin set @s origins:origin thorigins:element_fox"
 		},
 		"entity_action_added": {
 			"type": "origins:and",

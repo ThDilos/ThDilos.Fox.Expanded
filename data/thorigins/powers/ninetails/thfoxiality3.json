@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "ninetails.thfoxiality3.name",
-	"description": "ninetails.thfoxiality3.description",
+	"name": { "translate": "ninetails.thfoxiality3.name" },
+	"description": { "translate": "ninetails.thfoxiality3.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -192,7 +192,7 @@
 			]
 		}
 	},
-	
+
 	"nightvision": {
 		"type": "origins:toggle_night_vision",
 		"active_by_default": true,

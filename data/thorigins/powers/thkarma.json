@@ -556,8 +556,8 @@
 			}
 		},
 		"target_condition": {
-			"type": "origins:entity_group",
-			"group": "undead"
+			"type": "origins:in_tag",
+			"tag": "minecraft:undead"
 		}
 	},
 
@@ -584,8 +584,8 @@
 			}
 		},
 		"target_condition": {
-			"type": "origins:entity_group",
-			"group": "undead",
+			"type": "origins:in_tag",
+			"tag": "minecraft:undead",
 			"inverted": true
 		}
 	},

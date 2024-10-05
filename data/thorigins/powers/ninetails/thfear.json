@@ -39,17 +39,17 @@
 					"type": "origins:apply_effect",
 					"effects": [
 						{
-							"effect": "speed",
+							"id": "minecraft:speed",
 							"amplifier": 0,
-							"duration": 3,
+							"duration": 10,
 							"show_icon": true,
 							"show_particles": false,
 							"is_ambient": true
 						},
 						{
-							"effect": "weakness",
+							"id": "minecraft:weakness",
 							"amplifier": 0,
-							"duration": 3,
+							"duration": 10,
 							"show_icon": true,
 							"show_particles": false,
 							"is_ambient": true

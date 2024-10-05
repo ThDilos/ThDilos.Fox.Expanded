@@ -19,7 +19,9 @@
 		"thorigins:lightning_fox/thlightning_ambient",
 		"thorigins:lightning_fox/loadin_lightning"
 	],
-	"icon": "minecraft:glow_berries",
+	"icon": {
+		"id": "minecraft:glow_berries"
+	},
 	"impact": 3,
 	"unchoosable": false,
 	"order": 1

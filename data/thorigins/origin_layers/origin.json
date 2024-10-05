@@ -131,31 +131,6 @@
 				"layer": "origins:origin"
 			},
 			"origins": ["thorigins:default_fox"]
-		},
-		{
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:constant",
-						"value": true,
-						"inverted": true
-					},
-					{
-						"type": "origins:origin",
-						"origin": "thorigins:fox",
-						"layer": "origins:origin",
-						"inverted": true
-					},
-					{
-						"type": "origins:origin",
-						"origin": "thorigins:element_fox",
-						"layer": "origins:origin",
-						"inverted": true
-					}
-				]
-			},
-			"origins": ["thorigins:not_fox"]
 		}
 	],
 	"missing_name": "MISSING NAME",

@@ -5,58 +5,8 @@
 	"__init__": {
 		"type": "origins:action_on_callback",
 		"entity_action_chosen": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer2",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thshy_fear_timer",
-					"change": -100
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thelectric_beam",
-					"change": -80
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thrailgun_cooldown",
-					"change": -300
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thdischarge_cooldown",
-					"change": -200
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thbecome_lightning_hit_cooldown",
-					"change": -20
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thbecome_lightning_toggle_effect",
-					"change": -20
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thlightning_combat_buff_duration",
-					"change": -3
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/origin set @s origins:origin thorigins:element_fox"
-				}
-			]
+			"type": "origins:execute_command",
+			"command": "/origin set @s origins:origin thorigins:element_fox"
 		},
 		"entity_action_added": {
 			"type": "origins:and",

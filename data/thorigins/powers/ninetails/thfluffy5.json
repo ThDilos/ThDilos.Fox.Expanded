@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "ninetails.thfluffy5.name",
-	"description": "ninetails.thfluffy5.description",
+	"name": { "translate": "ninetails.thfluffy5.name" },
+	"description": { "translate": "ninetails.thfluffy5.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",

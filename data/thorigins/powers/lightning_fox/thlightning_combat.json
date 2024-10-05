@@ -1,7 +1,9 @@
 {
 	"type": "origins:multiple",
-	"name": "lightning_fox.thlightning_combat.name",
-	"description": "lightning_fox.thlightning_combat.description",
+	"name": { "translate": "lightning_fox.thlightning_combat.name" },
+	"description": {
+		"translate": "lightning_fox.thlightning_combat.description"
+	},
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -35,7 +37,7 @@
 						"type": "apoli:apply_effect",
 						"effects": [
 							{
-								"effect": "minecraft:strength",
+								"id": "minecraft:strength",
 								"amplifier": 0,
 								"duration": 100,
 								"is_ambient": true,
@@ -43,7 +45,7 @@
 								"show_particles": false
 							},
 							{
-								"effect": "minecraft:speed",
+								"id": "minecraft:speed",
 								"amplifier": 0,
 								"duration": 100,
 								"is_ambient": true,
@@ -194,7 +196,7 @@
 										{
 											"type": "origins:apply_effect",
 											"effect": {
-												"effect": "slowness",
+												"id": "minecraft:slowness",
 												"amplifier": 0,
 												"duration": 50
 											}
@@ -343,8 +345,8 @@
 			]
 		},
 		"modifier": {
-			"value": -0.25,
-			"operation": "multiply_base"
+			"amount": -0.25,
+			"operation": "multiply_base_additive"
 		},
 		"condition": {
 			"type": "origins:sneaking"
@@ -402,8 +404,8 @@
 			"inverted": true
 		},
 		"modifier": {
-			"value": -0.2,
-			"operation": "multiply_base"
+			"amount": -0.2,
+			"operation": "multiply_base_additive"
 		},
 		"condition": {
 			"type": "origins:sneaking"

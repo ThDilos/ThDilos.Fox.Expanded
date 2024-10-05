@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "lightning_fox.thdischarge.name",
-	"description": "lightning_fox.thdischarge.description",
+	"name": { "translate": "lightning_fox.thdischarge.name" },
+	"description": { "translate": "lightning_fox.thdischarge.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -407,13 +407,13 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"effect": "blindness",
+												"id": "minecraft:blindness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
 											},
 											{
-												"effect": "slowness",
+												"id": "minecraft:slowness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
@@ -482,13 +482,13 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"effect": "blindness",
+												"id": "minecraft:blindness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
 											},
 											{
-												"effect": "slowness",
+												"id": "minecraft:slowness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
@@ -557,13 +557,13 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"effect": "blindness",
+												"id": "minecraft:blindness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
 											},
 											{
-												"effect": "slowness",
+												"id": "minecraft:slowness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
@@ -999,11 +999,11 @@
 									"action": {
 										"type": "origins:apply_effect",
 										"effect": {
-											"effect": "minecraft:slowness",
+											"id": "minecraft:slowness",
 											"amplifier": 1,
 											"duration": 2,
 											"is_ambient": true,
-											"show_icon": true,
+											"show_icon": false,
 											"show_particles": false
 										}
 									}
@@ -1041,11 +1041,11 @@
 									"action": {
 										"type": "origins:apply_effect",
 										"effect": {
-											"effect": "minecraft:slowness",
+											"id": "minecraft:slowness",
 											"amplifier": 1,
 											"duration": 2,
 											"is_ambient": true,
-											"show_icon": true,
+											"show_icon": false,
 											"show_particles": false
 										}
 									}

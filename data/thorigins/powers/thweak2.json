@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "thweak2.name",
-	"description": "thweak2.description",
+	"name": { "translate": "thweak2.name" },
+	"description": { "translate": "thweak2.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",

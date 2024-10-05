@@ -1,7 +1,7 @@
 {
 	"type": "origins:simple",
-	"name": "thkarma_interface.name",
-	"description": "thkarma_interface.description",
+	"name": { "translate": "thkarma_interface.name" },
+	"description": { "translate": "thkarma_interface.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",

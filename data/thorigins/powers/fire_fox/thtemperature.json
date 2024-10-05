@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "fire_fox.thtemperature.name",
-	"description": "fire_fox.thtemperature.description",
+	"name": { "translate": "fire_fox.thtemperature.name" },
+	"description": { "translate": "fire_fox.thtemperature.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -253,76 +253,7 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:predicate",
-								"predicate": "thorigins:weather/is_raining"
-							},
-							{
-								"type": "origins:in_rain",
-								"inverted": true
-							},
-							{
-								"type": "origins:exposed_to_sky"
-							},
-							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:command",
-										"command": "/execute if blocks ~ ~ ~ ~ 319 ~ ~ ~ ~ masked",
-										"compare_to": 0,
-										"comparison": "=="
-									},
-									{
-										"type": "origins:and",
-										"conditions": [
-											{
-												"type": "origins:in_block_anywhere",
-												"compare_to": 0,
-												"comparison": ">",
-												"block_condition": {
-													"type": "origins:or",
-													"inverted": true,
-													"conditions": [
-														{
-															"type": "origins:fluid",
-															"fluid_condition": {
-																"type": "origins:empty",
-																"inverted": true
-															}
-														},
-														{
-															"type": "origins:block",
-															"block": "air"
-														},
-														{
-															"type": "origins:in_tag",
-															"tag": "minecraft:trapdoors"
-														}
-													]
-												}
-											},
-											{
-												"type": "origins:command",
-												"command": "/execute unless blocks ~ ~1 ~ ~ 319 ~ ~ ~ ~ masked",
-												"compare_to": 0,
-												"comparison": "=="
-											}
-										]
-									}
-								]
-							},
-							{
-								"type": "origins:biome",
-								"condition": {
-									"type": "origins:in_tag",
-									"tag": "minecraft:snownt",
-									"inverted": true
-								}
-							}
-						]
+						"type": "origins:in_snow"
 					},
 					"if_action": {
 						"type": "origins:change_resource",
@@ -398,26 +329,26 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "minecraft:resistance",
+										"id": "minecraft:resistance",
 										"amplifier": 0,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"effect": "strength",
+										"id": "minecraft:strength",
 										"amplifier": 0,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"effect": "regeneration",
+										"id": "minecraft:regeneration",
 										"amplifier": 0,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -435,18 +366,18 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "minecraft:resistance",
+										"id": "minecraft:resistance",
 										"amplifier": 0,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"effect": "regeneration",
+										"id": "minecraft:regeneration",
 										"amplifier": 0,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -464,10 +395,10 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "minecraft:resistance",
+										"id": "minecraft:resistance",
 										"amplifier": 0,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -485,26 +416,26 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "slowness",
+										"id": "minecraft:slowness",
 										"amplifier": 1,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"effect": "weakness",
+										"id": "minecraft:weakness",
 										"amplifier": 1,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"effect": "hunger",
+										"id": "minecraft:hunger",
 										"amplifier": 1,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -522,18 +453,18 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "weakness",
+										"id": "minecraft:weakness",
 										"amplifier": 1,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"effect": "hunger",
+										"id": "minecraft:hunger",
 										"amplifier": 1,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -551,10 +482,10 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "weakness",
+										"id": "minecraft:weakness",
 										"amplifier": 1,
 										"duration": 10,
-										"show_icon": true,
+										"show_icon": false,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -582,8 +513,8 @@
 	"food_add_temp_drawback1": {
 		"type": "origins:modify_exhaustion",
 		"modifier": {
-			"value": 0.5,
-			"operation": "multiply_total"
+			"amount": 0.5,
+			"operation": "multiply_base_additive"
 		},
 		"condition": {
 			"type": "origins:and",
@@ -606,8 +537,8 @@
 	"food_add_temp_drawback2": {
 		"type": "origins:modify_exhaustion",
 		"modifier": {
-			"value": 0.25,
-			"operation": "multiply_total"
+			"amount": 0.25,
+			"operation": "multiply_base_additive"
 		},
 		"condition": {
 			"type": "origins:and",

@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "thchoice.name",
-	"description": "thchoice.description",
+	"name": { "translate": "thchoice.name" },
+	"description": { "translate": "thchoice.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",

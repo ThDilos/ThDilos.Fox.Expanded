@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "lightning_fox.thrailgun.name",
-	"description": "lightning_fox.thrailgun.description",
+	"name": { "translate": "lightning_fox.thrailgun.name" },
+	"description": { "translate": "lightning_fox.thrailgun.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -70,7 +70,7 @@
 							{
 								"type": "origins:give",
 								"stack": {
-									"item": "minecraft:iron_nugget",
+									"id": "minecraft:iron_nugget",
 									"amount": 1
 								},
 								"preferred_slot": "mainhand"
@@ -287,7 +287,7 @@
 							{
 								"type": "origins:give",
 								"stack": {
-									"item": "minecraft:iron_nugget",
+									"id": "minecraft:iron_nugget",
 									"amount": 1
 								},
 								"preferred_slot": "mainhand"
@@ -343,7 +343,7 @@
 											"type": "origins:explode",
 											"create_fire": true,
 											"power": 8,
-											"destruction_type": "break"
+											"destruction_type": "keep"
 										}
 									]
 								},

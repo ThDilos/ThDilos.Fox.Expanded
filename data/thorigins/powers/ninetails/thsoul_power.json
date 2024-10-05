@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "ninetails.thsoul_power.name",
-	"description": "ninetails.thsoul_power.description",
+	"name": { "translate": "ninetails.thsoul_power.name" },
+	"description": { "translate": "ninetails.thsoul_power.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -74,8 +74,11 @@
 			"type": "origins:and",
 			"conditions": [
 				{
-					"type": "origins:predicate",
-					"predicate": "thorigins:weather/is_raining",
+					"type": "origins:in_rain",
+					"inverted": true
+				},
+				{
+					"type": "origins:in_snow",
 					"inverted": true
 				},
 				{
@@ -176,7 +179,7 @@
 									"type": "origins:apply_effect",
 									"effects": [
 										{
-											"effect": "minecraft:strength",
+											"id": "minecraft:strength",
 											"amplifier": 0,
 											"duration": 1200,
 											"show_icon": true,
@@ -184,7 +187,7 @@
 											"is_ambient": true
 										},
 										{
-											"effect": "minecraft:speed",
+											"id": "minecraft:speed",
 											"amplifier": 0,
 											"duration": 1200,
 											"show_icon": true,
@@ -192,7 +195,7 @@
 											"is_ambient": true
 										},
 										{
-											"effect": "minecraft:resistance",
+											"id": "minecraft:resistance",
 											"amplifier": 0,
 											"duration": 1200,
 											"show_icon": true,
@@ -200,7 +203,7 @@
 											"is_ambient": true
 										},
 										{
-											"effect": "minecraft:haste",
+											"id": "minecraft:haste",
 											"amplifier": 0,
 											"duration": 1200,
 											"show_icon": true,
@@ -208,7 +211,7 @@
 											"is_ambient": true
 										},
 										{
-											"effect": "minecraft:luck",
+											"id": "minecraft:luck",
 											"amplifier": 0,
 											"duration": 1200,
 											"show_icon": true,
@@ -422,7 +425,7 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "minecraft:wither",
+										"id": "minecraft:wither",
 										"amplifier": 0,
 										"duration": 100,
 										"show_icon": true,

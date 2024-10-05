@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "thswift2.name",
-	"description": "thswift2.description",
+	"name": { "translate": "thswift2.name" },
+	"description": { "translate": "thswift2.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -74,7 +74,7 @@
 											},
 											{
 												"type": "origins:status_effect",
-												"effect": "jump_boost",
+												"effect": "minecraft:jump_boost",
 												"min_amplifier": 1,
 												"max_amplifier": 127
 											}
@@ -90,7 +90,7 @@
 											},
 											{
 												"type": "origins:status_effect",
-												"effect": "jump_boost",
+												"effect": "minecraft:jump_boost",
 												"min_amplifier": 0,
 												"max_amplifier": 0
 											}
@@ -163,8 +163,8 @@
 			"name": "fall"
 		},
 		"modifier": {
-			"operation": "multiply_base",
-			"value": -0.9
+			"operation": "multiply_base_additive",
+			"amount": -0.9
 		},
 		"condition": {
 			"type": "origins:sneaking"
@@ -204,7 +204,7 @@
 								},
 								{
 									"type": "origins:status_effect",
-									"effect": "jump_boost",
+									"effect": "minecraft:jump_boost",
 									"min_amplifier": 0,
 									"max_amplifier": 0
 								}
@@ -220,7 +220,7 @@
 								},
 								{
 									"type": "origins:status_effect",
-									"effect": "jump_boost",
+									"effect": "minecraft:jump_boost",
 									"min_amplifier": 1,
 									"max_amplifier": 127
 								}
@@ -253,8 +253,8 @@
 		"type": "origins:modify_attribute",
 		"attribute": "minecraft:generic.movement_speed",
 		"modifier": {
-			"operation": "multiply_base",
-			"value": 0.7
+			"operation": "multiply_base_additive",
+			"amount": 0.7
 		},
 		"condition": {
 			"type": "origins:and",
@@ -274,8 +274,9 @@
 		"type": "origins:conditioned_attribute",
 		"modifier": {
 			"attribute": "minecraft:generic.movement_speed",
-			"operation": "multiply_total",
-			"value": 0.1
+			"id": "thorigins:thswift2",
+			"operation": "add_multiplied_base",
+			"amount": 0.1
 		},
 		"condition": {
 			"type": "origins:and",
@@ -304,8 +305,8 @@
 	"jumpy": {
 		"type": "origins:modify_jump",
 		"modifier": {
-			"operation": "multiply_base",
-			"value": 0.5
+			"operation": "multiply_base_additive",
+			"amount": 0.5
 		},
 		"condition": {
 			"type": "origins:and",

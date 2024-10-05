@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "kitsune.thfluffy4.name",
-	"description": "kitsune.thfluffy4.description",
+	"name": { "translate": "kitsune.thfluffy4.name" },
+	"description": { "translate": "kitsune.thfluffy4.description" },
 	"badges": [
 		{
 			"type": "origins:keybind",
@@ -51,8 +51,8 @@
 				"condition": {
 					"type": "origins:target_condition",
 					"condition": {
-						"type": "origins:entity_group",
-						"group": "undead"
+						"type": "origins:in_tag",
+						"tag": "minecraft:undead"
 					}
 				},
 				"if_action": {
@@ -84,7 +84,7 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"effect": "minecraft:luck",
+										"id": "minecraft:luck",
 										"amplifier": 4,
 										"duration": 3,
 										"is_ambient": true,
@@ -92,7 +92,7 @@
 										"show_particles": false
 									},
 									{
-										"effect": "minecraft:regeneration",
+										"id": "minecraft:regeneration",
 										"amplifier": 4,
 										"duration": 3,
 										"is_ambient": true,
@@ -129,19 +129,19 @@
 							},
 							{
 								"type": "origins:clear_effect",
-								"effect": "minecraft:poison"
+								"id": "minecraft:poison"
 							},
 							{
 								"type": "origins:clear_effect",
-								"effect": "minecraft:wither"
+								"id": "minecraft:wither"
 							},
 							{
 								"type": "origins:clear_effect",
-								"effect": "minecraft:unluck"
+								"id": "minecraft:unluck"
 							},
 							{
 								"type": "origins:clear_effect",
-								"effect": "minecraft:bad_omen"
+								"id": "minecraft:bad_omen"
 							},
 							{
 								"type": "origins:execute_command",

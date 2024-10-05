@@ -1,7 +1,7 @@
 {
 	"type": "origins:active_self",
-	"name": "lightning_fox.thelectric_beam.name",
-	"description": "lightning_fox.thelectric_beam.description",
+	"name": { "translate": "lightning_fox.thelectric_beam.name" },
+	"description": { "translate": "lightning_fox.thelectric_beam.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
