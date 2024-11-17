@@ -414,7 +414,7 @@
 										"is_ambient": true
 									},
 									{
-										"effect": "regeneration",
+										"effect": "haste",
 										"amplifier": 0,
 										"duration": 10,
 										"show_icon": true,
@@ -443,7 +443,7 @@
 										"is_ambient": true
 									},
 									{
-										"effect": "regeneration",
+										"effect": "haste",
 										"amplifier": 0,
 										"duration": 10,
 										"show_icon": true,
@@ -549,34 +549,20 @@
 							},
 							"action": {
 								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "weakness",
-										"amplifier": 1,
-										"duration": 10,
-										"show_icon": true,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
+								"effect": {
+									"effect": "weakness",
+									"amplifier": 1,
+									"duration": 10,
+									"show_icon": true,
+									"show_particles": false,
+									"is_ambient": true
+								}
 							}
 						}
 					]
 				}
 			]
 		}
-	},
-
-	"blue_ification": {
-		"type": "origins:model_color",
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:thtransform_temperature",
-			"compare_to": 500,
-			"comparison": "<="
-		},
-		"green": 0.5,
-		"red": 0.5
 	},
 
 	"food_add_temp_drawback1": {
@@ -645,5 +631,17 @@
 			"compare_to": 500,
 			"comparison": "<="
 		}
+	},
+
+	"blue_ification": {
+		"type": "origins:model_color",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:thtransform_temperature",
+			"compare_to": 500,
+			"comparison": "<="
+		},
+		"green": 0.5,
+		"red": 0.5
 	}
 }
