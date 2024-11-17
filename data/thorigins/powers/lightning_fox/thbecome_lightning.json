@@ -36,7 +36,7 @@
 			"bar_index": 3
 		}
 	},
-	
+
 	"ticks": {
 		"type": "origins:action_over_time",
 		"interval": 1,
@@ -130,16 +130,30 @@
 								"amount": 0.1
 							},
 							{
-								"type": "origins:change_resource",
-								"resource": "*:fox/thfluffy_wetness",
-								"change": 0,
-								"operation": "set"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:fox/thfluffy_wetness",
-								"change": 0,
-								"operation": "set"
+								"type": "origins:delay",
+								"ticks": 1,
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:change_resource",
+											"resource": "*:fox/thfluffy_wetness",
+											"change": 0,
+											"operation": "set"
+										},
+										{
+											"type": "origins:change_resource",
+											"resource": "*:fox/thfluffy_wetness",
+											"change": 0,
+											"operation": "set"
+										},
+										{
+											"type": "origins:change_resource",
+											"resource": "*:fox/thfluffy_effect_timer",
+											"change": -100
+										}
+									]
+								}
 							},
 							{
 								"type": "origins:if_else",
@@ -248,42 +262,6 @@
 					"type": "origins:food_level",
 					"comparison": ">",
 					"compare_to": 6
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "head",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 2
-					}
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "chest",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 6
-					}
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "legs",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 5
-					}
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "feet",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 2
-					}
 				}
 			]
 		},
@@ -382,10 +360,10 @@
 		"type": "origins:overlay",
 		"visible_in_third_person": true,
 		"texture": "minecraft:textures/misc/nausea.png",
-		"red": 0.2,
-		"green": 0.2,
-		"blue": 0.5,
-		"strength": 0.8,
+		"red": 0.1,
+		"green": 0.1,
+		"blue": 0.3,
+		"strength": 0.6,
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_toggle"
@@ -451,9 +429,9 @@
 
 	"water_damage": {
 		"type": "origins:damage_over_time",
-		"interval": 1,
-		"damage": 2,
-		"damage_easy": 1,
+		"interval": 10,
+		"damage": 4,
+		"damage_easy": 4,
 		"damage_type": "origins:hurt_by_water",
 		"protection_effectiveness": 0.2,
 		"protection_enchantment": "origins:water_protection",
