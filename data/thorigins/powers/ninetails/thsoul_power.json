@@ -285,38 +285,47 @@
 									"shape_type": "visual",
 									"fluid_handling": "any",
 									"bientity_action": {
-										"type": "origins:target_action",
-										"action": {
-											"type": "origins:and",
-											"actions": [
-												{
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:damage",
+												"damage_type": "minecraft:magic",
+												"amount": 4,
+												"source": {
+													"name": "magic.player"
+												}
+											},
+											{
+												"type": "origins:target_action",
+												"action": {
 													"type": "origins:if_else",
 													"condition": {
 														"type": "origins:power",
-														"power": "thorigins:ninetails/thcurse",
-														"source": "thorigins:universal"
+														"power": "*:ninetails/thcurse",
+														"source": "thorigins:temp"
 													},
 													"if_action": {
-														"type": "origins:trigger_cooldown",
-														"power": "*:ninetails/thcurse_timer",
+														"type": "origins:change_resource",
+														"resource": "*:ninetails/thcurse_timer",
 														"change": 200
 													},
 													"else_action": {
-														"type": "origins:grant_power",
-														"power": "thorigins:ninetails/thcurse",
-														"source": "thorigins:universal"
-													}
-												},
-												{
-													"type": "origins:damage",
-													"damage_type": "minecraft:magic",
-													"amount": 4,
-													"source": {
-														"name": "magic.player"
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:execute_command",
+																"command": "/playsound minecraft:entity.elder_guardian.curse player @s ~ ~ ~ 0.5 1.3"
+															},
+															{
+																"type": "origins:grant_power",
+																"power": "*:ninetails/thcurse",
+																"source": "thorigins:temp"
+															}
+														]
 													}
 												}
-											]
-										}
+											}
+										]
 									}
 								}
 							]
@@ -414,29 +423,27 @@
 					}
 				},
 				{
+					"type": "origins:damage",
+					"amount": 4,
+					"damage_type": "minecraft:magic",
+					"source": {
+						"name": "magic.player"
+					}
+				},
+				{
 					"type": "origins:target_action",
 					"action": {
 						"type": "origins:and",
 						"actions": [
 							{
 								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "minecraft:wither",
-										"amplifier": 0,
-										"duration": 100,
-										"show_icon": true,
-										"is_ambient": true,
-										"show_particles": false
-									}
-								]
-							},
-							{
-								"type": "origins:damage",
-								"amount": 4,
-								"damage_type": "minecraft:magic",
-								"source": {
-									"name": "magic.player"
+								"effect": {
+									"effect": "minecraft:wither",
+									"amplifier": 0,
+									"duration": 100,
+									"show_icon": true,
+									"is_ambient": true,
+									"show_particles": false
 								}
 							},
 							{

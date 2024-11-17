@@ -365,10 +365,7 @@
 										"bientity_action": {
 											"type": "origins:damage",
 											"amount": 10,
-											"damage_type": "thorigins:foxie_zap",
-											"source": {
-												"name": "thorigins:foxie_zap.player"
-											}
+											"damage_type": "thorigins:foxie_zap"
 										}
 									},
 									{
@@ -440,10 +437,7 @@
 										"bientity_action": {
 											"type": "origins:damage",
 											"amount": 20,
-											"damage_type": "thorigins:foxie_zap",
-											"source": {
-												"name": "thorigins:foxie_zap.player"
-											}
+											"damage_type": "thorigins:foxie_zap"
 										}
 									},
 									{
@@ -515,10 +509,7 @@
 										"bientity_action": {
 											"type": "origins:damage",
 											"amount": 30,
-											"damage_type": "thorigins:foxie_zap",
-											"source": {
-												"name": "thorigins:foxie_zap.item"
-											}
+											"damage_type": "thorigins:foxie_zap"
 										}
 									},
 									{
