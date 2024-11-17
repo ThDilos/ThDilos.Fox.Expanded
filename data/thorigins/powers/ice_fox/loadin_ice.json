@@ -15,13 +15,13 @@
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:resource",
-						"resource": "*:thtransform_lock_fire",
+						"resource": "*:thtransform_lock_ice",
 						"compare_to": 1,
 						"comparison": "=="
 					},
 					"if_action": {
 						"type": "origins:change_resource",
-						"resource": "*:thtransform_lock_fire",
+						"resource": "*:thtransform_lock_ice",
 						"change": -1
 					}
 				},
@@ -46,11 +46,6 @@
 			"actions": [
 				{
 					"type": "origins:change_resource",
-					"resource": "*:fire_fox/ththrust_thrust_burst",
-					"change": -20
-				},
-				{
-					"type": "origins:change_resource",
 					"resource": "*:fox/thfluffy_effect_timer",
 					"change": -40
 				},
@@ -72,7 +67,7 @@
 		}
 	},
 
-	"foxify_fire_fox": {
+	"foxify_ice_fox": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
@@ -90,10 +85,6 @@
 							{
 								"type": "origins:power_active",
 								"power": "*:fox/thfluffy_shake"
-							},
-							{
-								"type": "origins:power_active",
-								"power": "*:fire_fox/thtemperature_shaking"
 							}
 						]
 					},

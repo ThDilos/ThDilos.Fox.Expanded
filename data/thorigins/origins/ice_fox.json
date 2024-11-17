@@ -1,0 +1,20 @@
+{
+	"powers": [
+		"thorigins:fox/thfoxify",
+		"thorigins:thswift2",
+		"thorigins:fox/thfoxiality",
+		"thorigins:ice_fox/thfluffy6",
+		"thorigins:fox/thsmol",
+		"thorigins:fox/thfood",
+		"thorigins:fox/thhunger",
+		"thorigins:fox/thshy",
+		"thorigins:thweak2",
+		"thorigins:fox/thsound",
+
+		"thorigins:ice_fox/loadin_ice"
+	],
+	"icon": "minecraft:snow_block",
+	"impact": 3,
+	"unchoosable": false,
+	"order": 1
+}

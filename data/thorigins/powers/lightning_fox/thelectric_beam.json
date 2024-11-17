@@ -70,7 +70,7 @@
 				},
 				{
 					"type": "origins:execute_command",
-					"command": "/power grant @e[type=!item,distance=..4,limit=5] thorigins:lightning_fox/tharc thorigins:universal"
+					"command": "/power grant @e[type=!item,distance=..4,limit=5] thorigins:lightning_fox/tharc thorigins:temp"
 				}
 			]
 		},
@@ -92,8 +92,8 @@
 						"actions": [
 							{
 								"type": "origins:grant_power",
-								"power": "thorigins:lightning_fox/tharc",
-								"source": "thorigins:universal"
+								"power": "*:lightning_fox/tharc",
+								"source": "thorigins:temp"
 							},
 							{
 								"type": "origins:play_sound",
@@ -113,14 +113,6 @@
 					}
 				}
 			]
-		},
-		"bientity_condition": {
-			"type": "origins:target_condition",
-			"condition": {
-				"type": "origins:origin",
-				"origin": "thorigins:lightning_fox",
-				"inverted": true
-			}
 		}
 	},
 	"condition": {

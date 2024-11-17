@@ -4,18 +4,50 @@
 
 	"__init__": {
 		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/origin set @s origins:origin thorigins:element_fox"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_lock_lightning",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_lock_lightning",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "*:thtransform",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:thtransform",
+						"source": "thorigins:universal"
+					}
+				}
+			]
+		},
 		"entity_action_chosen": {
 			"type": "origins:and",
 			"actions": [
 				{
 					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer",
-					"change": -30
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:fox/thfluffy_timer2",
-					"change": -30
+					"resource": "*:fox/thfluffy_effect_timer",
+					"change": -40
 				},
 				{
 					"type": "origins:change_resource",
@@ -54,68 +86,7 @@
 				},
 				{
 					"type": "origins:execute_command",
-					"command": "/origin set @s origins:origin thorigins:element_fox"
-				}
-			]
-		},
-		"entity_action_added": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:thtransform_lock_lightning",
-						"compare_to": 1,
-						"comparison": "=="
-					},
-					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:thtransform_lock_lightning",
-						"change": -1
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:power",
-						"power": "thorigins:fox/thtrackers",
-						"source": "thorigins:universal",
-						"inverted": true
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "thorigins:fox/thtrackers",
-						"source": "thorigins:universal"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:power",
-						"power": "thorigins:fox/universal_settings",
-						"source": "thorigins:universal",
-						"inverted": true
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "thorigins:fox/universal_settings",
-						"source": "thorigins:universal"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:power",
-						"power": "thorigins:thtransform",
-						"source": "thorigins:universal",
-						"inverted": true
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "thorigins:thtransform",
-						"source": "thorigins:universal"
-					}
+					"command": "/tag @s add foxie"
 				}
 			]
 		}
@@ -130,64 +101,15 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:and",
+						"type": "origins:or",
 						"conditions": [
 							{
-								"type": "origins:resource",
-								"resource": "*:fox/thfoxify_afk_timer",
-								"compare_to": 0,
-								"comparison": "=="
+								"type": "origins:power_active",
+								"power": "*:fox/thshy_shaking_of_fear"
 							},
 							{
-								"type": "origins:command",
-								"command": "/execute if entity @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..0.2,limit=1]",
-								"compare_to": 1,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:resource",
-										"resource": "*:fox/thshy_fear_timer",
-										"comparison": ">",
-										"compare_to": 0
-									},
-									{
-										"type": "origins:and",
-										"conditions": [
-											{
-												"type": "origins:resource",
-												"resource": "*:fox/thfluffy_timer",
-												"compare_to": 28,
-												"comparison": "<="
-											},
-											{
-												"type": "origins:resource",
-												"resource": "*:fox/thfluffy_timer",
-												"compare_to": 0,
-												"comparison": ">"
-											}
-										]
-									},
-									{
-										"type": "origins:and",
-										"conditions": [
-											{
-												"type": "origins:resource",
-												"resource": "*:fox/thfluffy_timer2",
-												"compare_to": 28,
-												"comparison": "<="
-											},
-											{
-												"type": "origins:resource",
-												"resource": "*:fox/thfluffy_timer2",
-												"compare_to": 0,
-												"comparison": ">"
-											}
-										]
-									}
-								]
+								"type": "origins:power_active",
+								"power": "*:fox/thfluffy_shake"
 							}
 						]
 					},
@@ -197,19 +119,16 @@
 					}
 				},
 				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:fox/thfoxify_afk_timer",
-						"compare_to": 1,
-						"comparison": "<="
-					},
-					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
-					}
+					"type": "origins:execute_command",
+					"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
 				}
 			]
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:fox/thfoxify_afk_timer",
+			"compare_to": 0,
+			"comparison": "=="
 		}
 	}
 }

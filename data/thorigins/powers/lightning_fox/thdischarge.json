@@ -803,7 +803,7 @@
 									"amount": 1,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
-										"name": "thorigins:foxie_zap_player"
+										"name": "thorigins:foxie_zap"
 									}
 								}
 							},
@@ -857,7 +857,7 @@
 									"amount": 2,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
-										"name": "thorigins:foxie_zap_player"
+										"name": "thorigins:foxie_zap"
 									}
 								}
 							},
@@ -911,7 +911,7 @@
 									"amount": 3,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
-										"name": "thorigins:foxie_zap_player"
+										"name": "thorigins:foxie_zap"
 									}
 								}
 							},
@@ -998,7 +998,7 @@
 									"amount": 1,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
-										"name": "thorigins:foxie_zap_player"
+										"name": "thorigins:foxie_zap"
 									}
 								}
 							},
@@ -1043,7 +1043,7 @@
 									"amount": 1,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
-										"name": "thorigins:foxie_zap_player"
+										"name": "thorigins:foxie_zap"
 									}
 								}
 							},

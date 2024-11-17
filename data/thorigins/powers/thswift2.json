@@ -9,152 +9,11 @@
 			"text": "origin.thorigin.passive"
 		},
 		{
-			"type": "origins:tooltip",
+			"type": "origins:keybind",
 			"sprite": "origins:textures/gui/badge/info.png",
-			"text": {
-				"translate": "thswift2.info"
-			}
+			"text": "thswift2.info"
 		}
 	],
-
-	"ticks": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:nbt",
-						"nbt": "{ \"Tags\": [\"foxie\"] }"
-					},
-					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s remove foxie"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:command",
-										"command": "/resource get @s thorigins:fire_fox/thcannon_ammo",
-										"compare_to": 0,
-										"comparison": "=="
-									},
-									{
-										"type": "origins:command",
-										"command": "/resource get @s thorigins:fire_fox/ththrust_fall_flying_check",
-										"compare_to": 0,
-										"comparison": "=="
-									}
-								]
-							},
-							{
-								"type": "origins:fall_distance",
-								"compare_to": 2.5,
-								"comparison": ">"
-							},
-							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:and",
-										"conditions": [
-											{
-												"type": "origins:fall_distance",
-												"compare_to": 86,
-												"comparison": "<"
-											},
-											{
-												"type": "origins:status_effect",
-												"effect": "jump_boost",
-												"min_amplifier": 1,
-												"max_amplifier": 127
-											}
-										]
-									},
-									{
-										"type": "origins:and",
-										"conditions": [
-											{
-												"type": "origins:fall_distance",
-												"compare_to": 62,
-												"comparison": "<"
-											},
-											{
-												"type": "origins:status_effect",
-												"effect": "jump_boost",
-												"min_amplifier": 0,
-												"max_amplifier": 0
-											}
-										]
-									},
-									{
-										"type": "origins:fall_distance",
-										"compare_to": 34,
-										"comparison": "<"
-									}
-								]
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_fall_threshold",
-						"change": 0,
-						"operation": "set"
-					},
-					"else_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_fall_threshold",
-						"change": 1,
-						"operation": "set"
-					}
-				}
-			]
-		}
-	},
-
-	"fall_threshold": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 1,
-		"start_value": 0,
-		"hud_render": { "should_render": false }
-	},
-
-	"remove_fall_sound": {
-		"type": "origins:modify_falling",
-		"velocity": 0.08,
-		"take_fall_damage": false,
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource": "*:*_fall_threshold",
-					"compare_to": 0,
-					"comparison": "=="
-				},
-				{
-					"type": "origins:block_collision",
-					"offset_y": -2,
-					"offset_x": 0,
-					"offset_z": 0,
-					"block_condition": {
-						"type": "origins:movement_blocking"
-					}
-				}
-			]
-		}
-	},
 
 	"reduce_falldmg": {
 		"type": "origins:modify_damage_taken",
@@ -171,7 +30,7 @@
 		}
 	},
 
-	"fall_damage_failsafe": {
+	"remove_falldmg": {
 		"type": "origins:invulnerability",
 		"damage_condition": {
 			"type": "origins:name",
@@ -185,6 +44,22 @@
 					"command": "/resource get @s thorigins:fire_fox/ththrust_fall_flying_check",
 					"compare_to": 3,
 					"comparison": "<="
+				},
+				{
+					"type": "origins:and",
+					"inverted": true,
+					"conditions": [
+						{
+							"type": "origins:power",
+							"power": "thorigins:fire_fox/ththrust"
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:fire_fox/ththrust_fall_flying_check",
+							"compare_to": 2,
+							"comparison": ">="
+						}
+					]
 				},
 				{
 					"type": "origins:or",

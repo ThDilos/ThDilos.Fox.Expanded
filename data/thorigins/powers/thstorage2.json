@@ -18,6 +18,11 @@
 					"translate": "thstorage2.key"
 				}
 			]
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "thstorage.info"
 		}
 	],
 

@@ -114,28 +114,6 @@
 						"resource": "*:*_biglaser_charge",
 						"change": -1
 					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:nbt",
-								"nbt": "{\"Tags\":[\"laser\"]}"
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_turn_off_cd",
-								"compare_to": 0,
-								"comparison": "=="
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s remove laser"
-					}
 				}
 			]
 		}
@@ -318,21 +296,47 @@
 		"entity_action": {
 			"type": "origins:if_else",
 			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_ammo",
-				"compare_to": 4,
-				"comparison": "<"
+				"type": "origins:sneaking"
 			},
 			"if_action": {
-				"type": "origins:change_resource",
-				"resource": "*:*_ammo",
-				"change": 1
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:resource",
+					"resource": "*:*_ammo",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				"if_action": {
+					"type": "origins:change_resource",
+					"resource": "*:*_ammo",
+					"change": 4,
+					"operation": "set"
+				},
+				"else_action": {
+					"type": "origins:change_resource",
+					"resource": "*:*_ammo",
+					"change": -1
+				}
 			},
 			"else_action": {
-				"type": "origins:change_resource",
-				"resource": "*:*_ammo",
-				"change": 0,
-				"operation": "set"
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:resource",
+					"resource": "*:*_ammo",
+					"compare_to": 4,
+					"comparison": "<"
+				},
+				"if_action": {
+					"type": "origins:change_resource",
+					"resource": "*:*_ammo",
+					"change": 1
+				},
+				"else_action": {
+					"type": "origins:change_resource",
+					"resource": "*:*_ammo",
+					"change": 0,
+					"operation": "set"
+				}
 			}
 		}
 	},
@@ -480,33 +484,14 @@
 								"type": "origins:and",
 								"actions": [
 									{
-										"type": "origins:if_else",
-										"condition": {
-											"type": "origins:nbt",
-											"nbt": "{\"Tags\":[\"laser\"]}",
-											"inverted": true
-										},
-										"if_action": {
-											"type": "origins:execute_command",
-											"command": "/tag @s add laser"
-										}
-									},
-									{
 										"type": "origins:raycast",
 										"distance": 30,
 										"command_step": 0.2,
 										"fluid_handling": "none",
-										"command_along_ray": "/function thorigins:cannon/cannon_particle",
+										"command_along_ray": "/function thorigins:cannon/laser_particle",
 										"block_action": {
 											"type": "origins:and",
 											"actions": [
-												{
-													"type": "origins:explode",
-													"destruction_type": "break",
-													"create_fire": true,
-													"power": 0.25,
-													"damage_self": false
-												},
 												{
 													"type": "origins:execute_command",
 													"command": "/particle minecraft:lava ~ ~ ~ 0 0 0 20 2"
@@ -534,10 +519,45 @@
 										},
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 1,
+											"amount": 2,
 											"damage_type": "minecraft:on_fire.player",
 											"source": {
 												"name": "onFire.player"
+											}
+										}
+									},
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:resource",
+											"resource": "*:fox/universal_settings_destroy_terrain",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										"if_action": {
+											"type": "origins:raycast",
+											"distance": 30,
+											"command_step": 0.2,
+											"fluid_handling": "none",
+											"block_action": {
+												"type": "origins:explode",
+												"destruction_type": "break",
+												"create_fire": true,
+												"power": 0.25,
+												"damage_self": false
+											}
+										},
+										"else_action": {
+											"type": "origins:raycast",
+											"distance": 30,
+											"command_step": 0.2,
+											"fluid_handling": "none",
+											"block_action": {
+												"type": "origins:explode",
+												"destruction_type": "none",
+												"create_fire": true,
+												"power": 0.25,
+												"damage_self": false
 											}
 										}
 									},
@@ -671,7 +691,7 @@
 			]
 		}
 	},
-
+	
 	"cannon1": {
 		"type": "origins:fire_projectile",
 		"count": 1,
@@ -692,6 +712,60 @@
 		"condition": {
 			"type": "origins:and",
 			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/universal_settings_destroy_terrain",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_warmup",
+					"comparison": "==",
+					"compare_to": 20
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_ammo",
+					"comparison": "==",
+					"compare_to": 2
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_cannon1_cd",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+
+	"cannon1_no_destroy": {
+		"type": "origins:fire_projectile",
+		"count": 1,
+		"cooldown": 0,
+		"sound": "minecraft:item.firecharge.use",
+		"key": {
+			"key": "key.origins.primary_active",
+			"continuous": true
+		},
+		"interval": 1,
+		"divergence": 0,
+		"entity_type": "fireball",
+		"speed": 0.5,
+		"hud_render": {
+			"should_render": false
+		},
+		"tag": "{ ExplosionPower:0.1 }",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/universal_settings_destroy_terrain",
+					"compare_to": 0,
+					"comparison": "=="
+				},
 				{
 					"type": "origins:resource",
 					"resource": "*:*_warmup",
@@ -721,79 +795,115 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:execute_command",
-					"command": "/tag @s add cannon_shooter"
-				},
-				{
 					"type": "origins:delay",
 					"ticks": 1,
 					"action": {
-						"type": "origins:raycast",
-						"shape_type": "visual",
-						"block": true,
-						"entity": false,
-						"fluid_handling": "none",
-						"distance": 150,
-						"command_step": 1,
-						"command_along_ray": "/function thorigins:cannon/biglaser_particle",
-						"before_action": {
-							"type": "origins:and",
-							"actions": [
-								{
-									"type": "origins:execute_command",
-									"command": "/playsound minecraft:entity.allay.hurt player @s ~ ~ ~ 1 0.5"
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:raycast",
+								"shape_type": "visual",
+								"block": true,
+								"entity": false,
+								"fluid_handling": "none",
+								"distance": 150,
+								"command_step": 1,
+								"before_action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/playsound minecraft:entity.allay.hurt player @s ~ ~ ~ 1 0.5"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/playsound minecraft:entity.vex.hurt player @s ~ ~ ~ 1 1"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/playsound minecraft:entity.dragon_fireball.explode player @s ~ ~ ~ 2 1.5"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/playsound minecraft:entity.wither.death player @s ~ ~ ~ 2 2"
+										}
+									]
 								},
-								{
-									"type": "origins:execute_command",
-									"command": "/playsound minecraft:entity.vex.hurt player @s ~ ~ ~ 1 1"
-								},
-								{
-									"type": "origins:execute_command",
-									"command": "/playsound minecraft:entity.dragon_fireball.explode player @s ~ ~ ~ 2 1.5"
-								},
-								{
-									"type": "origins:execute_command",
-									"command": "/playsound minecraft:entity.wither.death player @s ~ ~ ~ 2 2"
-								}
-							]
-						},
-						"block_action": {
-							"type": "origins:and",
-							"actions": [
-								{
-									"type": "origins:explode",
-									"create_fire": true,
-									"damage_self": false,
-									"destruction_type": "destroy",
-									"power": 10
-								},
-								{
-									"type": "origins:execute_command",
-									"command": "/tag @e[distance=..8,tag=!cannon_shooter,tag=!crepr] add cannon_target"
-								},
-								{
-									"type": "origins:delay",
-									"ticks": 1,
-									"action": {
-										"type": "origins:and",
-										"actions": [
-											{
-												"type": "origins:execute_command",
-												"command": "/fill ~2 ~4 ~8 ~-2 ~-4 ~-8 fire replace air"
-											},
-											{
-												"type": "origins:execute_command",
-												"command": "/fill ~8 ~4 ~2 ~-8 ~-4 ~-2 fire replace air"
-											},
-											{
-												"type": "origins:execute_command",
-												"command": "/fill ~2 ~8 ~2 ~-2 ~-8 ~-2 fire replace air"
+								"block_action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/tag @e[distance=..8,,tag=!crepr] add cannon_target"
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 1,
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "/fill ~2 ~4 ~8 ~-2 ~-4 ~-8 fire replace air"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/fill ~8 ~4 ~2 ~-8 ~-4 ~-2 fire replace air"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/fill ~2 ~8 ~2 ~-2 ~-8 ~-2 fire replace air"
+													}
+												]
 											}
-										]
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:fox/universal_settings_destroy_terrain",
+									"compare_to": 1,
+									"comparison": "=="
+								},
+								"if_action": {
+									"type": "origins:raycast",
+									"shape_type": "visual",
+									"block": true,
+									"entity": false,
+									"fluid_handling": "none",
+									"distance": 150,
+									"command_step": 1,
+									"command_along_ray": "/function thorigins:cannon/biglaser_with_creeper",
+									"before_action": {
+										"type": "origins:explode",
+										"create_fire": true,
+										"damage_self": false,
+										"destruction_type": "destroy",
+										"power": 10
+									}
+								},
+								"else_action": {
+									"type": "origins:raycast",
+									"shape_type": "visual",
+									"block": true,
+									"entity": false,
+									"fluid_handling": "none",
+									"distance": 150,
+									"command_step": 1,
+									"command_along_ray": "/function thorigins:cannon/biglaser_only_particle",
+									"before_action": {
+										"type": "origins:explode",
+										"create_fire": true,
+										"damage_self": false,
+										"destruction_type": "none",
+										"power": 10
 									}
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				{
@@ -811,30 +921,25 @@
 							}
 						},
 						"bientity_action": {
-							"type": "origins:damage",
-							"amount": 30,
-							"damage_type": "minecraft:fireworks",
-							"source": {
-								"name": "fireworks.player"
-							}
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:damage",
+									"amount": 30,
+									"damage_type": "minecraft:fireworks",
+									"source": {
+										"name": "fireworks.player"
+									}
+								},
+								{
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:execute_command",
+										"command": "/tag @s remove cannon_target"
+									}
+								}
+							]
 						}
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 2,
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:execute_command",
-								"command": "/tag @s remove cannon_shooter"
-							},
-							{
-								"type": "origins:execute_command",
-								"command": "/tag @e[tag=cannon_target] remove cannon_target"
-							}
-						]
 					}
 				},
 				{
@@ -1066,18 +1171,10 @@
 	},
 
 	"warmup_no_jumping": {
-		"type": "origins:action_over_time",
-		"interval": 1,
-		"entity_action": {
-			"type": "origins:apply_effect",
-			"effect": {
-				"effect": "minecraft:jump_boost",
-				"amplifier": 128,
-				"duration": 5,
-				"is_ambient": true,
-				"show_icon": false,
-				"show_particles": false
-			}
+		"type": "origins:modify_jump",
+		"modifier": {
+			"value": 0,
+			"operation": "set_total"
 		},
 		"condition": {
 			"type": "origins:resource",

@@ -23,7 +23,7 @@
 				{
 					"type": "origins:grant_power",
 					"power": "*:fox/thfluffy",
-					"source": "thorigins:temporal"
+					"source": "thorigins:inherited"
 				},
 				{
 					"type": "origins:delay",
@@ -32,12 +32,14 @@
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:execute_command",
-								"command": "/power remove @s thorigins:fox/thfluffy_more_fire_exp_dmg"
+								"type": "origins:revoke_power",
+								"power": "*:fox/thfluffy_more_fire_exp_dmg",
+								"source": "thorigins:inherited"
 							},
 							{
-								"type": "origins:execute_command",
-								"command": "/power remove @s thorigins:fox/thfluffy_no_freezing"
+								"type": "origins:revoke_power",
+								"power": "*:fox/thfluffy_no_freezing",
+								"source": "thorigins:inherited"
 							}
 						]
 					}
@@ -47,7 +49,7 @@
 		"entity_action_lost": {
 			"type": "origins:revoke_power",
 			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
+			"source": "thorigins:inherited"
 		}
 	},
 
@@ -66,13 +68,13 @@
 						{
 							"type": "origins:resource",
 							"resource": "*:fox/thfluffy_wetness",
-							"compare_to": 100,
+							"compare_to": 50,
 							"comparison": "<"
 						},
 						{
 							"type": "origins:resource",
 							"resource": "*:fox/thfluffy_snowness",
-							"compare_to": 100,
+							"compare_to": 50,
 							"comparison": "<"
 						}
 					]
@@ -80,7 +82,7 @@
 				{
 					"type": "origins:resource",
 					"resource": "*:thtransform_temperature",
-					"compare_to": 100,
+					"compare_to": 500,
 					"comparison": ">"
 				}
 			]

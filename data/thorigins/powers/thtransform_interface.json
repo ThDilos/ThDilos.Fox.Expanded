@@ -48,7 +48,7 @@
 					},
 					"if_action": {
 						"type": "origins:grant_power",
-						"power": "thorigins:thtransform",
+						"power": "*:thtransform",
 						"source": "thorigins:universal"
 					}
 				}
