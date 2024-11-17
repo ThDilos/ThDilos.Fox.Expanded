@@ -8,13 +8,13 @@ ThDilos' Custom Made Fox Origins Expanded. Moderately overpowered.
 
 [[mods]]
 modId="thorigins2"
-version="3.0.0"
+version="3.1.0"
 displayName="ThDilos Fox Origins Expanded"
 
 [[dependencies.thorigins2]]
 modId="thorigins"
 mandatory=true
-versionRange="[4.0.1,)"
+versionRange="[4.1.0,)"
 ordering="NONE"
 side="BOTH"
 
