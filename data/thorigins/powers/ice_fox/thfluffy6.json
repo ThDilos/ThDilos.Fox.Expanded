@@ -1,0 +1,243 @@
+{
+	"type": "origins:multiple",
+	"name": "ice_fox.thfluffy6.name",
+	"description": "ice_fox.thfluffy6.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"text": "origin.thorigin.passive",
+			"sprite": "minecraft:textures/block/white_wool.png"
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "thfluffy6.info"
+		}
+	],
+
+	"original_thfluffy_power": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:grant_power",
+					"power": "*:fox/thfluffy",
+					"source": "thorigins:inherited"
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:revoke_power",
+								"power": "*:fox/thfluffy_more_fire_exp_dmg",
+								"source": "thorigins:inherited"
+							},
+							{
+								"type": "origins:revoke_power",
+								"power": "*:fox/thfluffy_no_freezing",
+								"source": "thorigins:inherited"
+							}
+						]
+					}
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
+		}
+	},
+
+	"total_freeze_immunity": {
+		"type": "origins:invulnerability",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "freeze"
+		}
+	},
+
+	"hardened_fur": {
+		"type": "origins:attribute",
+		"modifiers": [
+			{
+				"attribute": "minecraft:generic.armor",
+				"operation": "addition",
+				"value": 6,
+				"name": "Ice Fox Hardened Fur"
+			},
+			{
+				"attribute": "minecraft:generic.armor_toughness",
+				"operation": "addition",
+				"value": 6,
+				"name": "Ice Fox Hardened Fur"
+			}
+		]
+	},
+
+	"magnified_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:fire"
+		},
+		"modifier": {
+			"name": "Ice Fox Fire Weakness",
+			"operation": "multiply_total",
+			"value": 3
+		}
+	},
+
+	"freezing_fur": {
+		"type": "origins:action_over_time",
+		"interval": 5,
+		"entity_action": {
+			"type": "origins:area_of_effect",
+			"radius": 0.8,
+			"bientity_action": {
+				"type": "origins:target_action",
+				"action": {
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:if_else",
+							"condition": {
+								"type": "origins:origin",
+								"layer": "thorigins:origin",
+								"origin": "thorigins:fire_fox"
+							},
+							"if_action": {
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_temperature",
+								"change": -100
+							}
+						},
+						{
+							"type": "origins:if_else",
+							"condition": {
+								"type": "origins:power",
+								"power": "*:ice_fox/thfreeze",
+								"source": "thorigins:temp"
+							},
+							"if_action": {
+								"type": "origins:change_resource",
+								"resource": "thorigins:ice_fox/thfreeze_timer",
+								"change": 20
+							},
+							"else_action": {
+								"type": "origins:grant_power",
+								"power": "*:ice_fox/thfreeze",
+								"source": "thorigins:temp"
+							}
+						}
+					]
+				}
+			},
+			"bientity_condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:riding",
+						"inverted": true
+					},
+					{
+						"type": "origins:invert",
+						"condition": {
+							"type": "origins:riding",
+							"inverted": true
+						}
+					},
+					{
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:actor_condition",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:fox/thfoxify_afk_timer",
+									"compare_to": 0,
+									"comparison": ">"
+								}
+							},
+							{
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:actor_condition",
+										"condition": {
+											"type": "origins:resource",
+											"resource": "*:fox/thfoxify_afk_timer",
+											"compare_to": 0,
+											"comparison": "=="
+										}
+									},
+									{
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:riding",
+											"bientity_condition": {
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:nbt",
+													"nbt": "{\"Tags\":[\"sleepin\"]}"
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:living"
+						}
+					}
+				]
+			}
+		}
+	},
+
+	"frozen_water_drag": {
+		"type": "origins:modify_swim_speed",
+		"modifier": {
+			"value": -0.2,
+			"operation": "multiply_total",
+			"name": "Ice Fox Frozen Water Drag"
+		}
+	},
+
+	"damage_reduction": {
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.5,
+			"name": "Ice Fox Hardened Fur Shield"
+		},
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:attacker",
+					"entity_condition": {
+						"type": "origins:equipped_item",
+						"equipment_slot": "mainhand",
+						"item_condition": {
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "swords"
+							}
+						}
+					}
+				},
+				{
+					"type": "origins:projectile"
+				}
+			]
+		}
+	}
+}

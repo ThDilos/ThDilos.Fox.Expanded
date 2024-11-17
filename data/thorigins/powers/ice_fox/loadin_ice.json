@@ -1,0 +1,109 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"__init__": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/origin set @s origins:origin thorigins:element_fox"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:thtransform_lock_ice",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:thtransform_lock_ice",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "*:thtransform",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:thtransform",
+						"source": "thorigins:universal"
+					}
+				}
+			]
+		},
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fox/thfluffy_effect_timer",
+					"change": -40
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fox/thshy_fear_timer",
+					"change": -100
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:fox/thfoxify_afk_timer",
+					"change": 1200
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @s add foxie"
+				}
+			]
+		}
+	},
+
+	"foxify_ice_fox": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:power_active",
+								"power": "*:fox/thshy_shaking_of_fear"
+							},
+							{
+								"type": "origins:power_active",
+								"power": "*:fox/thfluffy_shake"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_shake_timer 3"
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/resource set @e[type=fox,nbt={NoAI:1b},tag=sleepin,distance=..1,limit=1] thorigins:fox/thsleepin_fox_invis_timer 50"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:fox/thfoxify_afk_timer",
+			"compare_to": 0,
+			"comparison": "=="
+		}
+	}
+}

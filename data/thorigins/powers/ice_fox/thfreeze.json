@@ -1,0 +1,70 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"ticks_5": {
+		"type": "origins:action_over_time",
+		"interval": 5,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_timer",
+					"change": -5
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_timer",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:revoke_power",
+						"power": "*:ice_fox/thfreeze",
+						"source": "thorigins:temp"
+					}
+				}
+			]
+		}
+	},
+
+	"timer": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 100,
+		"start_value": 5,
+		"min_action": {
+			"type": "origins:revoke_power",
+			"power": "*:ice_fox/thfreeze",
+			"source": "thorigins:temp"
+		}
+	},
+
+	"freeze": {
+		"type": "origins:freeze"
+	},
+
+	"blue_ification": {
+		"type": "origins:model_color",
+		"blue": 0.9,
+		"green": 0.7,
+		"red": 0.7,
+		"condition": {
+			"type": "origins:nbt",
+			"nbt": "{\"TicksFrozen\":140}"
+		}
+	},
+
+	"shake": {
+		"type": "origins:shaking",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_timer",
+			"compare_to": 50,
+			"comparison": ">"
+		}
+	}
+}
