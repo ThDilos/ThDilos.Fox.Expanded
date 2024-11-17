@@ -56,13 +56,41 @@
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:power",
-						"power": "thorigins:thkarma",
+						"power": "*:thkarma",
 						"source": "thorigins:universal",
 						"inverted": true
 					},
 					"if_action": {
 						"type": "origins:grant_power",
-						"power": "thorigins:thkarma",
+						"power": "*:thkarma",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "*:fox/thtrackers",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:fox/thtrackers",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power",
+						"power": "*:fox/universal_settings",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:fox/universal_settings",
 						"source": "thorigins:universal"
 					}
 				},
@@ -205,22 +233,22 @@
 						"actions": [
 							{
 								"type": "origins:revoke_power",
-								"power": "thorigins:thkarma",
+								"power": "*:thkarma",
 								"source": "thorigins:universal"
 							},
 							{
 								"type": "origins:revoke_power",
-								"power": "thorigins:thtransform",
+								"power": "*:thtransform",
 								"source": "thorigins:universal"
 							},
 							{
 								"type": "origins:revoke_power",
-								"power": "thorigins:fox/thtrackers",
+								"power": "*:fox/thtrackers",
 								"source": "thorigins:universal"
 							},
 							{
 								"type": "origins:revoke_power",
-								"power": "thorigins:fox/universal_settings",
+								"power": "*:fox/universal_settings",
 								"source": "thorigins:universal"
 							},
 							{
@@ -778,6 +806,29 @@
 				{
 					"type": "origins:execute_command",
 					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\":\"true\"}"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"volume": 1.0,
+					"pitch": 1.0
+				}
+			]
+		},
+		"hud_render": { "should_render": false }
+	},
+
+	"lock_ice": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ice\",\"color\":\"yellow\",\"bold\":\"true\"}"
 				},
 				{
 					"type": "origins:play_sound",
