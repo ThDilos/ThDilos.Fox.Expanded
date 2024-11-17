@@ -19,15 +19,15 @@
 
 	"thchoice.name": "§6§l§nPower Array",
 	"thchoice.description": "Switch among all your active abilities freely.",
-	"thchoice.key": "] to switch to the next active ability",
+	"thchoice.key": "] to switch to the next active ability\nIf pressed while sneaking, switch to the previous active ability instead",
 
 	"thswift2.name": "§a§nAgility++",
 	"thswift2.description": "Your fox body has truly transcended, to a state beyond normal foxes' comprehension.",
-	"thswift2.info": "[§a+§r] §aFaster§r speed and §ahigher§r jumping when sprinting\n[§a+§r] Sprint a little bit faster when not holding an item\n[§a+§r] Ignore fall distance < §a36§r\n[§a+§r] Crouch when falling will reduce §amost§r of the fall damage",
+	"thswift2.info": "[§a+§r] §aFaster§r speed and §ahigher§r jumping when sprinting\n[§a+§r] Sprint a little bit faster when not holding an item\n[§a+§r] Ignore fall distance < §a36§r\n[§a+§r] §e§nCrouch§r when §6landing§r will neglect §a§lmost§r of the fall damage",
 
 	"thshy2.name": "§c§nTimidity++",
 	"thshy2.description": "Out of the foodchain, you no longer fear your natural predators.",
-	"thshy2.info": "[§c-§r] Shake, and get Weakness + Speed effects when:\n§b1§r. Near §mpolar bear§r / §mwolf§r / villager / warden / wither / ender dragon\n§b2§r. Spawn of lightning\n§b3§r. Low health\n§b4§r. In the other 2 dimensions\n§b5§r. Near Human / Enderian / Blazeborn / Shulk Origin Player\n\n[§c-§r] Unable to fall asleep when the above effect is present\n\nThere are ways to conquer most of these fears\n\n",
+	"thshy2.info": "[§c-§r] Shake, and get Weakness + Speed effects when:\n§b1§r. Near §c§mPolar Bear§r / §c§mWolf§r / §6Villager§r / §1Warden§r / §7Wither§r / §5Ender Dragon§r\n§b2§r. Spawn of §eLightning§r\n§b3§r. Low §cHealth§r\n§b4§r. In the other 2 Dimensions\n§b5§r. Near Human / Enderian / Blazeborn / Shulk Origin Player\n\n[§c-§r] Can't fall asleep when the above effects are present\n\n",
 
 	"thweak2.name": "§c§nWeak++",
 	"thweak2.description": "You are now strong enough to wear the heaviest armor.",
@@ -70,7 +70,7 @@
 
 	"lightning_fox.thfluffy3.name": "§e§nFluffy*",
 	"lightning_fox.thfluffy3.description": "Your fluff hardens under static charge, turning you into a spikey floof. Might be a bad idea to cuddle...",
-	"thfluffy3.info": "[§e~§r] Have a change to prick surrounding creatures if either of you moved\n[§e~§r] Damage even more if either of you sprinted\n[§a+§r] Stay sneaking to not hurt anyone with your fluff",
+	"thfluffy3.info": "[§e~§r] Have a chance to prick surrounding creatures if either of you moved\n[§e~§r] Damage even more if either of you sprinted\n[§a+§r] Stay sneaking to not hurt anyone with your fluff",
 
 	"death.attack.thorigins:foxie_zap": "%s tried to become a battery but failed horribly.",
 	"death.attack.thorigins:foxie_zap.player": "%1$s received too many charges from %2$s.",
@@ -114,17 +114,17 @@
 	"kitsune.thchoice.info": "Power Index\n§b0§r. Pounce++\n§b1§r. Ascension\n§b2§r. Tail Pouch\n§b3§r. Spiritual Grace",
 
 	"kitsune.thdash2.name": "§6§l§nPounce++",
-	"kitsune.thdash2.description": "You have specialised in travelling by pouncing.",
+	"kitsune.thdash2.description": "Your divine body is lighter than before, you can now pounce longer.",
 	"thdash2.info": "[§a+§r] Pounce Further\n[§a+§r] Infinite Pounce before landing\n[§a+§r] Greatly Reduced Exhaustion\n[§a+§r] Pounce-Added Reach increased",
 
 	"kitsune.thhunt2.name": "§6§l§nHunt++",
-	"kitsune.thhunt2.description": "You can now notice the creatures within a further distance.",
-	"thhunt2.info": "You can still move around while invisible.\nMost efficient when used with [§6§lPounce++§r]\n\n[§a+§r] Sense Range is doubled\n[§a+§r] Prepare Stage is shorten by 50%\n[§a+§r] Falling and Pounce no longer reset Prepare Stage",
+	"kitsune.thhunt2.description": "You can feel the essence of creatures around you, boosting your sensing ability to a longer range.",
+	"thhunt2.info": "\n\n[§a+§r] Sense Range is doubled\n[§a+§r] Prepare Stage is shorten by 50%\n[§a+§r] Falling and Pounce no longer reset Prepare Stage",
 
 	"thstorage2.name": "§6§l§nTail Pouch",
-	"thstorage2.description": "Hide items in your tails.",
+	"thstorage2.description": "Hide items in your nine fluffy tails.",
 	"thstorage2.key": "] to store items in your tails",
-	"thorigins.fox.container.inventory2": "Tail fluff :3",
+	"thorigins.fox.container.inventory2": "Fluffy Tail Dimensions",
 
 	"kitsune.thphasing.name": "§6§l§nAscension",
 	"kitsune.thphasing.description": "Your body transcends the normal realm, no longer bounded by the physical world.",
@@ -153,15 +153,15 @@
 
 	"kitsune.thfoxiality2.name": "§e§nFoxiality++",
 	"kitsune.thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
-	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys\n[§a+§r] Ignore berry bushes\n[§a+§r] Climb up powder snow\n§m[§c-§r§m] Anger wolves and polar bears§r\n[§c-§r] Wolves and Polar Bears do more damage to you\n[§a+§r] Trusted by foxes\n[§a+§r] Receive a random item when waking up\n[§c-§r] Unable to fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)",
+	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against prey mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n§m[§c-§r§m] Anger wolves and polar bears§r",
 
 	"origin.thorigins.ninetails.name": "Ninetails",
 	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
 
-	"ninetails.thchoice.info": "Power Index\n§b0§r. Pounce++\n§b1§r. Reclamation \n§b2§r. Tail Pouch\n§b3§r. Soul Dominion",
+	"ninetails.thchoice.info": "Power Index\n§b0§r. Pounce++\n§b1§r. Abyssion \n§b2§r. Tail Pouch\n§b3§r. Soul Dominion",
 
 	"ninetails.thdash3.name": "§6§l§nPounce++",
-	"ninetails.thdash3.description": "You have specialised in killing creatures by pouncing.",
+	"ninetails.thdash3.description": "§o\"When you move, fall like a thunder bolt.\"§r",
 	"thdash3.info": "[§a+§r] Maximum Pounce before landing significantly increased\n[§a+§r] Pounce-Enhanced Damage Increased\n[§a+§r] Pounce-Added Reach increased\n[§a+§r] Reduced Cooldown\n[§a+§r] Greatly Reduced Exhaustion\n[§a+§r] Pouncing kill will reset the first pounce's cooldown",
 
 	"ninetails.thsoul_power.name": "§6§l§nSoul Dominion",
@@ -177,8 +177,9 @@
 	"thcurse.milk": "§4Your attempt to lift the curse with milk was refused >:3",
 
 	"ninetails.thhunt3.name": "§6§l§nHunt++",
-	"ninetails.thhunt3.description": "You know every weak spot on your preys.",
-	"thhunt3.info": "You can still move around while invisible\nMost efficient when used with [§6§lPounce++§r]\n\n[§a+§r] Doubled Hunt duration\n[§a+§r] Buffed Extra Strike effects\n[§a+§r] Always Mid-Night Damage Buff in Hunt Stage\n[§a+§r] Slightly reducing received damage in Hunt Stage\n[§a+§r] Sense Effect prolonged to the end of Hunt",
+	"ninetails.thhunt3.description": "You stare directly into your preys' soul. exploiting every weak spot on them.",
+	"thhunt3.info0": "\n\n[§a+§r] Doubled Hunt duration\n[§a+§r] Buffed §5§lEXTRA STRIKE§r effects\n[§a+§r] Always Mid-Night Damage Buff in Hunt Stage\n[§a+§r] Slightly reducing received damage in Hunt Stage\n[§a+§r] Sense Effect prolonged to the end of Hunt",
+	"thhunt3.info1": "Your §5§lEXTRA STRIKE§r has the following effects:\n§b1§r. Applies Weakness + Nausea + §aDarkness§r to your target\n§b2§r. Deals an §aincreased§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Feeds you Foodpoints and §amore Saturation§r\n§b4§r. Extends the Hunt §alonger§r\n§b5§r. §aHeals you 1 health§r",
 
 	"ninetails.thphasing.name": "§6§l§nAbyssion",
 	"ninetails.thphasing.description": "Plunge into the abyss, forsaking the living realm and slipping through the veil of reality.",
@@ -192,8 +193,17 @@
 	"thfear.removed": "§4The oppressive fear fades, leaving you with a sense of uneasy calm",
 
 	"ninetails.thfoxiality3.name": "§e§nFoxiality++",
-	"ninetails.thfoxiality3.description": "You are able to see clearer in the dark, and your natural predators can no longer threaten you.",
-	"thfoxiality3.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys\n[§a+§r] Ignore berry bushes\n[§a+§r] Climb up powder snow\n[§c-§r] Anger wolves and polar bears\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r\n[§a+§r] Trusted by foxes\n[§a+§r] Receive a random item when waking up\n[§c-§r] Unable to fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)",
+	"ninetails.thfoxiality3.description": "You are able to see clearer in the dark, and your natural predators find it harder to threaten you.",
+	"thfoxiality3.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n[§c-§r] Anger wolves and polar bears",
+	"thfoxiality3.info1": "\n[§c-§r] Predators do a §aweakerd§r §5§lEXTRA STRIKE §r§fto you after every hit\n[§e~§r] Wearing armors and Resistance might make your predators' §5§lEXTRA STRIKE §r§ffail",
+	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r",
+
+	"origin.thorigins.ice_fox.name": "Ice Fox",
+	"origin.thorigins.ice_fox.description": "Ice fox W.I.P :3 \nYou aren't supposed to see this\nI'm too lazy to code so all you can have rn is the Fluffy* skill",
+
+	"ice_fox.thfluffy6.name": "Fluffy*",
+	"ice_fox.thfluffy6.description": "Soft Fur with a hard layer of ice beneath, gives you natural armor and resistance to slice and piercing. but swim slow cuz water freezes around you and increases drag:3333",
+	"thfluffy6.info": "Give chills to everyone around you :3 This power is almost done perhaps?",
 
 	"layer.thorigins.origin.name": "element",
 
@@ -203,5 +213,6 @@
 	"origins.thorigins.unlock.lightning": "You have unlocked Lightning Fox!",
 	"origins.thorigins.unlock.fire": "You have unlocked Fire Fox!",
 	"origins.thorigins.unlock.kitsune": "You have unlocked Kitsune!",
-	"origins.thorigins.unlock.ninetails": "You have unlocked Ninetails!"
+	"origins.thorigins.unlock.ninetails": "You have unlocked Ninetails!",
+	"origins.thorigins.unlock.ice": "You have unlocked Ice Fox!"
 }
