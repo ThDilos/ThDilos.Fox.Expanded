@@ -64,7 +64,7 @@
 		"hud_render": {
 			"should_render": true,
 			"bar_index": 0,
-			"sprite_location": "origins:textures/thdilos_resource_bar.png"
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar.png"
 		}
 	},
 
@@ -170,8 +170,23 @@
 						"type": "origins:fall_flying"
 					},
 					"if_action": {
-						"type": "origins:trigger_cooldown",
-						"power": "*:*_fall_flying_check"
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_fall_flying_check"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:optional_power/thfallsound_fall_disable_api",
+								"change": 1
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:optional_power/thfallsound_fall_disable_api",
+						"change": -1
 					}
 				}
 			]
@@ -181,7 +196,7 @@
 	"flight": {
 		"type": "origins:elytra_flight",
 		"render_elytra": false,
-		"texture_location": "origins:textures/flame_wing.png",
+		"texture_location": "thorigins2:textures/flame_wing.png",
 		"condition": {
 			"type": "origins:and",
 			"conditions": [
@@ -224,7 +239,7 @@
 
 	"elytra_texture": {
 		"type": "origins:elytra_flight",
-		"texture_location": "origins:textures/flame_wing.png",
+		"texture_location": "thorigins2:textures/flame_wing.png",
 		"render_elytra": true,
 		"condition": {
 			"type": "origins:and",
@@ -474,11 +489,27 @@
 						}
 					},
 					"else_action": {
-						"type": "origins:explode",
-						"damage_self": false,
-						"create_fire": true,
-						"destruction_type": "destroy",
-						"power": 5
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:fox/universal_settings_destroy_terrain",
+							"compare_to": 1,
+							"comparison": "=="
+						},
+						"if_action": {
+							"type": "origins:explode",
+							"damage_self": false,
+							"create_fire": true,
+							"destruction_type": "destroy",
+							"power": 5
+						},
+						"else_action": {
+							"type": "origins:explode",
+							"damage_self": false,
+							"create_fire": true,
+							"destruction_type": "none",
+							"power": 5
+						}
 					}
 				},
 				{
@@ -508,15 +539,24 @@
 				},
 				{
 					"type": "origins:name",
-					"name": "fall.player"
-				},
-				{
-					"type": "origins:name",
 					"name": "flyIntoWall"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fire_fox/thcannon_ammo",
+					"compare_to": 0,
+					"comparison": ">"
 				},
 				{
-					"type": "origins:name",
-					"name": "flyIntoWall.player"
+					"type": "origins:resource",
+					"resource": "*:*_clear_delay",
+					"compare_to": 1,
+					"comparison": ">="
 				}
 			]
 		}
