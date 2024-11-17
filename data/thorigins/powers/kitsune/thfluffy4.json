@@ -30,12 +30,12 @@
 		"entity_action_added": {
 			"type": "origins:grant_power",
 			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
+			"source": "thorigins:inherited"
 		},
 		"entity_action_lost": {
 			"type": "origins:revoke_power",
 			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
+			"source": "thorigins:inherited"
 		}
 	},
 
@@ -82,31 +82,40 @@
 						"actions": [
 							{
 								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"effect": "minecraft:luck",
-										"amplifier": 4,
-										"duration": 3,
-										"is_ambient": true,
-										"show_icon": true,
-										"show_particles": false
-									},
-									{
+								"effect": {
+									"effect": "minecraft:luck",
+									"amplifier": 4,
+									"duration": 3,
+									"is_ambient": true,
+									"show_icon": true,
+									"show_particles": false
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:status_effect",
+									"effect": "minecraft:regeneration",
+									"inverted": true
+								},
+								"if_action": {
+									"type": "origins:apply_effect",
+									"effect": {
 										"effect": "minecraft:regeneration",
-										"amplifier": 4,
-										"duration": 3,
+										"amplifier": 1,
+										"duration": 25,
 										"is_ambient": true,
 										"show_icon": true,
 										"show_particles": false
 									}
-								]
+								}
 							},
 							{
 								"type": "origins:if_else",
 								"condition": {
 									"type": "origins:power",
-									"power": "thorigins:ninetails/thcurse",
-									"source": "thorigins:universal"
+									"power": "*:ninetails/thcurse",
+									"source": "thorigins:temp"
 								},
 								"if_action": {
 									"type": "origins:change_resource",
@@ -118,8 +127,8 @@
 								"type": "origins:if_else",
 								"condition": {
 									"type": "origins:power",
-									"power": "thorigins:ninetails/thfear",
-									"source": "thorigins:universal"
+									"power": "*:ninetails/thfear",
+									"source": "thorigins:temp"
 								},
 								"if_action": {
 									"type": "origins:change_resource",

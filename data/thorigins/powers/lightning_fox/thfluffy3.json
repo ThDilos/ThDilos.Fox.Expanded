@@ -30,12 +30,12 @@
 		"entity_action_added": {
 			"type": "origins:grant_power",
 			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
+			"source": "thorigins:inherited"
 		},
 		"entity_action_lost": {
 			"type": "origins:revoke_power",
 			"power": "*:fox/thfluffy",
-			"source": "thorigins:temporal"
+			"source": "thorigins:inherited"
 		}
 	},
 
