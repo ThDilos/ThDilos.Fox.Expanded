@@ -46,10 +46,35 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_choice",
-					"change": 1,
-					"operation": "add"
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:sneaking"
+					},
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_choice",
+							"compare_to": 0,
+							"comparison": "=="
+						},
+						"if_action": {
+							"type": "origins:change_resource",
+							"resource": "*:*_choice",
+							"change": 3,
+							"operation": "set"
+						},
+						"else_action": {
+							"type": "origins:change_resource",
+							"resource": "*:*_choice",
+							"change": -1
+						}
+					},
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_choice",
+						"change": 1
+					}
 				},
 				{
 					"type": "origins:trigger_cooldown",
@@ -114,7 +139,7 @@
 		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/thdilos_resource_bar.png",
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar.png",
 			"bar_index": 3,
 			"condition": {
 				"type": "origins:and",
@@ -143,7 +168,7 @@
 		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/thdilos_resource_bar.png",
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar.png",
 			"bar_index": 1,
 			"condition": {
 				"type": "origins:and",
@@ -172,7 +197,7 @@
 		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/thdilos_resource_bar.png",
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar.png",
 			"bar_index": 2,
 			"condition": {
 				"type": "origins:and",
