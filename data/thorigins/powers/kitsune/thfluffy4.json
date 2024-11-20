@@ -41,7 +41,7 @@
 
 	"blessed_fluff": {
 		"type": "origins:action_over_time",
-		"interval": 3,
+		"interval": 10,
 		"entity_action": {
 			"type": "origins:area_of_effect",
 			"radius": 0.8,
@@ -85,7 +85,7 @@
 								"effect": {
 									"effect": "minecraft:luck",
 									"amplifier": 4,
-									"duration": 3,
+									"duration": 11,
 									"is_ambient": true,
 									"show_icon": true,
 									"show_particles": false

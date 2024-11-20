@@ -40,9 +40,9 @@
 		}
 	],
 
-	"ticks": {
+	"ticks_20": {
 		"type": "origins:action_over_time",
-		"interval": 1,
+		"interval": 20,
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
@@ -57,48 +57,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:*_warmup",
-						"change": -1
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:*_warmup",
-								"compare_to": 0,
-								"comparison": ">"
-							},
-							{
-								"type": "origins:resource",
-								"compare_to": 0,
-								"comparison": "==",
-								"resource": "*:thtransform_temperature"
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_warmup",
-								"change": 0,
-								"operation": "set"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_shoot_permit",
-								"change": -1
-							},
-							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:entity.fox.sleep",
-								"volume": 1
-							}
-						]
+						"change": -20
 					}
 				},
 				{
@@ -107,79 +66,58 @@
 						"type": "origins:resource",
 						"resource": "*:*_warmup",
 						"compare_to": 20,
-						"comparison": "!="
+						"comparison": "<"
 					},
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:*_biglaser_charge",
-						"change": -1
+						"change": -20
 					}
 				}
 			]
 		}
 	},
 
-	"ticks_4": {
+	"ticks_4_heat_laser": {
 		"type": "origins:action_over_time",
 		"interval": 4,
 		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_warmup",
-						"compare_to": 10,
-						"comparison": ">"
-					},
-					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/playsound minecraft:block.beacon.ambient player @s ~ ~ ~ 2 2"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:*_ammo",
-								"compare_to": 3,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_warmup",
-								"compare_to": 20,
-								"comparison": "=="
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:raycast",
-						"distance": 30,
-						"command_step": 0.2,
-						"fluid_handling": "none",
-						"bientity_action": {
-							"type": "origins:target_action",
-							"action": {
-								"type": "origins:play_sound",
-								"sound": "minecraft:entity.generic.extinguish_fire",
-								"pitch": 2,
-								"volume": 0.5
-							}
-						}
-					}
+			"type": "origins:raycast",
+			"distance": 30,
+			"command_step": 0.2,
+			"fluid_handling": "none",
+			"bientity_action": {
+				"type": "origins:target_action",
+				"action": {
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.generic.extinguish_fire",
+					"pitch": 2,
+					"volume": 0.5
 				}
-			]
+			}
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_turn_off_cd",
-			"compare_to": 0,
-			"comparison": ">"
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_ammo",
+					"compare_to": 3,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_warmup",
+					"compare_to": 20,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_turn_off_cd",
+					"compare_to": 0,
+					"comparison": ">"
+				}
+			]
 		}
 	},
 
@@ -214,10 +152,7 @@
 
 	"turn_off_cd": {
 		"type": "origins:cooldown",
-		"cooldown": 3,
-		"hud_render": {
-			"should_render": false
-		}
+		"cooldown": 3
 	},
 
 	"warmup": {
@@ -236,16 +171,14 @@
 		"start_value": 0
 	},
 
-	"cannon0_cd": {
+	"firechage_cd": {
 		"type": "origins:cooldown",
-		"cooldown": 2,
-		"hud_render": { "should_render": false }
+		"cooldown": 2
 	},
 
-	"cannon1_cd": {
+	"fireball_cd": {
 		"type": "origins:cooldown",
-		"cooldown": 4,
-		"hud_render": { "should_render": false }
+		"cooldown": 4
 	},
 
 	"biglaser_charge": {
@@ -284,10 +217,7 @@
 		"type": "origins:resource",
 		"min": 0,
 		"max": 1,
-		"start_value": 1,
-		"hud_render": {
-			"should_render": false
-		}
+		"start_value": 1
 	},
 
 	"switch_ammo": {
@@ -362,22 +292,37 @@
 							{
 								"type": "origins:resource",
 								"resource": "*:*_warmup",
-								"compare_to": 19,
-								"comparison": ">="
+								"compare_to": 0,
+								"comparison": ">"
 							},
 							{
 								"type": "origins:resource",
-								"resource": "*:*_turn_off_cd",
+								"resource": "*:thtransform_temperature",
 								"compare_to": 0,
 								"comparison": "=="
 							}
 						]
 					},
 					"if_action": {
-						"type": "origins:play_sound",
-						"sound": "minecraft:entity.generic.extinguish_fire",
-						"pitch": 2,
-						"volume": 0.5
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_warmup",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_shoot_permit",
+								"change": -1
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.fox.sleep",
+								"volume": 1
+							}
+						]
 					}
 				},
 				{
@@ -407,7 +352,7 @@
 								"type": "origins:if_else",
 								"condition": {
 									"type": "origins:resource",
-									"resource": "*:*_cannon0_cd",
+									"resource": "*:*_firechage_cd",
 									"compare_to": 0,
 									"comparison": "=="
 								},
@@ -415,23 +360,36 @@
 									"type": "origins:and",
 									"actions": [
 										{
+											"type": "origins:if_else",
+											"condition": {
+												"type": "origins:sneaking"
+											},
+											"if_action": {
+												"type": "origins:fire_projectile",
+												"entity_type": "minecraft:small_fireball",
+												"tag": "{\"Tags\":[\"pwojektaiwe\"]}",
+												"count": 1,
+												"speed": 2,
+												"divergence": 5
+											},
+											"else_action": {
+												"type": "origins:fire_projectile",
+												"entity_type": "minecraft:small_fireball",
+												"tag": "{\"Tags\":[\"pwojektaiwe\"]}",
+												"count": 1,
+												"speed": 2,
+												"divergence": 20
+											}
+										},
+										{
 											"type": "origins:play_sound",
 											"sound": "minecraft:item.firecharge.use",
 											"volume": 0.5,
 											"pitch": 2
 										},
 										{
-											"type": "origins:if_else",
-											"condition": {
-												"type": "origins:resource",
-												"resource": "*:*_cannon0_cd",
-												"compare_to": 0,
-												"comparison": "=="
-											},
-											"if_action": {
-												"type": "origins:trigger_cooldown",
-												"power": "*:*_cannon0_cd"
-											}
+											"type": "origins:trigger_cooldown",
+											"power": "*:*_firechage_cd"
 										},
 										{
 											"type": "origins:change_resource",
@@ -453,26 +411,13 @@
 								"type": "origins:if_else",
 								"condition": {
 									"type": "origins:resource",
-									"resource": "*:*_cannon1_cd",
+									"resource": "*:*_fireball_cd",
 									"compare_to": 0,
 									"comparison": "=="
 								},
 								"if_action": {
 									"type": "origins:and",
 									"actions": [
-										{
-											"type": "origins:trigger_cooldown",
-											"power": "*:*_cannon1_cd"
-										},
-										{
-											"type": "origins:change_resource",
-											"resource": "*:thtransform_temperature",
-											"change": -50
-										},
-										{
-											"type": "origins:play_sound",
-											"sound": "minecraft:item.firecharge.use"
-										},
 										{
 											"type": "origins:if_else",
 											"condition": {
@@ -487,7 +432,7 @@
 												"count": 1,
 												"divergence": 0,
 												"speed": 0.5,
-												"tag": "{ ExplosionPower:1.5 }"
+												"tag": "{ ExplosionPower:1.5,\"Tags\":[\"pwojektaiwe\"] }"
 											},
 											"else_action": {
 												"type": "origins:fire_projectile",
@@ -495,8 +440,21 @@
 												"count": 1,
 												"divergence": 0,
 												"speed": 0.5,
-												"tag": "{ ExplosionPower:0.1 }"
+												"tag": "{ ExplosionPower:0.1,\"Tags\":[\"pwojektaiwe\"] }"
 											}
+										},
+										{
+											"type": "origins:play_sound",
+											"sound": "minecraft:item.firecharge.use"
+										},
+										{
+											"type": "origins:trigger_cooldown",
+											"power": "*:*_fireball_cd"
+										},
+										{
+											"type": "origins:change_resource",
+											"resource": "*:thtransform_temperature",
+											"change": -50
 										}
 									]
 								}
@@ -513,49 +471,6 @@
 								"type": "origins:and",
 								"actions": [
 									{
-										"type": "origins:raycast",
-										"distance": 30,
-										"command_step": 0.2,
-										"fluid_handling": "none",
-										"command_along_ray": "/function thorigins:cannon/laser_particle",
-										"block_action": {
-											"type": "origins:and",
-											"actions": [
-												{
-													"type": "origins:execute_command",
-													"command": "/particle minecraft:lava ~ ~ ~ 0 0 0 20 2"
-												},
-												{
-													"type": "origins:if_else",
-													"condition": {
-														"type": "origins:offset",
-														"y": 1,
-														"condition": {
-															"type": "origins:block",
-															"block": "air"
-														}
-													},
-													"if_action": {
-														"type": "origins:offset",
-														"y": 1,
-														"action": {
-															"type": "origins:set_block",
-															"block": "fire"
-														}
-													}
-												}
-											]
-										},
-										"bientity_action": {
-											"type": "origins:damage",
-											"amount": 2,
-											"damage_type": "minecraft:on_fire.player",
-											"source": {
-												"name": "onFire.player"
-											}
-										}
-									},
-									{
 										"type": "origins:if_else",
 										"condition": {
 											"type": "origins:resource",
@@ -567,26 +482,84 @@
 											"type": "origins:raycast",
 											"distance": 30,
 											"command_step": 0.2,
+											"command_along_ray": "/function thorigins:cannon/laser_particle",
 											"fluid_handling": "none",
 											"block_action": {
-												"type": "origins:explode",
-												"destruction_type": "break",
-												"create_fire": true,
-												"power": 0.25,
-												"damage_self": false
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "/particle minecraft:lava ~ ~ ~ 0 0 0 20 2"
+													},
+													{
+														"type": "origins:if_else",
+														"condition": {
+															"type": "origins:offset",
+															"y": 1,
+															"condition": {
+																"type": "origins:block",
+																"block": "air"
+															}
+														},
+														"if_action": {
+															"type": "origins:offset",
+															"y": 1,
+															"action": {
+																"type": "origins:set_block",
+																"block": "fire"
+															}
+														}
+													},
+													{
+														"type": "origins:explode",
+														"destruction_type": "break",
+														"create_fire": true,
+														"power": 0.25,
+														"damage_self": false
+													}
+												]
 											}
 										},
 										"else_action": {
 											"type": "origins:raycast",
 											"distance": 30,
 											"command_step": 0.2,
+											"command_along_ray": "/function thorigins:cannon/laser_particle",
 											"fluid_handling": "none",
 											"block_action": {
-												"type": "origins:explode",
-												"destruction_type": "none",
-												"create_fire": true,
-												"power": 0.25,
-												"damage_self": false
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "/particle minecraft:lava ~ ~ ~ 0 0 0 20 2"
+													},
+													{
+														"type": "origins:if_else",
+														"condition": {
+															"type": "origins:offset",
+															"y": 1,
+															"condition": {
+																"type": "origins:block",
+																"block": "air"
+															}
+														},
+														"if_action": {
+															"type": "origins:offset",
+															"y": 1,
+															"action": {
+																"type": "origins:set_block",
+																"block": "fire"
+															}
+														}
+													},
+													{
+														"type": "origins:explode",
+														"destruction_type": "none",
+														"create_fire": true,
+														"power": 0.25,
+														"damage_self": false
+													}
+												]
 											}
 										}
 									},
@@ -635,87 +608,6 @@
 					"resource": "*:fox/thfoxify_afk_timer",
 					"compare_to": 1,
 					"comparison": ">"
-				}
-			]
-		}
-	},
-
-	"cannon0_0": {
-		"type": "origins:fire_projectile",
-		"count": 1,
-		"cooldown": 1,
-		"key": {
-			"key": "key.origins.primary_active",
-			"continuous": true
-		},
-		"interval": 0,
-		"divergence": 5,
-		"entity_type": "small_fireball",
-		"speed": 2,
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource": "*:*_warmup",
-					"comparison": "==",
-					"compare_to": 20
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_ammo",
-					"comparison": "==",
-					"compare_to": 1
-				},
-				{
-					"type": "origins:sneaking"
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_cannon0_cd",
-					"compare_to": 1,
-					"comparison": "=="
-				}
-			]
-		}
-	},
-
-	"cannon0_1": {
-		"type": "origins:fire_projectile",
-		"count": 1,
-		"cooldown": 1,
-		"key": {
-			"key": "key.origins.primary_active",
-			"continuous": true
-		},
-		"interval": 0,
-		"divergence": 20,
-		"entity_type": "small_fireball",
-		"speed": 2,
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource": "*:*_warmup",
-					"comparison": "==",
-					"compare_to": 20
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_ammo",
-					"comparison": "==",
-					"compare_to": 1
-				},
-				{
-					"type": "origins:sneaking",
-					"inverted": true
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:*_cannon0_cd",
-					"compare_to": 1,
-					"comparison": "=="
 				}
 			]
 		}
@@ -926,7 +818,7 @@
 						"condition": {
 							"type": "origins:resource",
 							"resource": "*:thtransform_temperature",
-							"compare_to": 2,
+							"compare_to": 10,
 							"comparison": "<"
 						},
 						"if_action": {
@@ -963,7 +855,7 @@
 						"condition": {
 							"type": "origins:resource",
 							"resource": "*:thtransform_temperature",
-							"compare_to": 10,
+							"compare_to": 50,
 							"comparison": "<"
 						},
 						"if_action": {
@@ -1130,6 +1022,13 @@
 				{
 					"type": "origins:target_condition",
 					"condition": {
+						"type": "origins:nbt",
+						"nbt": "{\"Tags\":[\"pwojektaiwe\"]}"
+					}
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
 						"type": "origins:entity_type",
 						"entity_type": "fireball"
 					}
@@ -1147,21 +1046,23 @@
 		}
 	},
 
-	"no_collision": {
+	"no_collision_fireball": {
 		"type": "origins:prevent_entity_collision",
 		"bientity_condition": {
 			"type": "origins:and",
 			"conditions": [
 				{
-					"type": "origins:distance",
-					"comparison": "<=",
-					"compare_to": 3
-				},
-				{
 					"type": "origins:target_condition",
 					"condition": {
 						"type": "origins:entity_type",
 						"entity_type": "fireball"
+					}
+				},
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:nbt",
+						"nbt": "{\"Tags\":[\"pwojektaiwe\"]}"
 					}
 				},
 				{

@@ -26,9 +26,9 @@
 		}
 	],
 
-	"ticks": {
+	"ticks_20": {
 		"type": "origins:action_over_time",
-		"interval": 4,
+		"interval": 20,
 		"entity_action": {
 			"type": "origins:if_else",
 			"condition": {
@@ -41,7 +41,7 @@
 					{
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_souls",
-						"change": -4
+						"change": -20
 					},
 					{
 						"type": "origins:trigger_cooldown",
@@ -60,7 +60,7 @@
 						"effect": {
 							"effect": "weakness",
 							"amplifier": 99,
-							"duration": 5,
+							"duration": 21,
 							"is_ambient": true,
 							"show_icon": false,
 							"show_particles": false
@@ -167,8 +167,7 @@
 
 	"float_detector": {
 		"type": "origins:cooldown",
-		"cooldown": 2,
-		"hud_render": { "should_render": false }
+		"cooldown": 2
 	},
 
 	"float_on_air": {

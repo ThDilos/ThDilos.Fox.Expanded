@@ -60,36 +60,28 @@
 		"type": "origins:resource",
 		"min": 0,
 		"max": 7,
-		"start_value": 0,
+		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
 			"bar_index": 0,
-			"sprite_location": "thorigins2:textures/thdilos_resource_bar.png"
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar.png",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_clear_delay",
+				"compare_to": 0,
+				"comparison": ">"
+			}
 		}
 	},
 
 	"clear_delay": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 5,
-		"max_action": {
-			"type": "origins:change_resource",
-			"resource": "*:*_thrust_indicator",
-			"change": 1,
-			"operation": "set"
-		},
-		"min_action": {
-			"type": "origins:change_resource",
-			"resource": "*:*_thrust_indicator",
-			"change": 0,
-			"operation": "set"
-		}
+		"type": "origins:cooldown",
+		"cooldown": 5
 	},
 
 	"fall_flying_check": {
 		"type": "origins:cooldown",
-		"cooldown": 3,
-		"hud_render": { "should_render": false }
+		"cooldown": 3
 	},
 
 	"ticks": {
@@ -158,11 +150,6 @@
 							"source": "thorigins:fire_fox"
 						}
 					}
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_clear_delay",
-					"change": -1
 				},
 				{
 					"type": "origins:if_else",
@@ -266,10 +253,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_clear_delay",
-					"change": 5,
-					"operation": "set"
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_clear_delay"
 				},
 				{
 					"type": "origins:add_velocity",

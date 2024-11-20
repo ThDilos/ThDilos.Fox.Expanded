@@ -51,62 +51,6 @@
 								"power": "*:*_switch"
 							},
 							{
-								"type": "origins:sneaking",
-								"inverted": true
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:toggle",
-						"power": "*:*_switch"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:fox/thfoxify_afk_timer",
-								"compare_to": 1,
-								"comparison": "<="
-							},
-							{
-								"type": "origins:power_active",
-								"power": "*:*_switch",
-								"inverted": true
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_charging",
-								"change": 0,
-								"operation": "set"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_charge_lvl",
-								"change": 0,
-								"operation": "set"
-							}
-						]
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:power_active",
-								"power": "*:*_switch"
-							},
-							{
 								"type": "origins:resource",
 								"resource": "*:*_cooldown",
 								"comparison": "==",
@@ -178,6 +122,44 @@
 		}
 	},
 
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_charging",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_charge_lvl",
+					"change": 0,
+					"operation": "set"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": "<="
+				},
+				{
+					"type": "origins:power_active",
+					"power": "*:*_switch",
+					"inverted": true
+				}
+			]
+		}
+	},
+
 	"cooldown": {
 		"type": "origins:cooldown",
 		"cooldown": 200,
@@ -196,7 +178,11 @@
 	"switch": {
 		"type": "origins:toggle",
 		"active_by_default": false,
-		"key": "nuh.uh"
+		"retain_state": false,
+		"key": "nuh.uh",
+		"condition": {
+			"type": "origins:sneaking"
+		}
 	},
 
 	"double_tap_check": {

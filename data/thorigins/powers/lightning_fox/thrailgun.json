@@ -49,42 +49,18 @@
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_ready",
-					"change": -1
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:lightning_fox/thrailgun_ready",
-						"comparison": "==",
-						"compare_to": 1
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:give",
-								"stack": {
-									"item": "minecraft:iron_nugget",
-									"amount": 1
-								},
-								"preferred_slot": "mainhand"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:lightning_fox/thrailgun_ready",
-								"change": 0,
-								"operation": "set"
-							}
-						]
-					}
-				}
-			]
+			"type": "origins:give",
+			"stack": {
+				"item": "minecraft:iron_nugget",
+				"amount": 1
+			},
+			"preferred_slot": "mainhand"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:lightning_fox/thrailgun_ready",
+			"comparison": "==",
+			"compare_to": 1
 		}
 	},
 
@@ -104,7 +80,7 @@
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:*_ready",
-			"comparison": "!=",
+			"comparison": ">",
 			"compare_to": 0
 		}
 	},
@@ -195,10 +171,8 @@
 						"amount": 1
 					},
 					"entity_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_ready",
-						"change": 20,
-						"operation": "set"
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_ready"
 					},
 					"inventory_type": "inventory"
 				},
@@ -216,28 +190,18 @@
 				}
 			]
 		},
-		"cooldown": 30,
-		"hud_render": {
-			"should_render": false
-		}
+		"cooldown": 30
 	},
 
 	"ready": {
-		"type": "origins:resource",
+		"type": "origins:cooldown",
+		"cooldown": 20,
 		"hud_render": {
 			"should_render": true,
 			"inverted": true,
 			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-			"bar_index": 0,
-			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_ready",
-				"compare_to": 0,
-				"comparison": ">"
-			}
-		},
-		"max": 20,
-		"min": 0
+			"bar_index": 0
+		}
 	},
 
 	"shoot": {
@@ -267,7 +231,7 @@
 							{
 								"type": "origins:change_resource",
 								"resource": "*:*_ready",
-								"change": 0,
+								"change": 20,
 								"operation": "set"
 							}
 						]
@@ -454,7 +418,7 @@
 							{
 								"type": "origins:change_resource",
 								"resource": "*:*_ready",
-								"change": 0,
+								"change": 20,
 								"operation": "set"
 							},
 							{
