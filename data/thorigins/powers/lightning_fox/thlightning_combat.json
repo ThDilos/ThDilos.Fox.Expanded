@@ -21,59 +21,50 @@
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_buff_duration",
-						"compare_to": 0,
-						"comparison": ">"
-					},
-					"if_action": {
-						"type": "apoli:apply_effect",
-						"effects": [
-							{
-								"effect": "minecraft:strength",
-								"amplifier": 0,
-								"duration": 100,
-								"is_ambient": true,
-								"show_icon": true,
-								"show_particles": false
-							},
-							{
-								"effect": "minecraft:speed",
-								"amplifier": 0,
-								"duration": 100,
-								"is_ambient": true,
-								"show_icon": true,
-								"show_particles": false
-							}
-						]
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:command",
-						"command": "/execute if entity @e[type=lightning_bolt,distance=..2]",
-						"compare_to": 0,
-						"comparison": ">"
-					},
-					"if_action": {
-						"type": "origins:trigger_cooldown",
-						"power": "*:*_buff_duration"
-					}
-				}
-			]
+			"type": "origins:trigger_cooldown",
+			"power": "*:*_buff_duration"
+		},
+		"condition": {
+			"type": "origins:command",
+			"command": "/execute if entity @e[type=lightning_bolt,distance=..2]",
+			"compare_to": 0,
+			"comparison": ">"
+		}
+	},
+
+	"buff_effects": {
+		"type": "origins:stacking_status_effect",
+		"duration_per_stack": 100,
+		"min_stacks": 0,
+		"max_stacks": 1,
+		"tick_rate": 20,
+		"effects": [
+			{
+				"effect": "minecraft:strength",
+				"amplifier": 0,
+				"is_ambient": true,
+				"show_icon": true,
+				"show_particles": false
+			},
+			{
+				"effect": "minecraft:speed",
+				"amplifier": 0,
+				"is_ambient": true,
+				"show_icon": true,
+				"show_particles": false
+			}
+		],
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_buff_duration",
+			"compare_to": 0,
+			"comparison": ">"
 		}
 	},
 
 	"buff_duration": {
 		"type": "origins:cooldown",
-		"cooldown": 3,
-		"hud_render": { "should_render": false }
+		"cooldown": 3
 	},
 
 	"attached_lightning": {

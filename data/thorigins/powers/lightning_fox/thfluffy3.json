@@ -41,10 +41,10 @@
 
 	"spikey_fluff": {
 		"type": "origins:action_over_time",
-		"interval": 2,
+		"interval": 3,
 		"entity_action": {
 			"type": "origins:area_of_effect",
-			"radius": 0.5,
+			"radius": 0.8,
 			"shape": "sphere",
 			"bientity_action": {
 				"type": "origins:if_else_list",

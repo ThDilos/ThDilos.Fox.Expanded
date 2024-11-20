@@ -112,74 +112,78 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:sneaking"
-									},
-									{
-										"type": "origins:resource",
-										"resource": "*:ninetails/thhunt3_hunt_stage",
-										"compare_to": 0,
-										"comparison": ">"
-									}
-								]
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_left_ground",
-								"compare_to": 0,
-								"comparison": "=="
-							}
-						]
+						"type": "origins:resource",
+						"resource": "*:*_left_ground",
+						"compare_to": 0,
+						"comparison": "=="
 					},
 					"if_action": {
-						"type": "origins:if_else_list",
-						"actions": [
-							{
-								"condition": {
-									"type": "origins:command",
-									"command": "/execute if entity @s[y_rotation=-160..-135]",
-									"compare_to": 1,
-									"comparison": "=="
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:sneaking"
 								},
-								"action": {
-									"type": "origins:change_resource",
-									"resource": "*:*_magnetoreception_direction",
-									"change": 2,
-									"operation": "set"
+								{
+									"type": "origins:resource",
+									"resource": "*:ninetails/thhunt3_hunt_stage",
+									"compare_to": 0,
+									"comparison": ">"
 								}
-							},
-							{
-								"condition": {
-									"type": "origins:command",
-									"command": "/execute if entity @s[y_rotation=-340..-315]",
-									"compare_to": 1,
-									"comparison": "=="
+							]
+						},
+						"if_action": {
+							"type": "origins:if_else_list",
+							"actions": [
+								{
+									"condition": {
+										"type": "origins:command",
+										"command": "/execute if entity @s[y_rotation=-160..-135]",
+										"compare_to": 1,
+										"comparison": "=="
+									},
+									"action": {
+										"type": "origins:change_resource",
+										"resource": "*:*_magnetoreception_direction",
+										"change": 2,
+										"operation": "set"
+									}
 								},
-								"action": {
-									"type": "origins:change_resource",
-									"resource": "*:*_magnetoreception_direction",
-									"change": 1,
-									"operation": "set"
-								}
-							},
-							{
-								"condition": {
-									"type": "origins:constant",
-									"value": true
+								{
+									"condition": {
+										"type": "origins:command",
+										"command": "/execute if entity @s[y_rotation=-340..-315]",
+										"compare_to": 1,
+										"comparison": "=="
+									},
+									"action": {
+										"type": "origins:change_resource",
+										"resource": "*:*_magnetoreception_direction",
+										"change": 1,
+										"operation": "set"
+									}
 								},
-								"action": {
-									"type": "origins:change_resource",
-									"resource": "*:*_magnetoreception_direction",
-									"change": 0,
-									"operation": "set"
+								{
+									"condition": {
+										"type": "origins:constant",
+										"value": true
+									},
+									"action": {
+										"type": "origins:change_resource",
+										"resource": "*:*_magnetoreception_direction",
+										"change": 0,
+										"operation": "set"
+									}
 								}
-							}
-						]
+							]
+						},
+						"else_action": {
+							"type": "origins:change_resource",
+							"resource": "*:*_magnetoreception_direction",
+							"change": 0,
+							"operation": "set"
+						}
 					}
 				}
 			]
@@ -244,10 +248,6 @@
 						"type": "origins:execute_command",
 						"command": "/scale multiply pehkui:reach 1.2 @s"
 					}
-				},
-				{
-					"type": "origins:trigger_cooldown",
-					"power": "*:fox/thfoxiality_jumping"
 				}
 			]
 		},

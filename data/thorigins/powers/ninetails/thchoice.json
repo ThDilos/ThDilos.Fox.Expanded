@@ -86,8 +86,7 @@
 
 	"showtime": {
 		"type": "origins:cooldown",
-		"cooldown": 30,
-		"hud_render": { "should_render": false }
+		"cooldown": 30
 	},
 
 	"choice": {
@@ -99,8 +98,7 @@
 			"resource": "*:*_choice",
 			"change": 0,
 			"operation": "set"
-		},
-		"hud_render": { "should_render": false }
+		}
 	},
 
 	"renderer_thdash3": {

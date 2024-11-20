@@ -46,68 +46,18 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:and",
+						"type": "origins:or",
 						"conditions": [
 							{
-								"type": "origins:power_active",
-								"power": "*:*_toggle"
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 1,
+								"comparison": "<="
 							},
 							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:resource",
-										"resource": "*:fox/thfoxify_afk_timer",
-										"compare_to": 1,
-										"comparison": "<="
-									},
-									{
-										"type": "origins:food_level",
-										"compare_to": 6,
-										"comparison": "<="
-									},
-									{
-										"type": "origins:or",
-										"conditions": [
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "head",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 2
-												}
-											},
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "chest",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 6
-												}
-											},
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "legs",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 5
-												}
-											},
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "feet",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 2
-												}
-											}
-										]
-									}
-								]
+								"type": "origins:food_level",
+								"compare_to": 6,
+								"comparison": "<="
 							}
 						]
 					},
@@ -117,74 +67,63 @@
 					}
 				},
 				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:power_active",
-						"power": "*:*_toggle"
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:exhaust",
-								"amount": 0.1
-							},
-							{
-								"type": "origins:delay",
-								"ticks": 1,
-								"action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:change_resource",
-											"resource": "*:fox/thfluffy_wetness",
-											"change": 0,
-											"operation": "set"
-										},
-										{
-											"type": "origins:change_resource",
-											"resource": "*:fox/thfluffy_wetness",
-											"change": 0,
-											"operation": "set"
-										},
-										{
-											"type": "origins:change_resource",
-											"resource": "*:fox/thfluffy_effect_timer",
-											"change": -100
-										}
-									]
-								}
-							},
-							{
-								"type": "origins:if_else",
-								"condition": {
-									"type": "origins:swimming"
-								},
-								"if_action": {
-									"type": "origins:execute_command",
-									"command": "/fill ~3 ~3 ~3 ~-3 ~-3 ~-3 air replace fire"
-								}
-							},
-							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:lightning_fox/thlightning_traits_temperal_timer"
-							},
-							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:lightning_fox/thlightning_combat_buff_duration"
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:exhaust",
+							"amount": 0.1
+						},
+						{
+							"type": "origins:delay",
+							"ticks": 1,
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:fox/thfluffy_wetness",
+										"change": 0,
+										"operation": "set"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:fox/thfluffy_wetness",
+										"change": 0,
+										"operation": "set"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:fox/thfluffy_effect_timer",
+										"change": -100
+									}
+								]
 							}
-						]
-					}
+						},
+						{
+							"type": "origins:if_else",
+							"condition": {
+								"type": "origins:swimming"
+							},
+							"if_action": {
+								"type": "origins:execute_command",
+								"command": "/fill ~3 ~3 ~3 ~-3 ~-3 ~-3 air replace fire"
+							}
+						},
+						{
+							"type": "origins:trigger_cooldown",
+							"power": "*:lightning_fox/thlightning_traits_temperal_timer"
+						},
+						{
+							"type": "origins:trigger_cooldown",
+							"power": "*:lightning_fox/thlightning_combat_buff_duration"
+						}
+					]
 				},
 				{
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:and",
 						"conditions": [
-							{
-								"type": "origins:power_active",
-								"power": "*:*_toggle"
-							},
 							{
 								"type": "origins:swimming"
 							},
@@ -236,6 +175,10 @@
 					}
 				}
 			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
 		}
 	},
 
@@ -262,6 +205,11 @@
 					"type": "origins:food_level",
 					"comparison": ">",
 					"compare_to": 6
+				},
+				{
+					"type": "origins:power_active",
+					"power": "*:lightning_fox/thdischarge_switch",
+					"inverted": true
 				}
 			]
 		},
@@ -379,14 +327,14 @@
 			"power": "*:*_toggle"
 		},
 		"modifier": {
-			"value": 19,
+			"value": 14,
 			"operation": "multiply_base"
 		}
 	},
 
 	"particles": {
 		"type": "origins:particle",
-		"frequency": 1,
+		"frequency": 5,
 		"particle": "minecraft:electric_spark",
 		"count": 10,
 		"spread": {
