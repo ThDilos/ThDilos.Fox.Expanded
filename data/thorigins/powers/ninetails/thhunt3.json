@@ -512,7 +512,7 @@
 			"conditions": [
 				{
 					"type": "origins:power_active",
-					"power": "*:*_damage_bonus_midnight"
+					"power": "*:*_damage_bonus_all_day"
 				},
 				{
 					"type": "origins:resource",
