@@ -172,9 +172,7 @@
 
 	"use_blaze_rod": {
 		"type": "origins:active_self",
-		"key": {
-			"key": "key.use"
-		},
+		"key": "key.use",
 		"condition": {
 			"type": "origins:and",
 			"conditions": [

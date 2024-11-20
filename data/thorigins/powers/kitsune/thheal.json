@@ -229,8 +229,7 @@
 
 	"soul_regen_delay": {
 		"type": "origins:cooldown",
-		"cooldown": 100,
-		"hud_render": { "should_render": false }
+		"cooldown": 100
 	},
 
 	"aura_glow": {

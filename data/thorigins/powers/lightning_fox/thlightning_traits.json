@@ -36,9 +36,6 @@
 
     "temperal_timer":{
         "type": "origins:cooldown",
-        "hud_render": {
-            "should_render": false
-        },
         "cooldown": 10
     },
 

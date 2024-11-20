@@ -126,7 +126,7 @@
 		}
 	},
 
-	"nightvision": {
+	"stronger_passive_nightvision": {
 		"type": "origins:toggle_night_vision",
 		"active_by_default": true,
 		"strength": 1,
