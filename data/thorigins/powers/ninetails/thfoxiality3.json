@@ -137,20 +137,41 @@
 								"gamemode": "survival"
 							},
 							{
-								"type": "origins:resource",
-								"resource": "*:fox/thfoxify_afk_timer",
-								"compare_to": 1,
-								"comparison": ">"
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:fox/thfoxify_afk_timer",
+										"compare_to": 1,
+										"comparison": ">"
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:fox/thfoxify_figura_state",
+										"compare_to": 1,
+										"comparison": "=="
+									}
+								]
 							}
 						]
 					},
 					"if_action": {
 						"type": "origins:if_else",
 						"condition": {
-							"type": "origins:resource",
-							"resource": "*:ninetails/thhunt3_prepare_stage",
-							"compare_to": 25,
-							"comparison": ">"
+							"type": "origins:or",
+							"conditions": [
+								{
+									"type": "origins:power",
+									"power": "*:fox/thhunt",
+									"inverted": true
+								},
+								{
+									"type": "origins:resource",
+									"resource": "*:ninetails/thhunt3_prepare_stage",
+									"compare_to": 25,
+									"comparison": ">"
+								}
+							]
 						},
 						"if_action": {
 							"type": "origins:and",
@@ -218,14 +239,14 @@
 		}
 	},
 
-	"nightvision": {
+	"stronger_passive_nightvision": {
 		"type": "origins:toggle_night_vision",
 		"active_by_default": true,
 		"strength": 1,
 		"key": "nuh.uh"
 	},
 
-	"vicious_wolves_bears": {
+	"modified_vicious_wolves_bears": {
 		"type": "origins:action_when_hit",
 		"cooldown": 4,
 		"bientity_condition": {
@@ -253,7 +274,7 @@
 			"conditions": [
 				{
 					"type": "origins:amount",
-					"compare_to": 2,
+					"compare_to": 2.5,
 					"comparison": ">="
 				},
 				{
