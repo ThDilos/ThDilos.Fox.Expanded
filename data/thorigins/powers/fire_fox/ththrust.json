@@ -60,7 +60,7 @@
 		"type": "origins:resource",
 		"min": 0,
 		"max": 7,
-		"start_value": 0,
+		"start_value": 1,
 		"hud_render": {
 			"should_render": true,
 			"bar_index": 0,
