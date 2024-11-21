@@ -11,7 +11,7 @@
 					"translate": "thorigins.press0"
 				},
 				{
-					"keybind": "key.origins.secondary_active",
+					"keybind": "key.origins.primary_active",
 					"color": "aqua"
 				},
 				{
