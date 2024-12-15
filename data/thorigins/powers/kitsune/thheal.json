@@ -6,39 +6,27 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thheal.key0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thheal.key1"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thheal.key2"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thheal.key3"
-				}
-			]
+			"text": {
+				"translate": "thheal.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",

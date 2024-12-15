@@ -19,6 +19,11 @@
 					"translate": "thfoxiality3.info1"
 				}
 			]
+		},
+		{
+			"type": "origins:keybind",
+			"text": "thfoxiality3.info2",
+			"sprite": "origins:textures/gui/badge/arrow_up.png"
 		}
 	],
 
@@ -483,6 +488,10 @@
 												"sound": "minecraft:entity.zombie.break_wooden_door",
 												"volume": 0.3,
 												"pitch": 1.5
+											},
+											{
+												"type": "origins:trigger_cooldown",
+												"power": "*:fox/thfoxiality_predator_suppression"
 											}
 										]
 									}

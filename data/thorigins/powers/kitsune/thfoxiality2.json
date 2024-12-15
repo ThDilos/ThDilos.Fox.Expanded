@@ -16,7 +16,7 @@
 					"translate": "thfoxiality2.info"
 				},
 				{
-					"translate": "thfoxiality.info1"
+					"translate": "thfoxiality2.info1"
 				}
 			]
 		}
@@ -46,6 +46,16 @@
 							{
 								"type": "origins:revoke_power",
 								"power": "*:fox/thfoxiality_passive_nightvision",
+								"source": "thorigins:inherited"
+							},
+							{
+								"type": "origins:revoke_power",
+								"power": "*:fox/thfoxiality_vicious_wolves_bears",
+								"source": "thorigins:inherited"
+							},
+							{
+								"type": "origins:revoke_power",
+								"power": "*:fox/thfoxiality_predator_suppression",
 								"source": "thorigins:inherited"
 							}
 						]

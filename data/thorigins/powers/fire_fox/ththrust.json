@@ -6,48 +6,36 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "ththrust.key0"
-				},
-				{
-					"keybind": "key.jump",
-					"color": "aqua"
-				},
-				{
-					"translate": "ththrust.key1"
-				},
-				{
-					"keybind": "key.jump",
-					"color": "aqua"
-				},
-				{
-					"translate": "ththrust.key2"
-				},
-				{
-					"keybind": "key.sneak",
-					"color": "aqua"
-				},
-				{
-					"translate": "ththrust.key3"
-				}
-			]
+			"text": {
+				"translate": "ththrust.key0",
+				"with": [
+					{
+						"keybind": "key.jump",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.jump",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.sneak",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/toggle.png",
-			"text": [
-				{
-					"translate": "ththrust.key4"
-				},
-				{
-					"keybind": "key.jump",
-					"color": "aqua"
-				},
-				{
-					"translate": "ththrust.key5"
-				}
-			]
+			"text": {
+				"translate": "ththrust.key1",
+				"with": [
+					{
+						"keybind": "key.jump",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",
