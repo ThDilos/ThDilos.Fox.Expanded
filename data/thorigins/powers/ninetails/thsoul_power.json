@@ -68,6 +68,11 @@
 				},
 				{
 					"type": "origins:exposed_to_sky"
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -126,7 +131,6 @@
 		"type": "origins:active_self",
 		"key": "key.origins.primary_active",
 		"cooldown": 1,
-		"hud_render": { "should_render": false },
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
@@ -166,7 +170,7 @@
 										{
 											"effect": "minecraft:strength",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -174,7 +178,7 @@
 										{
 											"effect": "minecraft:speed",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -182,7 +186,7 @@
 										{
 											"effect": "minecraft:resistance",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -190,7 +194,7 @@
 										{
 											"effect": "minecraft:haste",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -198,7 +202,7 @@
 										{
 											"effect": "minecraft:luck",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -336,6 +340,11 @@
 					"resource": "*:*_cooldown",
 					"compare_to": 0,
 					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -481,10 +490,20 @@
 			]
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_cooldown",
-			"compare_to": 0,
-			"comparison": "=="
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_cooldown",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
+				}
+			]
 		}
 	},
 
@@ -595,6 +614,11 @@
 					"resource": "*:thtransform_souls",
 					"compare_to": 50,
 					"comparison": ">="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
