@@ -232,6 +232,11 @@
 							"resource": "*:lightning_fox/thrailgun_ready",
 							"compare_to": 0,
 							"comparison": "=="
+						},
+						{
+							"type": "origins:gamemode",
+							"gamemode": "spectator",
+							"inverted": true
 						}
 					]
 				},
@@ -344,7 +349,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 10,
+											"amount": 5,
 											"damage_type": "thorigins:foxie_zap"
 										}
 									},
@@ -416,7 +421,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 20,
+											"amount": 10,
 											"damage_type": "thorigins:foxie_zap"
 										}
 									},
@@ -488,7 +493,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 30,
+											"amount": 20,
 											"damage_type": "thorigins:foxie_zap"
 										}
 									},
