@@ -25,7 +25,7 @@
 		}
 	],
 
-	"cooldown": 80,
+	"cooldown": 200,
 	"hud_render": {
 		"should_render": true,
 		"bar_index": 2
@@ -76,7 +76,7 @@
 			"actions": [
 				{
 					"type": "origins:damage",
-					"amount": 2,
+					"amount": 1,
 					"damage_type": "thorigins:foxie_zap"
 				},
 				{
@@ -129,6 +129,11 @@
 				"resource": "*:lightning_fox/thrailgun_ready",
 				"compare_to": 0,
 				"comparison": "=="
+			},
+			{
+				"type": "origins:gamemode",
+				"gamemode": "spectator",
+				"inverted": true
 			}
 		]
 	}
