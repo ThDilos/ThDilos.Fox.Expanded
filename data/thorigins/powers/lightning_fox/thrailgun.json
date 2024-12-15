@@ -6,25 +6,19 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "thrailgun.key0"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thrailgun.key1"
-				},
-				{
-					"keybind": "key.attack",
-					"color": "aqua"
-				},
-				{
-					"translate": "thrailgun.key2"
-				}
-			]
+			"text": {
+				"translate": "thrailgun.key",
+				"with": [
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.attack",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
@@ -340,32 +334,41 @@
 								"type": "origins:delay",
 								"ticks": 1,
 								"action": {
-									"type": "origins:area_of_effect",
-									"radius": 110,
-									"bientity_condition": {
-										"type": "origins:target_condition",
-										"condition": {
-											"type": "origins:nbt",
-											"nbt": "{\"Tags\":[\"railgun_splash\"]}"
-										}
-									},
-									"bientity_action": {
-										"type": "origins:and",
-										"actions": [
-											{
-												"type": "origins:damage",
-												"amount": 8,
-												"damage_type": "minecraft:player_explosion"
-											},
-											{
-												"type": "origins:target_action",
-												"action": {
-													"type": "origins:execute_command",
-													"command": "/tag @s remove railgun_splash"
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:area_of_effect",
+											"radius": 110,
+											"bientity_condition": {
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:nbt",
+													"nbt": "{\"Tags\":[\"railgun_splash\"]}"
 												}
+											},
+											"bientity_action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:damage",
+														"amount": 8,
+														"damage_type": "minecraft:player_explosion"
+													},
+													{
+														"type": "origins:target_action",
+														"action": {
+															"type": "origins:execute_command",
+															"command": "/tag @s remove railgun_splash"
+														}
+													}
+												]
 											}
-										]
-									}
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/tag @s remove railgun_splash"
+										}
+									]
 								}
 							},
 							{
