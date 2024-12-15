@@ -46,6 +46,10 @@
 					},
 					{
 						"type": "origins:execute_command",
+						"command": "/scale delay set pehkui:motion 1 @s"
+					},
+					{
+						"type": "origins:execute_command",
 						"command": "/scale set pehkui:motion 3 @s"
 					},
 					{
@@ -93,6 +97,11 @@
 					"resource": "*:fox/thfoxify_afk_timer",
 					"compare_to": 1,
 					"comparison": ">"
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -160,8 +169,7 @@
 
 	"float_detector": {
 		"type": "origins:cooldown",
-		"cooldown": 2,
-		"hud_render": { "should_render": false }
+		"cooldown": 2
 	},
 
 	"float_on_air": {
