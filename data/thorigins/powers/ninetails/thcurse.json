@@ -54,6 +54,14 @@
 							"show_icon": true,
 							"show_particles": false,
 							"is_ambient": true
+						},
+						{
+							"effect": "minecraft:nausea",
+							"duration": 200,
+							"amplifier": 0,
+							"show_icon": true,
+							"show_particles": false,
+							"is_ambient": true
 						}
 					]
 				},
@@ -174,6 +182,14 @@
 						},
 						{
 							"effect": "minecraft:slowness",
+							"duration": 60,
+							"amplifier": 0,
+							"show_icon": true,
+							"is_ambient": true,
+							"show_particles": false
+						},
+						{
+							"effect": "minecraft:nausea",
 							"duration": 60,
 							"amplifier": 0,
 							"show_icon": true,
