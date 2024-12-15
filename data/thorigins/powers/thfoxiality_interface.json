@@ -1,0 +1,39 @@
+{
+	"type": "origins:action_on_callback",
+	"name": "fox.thfoxiality.name",
+	"description": "fox.thfoxiality.description",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"text": "origin.thorigin.passive",
+			"sprite": "minecraft:textures/item/sweet_berries.png"
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": [
+				{
+					"translate": "thfoxiality.info"
+				},
+				{
+					"translate": "thfoxiality.info1"
+				}
+			]
+		},
+		{
+			"type": "origins:keybind",
+			"text": "thfoxiality_interface.info",
+			"sprite": "origins:textures/gui/badge/arrow_up.png"
+		}
+	],
+	"entity_action_added": {
+		"type": "origins:grant_power",
+		"power": "*:fox/thfoxiality",
+		"source": "thorigins:inherited"
+	},
+	"entity_action_lost": {
+		"type": "origins:revoke_power",
+		"power": "*:fox/thfoxiality",
+		"source": "thorigins:inherited"
+	}
+}
