@@ -207,6 +207,11 @@
 					"type": "origins:power_active",
 					"power": "*:lightning_fox/thdischarge_switch",
 					"inverted": true
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		},

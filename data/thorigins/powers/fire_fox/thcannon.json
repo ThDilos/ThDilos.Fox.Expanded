@@ -619,6 +619,11 @@
 					"resource": "*:fox/thfoxify_afk_timer",
 					"compare_to": 1,
 					"comparison": ">"
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}

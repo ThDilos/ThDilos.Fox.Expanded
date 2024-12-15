@@ -204,8 +204,18 @@
 			}
 		},
 		"condition": {
-			"type": "origins:sneaking",
-			"inverted": true
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
+				}
+			]
 		}
 	}
 }
