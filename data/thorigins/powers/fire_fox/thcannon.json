@@ -6,32 +6,23 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.secondary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thcannon.key0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thcannon.key1"
-				},
-				{
-					"keybind": "key.attack",
-					"color": "aqua"
-				},
-				{
-					"translate": "thcannon.key2"
-				}
-			]
+			"text": {
+				"translate": "thcannon.key",
+				"with": [
+					{
+						"keybind": "key.origins.secondary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.attack",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",
@@ -87,13 +78,33 @@
 			"command_step": 0.2,
 			"fluid_handling": "none",
 			"bientity_action": {
-				"type": "origins:target_action",
-				"action": {
-					"type": "origins:play_sound",
-					"sound": "minecraft:entity.generic.extinguish_fire",
-					"pitch": 2,
-					"volume": 0.5
-				}
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:play_sound",
+							"sound": "minecraft:entity.generic.extinguish_fire",
+							"pitch": 2,
+							"volume": 0.5
+						}
+					},
+					{
+						"type": "origins:damage",
+						"amount": 1,
+						"damage_type": "minecraft:on_fire",
+						"source": {
+							"name": "onFire.player"
+						}
+					},
+					{
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:set_on_fire",
+							"duration": 2
+						}
+					}
+				]
 			}
 		},
 		"condition": {
