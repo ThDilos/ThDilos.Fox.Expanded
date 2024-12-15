@@ -6,39 +6,27 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key1"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key2"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key3"
-				}
-			]
+			"text": {
+				"translate": "thsoul_power.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",
@@ -437,14 +425,36 @@
 						"actions": [
 							{
 								"type": "origins:apply_effect",
-								"effect": {
-									"effect": "minecraft:wither",
-									"amplifier": 0,
-									"duration": 100,
-									"show_icon": true,
-									"is_ambient": true,
-									"show_particles": false
-								}
+								"effects": [
+									{
+										"effect": "minecraft:wither",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									},
+									{
+										"effect": "minecraft:blindness",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									},
+									{
+										"effect": "minecraft:nausea",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									}
+								]
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"thsoul_power.soul_harvest\"}"
 							},
 							{
 								"type": "origins:play_sound",
