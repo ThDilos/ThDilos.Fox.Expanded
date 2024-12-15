@@ -7,19 +7,18 @@
 
 	"thtransform_interface.name": "§6§l§n变身",
 	"thtransform_interface.description": "变成一只拥有神通的狐狸!",
-	"thtransform.key": "] 进行变身",
+	"thtransform.key": "主动能力, 按下 [%s] 进行变身",
 	"cannot_forward_karma": "你已经走到了当前修行之路的尽头",
 	"unlock_karma_path": "汲取了龙蛋的力量, 你开启了另一条修行之路。",
 	"completed_karma_path": "你已经完成修炼",
 
 	"thkarma_interface.name": "§6§l§n业报",
 	"thkarma_interface.description": "你的所作所为会决定你的命运。",
-	"thkarma_interface.key0": "蹲下并按 [",
-	"thkarma_interface.key1": "] 来查看你的修炼倾向, 或者...\n\n§8祭献最珍稀的宝藏, 你就能走向另一条极端",
+	"thkarma_interface.key": "蹲下并按 [%s] 来查看你的修炼倾向, 或者...\n\n§8祭献最珍稀的宝藏, 你就能走向另一条极端",
 
 	"thchoice.name": "§6§l§n技能组",
 	"thchoice.description": "随意选择当前激活的主动能力。",
-	"thchoice.key": "]切换到下一个主动能力\n潜行时使用则切换到上一个",
+	"thchoice.key": "主动能力, 按下 [%s]切换到下一个主动能力\n潜行时使用则切换到上一个",
 
 	"thswift2.name": "§a§n灵跃++",
 	"thswift2.description": "你的狐身已经超凡脱俗, 超出了狐狸们的理解。",
@@ -33,32 +32,30 @@
 	"thweak2.description": "你现在拥有足够的力量穿着重甲。",
 	"thweak2.info": "[§c-§r] 无法使用盾牌\n§m[§c-§r§m] 过于沉重的护甲会给你带来负担§r\n[§c-§r] 水下氧气消耗更快",
 
+	"thfoxiality_interface.info": "你天敌的§5§l爪牙连击§r有以下效果:\n§b1§r. 给你施加§5缓慢§r+虚弱+反胃效果\n§b2§r. 给你造成§e更多§r的❂§l真实伤害§r\n§b3§r. 暂时§c无效化§r你[§a灵跃++§r]的第一个效果\n§b4§r. 暂时§c禁用§r你的自然生命恢复\n\n§8§o装备护甲和抗性提升有一定几率能让天敌对你的§l爪牙连击§r§8§o失败",
+
 	"origin.thorigins.lightning_fox.name": "闪电狐狸",
 	"origin.thorigins.lightning_fox.description": "能够承受住天雷之威的狐狸。",
 
 	"lightning_fox.thdischarge.name": "§6§l§n放电",
 	"lightning_fox.thdischarge.description": "充能并释放一股瞬时电能暴, 电离并毁灭周围的一切活物。",
-	"thdischarge.key0": "主动能力, 双击并按住[",
-	"thdischarge.key1": "] 蓄力\n按下[",
-	"thdischarge.key2": "]使用",
+	"thdischarge.key": "主动能力, 双击并按住 [%s] 蓄力\n按下 [%s] 使用",
 	"thdischarge.info": "你能够达到§b3§r个充能等级\n等级越高, 范围越广, 威力越大\n\n充能时:\n[§a+§r] 高亮范围内的生物\n[§a+§r] 利用电场给距离近的生物减速和伤害\n[§c-§r] 充能很容易被打断\n\n§c没有饱食度时不能使用！",
 
 	"lightning_fox.thbecome_lightning.name": "§6§l§n化身闪电",
 	"lightning_fox.thbecome_lightning.description": "成为闪电, 拥有飞行和伤害飞行沿途一切的能力。记得防水, 否则在这个状态之下, 你的能量会被水迅速分散。",
-	"thbecome_lightning.key": "] 进入雷电状态",
+	"thbecome_lightning.key": "主动能力, 按下 [%s] 进入雷电状态",
 	"thbecome_lightning.info": "雷电状态：\n§b1§r. 能够高速飞行\n§b2§r. 高速时熄灭周围的火焰\n§b3§r. 高速时雷击周围的生物\n§b4§r. 大量消耗饱食度\n§b5§r. 受到水的伤害\n§b6§r. 受到2倍的伤害\n\n§c没有饱食度时不能使用！",
 
 	"lightning_fox.thelectric_beam.name": "§6§l§n闪电链",
 	"lightning_fox.thelectric_beam.description": "用电能束让你的敌人变成熟人。",
-	"thelectric_beam.key": "] 射出一道能在敌人间跳跃的电能束",
+	"thelectric_beam.key": "主动能力, 按下 [%s] 射出一道能在敌人间跳跃的电能束",
 	"thelectric_beam.info": "闪电会在敌人间传开\n至多攻击四次",
 
 	"lightning_fox.thrailgun.name": "§6§l§n电磁炮",
 	"lightning_fox.thrailgun.description": "通过操纵电磁场, 将铁粒以极高的速度弹射出去, 摧毁一切拦路之物。",
-	"thrailgun.key0": "主动能力, 手持铁粒按下 [",
-	"thrailgun.key1": "], 并在合适的时机按下 [",
-	"thrailgun.key2": "] 使用",
-	"thrailgun.info": "处于合适时机时, 会有一个蓝色的全屏标识作为提升\n\n§c没有饱食度时不能使用！",
+	"thrailgun.key": "主动能力, 手持铁粒按下 [%s], 并在合适的时机按下 [%s] 使用",
+	"thrailgun.info": "处于合适时机时, 会有一个蓝色的全屏标识作为提示\n\n§c没有饱食度时不能使用！",
 
 	"lightning_fox.thlightning_combat.name": "§a§n雷电化身",
 	"lightning_fox.thlightning_combat.description": "掌握雷神之力。",
@@ -81,19 +78,13 @@
 
 	"fire_fox.thcannon.name": "§6§l§n焚焰炮",
 	"fire_fox.thcannon.description": "释放体内储存的热量, 焚尽沿途的一切。",
-	"thcannon.key0": "] 选择火焰形态, 长按 [",
-	"thcannon.key1": "] 发射\n\n火力为4时, 充能完成后按下 [",
-	"thcannon.key2": "] 发射",
+	"thcannon.key": "主动能力, 按下 [%s] 选择火焰形态, 长按 [%s] 发射\n\n火力为4时, 充能完成后按下 [%s] 发射",
 	"thcannon.info": "[§c-§r] 发射/充能时无法移动\n\n火力值目录\n§b0§r. 停用\n§b1§r. 火焰弹\n§b2§r. 火球\n§b3§r. 镭射激光\n§b4§r. 超 大 份",
 
 	"fire_fox.ththrust.name": "§6§l§n烈焰之翼",
 	"fire_fox.ththrust.description": "临时制造一双助你翱翔的炽热羽翼。",
-	"ththrust.key0": "以热能为原料, 在下落时按下 [",
-	"ththrust.key1": "] 飞行\n\n飞行时按下 [",
-	"ththrust.key2": "] 向前推进\n持续按住以获得持续性的推进\n\n使用烈焰之翼飞行时, 按下 [",
-	"ththrust.key3": "] 终止飞行",
-	"ththrust.key4": "如果你激活了[§6§l焚焰炮§r] 并按住 [",
-	"ththrust.key5": "], 你会在高速度碰撞时产生爆炸\n\n火力值 <= 2时, 爆炸只是个小玩笑:3\n不然的话, >:3",
+	"ththrust.key0": "以热能为原料, 在下落时按下 [%s] 飞行\n\n飞行时按下 [%s] 向前推进\n持续按住以获得持续性的推进\n\n使用烈焰之翼飞行时, 按下 [%s] 终止飞行",
+	"ththrust.key1": "如果你激活了[§6§l焚焰炮§r] 并按住 [%s], 你会在高速度碰撞时产生爆炸\n\n火力值 <= 2时, 爆炸只是个小玩笑:3\n不然的话, >:3",
 	"ththrust.info": "[§c-§r] 落入水中会立刻熄灭烈焰之翼\n[§c-§r] 雨中飞行会消耗更多热能",
 
 	"fire_fox.thfire_aspect.name": "§a§n火之化身",
@@ -123,20 +114,17 @@
 
 	"thstorage2.name": "§6§l§n尾巴空间",
 	"thstorage2.description": "把东西存在九根毛绒尾巴里",
-	"thstorage2.key": "] 把东西存进尾巴",
+	"thstorage2.key": "主动能力, 按下 [%s] 把东西存进尾巴",
 	"thorigins.fox.container.inventory2": "毛毛尾巴次元",
 
 	"kitsune.thphasing.name": "§6§l§n飞升",
 	"kitsune.thphasing.description": "你的躯体超凡脱俗, 不再受尘世之限",
 	"kitsune.thphasing.info": "在该状态下：\n§b1§r. 在空中行走\n§b2§r. 无视障碍物\n§b3§r. 受到的伤害折半\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
-	"kitsune.thphasing.key": "] 飞升进入空灵形态",
+	"kitsune.thphasing.key": "主动能力, 按下 [%s] 飞升进入空灵形态",
 
 	"kitsune.thheal.name": "§6§l§n灵之馈赠",
 	"kitsune.thheal.description": "你的本质散发着纯真的光芒, 赠与生灵, 驱邪避灾",
-	"thheal.key0": "] 散发治愈光环\n\n蹲下时按下 [",
-	"thheal.key1": "] 可以提升周围生灵的斗志与生命力\n\n空手对着生物按下 [",
-	"thheal.key2": "] 可以治愈该生物\n\n在背包界面, 拿起一个种子并对着另一个种子按下 [",
-	"thheal.key3": "] 可合成一个甜浆果\n同理, 荧光墨囊 + 甜浆果 = 发光浆果",
+	"thheal.key": "主动能力, 按下 [%s] 散发治愈光环\n\n蹲下时按下 [%s] 可以提升周围生灵的斗志与生命力\n\n空手对着生物按下 [%s] 可以治愈该生物\n\n在背包界面, 拿起一个种子并对着另一个种子按下 [%s] 可合成一个甜浆果\n同理, 荧光墨囊 + 甜浆果 = 发光浆果",
 	"thheal.info": "你的灵力会伤害亡灵生物\n\n§8有几率直接驯服你触摸治愈的生物 :3",
 	"thheal.aura.blessed": "§2舒缓的光环恢复了你的生命力",
 	"thheal.aura.cursed": "§4神圣的光芒腐蚀了你的亡灵之身",
@@ -154,6 +142,7 @@
 	"kitsune.thfoxiality2.name": "§e§n狐狸本性++",
 	"kitsune.thfoxiality2.description": "你的天敌不再视你为食物, 你也能更好地看清黑暗。",
 	"thfoxiality2.info": "[§a+§r] §a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 破坏浆果丛可回收浆果\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 攀爬细雪方块\n[§a+§r] 受到狐狸信任\n§m[§c-§r§m] 惹怒附近的狼和北极熊§r",
+	"thfoxiality2.info1": "\n§m[§c-§r§m] 天敌的攻击将附带更致命的§5§l§m爪牙连击§r",
 
 	"origin.thorigins.ninetails.name": "九尾",
 	"origin.thorigins.ninetails.description": "熟练了屠杀与谋略, 这个生物注定会成为其他生灵的噩梦。",
@@ -166,12 +155,10 @@
 
 	"ninetails.thsoul_power.name": "§6§l§n灵魂掌控",
 	"ninetails.thsoul_power.description": "掌握逝者之灵, 驱使其为你所用。以不可阻挡之力收割, 诅咒, 控制。",
-	"thsoul_power.key0": "] 发射一道诅咒光束\n蹲下时按下 [",
-	"thsoul_power.key1": "] 吞噬储存的灵魂并在短时间内强化自己\n\n蹲下时对着生物按下 [",
-	"thsoul_power.key2": "] 可以强行撕裂并吞噬该生物的灵魂\n\n拿着空玻璃瓶并按住 [",
-	"thsoul_power.key3": "] 可以将其变为附魔之瓶",
+	"thsoul_power.key": "主动能力, 按下 [%s] 发射一道诅咒光束\n蹲下时按下 [%s] 吞噬储存的灵魂并在短时间内强化自己\n\n蹲下时对着生物按下 [%s] 可以强行撕裂并吞噬该生物的灵魂\n\n拿着空玻璃瓶并按住 [%s] 可以注入灵魂变为附魔之瓶",
 	"thsoul_power.info0": "你需要足够的灵魂来使用技能\n\n击杀生灵夺其灵魂\n或者缓慢地汲取日月精华作为灵魂的替代品",
-	"thsoul_power.info1": "诅咒效果：\n§b1§r. 持续10秒\n§b2§r. 施加凋零与霉运效果\n§b3§r. 受到来自九尾的伤害提升\n§b4§r. 被九尾攻击时：\n   §b4.1§r. 施加缓慢和虚弱效果\n   §b4.2§r. 九尾获得一部分灵魂",
+	"thsoul_power.info1": "诅咒效果：\n§b1§r. 持续10秒\n§b2§r. 施加凋零与霉运效果\n§b3§r. 受到来自九尾的伤害提升\n§b4§r. 被九尾攻击时：\n   §b4.1§r. 施加反胃,缓慢和虚弱效果\n   §b4.2§r. 九尾获得一部分灵魂",
+	"thsoul_power.soul_harvest": "§4你感受到了穿心之痛, 仿佛灵魂的一部分被粗暴地撕下...",
 	"thcurse.added": "§4你被诅咒了, 奇怪的感觉在你身上蔓延开来",
 	"thcurse.removed": "§4诅咒消失, 你感到如释重负",
 	"thcurse.milk": "§4牛奶也许能治百病, 但诅咒可不行 >:3",
@@ -183,7 +170,7 @@
 
 	"ninetails.thphasing.name": "§6§l§n堕渊",
 	"ninetails.thphasing.description": "坠入深渊, 弃之尘世, 穿行于现实的面纱之间。",
-	"ninetails.thphasing.key": "] 堕落进入幽冥形态",
+	"ninetails.thphasing.key": "主动能力, 按下 [%s] 堕落进入幽冥形态",
 	"ninetails.thphasing.info": "在该状态下：\n§b1§r. 在空中行走\n§b2§r. 无视障碍物\n§b3§r. 受到的伤害降低\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
 
 	"ninetails.thfluffy5.name": "§e§n毛绒绒*",
@@ -195,8 +182,9 @@
 	"ninetails.thfoxiality3.name": "§e§n狐狸本性++",
 	"ninetails.thfoxiality3.description": "你能更好地看清黑暗, 你的天敌不再能很好地利用你的弱点。",
 	"thfoxiality3.info": "[§a+§r] §a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 受到狐狸信任\n[§c-§r] 惹怒附近的狼和北极熊",
-	"thfoxiality3.info1": "\n[§c-§r] 你的天敌每次攻击你时将附带§a稍弱§r的§5§l爪牙连击§r\n[§e~§r] 装备护甲和抗性提升有一定几率能让天敌对你的§5§l爪牙连击§r§f失败",
+	"thfoxiality3.info1": "\n[§c-§r] 你的天敌每次攻击你时将附带§a稍弱§r的§5§l爪牙连击§r",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] 狼和北极熊对你造成的伤害翻倍§r",
+	"thfoxiality3.info2": "你天敌的§5§l爪牙连击§r有以下效果:\n§m§b1§r§m. 给你施加§5§m缓慢§r§m+虚弱+反胃效果§r\n§r§b2§r. 给你造成§a略少§r的❂§l真实伤害§r\n§r§b3§r. 暂时§c禁用§r你的[§6§l掠袭++§r]\n§b4§r. 暂时§c无效化§r你[§a灵跃++§r]的第一个效果\n§b5§r. 暂时§c禁用§r你的自然生命恢复\n\n§8§o装备护甲和抗性提升有一定几率能让天敌对你的§l爪牙连击§r§8§o失败",
 
 	"origin.thorigins.ice_fox.name": "寒冰狐狸",
 	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n你不该看见这个页面的\n目前懒癌发作只做了毛绒绒*被动技能",

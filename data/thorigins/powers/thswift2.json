@@ -140,6 +140,12 @@
 				{
 					"type": "origins:sneaking",
 					"inverted": true
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxiality_predator_suppression",
+					"compare_to": 0,
+					"comparison": "=="
 				}
 			]
 		}
@@ -191,6 +197,12 @@
 				{
 					"type": "origins:sneaking",
 					"inverted": true
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxiality_predator_suppression",
+					"compare_to": 0,
+					"comparison": "=="
 				}
 			]
 		}

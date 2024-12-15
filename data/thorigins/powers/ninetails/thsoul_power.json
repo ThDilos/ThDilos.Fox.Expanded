@@ -6,39 +6,27 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key1"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key2"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key3"
-				}
-			]
+			"text": {
+				"translate": "thsoul_power.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",
@@ -80,6 +68,11 @@
 				},
 				{
 					"type": "origins:exposed_to_sky"
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -138,7 +131,6 @@
 		"type": "origins:active_self",
 		"key": "key.origins.primary_active",
 		"cooldown": 1,
-		"hud_render": { "should_render": false },
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
@@ -178,7 +170,7 @@
 										{
 											"effect": "minecraft:strength",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -186,7 +178,7 @@
 										{
 											"effect": "minecraft:speed",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -194,7 +186,7 @@
 										{
 											"effect": "minecraft:resistance",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -202,7 +194,7 @@
 										{
 											"effect": "minecraft:haste",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -210,7 +202,7 @@
 										{
 											"effect": "minecraft:luck",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -348,6 +340,11 @@
 					"resource": "*:*_cooldown",
 					"compare_to": 0,
 					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -437,14 +434,36 @@
 						"actions": [
 							{
 								"type": "origins:apply_effect",
-								"effect": {
-									"effect": "minecraft:wither",
-									"amplifier": 0,
-									"duration": 100,
-									"show_icon": true,
-									"is_ambient": true,
-									"show_particles": false
-								}
+								"effects": [
+									{
+										"effect": "minecraft:wither",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									},
+									{
+										"effect": "minecraft:blindness",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									},
+									{
+										"effect": "minecraft:nausea",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									}
+								]
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"thsoul_power.soul_harvest\"}"
 							},
 							{
 								"type": "origins:play_sound",
@@ -471,10 +490,20 @@
 			]
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_cooldown",
-			"compare_to": 0,
-			"comparison": "=="
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_cooldown",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
+				}
+			]
 		}
 	},
 
@@ -585,6 +614,11 @@
 					"resource": "*:thtransform_souls",
 					"compare_to": 50,
 					"comparison": ">="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}

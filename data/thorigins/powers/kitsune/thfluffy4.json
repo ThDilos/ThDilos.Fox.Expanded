@@ -166,6 +166,11 @@
 					"type": "origins:living"
 				}
 			}
+		},
+		"condition": {
+			"type": "origins:gamemode",
+			"gamemode": "spectator",
+			"inverted": true
 		}
 	},
 

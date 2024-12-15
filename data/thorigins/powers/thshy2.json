@@ -16,14 +16,13 @@
 					"translate": "thshy2.info"
 				},
 				{
-					"translate": "thorigins.press1"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thshy.info1"
+					"translate": "thshy.info1",
+					"with": [
+						{
+							"keybind": "key.use",
+							"color": "aqua"
+						}
+					]
 				}
 			]
 		},
@@ -367,7 +366,7 @@
 					},
 					{
 						"type": "origins:nbt",
-						"nbt": "{\"Tags\":[\"foxie_tamed\"]}",
+						"nbt": "{\"Tags\":[\"foxie_trust\"]}",
 						"inverted": true
 					},
 					{
@@ -432,7 +431,7 @@
 						"actions": [
 							{
 								"type": "origins:execute_command",
-								"command": "/tag @s add foxie_tamed"
+								"command": "/tag @s add foxie_trust"
 							},
 							{
 								"type": "origins:play_sound",
@@ -454,14 +453,14 @@
 			"type": "origins:target_condition",
 			"condition": {
 				"type": "origins:nbt",
-				"nbt": "{\"Tags\":[\"foxie_tamed\"]}"
+				"nbt": "{\"Tags\":[\"foxie_trust\"]}"
 			}
 		},
 		"bientity_action": {
 			"type": "origins:actor_action",
 			"action": {
 				"type": "origins:execute_command",
-				"command": "/tag @s remove foxie_tamed"
+				"command": "/tag @s remove foxie_trust"
 			}
 		}
 	}

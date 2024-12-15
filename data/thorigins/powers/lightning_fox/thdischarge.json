@@ -6,25 +6,19 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thdischarge.key0"
-				},
-				{
-					"keybind": "key.sneak",
-					"color": "aqua"
-				},
-				{
-					"translate": "thdischarge.key1"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thdischarge.key2"
-				}
-			]
+			"text": {
+				"translate": "thdischarge.key",
+				"with": [
+					{
+						"keybind": "key.sneak",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
@@ -237,6 +231,11 @@
 							"resource": "*:lightning_fox/thrailgun_ready",
 							"compare_to": 0,
 							"comparison": "=="
+						},
+						{
+							"type": "origins:gamemode",
+							"gamemode": "spectator",
+							"inverted": true
 						}
 					]
 				},
@@ -349,7 +348,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 10,
+											"amount": 5,
 											"damage_type": "thorigins:foxie_zap",
 											"source": {
 												"name": "thorigins:foxie_zap.player"
@@ -424,7 +423,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 20,
+											"amount": 10,
 											"damage_type": "thorigins:foxie_zap",
 											"source": {
 												"name": "thorigins:foxie_zap.player"
@@ -499,7 +498,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 30,
+											"amount": 20,
 											"damage_type": "thorigins:foxie_zap",
 											"source": {
 												"name": "thorigins:foxie_zap.item"
@@ -839,7 +838,7 @@
 								"type": "origins:invert",
 								"action": {
 									"type": "origins:damage",
-									"amount": 2,
+									"amount": 1,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
 										"name": "thorigins:foxie_zap"
@@ -893,7 +892,7 @@
 								"type": "origins:invert",
 								"action": {
 									"type": "origins:damage",
-									"amount": 3,
+									"amount": 1,
 									"damage_type": "thorigins:foxie_zap",
 									"source": {
 										"name": "thorigins:foxie_zap"

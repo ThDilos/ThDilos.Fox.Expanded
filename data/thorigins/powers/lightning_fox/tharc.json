@@ -69,7 +69,7 @@
 						"actions": [
 							{
 								"type": "origins:damage",
-								"amount": 2,
+								"amount": 1,
 								"damage_type": "thorigins:foxie_zap",
 								"source": {
 									"name": "thorigins:foxie_zap"

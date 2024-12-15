@@ -6,18 +6,15 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.loadToolbarActivator",
-					"color": "aqua"
-				},
-				{
-					"translate": "thtransform.key"
-				}
-			]
+			"text": {
+				"translate": "thtransform.key",
+				"with": [
+					{
+						"keybind": "key.loadToolbarActivator",
+						"color": "aqua"
+					}
+				]
+			}
 		}
 	],
 
