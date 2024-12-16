@@ -7,7 +7,7 @@
 		"origins": ">=1.6.2",
 		"pehkui": ">=3.6.0",
 		"minecraft": ">=1.19 <=1.19.3",
-		"thorigins": ">=4.1.0"
+		"thorigins": ">=4.1.1"
 	},
 	"name": "ThDilos' Custom Fox Origins Expanded",
 	"id": "thorigins2",
