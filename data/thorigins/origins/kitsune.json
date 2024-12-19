@@ -19,7 +19,7 @@
 
 		"thorigins:kitsune/loadin_kitsune"
 	],
-	"icon": {
+    "icon": {
 		"id": "minecraft:glowstone"
 	},
 	"impact": 3,

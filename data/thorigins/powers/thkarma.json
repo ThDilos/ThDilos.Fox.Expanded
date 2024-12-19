@@ -378,30 +378,26 @@
 		"type": "origins:resource",
 		"min": 0,
 		"max": 1,
-		"start_value": 1,
-		"hud_render": { "should_render": false }
+		"start_value": 1
 	},
 
 	"show_karma": {
 		"type": "origins:cooldown",
 		"cooldown": 60,
-		"start_value": 0,
-		"hud_render": { "should_render": false }
+		"start_value": 0
 	},
 
 	"unlockable": {
 		"type": "origins:resource",
 		"min": 0,
 		"max": 1,
-		"start_value": 1,
-		"hud_render": { "should_render": false }
+		"start_value": 1
 	},
 
 	"live_check": {
 		"type": "origins:resource",
 		"min": -1,
 		"max": 24000,
-		"hud_render": { "should_render": false },
 		"min_action": {
 			"type": "origins:and",
 			"actions": [
@@ -557,7 +553,13 @@
 		},
 		"target_condition": {
 			"type": "origins:in_tag",
-			"tag": "minecraft:undead"
+			"tag": "undead"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_unlockable",
+			"compare_to": 1,
+			"comparison": "=="
 		}
 	},
 
@@ -585,8 +587,14 @@
 		},
 		"target_condition": {
 			"type": "origins:in_tag",
-			"tag": "minecraft:undead",
+			"tag": "undead",
 			"inverted": true
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_unlockable",
+			"compare_to": 1,
+			"comparison": "=="
 		}
 	},
 
@@ -637,6 +645,12 @@
 					"entity_type": "warden"
 				}
 			]
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_unlockable",
+			"compare_to": 1,
+			"comparison": "=="
 		}
 	},
 
@@ -673,6 +687,12 @@
 		},
 		"target_condition": {
 			"type": "origins:tamed"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_unlockable",
+			"compare_to": 1,
+			"comparison": "=="
 		}
 	},
 
@@ -718,6 +738,12 @@
 					]
 				}
 			]
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_unlockable",
+			"compare_to": 1,
+			"comparison": "=="
 		}
 	}
 }

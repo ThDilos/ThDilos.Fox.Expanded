@@ -2,16 +2,16 @@
 	"type": "origins:multiple",
 	"hidden": true,
 
-	"auto_decrement": {
+	"ticks_20": {
 		"type": "origins:action_over_time",
-		"interval": 1,
+		"interval": 20,
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
 					"type": "origins:change_resource",
 					"resource": "*:*_timer",
-					"change": -1
+					"change": -20
 				},
 				{
 					"type": "origins:if_else",
@@ -22,8 +22,9 @@
 						"comparison": "=="
 					},
 					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/power remove @s thorigins:ninetails/thcurse"
+						"type": "origins:revoke_power",
+						"power": "*:ninetails/thcurse",
+						"source": "thorigins:temp"
 					}
 				}
 			]
@@ -53,6 +54,14 @@
 							"show_icon": true,
 							"show_particles": false,
 							"is_ambient": true
+						},
+						{
+							"id": "minecraft:nausea",
+							"duration": 200,
+							"amplifier": 0,
+							"show_icon": true,
+							"show_particles": false,
+							"is_ambient": true
 						}
 					]
 				},
@@ -68,8 +77,19 @@
 			]
 		},
 		"entity_action_lost": {
-			"type": "origins:execute_command",
-			"command": "/title @s actionbar {\"translate\":\"thcurse.removed\"}"
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:soul_fire_flame",
+					"count": 5,
+					"speed": 1
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"translate\":\"thcurse.removed\"}"
+				}
+			]
 		},
 		"condition": {
 			"type": "origins:entity_type",
@@ -82,21 +102,6 @@
 		"min": 0,
 		"max": 200,
 		"start_value": 200,
-		"min_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:execute_command",
-					"command": "/power remove @s thorigins:ninetails/thcurse"
-				},
-				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:soul_fire_flame",
-					"count": 5,
-					"speed": 1
-				}
-			]
-		},
 		"max_action": {
 			"type": "origins:delay",
 			"ticks": 1,
@@ -121,14 +126,12 @@
 					}
 				]
 			}
-		},
-		"hud_render": { "should_render": false }
+		}
 	},
 
 	"effect_cooldown": {
 		"type": "origins:cooldown",
-		"cooldown": 10,
-		"hud_render": { "should_render": false }
+		"cooldown": 10
 	},
 
 	"curse_effects": {
@@ -156,7 +159,7 @@
 			]
 		},
 		"modifier": {
-			"operation": "multiply_total_multiplicative",
+			"operation": "multiply_total_additive",
 			"amount": 0.25
 		},
 		"self_action": {
@@ -179,6 +182,14 @@
 						},
 						{
 							"id": "minecraft:slowness",
+							"duration": 60,
+							"amplifier": 0,
+							"show_icon": true,
+							"is_ambient": true,
+							"show_particles": false
+						},
+						{
+							"id": "minecraft:nausea",
 							"duration": 60,
 							"amplifier": 0,
 							"show_icon": true,

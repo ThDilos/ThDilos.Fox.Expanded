@@ -1,23 +1,21 @@
 {
 	"type": "origins:active_self",
+	"key": "key.origins.primary_active",
 	"name": { "translate": "lightning_fox.thelectric_beam.name" },
 	"description": { "translate": "lightning_fox.thelectric_beam.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thelectric_beam.key"
-				}
-			]
+			"text": {
+				"translate": "thelectric_beam.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
@@ -28,7 +26,7 @@
 		}
 	],
 
-	"cooldown": 80,
+	"cooldown": 200,
 	"hud_render": {
 		"should_render": true,
 		"bar_index": 2
@@ -70,7 +68,7 @@
 				},
 				{
 					"type": "origins:execute_command",
-					"command": "/power grant @e[type=!item,distance=..4,limit=5] thorigins:lightning_fox/tharc thorigins:universal"
+					"command": "/power grant @e[type=!item,distance=..4,limit=5] thorigins:lightning_fox/tharc thorigins:temp"
 				}
 			]
 		},
@@ -79,11 +77,8 @@
 			"actions": [
 				{
 					"type": "origins:damage",
-					"amount": 2,
-					"damage_type": "thorigins:foxie_zap",
-					"source": {
-						"name": "thorigins:foxie_zap.player"
-					}
+					"amount": 1,
+					"damage_type": "thorigins:foxie_zap"
 				},
 				{
 					"type": "origins:target_action",
@@ -92,8 +87,8 @@
 						"actions": [
 							{
 								"type": "origins:grant_power",
-								"power": "thorigins:lightning_fox/tharc",
-								"source": "thorigins:universal"
+								"power": "*:lightning_fox/tharc",
+								"source": "thorigins:temp"
 							},
 							{
 								"type": "origins:play_sound",
@@ -113,14 +108,6 @@
 					}
 				}
 			]
-		},
-		"bientity_condition": {
-			"type": "origins:target_condition",
-			"condition": {
-				"type": "origins:origin",
-				"origin": "thorigins:lightning_fox",
-				"inverted": true
-			}
 		}
 	},
 	"condition": {
@@ -143,6 +130,11 @@
 				"resource": "*:lightning_fox/thrailgun_ready",
 				"compare_to": 0,
 				"comparison": "=="
+			},
+			{
+				"type": "origins:gamemode",
+				"gamemode": "spectator",
+				"inverted": true
 			}
 		]
 	}

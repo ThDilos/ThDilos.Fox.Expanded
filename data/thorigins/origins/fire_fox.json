@@ -1,27 +1,27 @@
 {
-	"powers": [
-		"thorigins:fire_fox/thcannon",
-		"thorigins:fire_fox/ththrust",
-		"thorigins:fox/thfoxify",
-		"thorigins:fire_fox/thfire_aspect",
-		"thorigins:fire_fox/thfire_ambient",
-		"thorigins:thswift2",
-		"thorigins:fire_fox/thtemperature",
-		"thorigins:fox/thfoxiality",
-		"thorigins:fire_fox/thfluffy2",
-		"thorigins:fox/thsmol",
-		"thorigins:fox/thfood",
-		"thorigins:fox/thhunger",
-		"thorigins:fox/thshy",
-		"thorigins:thweak2",
-		"thorigins:fox/thsound",
+    "powers": [
+        "thorigins:fire_fox/thcannon",
+        "thorigins:fire_fox/ththrust",
+        "thorigins:fox/thfoxify",
+        "thorigins:fire_fox/thfire_aspect",
+        "thorigins:fire_fox/thfire_ambient",
+        "thorigins:thswift2",
+        "thorigins:fire_fox/thtemperature",
+        "thorigins:thfoxiality_interface",
+        "thorigins:fire_fox/thfluffy2",
+        "thorigins:fox/thsmol",
+        "thorigins:fox/thfood",
+        "thorigins:fox/thhunger",
+        "thorigins:fox/thshy",
+        "thorigins:thweak2",
+        "thorigins:fox/thsound",
 
-		"thorigins:fire_fox/loadin_fire"
-	],
-	"icon": {
+        "thorigins:fire_fox/loadin_fire"
+    ],
+    "icon": {
 		"id": "minecraft:blaze_powder"
 	},
-	"impact": 3,
-	"unchoosable": false,
-	"order": 1
+    "impact": 3,
+    "unchoosable": false,
+    "order": 1
 }

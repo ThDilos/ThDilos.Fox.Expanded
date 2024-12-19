@@ -24,32 +24,32 @@
 		}
 	},
 
-	"ticks": {
+	"ticks_20": {
 		"type": "origins:action_over_time",
-		"interval": 1,
+		"interval": 20,
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
 					"type": "origins:change_resource",
 					"resource": "*:*_timer",
-					"change": -1
+					"change": -20
 				},
 				{
 					"type": "origins:apply_effect",
 					"effects": [
 						{
-							"id": "minecraft:speed",
+							"id": "speed",
 							"amplifier": 0,
-							"duration": 10,
+							"duration": 20,
 							"show_icon": true,
 							"show_particles": false,
 							"is_ambient": true
 						},
 						{
-							"id": "minecraft:weakness",
+							"id": "weakness",
 							"amplifier": 0,
-							"duration": 10,
+							"duration": 20,
 							"show_icon": true,
 							"show_particles": false,
 							"is_ambient": true
@@ -65,8 +65,9 @@
 						"comparison": "=="
 					},
 					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/power remove @s thorigins:ninetails/thfear"
+						"type": "origins:revoke_power",
+						"power": "*:ninetails/thfear",
+						"source": "thorigins:temp"
 					}
 				}
 			]
@@ -80,8 +81,8 @@
 		"start_value": 100,
 		"min_action": {
 			"type": "origins:revoke_power",
-			"power": "thorigins:ninetails/thfear",
-			"source": "thorigins:universal"
+			"power": "*:ninetails/thfear",
+			"source": "thorigins:temp"
 		}
 	},
 

@@ -6,25 +6,19 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "thrailgun.key0"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thrailgun.key1"
-				},
-				{
-					"keybind": "key.attack",
-					"color": "aqua"
-				},
-				{
-					"translate": "thrailgun.key2"
-				}
-			]
+			"text": {
+				"translate": "thrailgun.key",
+				"with": [
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.attack",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
@@ -42,77 +36,25 @@
 			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
 			"bar_index": 16
 		},
-		"cooldown": 300
+		"cooldown": 600
 	},
 
 	"ticks": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_ready",
-					"change": -1
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:lightning_fox/thrailgun_ready",
-						"comparison": "==",
-						"compare_to": 1
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:give",
-								"stack": {
-									"id": "minecraft:iron_nugget",
-									"amount": 1
-								},
-								"preferred_slot": "mainhand"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:lightning_fox/thrailgun_ready",
-								"change": 0,
-								"operation": "set"
-							}
-						]
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:lightning_fox/thrailgun_ready",
-								"comparison": ">=",
-								"compare_to": 1
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:lightning_fox/thrailgun_ready",
-								"comparison": "<=",
-								"compare_to": 5
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s add shoot"
-					},
-					"else_action": {
-						"type": "origins:execute_command",
-						"command": "/tag @s remove shoot"
-					}
-				}
-			]
+			"type": "origins:give",
+			"stack": {
+				"id": "minecraft:iron_nugget",
+				"amount": 1
+			},
+			"preferred_slot": "mainhand"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:lightning_fox/thrailgun_ready",
+			"comparison": "==",
+			"compare_to": 1
 		}
 	},
 
@@ -132,7 +74,7 @@
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:*_ready",
-			"comparison": "!=",
+			"comparison": ">",
 			"compare_to": 0
 		}
 	},
@@ -209,6 +151,11 @@
 					"resource": "*:lightning_fox/thdischarge_charging",
 					"compare_to": 0,
 					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		},
@@ -223,10 +170,8 @@
 						"amount": 1
 					},
 					"entity_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_ready",
-						"change": 20,
-						"operation": "set"
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_ready"
 					},
 					"inventory_type": "inventory"
 				},
@@ -244,28 +189,18 @@
 				}
 			]
 		},
-		"cooldown": 30,
-		"hud_render": {
-			"should_render": false
-		}
+		"cooldown": 30
 	},
 
 	"ready": {
-		"type": "origins:resource",
+		"type": "origins:cooldown",
+		"cooldown": 20,
 		"hud_render": {
 			"should_render": true,
 			"inverted": true,
 			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-			"bar_index": 0,
-			"condition": {
-				"type": "origins:resource",
-				"resource": "*:*_ready",
-				"compare_to": 0,
-				"comparison": ">"
-			}
-		},
-		"max": 20,
-		"min": 0
+			"bar_index": 0
+		}
 	},
 
 	"shoot": {
@@ -295,7 +230,7 @@
 							{
 								"type": "origins:change_resource",
 								"resource": "*:*_ready",
-								"change": 0,
+								"change": 20,
 								"operation": "set"
 							}
 						]
@@ -329,6 +264,7 @@
 							{
 								"type": "origins:raycast",
 								"command_along_ray": "/function thorigins:railgun/railgun_particles",
+								"command_step": 1,
 								"distance": 100,
 								"shape_type": "collider",
 								"fluid_handling": "source_only",
@@ -337,13 +273,15 @@
 									"actions": [
 										{
 											"type": "origins:execute_command",
+											"command": "/playsound minecraft:entity.generic.explode player @a ~ ~ ~ 2 2"
+										},
+										{
+											"type": "origins:execute_command",
 											"command": "/particle minecraft:explosion_emitter ~ ~ ~ 0 0 0 0 1"
 										},
 										{
-											"type": "origins:explode",
-											"create_fire": true,
-											"power": 8,
-											"destruction_type": "keep"
+											"type": "origins:execute_command",
+											"command": "/tag @e[distance=..5] add railgun_splash"
 										}
 									]
 								},
@@ -368,10 +306,6 @@
 												"type": "origins:and",
 												"actions": [
 													{
-														"type": "origins:execute_command",
-														"command": "/summon creeper ^ ^ ^ {ignited:1,ExplosionRadius:2,Fuse:0}"
-													},
-													{
 														"type": "origins:spawn_particles",
 														"particle": "minecraft:electric_spark",
 														"count": 20,
@@ -384,22 +318,107 @@
 													},
 													{
 														"type": "origins:play_sound",
-														"sound": "minecraft:entity.experience_orb.pickup",
-														"volume": 2
+														"sound": "minecraft:entity.zombie.break_wooden_door",
+														"volume": 0.8,
+														"pitch": 1.5,
+														"category": "players"
 													}
 												]
+											}
+										},
+										{
+											"type": "origins:actor_action",
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 0.5 1"
 											}
 										}
 									]
 								}
 							},
 							{
-								"type": "origins:raycast",
-								"command_along_ray": "/summon creeper ^ ^ ^5 {ignited:1,ExplosionRadius:1.5,Fuse:0,Invulnerable:true,NoAI:true,NoGravity:true}",
-								"command_step": 0.5,
-								"distance": 100,
-								"shape_type": "collider",
-								"fluid_handling": "source_only"
+								"type": "origins:delay",
+								"ticks": 1,
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:area_of_effect",
+											"radius": 110,
+											"bientity_condition": {
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:nbt",
+													"nbt": "{\"Tags\":[\"railgun_splash\"]}"
+												}
+											},
+											"bientity_action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:damage",
+														"amount": 8,
+														"damage_type": "minecraft:player_explosion"
+													},
+													{
+														"type": "origins:target_action",
+														"action": {
+															"type": "origins:execute_command",
+															"command": "/tag @s remove railgun_splash"
+														}
+													}
+												]
+											}
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/tag @s remove railgun_splash"
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:fox/universal_settings_destroy_terrain",
+									"compare_to": 1,
+									"comparison": "=="
+								},
+								"if_action": {
+									"type": "origins:raycast",
+									"command_along_ray": "/summon creeper ^ ^ ^5 {ignited:1,ExplosionRadius:1.5,Fuse:0,Invulnerable:true,NoAI:true,NoGravity:true,Silent:true}",
+									"command_step": 0.5,
+									"distance": 100,
+									"shape_type": "collider",
+									"fluid_handling": "source_only",
+									"block_action": {
+										"type": "origins:explode",
+										"create_fire": false,
+										"power": 8,
+										"destruction_type": "destroy"
+									},
+									"bientity_action": {
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/summon creeper ^ ^ ^ {ignited:1,ExplosionRadius:2,Fuse:0}"
+										}
+									}
+								},
+								"else_action": {
+									"type": "origins:raycast",
+									"command_step": 0.5,
+									"distance": 100,
+									"shape_type": "collider",
+									"fluid_handling": "source_only",
+									"block_action": {
+										"type": "origins:explode",
+										"create_fire": false,
+										"power": 8,
+										"destruction_type": "keep"
+									}
+								}
 							},
 							{
 								"type": "origins:trigger_cooldown",
@@ -408,7 +427,7 @@
 							{
 								"type": "origins:change_resource",
 								"resource": "*:*_ready",
-								"change": 0,
+								"change": 20,
 								"operation": "set"
 							},
 							{
@@ -433,7 +452,15 @@
 								"type": "origins:play_sound",
 								"sound": "minecraft:entity.fox.spit",
 								"volume": 2,
-								"pitch": 1
+								"pitch": 1,
+								"category": "players"
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.amethyst_cluster.hit",
+								"pitch": 2,
+								"volume": 2,
+								"category": "players"
 							},
 							{
 								"type": "origins:exhaust",
@@ -449,7 +476,7 @@
 	"hint_to_shoot": {
 		"type": "origins:overlay",
 		"visible_in_third_person": true,
-		"texture": "minecraft:textures/misc/nausea.png",
+		"sprite": "origins:phantomize_overlay",
 		"red": 0.2,
 		"green": 0.2,
 		"blue": 0.5,

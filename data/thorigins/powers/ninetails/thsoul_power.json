@@ -6,39 +6,27 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key1"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key2"
-				},
-				{
-					"keybind": "key.use",
-					"color": "aqua"
-				},
-				{
-					"translate": "thsoul_power.key3"
-				}
-			]
+			"text": {
+				"translate": "thsoul_power.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",
@@ -78,11 +66,12 @@
 					"inverted": true
 				},
 				{
-					"type": "origins:in_snow",
-					"inverted": true
+					"type": "origins:exposed_to_sky"
 				},
 				{
-					"type": "origins:exposed_to_sky"
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -141,7 +130,6 @@
 		"type": "origins:active_self",
 		"key": "key.origins.primary_active",
 		"cooldown": 1,
-		"hud_render": { "should_render": false },
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
@@ -181,7 +169,7 @@
 										{
 											"id": "minecraft:strength",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -189,7 +177,7 @@
 										{
 											"id": "minecraft:speed",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -197,7 +185,7 @@
 										{
 											"id": "minecraft:resistance",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -205,7 +193,7 @@
 										{
 											"id": "minecraft:haste",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -213,7 +201,7 @@
 										{
 											"id": "minecraft:luck",
 											"amplifier": 0,
-											"duration": 1200,
+											"duration": 600,
 											"show_icon": true,
 											"show_particles": false,
 											"is_ambient": true
@@ -288,38 +276,47 @@
 									"shape_type": "visual",
 									"fluid_handling": "any",
 									"bientity_action": {
-										"type": "origins:target_action",
-										"action": {
-											"type": "origins:and",
-											"actions": [
-												{
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:damage",
+												"damage_type": "minecraft:magic",
+												"amount": 4,
+												"source": {
+													"name": "magic.player"
+												}
+											},
+											{
+												"type": "origins:target_action",
+												"action": {
 													"type": "origins:if_else",
 													"condition": {
 														"type": "origins:power",
-														"power": "thorigins:ninetails/thcurse",
-														"source": "thorigins:universal"
+														"power": "*:ninetails/thcurse",
+														"source": "thorigins:temp"
 													},
 													"if_action": {
-														"type": "origins:trigger_cooldown",
-														"power": "*:ninetails/thcurse_timer",
+														"type": "origins:change_resource",
+														"resource": "*:ninetails/thcurse_timer",
 														"change": 200
 													},
 													"else_action": {
-														"type": "origins:grant_power",
-														"power": "thorigins:ninetails/thcurse",
-														"source": "thorigins:universal"
-													}
-												},
-												{
-													"type": "origins:damage",
-													"damage_type": "minecraft:magic",
-													"amount": 4,
-													"source": {
-														"name": "magic.player"
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:execute_command",
+																"command": "/playsound minecraft:entity.elder_guardian.curse player @s ~ ~ ~ 0.5 1.3"
+															},
+															{
+																"type": "origins:grant_power",
+																"power": "*:ninetails/thcurse",
+																"source": "thorigins:temp"
+															}
+														]
 													}
 												}
-											]
-										}
+											}
+										]
 									}
 								}
 							]
@@ -342,6 +339,11 @@
 					"resource": "*:*_cooldown",
 					"compare_to": 0,
 					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -417,6 +419,14 @@
 					}
 				},
 				{
+					"type": "origins:damage",
+					"amount": 4,
+					"damage_type": "minecraft:magic",
+					"source": {
+						"name": "magic.player"
+					}
+				},
+				{
 					"type": "origins:target_action",
 					"action": {
 						"type": "origins:and",
@@ -431,16 +441,28 @@
 										"show_icon": true,
 										"is_ambient": true,
 										"show_particles": false
+									},
+									{
+										"id": "minecraft:blindness",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
+									},
+									{
+										"id": "minecraft:nausea",
+										"amplifier": 0,
+										"duration": 100,
+										"show_icon": true,
+										"is_ambient": true,
+										"show_particles": false
 									}
 								]
 							},
 							{
-								"type": "origins:damage",
-								"amount": 4,
-								"damage_type": "minecraft:magic",
-								"source": {
-									"name": "magic.player"
-								}
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"thsoul_power.soul_harvest\"}"
 							},
 							{
 								"type": "origins:play_sound",
@@ -467,10 +489,20 @@
 			]
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_cooldown",
-			"compare_to": 0,
-			"comparison": "=="
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_cooldown",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
+				}
+			]
 		}
 	},
 
@@ -581,6 +613,11 @@
 					"resource": "*:thtransform_souls",
 					"compare_to": 50,
 					"comparison": ">="
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}

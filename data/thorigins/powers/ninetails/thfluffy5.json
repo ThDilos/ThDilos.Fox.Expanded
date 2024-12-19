@@ -28,8 +28,14 @@
 	"original_thfluffy_power": {
 		"type": "origins:action_on_callback",
 		"entity_action_added": {
-			"type": "origins:execute_command",
-			"command": "/power grant @s thorigins:fox/thfluffy thorigins:ninetails"
+			"type": "origins:grant_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
 		}
 	},
 
@@ -46,27 +52,18 @@
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:power",
-						"power": "thorigins:ninetails/thfear",
-						"source": "thorigins:universal"
+						"power": "*:ninetails/thfear",
+						"source": "thorigins:temp"
 					},
 					"if_action": {
-						"type": "origins:if_else",
-						"condition": {
-							"type": "origins:resource",
-							"resource": "*:ninetails/thfear_timer",
-							"compare_to": 10,
-							"comparison": "<="
-						},
-						"if_action": {
-							"type": "origins:change_resource",
-							"resource": "*:ninetails/thfear_timer",
-							"change": 100
-						}
+						"type": "origins:change_resource",
+						"resource": "*:ninetails/thfear_timer",
+						"change": 100
 					},
 					"else_action": {
 						"type": "origins:grant_power",
-						"power": "thorigins:ninetails/thfear",
-						"source": "thorigins:universal"
+						"power": "*:ninetails/thfear",
+						"source": "thorigins:temp"
 					}
 				}
 			},
@@ -133,6 +130,11 @@
 					}
 				]
 			}
+		},
+		"condition": {
+			"type": "origins:gamemode",
+			"gamemode": "spectator",
+			"inverted": true
 		}
 	},
 

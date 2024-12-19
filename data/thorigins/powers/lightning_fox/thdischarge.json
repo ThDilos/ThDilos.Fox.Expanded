@@ -6,25 +6,19 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/star.png",
-			"text": [
-				{
-					"translate": "thdischarge.key0"
-				},
-				{
-					"keybind": "key.sneak",
-					"color": "aqua"
-				},
-				{
-					"translate": "thdischarge.key1"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thdischarge.key2"
-				}
-			]
+			"text": {
+				"translate": "thdischarge.key",
+				"with": [
+					{
+						"keybind": "key.sneak",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
@@ -41,62 +35,6 @@
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:power_active",
-								"power": "*:*_switch"
-							},
-							{
-								"type": "origins:sneaking",
-								"inverted": true
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:toggle",
-						"power": "*:*_switch"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:fox/thfoxify_afk_timer",
-								"compare_to": 1,
-								"comparison": "<="
-							},
-							{
-								"type": "origins:power_active",
-								"power": "*:*_switch",
-								"inverted": true
-							}
-						]
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_charging",
-								"change": 0,
-								"operation": "set"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_charge_lvl",
-								"change": 0,
-								"operation": "set"
-							}
-						]
-					}
-				},
 				{
 					"type": "origins:if_else",
 					"condition": {
@@ -178,6 +116,44 @@
 		}
 	},
 
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_charging",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_charge_lvl",
+					"change": 0,
+					"operation": "set"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxify_afk_timer",
+					"compare_to": 1,
+					"comparison": "<="
+				},
+				{
+					"type": "origins:power_active",
+					"power": "*:*_switch",
+					"inverted": true
+				}
+			]
+		}
+	},
+
 	"cooldown": {
 		"type": "origins:cooldown",
 		"cooldown": 200,
@@ -196,7 +172,11 @@
 	"switch": {
 		"type": "origins:toggle",
 		"active_by_default": false,
-		"key": "nuh.uh"
+		"retain_state": false,
+		"key": "nuh.uh",
+		"condition": {
+			"type": "origins:sneaking"
+		}
 	},
 
 	"double_tap_check": {
@@ -252,6 +232,11 @@
 							"resource": "*:lightning_fox/thrailgun_ready",
 							"compare_to": 0,
 							"comparison": "=="
+						},
+						{
+							"type": "origins:gamemode",
+							"gamemode": "spectator",
+							"inverted": true
 						}
 					]
 				},
@@ -364,11 +349,8 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 10,
-											"damage_type": "thorigins:foxie_zap",
-											"source": {
-												"name": "thorigins:foxie_zap.player"
-											}
+											"amount": 5,
+											"damage_type": "thorigins:foxie_zap"
 										}
 									},
 									{
@@ -407,13 +389,13 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"id": "minecraft:blindness",
+												"id": "blindness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
 											},
 											{
-												"id": "minecraft:slowness",
+												"id": "slowness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
@@ -439,11 +421,8 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 20,
-											"damage_type": "thorigins:foxie_zap",
-											"source": {
-												"name": "thorigins:foxie_zap.player"
-											}
+											"amount": 10,
+											"damage_type": "thorigins:foxie_zap"
 										}
 									},
 									{
@@ -482,13 +461,13 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"id": "minecraft:blindness",
+												"id": "blindness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
 											},
 											{
-												"id": "minecraft:slowness",
+												"id": "slowness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
@@ -514,11 +493,8 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 30,
-											"damage_type": "thorigins:foxie_zap",
-											"source": {
-												"name": "thorigins:foxie_zap.item"
-											}
+											"amount": 20,
+											"damage_type": "thorigins:foxie_zap"
 										}
 									},
 									{
@@ -557,13 +533,13 @@
 										"type": "origins:apply_effect",
 										"effects": [
 											{
-												"id": "minecraft:blindness",
+												"id": "blindness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
 											},
 											{
-												"id": "minecraft:slowness",
+												"id": "slowness",
 												"amplifier": 0,
 												"duration": 20,
 												"show_particles": false
@@ -1003,7 +979,7 @@
 											"amplifier": 1,
 											"duration": 2,
 											"is_ambient": true,
-											"show_icon": false,
+											"show_icon": true,
 											"show_particles": false
 										}
 									}
@@ -1045,7 +1021,7 @@
 											"amplifier": 1,
 											"duration": 2,
 											"is_ambient": true,
-											"show_icon": false,
+											"show_icon": true,
 											"show_particles": false
 										}
 									}

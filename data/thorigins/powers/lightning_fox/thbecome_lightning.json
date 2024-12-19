@@ -8,18 +8,15 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/active.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.secondary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "thbecome_lightning.key"
-				}
-			]
+			"text": {
+				"translate": "thbecome_lightning.key",
+				"with": [
+					{
+						"keybind": "key.origins.secondary_active",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:tooltip",
@@ -48,68 +45,18 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:and",
+						"type": "origins:or",
 						"conditions": [
 							{
-								"type": "origins:power_active",
-								"power": "*:*_toggle"
+								"type": "origins:resource",
+								"resource": "*:fox/thfoxify_afk_timer",
+								"compare_to": 1,
+								"comparison": "<="
 							},
 							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:resource",
-										"resource": "*:fox/thfoxify_afk_timer",
-										"compare_to": 1,
-										"comparison": "<="
-									},
-									{
-										"type": "origins:food_level",
-										"compare_to": 6,
-										"comparison": "<="
-									},
-									{
-										"type": "origins:or",
-										"conditions": [
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "head",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 2
-												}
-											},
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "chest",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 6
-												}
-											},
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "legs",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 5
-												}
-											},
-											{
-												"type": "origins:equipped_item",
-												"equipment_slot": "feet",
-												"item_condition": {
-													"type": "origins:armor_value",
-													"comparison": ">",
-													"compare_to": 2
-												}
-											}
-										]
-									}
-								]
+								"type": "origins:food_level",
+								"compare_to": 6,
+								"comparison": "<="
 							}
 						]
 					},
@@ -119,60 +66,63 @@
 					}
 				},
 				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:power_active",
-						"power": "*:*_toggle"
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:exhaust",
-								"amount": 0.1
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:fox/thfluffy_wetness",
-								"change": 0,
-								"operation": "set"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:fox/thfluffy_wetness",
-								"change": 0,
-								"operation": "set"
-							},
-							{
-								"type": "origins:if_else",
-								"condition": {
-									"type": "origins:swimming"
-								},
-								"if_action": {
-									"type": "origins:execute_command",
-									"command": "/fill ~3 ~3 ~3 ~-3 ~-3 ~-3 air replace fire"
-								}
-							},
-							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:lightning_fox/thlightning_traits_temperal_timer"
-							},
-							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:lightning_fox/thlightning_combat_buff_duration"
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:exhaust",
+							"amount": 0.1
+						},
+						{
+							"type": "origins:delay",
+							"ticks": 1,
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:fox/thfluffy_wetness",
+										"change": 0,
+										"operation": "set"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:fox/thfluffy_wetness",
+										"change": 0,
+										"operation": "set"
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:fox/thfluffy_effect_timer",
+										"change": -100
+									}
+								]
 							}
-						]
-					}
+						},
+						{
+							"type": "origins:if_else",
+							"condition": {
+								"type": "origins:swimming"
+							},
+							"if_action": {
+								"type": "origins:execute_command",
+								"command": "/fill ~3 ~3 ~3 ~-3 ~-3 ~-3 air replace fire"
+							}
+						},
+						{
+							"type": "origins:trigger_cooldown",
+							"power": "*:lightning_fox/thlightning_traits_temperal_timer"
+						},
+						{
+							"type": "origins:trigger_cooldown",
+							"power": "*:lightning_fox/thlightning_combat_buff_duration"
+						}
+					]
 				},
 				{
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:and",
 						"conditions": [
-							{
-								"type": "origins:power_active",
-								"power": "*:*_toggle"
-							},
 							{
 								"type": "origins:swimming"
 							},
@@ -224,6 +174,10 @@
 					}
 				}
 			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
 		}
 	},
 
@@ -252,40 +206,14 @@
 					"compare_to": 6
 				},
 				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "head",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 2
-					}
+					"type": "origins:power_active",
+					"power": "*:lightning_fox/thdischarge_switch",
+					"inverted": true
 				},
 				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "chest",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 6
-					}
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "legs",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 5
-					}
-				},
-				{
-					"type": "origins:equipped_item",
-					"equipment_slot": "feet",
-					"item_condition": {
-						"type": "origins:armor_value",
-						"comparison": "<=",
-						"compare_to": 2
-					}
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		},
@@ -355,8 +283,8 @@
 		"type": "origins:modify_swim_speed",
 		"modifier": {
 			"operation": "add_multiplied_base",
-			"amount": 10,
-			"id": "thorigins:lightning_fox/thbecome_lightning_flying_speed"
+			"id": "lightning_fox/thbecome_lightning_flying_speed",
+			"amount": 10
 		},
 		"condition": {
 			"type": "origins:power_active",
@@ -374,7 +302,7 @@
 
 	"prevent_dolphin": {
 		"type": "origins:effect_immunity",
-		"id": "minecraft:dolphins_grace",
+		"effect": "dolphins_grace",
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_toggle"
@@ -384,11 +312,11 @@
 	"effect_overlay": {
 		"type": "origins:overlay",
 		"visible_in_third_person": true,
-		"texture": "minecraft:textures/misc/nausea.png",
-		"red": 0.2,
-		"green": 0.2,
-		"blue": 0.5,
-		"strength": 0.8,
+		"sprite": "origins:phantomize_overlay",
+		"red": 0.1,
+		"green": 0.1,
+		"blue": 0.3,
+		"strength": 0.6,
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_toggle"
@@ -404,14 +332,14 @@
 			"power": "*:*_toggle"
 		},
 		"modifier": {
-			"amount": 19,
+			"amount": 14,
 			"operation": "multiply_base_additive"
 		}
 	},
 
 	"particles": {
 		"type": "origins:particle",
-		"frequency": 1,
+		"frequency": 5,
 		"particle": "minecraft:electric_spark",
 		"count": 10,
 		"spread": {
@@ -454,9 +382,9 @@
 
 	"water_damage": {
 		"type": "origins:damage_over_time",
-		"interval": 1,
-		"damage": 2,
-		"damage_easy": 1,
+		"interval": 10,
+		"damage": 4,
+		"damage_easy": 4,
 		"damage_type": "origins:hurt_by_water",
 		"protection_effectiveness": 0.2,
 		"protection_enchantment": "origins:water_protection",

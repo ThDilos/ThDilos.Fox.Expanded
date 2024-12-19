@@ -28,17 +28,23 @@
 	"original_thfluffy_power": {
 		"type": "origins:action_on_callback",
 		"entity_action_added": {
-			"type": "origins:execute_command",
-			"command": "/power grant @s thorigins:fox/thfluffy thorigins:lightning_fox"
+			"type": "origins:grant_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
 		}
 	},
 
 	"spikey_fluff": {
 		"type": "origins:action_over_time",
-		"interval": 2,
+		"interval": 3,
 		"entity_action": {
 			"type": "origins:area_of_effect",
-			"radius": 0.5,
+			"radius": 0.8,
 			"shape": "sphere",
 			"bientity_action": {
 				"type": "origins:if_else_list",
@@ -198,8 +204,18 @@
 			}
 		},
 		"condition": {
-			"type": "origins:sneaking",
-			"inverted": true
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
+				}
+			]
 		}
 	}
 }

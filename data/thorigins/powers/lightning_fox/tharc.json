@@ -45,8 +45,8 @@
 				"ticks": 1,
 				"action": {
 					"type": "origins:revoke_power",
-					"power": "thorigins:lightning_fox/tharc",
-					"source": "thorigins:universal"
+					"power": "*:lightning_fox/tharc",
+					"source": "thorigins:temp"
 				}
 			},
 			{
@@ -69,7 +69,7 @@
 						"actions": [
 							{
 								"type": "origins:damage",
-								"amount": 2,
+								"amount": 1,
 								"damage_type": "thorigins:foxie_zap"
 							},
 							{
@@ -93,7 +93,7 @@
 											"type": "origins:apply_effect",
 											"effect": {
 												"id": "minecraft:glowing",
-												"duration": 100,
+												"duration": 20,
 												"amplifier": 0,
 												"show_icon": true,
 												"is_ambient": true,
@@ -169,7 +169,7 @@
 																		"type": "origins:apply_effect",
 																		"effect": {
 																			"id": "minecraft:glowing",
-																			"duration": 100,
+																			"duration": 20,
 																			"amplifier": 0,
 																			"show_icon": true,
 																			"is_ambient": true,
@@ -233,7 +233,7 @@
 																									"type": "origins:apply_effect",
 																									"effect": {
 																										"id": "minecraft:glowing",
-																										"duration": 100,
+																										"duration": 20,
 																										"amplifier": 0,
 																										"show_icon": true,
 																										"is_ambient": true,

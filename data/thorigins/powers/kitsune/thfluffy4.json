@@ -28,14 +28,20 @@
 	"original_thfluffy_power": {
 		"type": "origins:action_on_callback",
 		"entity_action_added": {
-			"type": "origins:execute_command",
-			"command": "/power grant @s thorigins:fox/thfluffy thorigins:kitsune"
+			"type": "origins:grant_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
+		},
+		"entity_action_lost": {
+			"type": "origins:revoke_power",
+			"power": "*:fox/thfluffy",
+			"source": "thorigins:inherited"
 		}
 	},
 
 	"blessed_fluff": {
 		"type": "origins:action_over_time",
-		"interval": 3,
+		"interval": 10,
 		"entity_action": {
 			"type": "origins:area_of_effect",
 			"radius": 0.8,
@@ -46,7 +52,7 @@
 					"type": "origins:target_condition",
 					"condition": {
 						"type": "origins:in_tag",
-						"tag": "minecraft:undead"
+						"tag": "undead"
 					}
 				},
 				"if_action": {
@@ -76,31 +82,40 @@
 						"actions": [
 							{
 								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"id": "minecraft:luck",
-										"amplifier": 4,
-										"duration": 3,
-										"is_ambient": true,
-										"show_icon": true,
-										"show_particles": false
-									},
-									{
+								"effect": {
+									"id": "minecraft:luck",
+									"amplifier": 4,
+									"duration": 11,
+									"is_ambient": true,
+									"show_icon": true,
+									"show_particles": false
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:status_effect",
+									"effect": "minecraft:regeneration",
+									"inverted": true
+								},
+								"if_action": {
+									"type": "origins:apply_effect",
+									"effect": {
 										"id": "minecraft:regeneration",
-										"amplifier": 4,
-										"duration": 3,
+										"amplifier": 1,
+										"duration": 25,
 										"is_ambient": true,
 										"show_icon": true,
 										"show_particles": false
 									}
-								]
+								}
 							},
 							{
 								"type": "origins:if_else",
 								"condition": {
 									"type": "origins:power",
-									"power": "thorigins:ninetails/thcurse",
-									"source": "thorigins:universal"
+									"power": "*:ninetails/thcurse",
+									"source": "thorigins:temp"
 								},
 								"if_action": {
 									"type": "origins:change_resource",
@@ -112,8 +127,8 @@
 								"type": "origins:if_else",
 								"condition": {
 									"type": "origins:power",
-									"power": "thorigins:ninetails/thfear",
-									"source": "thorigins:universal"
+									"power": "*:ninetails/thfear",
+									"source": "thorigins:temp"
 								},
 								"if_action": {
 									"type": "origins:change_resource",
@@ -123,19 +138,19 @@
 							},
 							{
 								"type": "origins:clear_effect",
-								"id": "minecraft:poison"
+								"effect": "minecraft:poison"
 							},
 							{
 								"type": "origins:clear_effect",
-								"id": "minecraft:wither"
+								"effect": "minecraft:wither"
 							},
 							{
 								"type": "origins:clear_effect",
-								"id": "minecraft:unluck"
+								"effect": "minecraft:unluck"
 							},
 							{
 								"type": "origins:clear_effect",
-								"id": "minecraft:bad_omen"
+								"effect": "minecraft:bad_omen"
 							},
 							{
 								"type": "origins:execute_command",
@@ -151,6 +166,11 @@
 					"type": "origins:living"
 				}
 			}
+		},
+		"condition": {
+			"type": "origins:gamemode",
+			"gamemode": "spectator",
+			"inverted": true
 		}
 	},
 

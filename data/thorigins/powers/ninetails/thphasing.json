@@ -6,18 +6,15 @@
 		{
 			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/toggle.png",
-			"text": [
-				{
-					"translate": "thorigins.press0"
-				},
-				{
-					"keybind": "key.origins.primary_active",
-					"color": "aqua"
-				},
-				{
-					"translate": "ninetails.thphasing.key"
-				}
-			]
+			"text": {
+				"translate": "ninetails.thphasing.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					}
+				]
+			}
 		},
 		{
 			"type": "origins:keybind",
@@ -49,12 +46,16 @@
 					},
 					{
 						"type": "origins:execute_command",
+						"command": "/scale delay set pehkui:motion 1 @s"
+					},
+					{
+						"type": "origins:execute_command",
 						"command": "/scale set pehkui:motion 3 @s"
 					},
 					{
 						"type": "origins:apply_effect",
 						"effect": {
-							"id": "minecraft:weakness",
+							"id": "weakness",
 							"amplifier": 99,
 							"duration": 5,
 							"is_ambient": true,
@@ -96,6 +97,11 @@
 					"resource": "*:fox/thfoxify_afk_timer",
 					"compare_to": 1,
 					"comparison": ">"
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
 				}
 			]
 		}
@@ -127,7 +133,7 @@
 		"red": 0.1,
 		"green": 0.1,
 		"blue": 0.1,
-		"texture": "minecraft:textures/misc/nausea.png",
+		"sprite": "origins:phantomize_overlay",
 		"draw_mode": "nausea",
 		"draw_phase": "below_hud",
 		"condition": {
@@ -163,8 +169,7 @@
 
 	"float_detector": {
 		"type": "origins:cooldown",
-		"cooldown": 2,
-		"hud_render": { "should_render": false }
+		"cooldown": 2
 	},
 
 	"float_on_air": {
@@ -241,7 +246,7 @@
 		"type": "origins:modify_damage_taken",
 		"modifier": {
 			"amount": -0.25,
-			"operation": "multiply_total_multiplicative"
+			"operation": "multiply_total_additive"
 		},
 		"condition": {
 			"type": "origins:power_active",

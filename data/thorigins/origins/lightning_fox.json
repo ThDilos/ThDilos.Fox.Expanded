@@ -8,7 +8,7 @@
 		"thorigins:lightning_fox/thlightning_combat",
 		"thorigins:thswift2",
 		"thorigins:lightning_fox/thlightning_traits",
-		"thorigins:fox/thfoxiality",
+		"thorigins:thfoxiality_interface",
 		"thorigins:lightning_fox/thfluffy3",
 		"thorigins:fox/thsmol",
 		"thorigins:fox/thfood",
@@ -19,7 +19,7 @@
 		"thorigins:lightning_fox/thlightning_ambient",
 		"thorigins:lightning_fox/loadin_lightning"
 	],
-	"icon": {
+    "icon": {
 		"id": "minecraft:glow_berries"
 	},
 	"impact": 3,

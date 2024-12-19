@@ -7,57 +7,54 @@
 
 	"thtransform_interface.name": "§6§l§nChange Form",
 	"thtransform_interface.description": "Become a fox with paranormal abilities!",
-	"thtransform.key": "] to perform transformation",
+	"thtransform.key": "Active ability, press [%s] to perform transformation",
 	"cannot_forward_karma": "You have reached the end of your current karmic journey",
 	"unlock_karma_path": "With the power of the Dragon Egg, you have set foot on a new karmic path.",
 	"completed_karma_path": "You have completed both of the karmic paths",
 
 	"thkarma_interface.name": "§6§l§nKarma",
 	"thkarma_interface.description": "Your deeds weave your fate, as unseen forces tally your karmic path.",
-	"thkarma_interface.key0": "Active ability, Press [",
-	"thkarma_interface.key1": "] while sneaking to glimpse your current karmic alignment, or...\n\n§8By sacrificing the world's rarest treasure, you can regain the possibility of another extremity",
+	"thkarma_interface.key": "Active ability, press [%s] while sneaking to glimpse your current karmic alignment, or...\n\n§8By sacrificing the world's rarest treasure, you can regain the possibility of another extremity",
 
 	"thchoice.name": "§6§l§nPower Array",
 	"thchoice.description": "Switch among all your active abilities freely.",
-	"thchoice.key": "] to switch to the next active ability",
+	"thchoice.key": "Active ability, press [%s] to switch to the next active ability\nIf pressed while sneaking, switch to the previous active ability instead",
 
 	"thswift2.name": "§a§nAgility++",
 	"thswift2.description": "Your fox body has truly transcended, to a state beyond normal foxes' comprehension.",
-	"thswift2.info": "[§a+§r] §aFaster§r speed and §ahigher§r jumping when sprinting\n[§a+§r] Sprint a little bit faster when not holding an item\n[§a+§r] Ignore fall distance < §a36§r\n[§a+§r] Crouch when falling will reduce §amost§r of the fall damage",
+	"thswift2.info": "[§a+§r] §aFaster§r speed and §ahigher§r jumping when sprinting\n[§a+§r] Sprint a little bit faster when not holding an item\n[§a+§r] Ignore fall distance < §a36§r\n[§a+§r] §e§nCrouch§r when §6landing§r will neglect §a§lmost§r of the fall damage",
 
 	"thshy2.name": "§c§nTimidity++",
 	"thshy2.description": "Out of the foodchain, you no longer fear your natural predators.",
-	"thshy2.info": "[§c-§r] Shake, and get Weakness + Speed effects when:\n§b1§r. Near §mpolar bear§r / §mwolf§r / villager / warden / wither / ender dragon\n§b2§r. Spawn of lightning\n§b3§r. Low health\n§b4§r. In the other 2 dimensions\n§b5§r. Near Human / Enderian / Blazeborn / Shulk Origin Player\n\n[§c-§r] Unable to fall asleep when the above effect is present\n\nThere are ways to conquer most of these fears\n\n",
+	"thshy2.info": "[§c-§r] Shake, and get Weakness + Speed effects when:\n§b1§r. Near §c§mPolar Bear§r / §c§mWolf§r / §6Villager§r / §1Warden§r / §7Wither§r / §5Ender Dragon§r\n§b2§r. Spawn of §eLightning§r\n§b3§r. Low §cHealth§r\n§b4§r. In the other 2 Dimensions\n§b5§r. Near Human / Enderian / Blazeborn / Shulk Origin Player\n\n[§c-§r] Can't fall asleep when the above effects are present\n\n",
 
 	"thweak2.name": "§c§nWeak++",
 	"thweak2.description": "You are now strong enough to wear the heaviest armor.",
 	"thweak2.info": "[§c-§r] Cannot use shield\n§m[§c-§r§m] Gain Slowness and Weakness when equipping heavy armors§r\n[§c-§r] Have less air when under water",
+
+	"thfoxiality_interface.info": "Your Predators' §5§lEXTRA STRIKE§r has the following effects:\n§b1§r. Applies §5Slowness§r + Weakness + Nausea to you\n§b2§r. Deals a §egreater§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Temporarily §cNullifies§r your [§aAgility++§r]'s first effect\n§b4§r. Temporarily §cDisables§r your natural regeneration\n\n§8§oWearing armors and Resistance might make your predators' §lEXTRA STRIKE §r§8§ofail",
 
 	"origin.thorigins.lightning_fox.name": "Lightning Fox",
 	"origin.thorigins.lightning_fox.description": "Foxes Who Can Withstand Hundreds of Thunder Struck",
 
 	"lightning_fox.thdischarge.name": "§6§l§nDischarge",
 	"lightning_fox.thdischarge.description": "Charge up and release an intense burst of electricity that ionizes and neutralizes nearby living organisms.",
-	"thdischarge.key0": "Active ability, double tap and hold [",
-	"thdischarge.key1": "] to charge up\nPress [",
-	"thdischarge.key2": "] to activate",
+	"thdischarge.key": "Active ability, double tap and hold [%s] to charge up\nPress [%s] to activate",
 	"thdischarge.info": "There are §b3§r discharge level you can reach\nThe higher the level, the further the range and deadlier the effect\n\nWhen Charging:\n[§a+§r] Expose mobs in your effect range\n[§a+§r] Slowe down and damage mobs close to you with your electric field\n[§c-§r] Charging can be easily interrupted\n\n§cYou can't use this skill if you have no hunger",
 
 	"lightning_fox.thbecome_lightning.name": "§6§l§nBecome Lightning",
 	"lightning_fox.thbecome_lightning.description": "Become lightning，fly freely and struck whoever you want. Remember to do adequate water protection，water is lethal to you in this state.",
-	"thbecome_lightning.key": "] to enter lightning state",
+	"thbecome_lightning.key": "Active ability, press [%s] to enter lightning state",
 	"thbecome_lightning.info": "Lightning State:\n§b1§r. Able to fly quickly\n§b2§r. Extinguish nearby fire if you are fast enough\n§b3§r. Smite nearby entities if you are fast enough\n§b4§r. Exhaust quickly\n§b5§r. Take damage from water\n§b6§r. Receive 2x Damage\n\n§cYou can't use this skill if you have no hunger",
 
 	"lightning_fox.thelectric_beam.name": "§6§l§nElectric Beam",
 	"lightning_fox.thelectric_beam.description": "Overcharge your enermy with Electric beam.",
-	"thelectric_beam.key": "] to shoot a beam of electricy that jumps among enemies",
+	"thelectric_beam.key": "Active ability, press [%s] to shoot a beam of electricy that jumps among enemies",
 	"thelectric_beam.info": "Attack can jump to nearby entities\nCan cause damage at most 4 times",
 
 	"lightning_fox.thrailgun.name": "§6§l§nRailgun",
 	"lightning_fox.thrailgun.description": "By manipulating electromagnetic field, launch an iron nugget at an insanely high speed that will destroy everything in its path.",
-	"thrailgun.key0": "Active ability, press [",
-	"thrailgun.key1": "] with iron nugget and [",
-	"thrailgun.key2": "] during a suitable time",
+	"thrailgun.key": "Active ability, press [%s] with iron nugget and [%s] during a suitable time",
 	"thrailgun.info": "When it is the right time to activate, there will be a blue screen overlay as a hint\n\n§cYou can't use this skill if you have no hunger",
 
 	"lightning_fox.thlightning_combat.name": "§a§nAspect of Lightning",
@@ -70,7 +67,7 @@
 
 	"lightning_fox.thfluffy3.name": "§e§nFluffy*",
 	"lightning_fox.thfluffy3.description": "Your fluff hardens under static charge, turning you into a spikey floof. Might be a bad idea to cuddle...",
-	"thfluffy3.info": "[§e~§r] Have a change to prick surrounding creatures if either of you moved\n[§e~§r] Damage even more if either of you sprinted\n[§a+§r] Stay sneaking to not hurt anyone with your fluff",
+	"thfluffy3.info": "[§e~§r] Have a chance to prick surrounding creatures if either of you moved\n[§e~§r] Damage even more if either of you sprinted\n[§a+§r] Stay sneaking to not hurt anyone with your fluff",
 
 	"death.attack.thorigins:foxie_zap": "%s tried to become a battery but failed horribly.",
 	"death.attack.thorigins:foxie_zap.player": "%1$s received too many charges from %2$s.",
@@ -81,19 +78,13 @@
 
 	"fire_fox.thcannon.name": "§6§l§nInferno Cannon",
 	"fire_fox.thcannon.description": "Unleash the heat stored within your body to incinerate everything in your path.",
-	"thcannon.key0": "] to choose a Fire Power, hold [",
-	"thcannon.key1": "] to warm up\n\nFor Fire Power 4, press [",
-	"thcannon.key2": "] to cast after warmed up",
+	"thcannon.key": "Active ability, press [%s] to choose a Fire Power, hold [%s] to warm up\n\nFor Fire Power 4, press [%s] to cast after warmed up",
 	"thcannon.info": "[§c-§r] You can't move during firing / warming up\n\nFire Power Index\n§b0§r. Deactivated\n§b1§r. Firecharge\n§b2§r. Fireball\n§b3§r. Laser Cutter\n§b4§r. THE BIG ONE",
 
 	"fire_fox.ththrust.name": "§6§l§nFlame Wings",
 	"fire_fox.ththrust.description": "Temporarily create a pair of flame wings to soar the skies.",
-	"ththrust.key0": "At the cost of stored temperature, press [",
-	"ththrust.key1": "] when falling to fly\n\nWhile flying, press [",
-	"ththrust.key2": "] to thrust forward.\nHold it for a continuous small thrust\n\nWhen flying with flame wings, press [",
-	"ththrust.key3": "] to close them in mid-air",
-	"ththrust.key4": "If you've activated [§6§lInferno Cannon§r] and are holding [",
-	"ththrust.key5": "], you would create an explosion upon high-speed impact\n\nWhen Fire Power <= 2, explosion is fake and rather a safe prank :3\nElse, >:3",
+	"ththrust.key0": "At the cost of stored temperature, press [%s] when falling to fly\n\nWhile flying, press [%s] to thrust forward.\nHold it for a continuous small thrust\n\nWhen flying with flame wings, press [%s] to close them in mid-air",
+	"ththrust.key1": "If you've activated [§6§lInferno Cannon§r] and are holding [%s], you would create an explosion upon high-speed impact\n\nWhen Fire Power <= 2, explosion is fake and rather a safe prank :3\nElse, >:3",
 	"ththrust.info": "[§c-§r] Falling in water will immediately extinguish the flame wings\n[§c-§r] Flying in rain will lose more temperature",
 
 	"fire_fox.thfire_aspect.name": "§a§nAspect of the Fire",
@@ -114,29 +105,26 @@
 	"kitsune.thchoice.info": "Power Index\n§b0§r. Pounce++\n§b1§r. Ascension\n§b2§r. Tail Pouch\n§b3§r. Spiritual Grace",
 
 	"kitsune.thdash2.name": "§6§l§nPounce++",
-	"kitsune.thdash2.description": "You have specialised in travelling by pouncing.",
+	"kitsune.thdash2.description": "Your divine body is lighter than before, you can now pounce longer.",
 	"thdash2.info": "[§a+§r] Pounce Further\n[§a+§r] Infinite Pounce before landing\n[§a+§r] Greatly Reduced Exhaustion\n[§a+§r] Pounce-Added Reach increased",
 
 	"kitsune.thhunt2.name": "§6§l§nHunt++",
-	"kitsune.thhunt2.description": "You can now notice the creatures within a further distance.",
-	"thhunt2.info": "You can still move around while invisible.\nMost efficient when used with [§6§lPounce++§r]\n\n[§a+§r] Sense Range is doubled\n[§a+§r] Prepare Stage is shorten by 50%\n[§a+§r] Falling and Pounce no longer reset Prepare Stage",
+	"kitsune.thhunt2.description": "You can feel the essence of creatures around you, boosting your sensing ability to a longer range.",
+	"thhunt2.info": "\n\n[§a+§r] Sense Range is doubled\n[§a+§r] Prepare Stage is shorten by 50%\n[§a+§r] Falling and Pounce no longer reset Prepare Stage",
 
 	"thstorage2.name": "§6§l§nTail Pouch",
-	"thstorage2.description": "Hide items in your tails.",
-	"thstorage2.key": "] to store items in your tails",
-	"thorigins.fox.container.inventory2": "Tail fluff :3",
+	"thstorage2.description": "Hide items in your nine fluffy tails.",
+	"thstorage2.key": "Active ability, press [%s] to store items in your tails",
+	"thorigins.fox.container.inventory2": "Fluffy Tail Dimensions",
 
 	"kitsune.thphasing.name": "§6§l§nAscension",
 	"kitsune.thphasing.description": "Your body transcends the normal realm, no longer bounded by the physical world.",
 	"kitsune.thphasing.info": "While in this form:\n§b1§r. Able to walk on air\n§b2§r. Able to phase through walls\n§b3§r. Halve all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
-	"kitsune.thphasing.key": "] to ascend into your ethereal form",
+	"kitsune.thphasing.key": "Active ability, press [%s] to ascend into your ethereal form",
 
 	"kitsune.thheal.name": "§6§l§nSpiritual Grace",
 	"kitsune.thheal.description": "Your essence radiates with pure grace, uplifting the living and dispelling the cursed.",
-	"thheal.key0": "] to toggle regenerating aura\n\nPress [",
-	"thheal.key1": "] while crouching to boost the vitality of all living beings around you\n\nPress [",
-	"thheal.key2": "] against a mob with empty hands to heal it\n\nOn backpack, pick up a seed and [",
-	"thheal.key3": "] on another seed will craft a Sweetberries\nIn same way, Glow Ink Sack + Sweetberries = GlowBerries",
+	"thheal.key": "Active ability, press [%s] to toggle regenerating aura\n\nPress [%s] while crouching to boost the vitality of all living beings around you\n\nPress [%s] against a mob with empty hands to heal it\n\nOn backpack, pick up a seed and [%s] on another seed will craft a Sweetberries\nIn same way, Glow Ink Sack + Sweetberries = GlowBerries",
 	"thheal.info": "Your spiritual power will harm the undead beings\n\n§8You might tame the wild creatures that you healed with touch :3",
 	"thheal.aura.blessed": "§2The soothing aura restored your vitality",
 	"thheal.aura.cursed": "§4The divine aura corroded your undead body",
@@ -153,36 +141,36 @@
 
 	"kitsune.thfoxiality2.name": "§e§nFoxiality++",
 	"kitsune.thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
-	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys\n[§a+§r] Ignore berry bushes\n[§a+§r] Climb up powder snow\n§m[§c-§r§m] Anger wolves and polar bears§r\n[§c-§r] Wolves and Polar Bears do more damage to you\n[§a+§r] Trusted by foxes\n[§a+§r] Receive a random item when waking up\n[§c-§r] Unable to fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)",
+	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against prey mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n§m[§c-§r§m] Anger wolves and polar bears§r",
+	"thfoxiality2.info1": "\n§m[§c-§r§m] Predators do a deadlier §5§l§mEXTRA STRIKE §r§f§mto you after every hit",
 
 	"origin.thorigins.ninetails.name": "Ninetails",
 	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
 
-	"ninetails.thchoice.info": "Power Index\n§b0§r. Pounce++\n§b1§r. Reclamation \n§b2§r. Tail Pouch\n§b3§r. Soul Dominion",
+	"ninetails.thchoice.info": "Power Index\n§b0§r. Pounce++\n§b1§r. Abyssion \n§b2§r. Tail Pouch\n§b3§r. Soul Dominion",
 
 	"ninetails.thdash3.name": "§6§l§nPounce++",
-	"ninetails.thdash3.description": "You have specialised in killing creatures by pouncing.",
+	"ninetails.thdash3.description": "§o\"When you move, fall like a thunder bolt.\"§r",
 	"thdash3.info": "[§a+§r] Maximum Pounce before landing significantly increased\n[§a+§r] Pounce-Enhanced Damage Increased\n[§a+§r] Pounce-Added Reach increased\n[§a+§r] Reduced Cooldown\n[§a+§r] Greatly Reduced Exhaustion\n[§a+§r] Pouncing kill will reset the first pounce's cooldown",
 
 	"ninetails.thsoul_power.name": "§6§l§nSoul Dominion",
 	"ninetails.thsoul_power.description": "Harness the souls of the fallen to fuel your power, bending their essence to your will. Collect, curse, and control with unyielding force.",
-	"thsoul_power.key0": "] to shoot a curse beam\nPress [",
-	"thsoul_power.key1": "] while crouching to engulf stored souls for power\n\nPress [",
-	"thsoul_power.key2": "] against a mob while crouching to seize a fragment of its soul\n\nHold [",
-	"thsoul_power.key3": "] to turn empty bottles into experience bottle",
+	"thsoul_power.key": "Active ability, press [%s] to shoot a curse beam\nPress [%s] while crouching to engulf stored souls for power\n\nPress [%s] against a mob while crouching to seize a fragment of its soul\n\nHold [%s] to turn empty bottles into experience bottle",
 	"thsoul_power.info0": "You need enough souls to power your skills\n\nKill creatures for their souls\nOr Stand under the sun or moon to slowly collect nature essence as substitute",
-	"thsoul_power.info1": "Curse Effects:\n§b1§r. Last for 10s\n§b2§r. Apply Wither and Unluck Effects\n§b3§r. Take more damage from Ninetails\n§b4§r. When hit by Ninetails:\n   §b4.1§r. Apply Weakness and Slowness\n   §b4.2§r. Ninetails gain a fraction of souls",
+	"thsoul_power.info1": "Curse Effects:\n§b1§r. Last for 10s\n§b2§r. Apply Nausea, Wither and Unluck Effects\n§b3§r. Take more damage from Ninetails\n§b4§r. When hit by Ninetails:\n   §b4.1§r. Apply Weakness and Slowness\n   §b4.2§r. Ninetails gain a fraction of souls",
+	"thsoul_power.soul_harvest": "§4You endured agonizing pain as your soul is ripped apart vigorously...",
 	"thcurse.added": "§4A strange unease creeps over you as the curse takes hold...",
 	"thcurse.removed": "§4A sense of relief washes over you as the curse fades away...",
 	"thcurse.milk": "§4Your attempt to lift the curse with milk was refused >:3",
 
 	"ninetails.thhunt3.name": "§6§l§nHunt++",
-	"ninetails.thhunt3.description": "You know every weak spot on your preys.",
-	"thhunt3.info": "You can still move around while invisible\nMost efficient when used with [§6§lPounce++§r]\n\n[§a+§r] Doubled Hunt duration\n[§a+§r] Buffed Extra Strike effects\n[§a+§r] Always Mid-Night Damage Buff in Hunt Stage\n[§a+§r] Slightly reducing received damage in Hunt Stage\n[§a+§r] Sense Effect prolonged to the end of Hunt",
+	"ninetails.thhunt3.description": "You stare directly into your preys' soul. exploiting every weak spot on them.",
+	"thhunt3.info0": "\n\n[§a+§r] Doubled Hunt duration\n[§a+§r] Buffed §5§lEXTRA STRIKE§r effects\n[§a+§r] Always Mid-Night Damage Buff in Hunt Stage\n[§a+§r] Slightly reducing received damage in Hunt Stage\n[§a+§r] Sense Effect prolonged to the end of Hunt",
+	"thhunt3.info1": "Your §5§lEXTRA STRIKE§r has the following effects:\n§b1§r. Applies Weakness + Nausea + §aDarkness§r to your target\n§b2§r. Deals an §aincreased§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Feeds you Foodpoints and §amore Saturation§r\n§b4§r. Extends the Hunt §alonger§r\n§b5§r. §aHeals you 1 health§r",
 
 	"ninetails.thphasing.name": "§6§l§nAbyssion",
 	"ninetails.thphasing.description": "Plunge into the abyss, forsaking the living realm and slipping through the veil of reality.",
-	"ninetails.thphasing.key": "] to descend into your abyssal form",
+	"ninetails.thphasing.key": "Active ability, press [%s] to descend into your abyssal form",
 	"ninetails.thphasing.info": "While in this form:\n§b1§r. Able to walk on air\n§b2§r. Able to phase through walls\n§b3§r. Reduce all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
 
 	"ninetails.thfluffy5.name": "§e§nFluffy*",
@@ -192,8 +180,18 @@
 	"thfear.removed": "§4The oppressive fear fades, leaving you with a sense of uneasy calm",
 
 	"ninetails.thfoxiality3.name": "§e§nFoxiality++",
-	"ninetails.thfoxiality3.description": "You are able to see clearer in the dark, and your natural predators can no longer threaten you.",
-	"thfoxiality3.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys\n[§a+§r] Ignore berry bushes\n[§a+§r] Climb up powder snow\n[§c-§r] Anger wolves and polar bears\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r\n[§a+§r] Trusted by foxes\n[§a+§r] Receive a random item when waking up\n[§c-§r] Unable to fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)",
+	"ninetails.thfoxiality3.description": "You are able to see clearer in the dark, and your natural predators find it harder to threaten you.",
+	"thfoxiality3.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n[§c-§r] Anger wolves and polar bears",
+	"thfoxiality3.info1": "\n[§c-§r] Predators do a §aweaker§r §5§lEXTRA STRIKE §r§fto you after every hit",
+	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r",
+	"thfoxiality3.info2": "Your Predators' §5§lEXTRA STRIKE§r has the following effects:\n§m§b1§r§m. Applies §5§mSlowness§r§m + Weakness + Nausea to you§r\n§r§b2§r. Deals a §alesser§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Temporarily §cDisables§r your [§6§lPounce++§r]\n§b4§r. Temporarily §cNullifies§r your [§aAgility++§r]'s first effect\n§b5§r. Temporarily §cDisables§r your natural regeneration\n\n§8§oWearing armors and Resistance might make your predators' §lEXTRA STRIKE §r§8§ofail",
+
+	"origin.thorigins.ice_fox.name": "Ice Fox",
+	"origin.thorigins.ice_fox.description": "Ice fox W.I.P :3 \nYou aren't supposed to see this\nI'm too lazy to code so all you can have rn is the Fluffy* skill",
+
+	"ice_fox.thfluffy6.name": "Fluffy*",
+	"ice_fox.thfluffy6.description": "Soft Fur with a hard layer of ice beneath, gives you natural armor and resistance to slice and piercing. but swim slow cuz water freezes around you and increases drag:3333",
+	"thfluffy6.info": "Give chills to everyone around you :3 This power is almost done perhaps?",
 
 	"layer.thorigins.origin.name": "element",
 
@@ -203,5 +201,6 @@
 	"origins.thorigins.unlock.lightning": "You have unlocked Lightning Fox!",
 	"origins.thorigins.unlock.fire": "You have unlocked Fire Fox!",
 	"origins.thorigins.unlock.kitsune": "You have unlocked Kitsune!",
-	"origins.thorigins.unlock.ninetails": "You have unlocked Ninetails!"
+	"origins.thorigins.unlock.ninetails": "You have unlocked Ninetails!",
+	"origins.thorigins.unlock.ice": "You have unlocked Ice Fox!"
 }

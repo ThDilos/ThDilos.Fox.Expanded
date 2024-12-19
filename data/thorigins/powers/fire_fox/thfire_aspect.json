@@ -36,9 +36,9 @@
 	"lava_swimmer": {
 		"type": "origins:modify_lava_speed",
 		"modifier": {
+			"id": "fire_fox/thfire_aspect_lava_swimmer",
 			"amount": 1,
-			"operation": "add_multiplied_base",
-			"id": "thorigins:ninetails/thfire_aspect_lava_swimmer"
+			"operation": "add_multiplied_base"
 		}
 	},
 
@@ -78,7 +78,7 @@
 		"attribute": "minecraft:generic.movement_speed",
 		"modifier": {
 			"amount": 0.05,
-			"operation": "multiply_total_multiplicative"
+			"operation": "multiply_total_additive"
 		}
 	},
 
@@ -173,9 +173,7 @@
 
 	"use_blaze_rod": {
 		"type": "origins:active_self",
-		"key": {
-			"key": "key.use"
-		},
+		"key": "key.use",
 		"condition": {
 			"type": "origins:and",
 			"conditions": [

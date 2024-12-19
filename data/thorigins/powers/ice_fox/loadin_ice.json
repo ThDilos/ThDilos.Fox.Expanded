@@ -15,13 +15,13 @@
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:resource",
-						"resource": "*:thtransform_lock_lightning",
+						"resource": "*:thtransform_lock_ice",
 						"compare_to": 1,
 						"comparison": "=="
 					},
 					"if_action": {
 						"type": "origins:change_resource",
-						"resource": "*:thtransform_lock_lightning",
+						"resource": "*:thtransform_lock_ice",
 						"change": -1
 					}
 				},
@@ -56,33 +56,8 @@
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thelectric_beam",
-					"change": -80
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thrailgun_cooldown",
-					"change": -300
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thdischarge_cooldown",
-					"change": -200
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thbecome_lightning_hit_cooldown",
-					"change": -20
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thbecome_lightning_toggle_effect",
-					"change": -20
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thlightning_combat_buff_duration",
-					"change": -3
+					"resource": "*:fox/thfoxify_afk_timer",
+					"change": 1200
 				},
 				{
 					"type": "origins:execute_command",
@@ -92,7 +67,7 @@
 		}
 	},
 
-	"foxify_lightning_fox": {
+	"foxify_ice_fox": {
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {

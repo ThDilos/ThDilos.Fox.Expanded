@@ -118,17 +118,48 @@
 		},
 		{
 			"condition": {
-				"type": "origins:origin",
-				"origin": "thorigins:fox",
-				"layer": "origins:origin"
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "thorigins:thtransform_lock_ice",
+						"comparison": "==",
+						"compare_to": 0
+					},
+					{
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:fox",
+								"layer": "origins:origin"
+							},
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:element_fox",
+								"layer": "origins:origin"
+							}
+						]
+					}
+				]
 			},
-			"origins": ["thorigins:default_fox"]
+			"origins": ["thorigins:ice_fox"]
 		},
 		{
 			"condition": {
-				"type": "origins:origin",
-				"origin": "thorigins:element_fox",
-				"layer": "origins:origin"
+				"type": "origins:or",
+				"conditions": [
+					{
+						"type": "origins:origin",
+						"origin": "thorigins:fox",
+						"layer": "origins:origin"
+					},
+					{
+						"type": "origins:origin",
+						"origin": "thorigins:element_fox",
+						"layer": "origins:origin"
+					}
+				]
 			},
 			"origins": ["thorigins:default_fox"]
 		}

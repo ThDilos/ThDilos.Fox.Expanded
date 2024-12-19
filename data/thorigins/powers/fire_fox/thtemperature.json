@@ -15,16 +15,16 @@
 		}
 	],
 
-	"ticks": {
+	"ticks_20": {
 		"type": "origins:action_over_time",
-		"interval": 2,
+		"interval": 20,
 		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
 					"type": "origins:area_of_effect",
 					"radius": 1,
-					"shape": "sphere",
+					"shape": "cube",
 					"bientity_condition": {
 						"type": "origins:and",
 						"conditions": [
@@ -58,7 +58,7 @@
 						"action": {
 							"type": "origins:change_resource",
 							"resource": "*:thtransform_temperature",
-							"change": 15
+							"change": 150
 						}
 					}
 				},
@@ -72,7 +72,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 2
+						"change": 20
 					}
 				},
 				{
@@ -84,7 +84,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 3
+						"change": 30
 					}
 				},
 				{
@@ -99,7 +99,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 6
+						"change": 60
 					}
 				},
 				{
@@ -110,7 +110,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 10
+						"change": 100
 					}
 				},
 				{
@@ -124,7 +124,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 20
+						"change": 200
 					}
 				},
 				{
@@ -134,7 +134,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 4
+								"change": 40
 							},
 							"condition": {
 								"type": "origins:enchantment",
@@ -148,7 +148,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 3
+								"change": 30
 							},
 							"condition": {
 								"type": "origins:enchantment",
@@ -162,7 +162,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 2
+								"change": 20
 							},
 							"condition": {
 								"type": "origins:enchantment",
@@ -176,7 +176,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 1
+								"change": 10
 							},
 							"condition": {
 								"type": "origins:enchantment",
@@ -211,7 +211,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 12
+								"change": 120
 							}
 						},
 						{
@@ -234,7 +234,7 @@
 							"action": {
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_temperature",
-								"change": 8
+								"change": 80
 							}
 						}
 					]
@@ -247,18 +247,21 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": -30
+						"change": -300
 					}
 				},
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:in_snow"
+						"type": "origins:resource",
+						"resource": "*:fox/thfluffy_snowness",
+						"compare_to": 0,
+						"comparison": ">"
 					},
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": -50
+						"change": -500
 					}
 				},
 				{
@@ -281,7 +284,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": -2
+						"change": -20
 					}
 				},
 				{
@@ -295,7 +298,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": -80
+						"change": -800
 					}
 				},
 				{
@@ -312,7 +315,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": -150
+						"change": -1500
 					}
 				},
 				{
@@ -331,24 +334,24 @@
 									{
 										"id": "minecraft:resistance",
 										"amplifier": 0,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"id": "minecraft:strength",
+										"id": "strength",
 										"amplifier": 0,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"id": "minecraft:regeneration",
+										"id": "haste",
 										"amplifier": 0,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -368,16 +371,16 @@
 									{
 										"id": "minecraft:resistance",
 										"amplifier": 0,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"id": "minecraft:regeneration",
+										"id": "haste",
 										"amplifier": 0,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -397,8 +400,8 @@
 									{
 										"id": "minecraft:resistance",
 										"amplifier": 0,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -416,26 +419,26 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"id": "minecraft:slowness",
+										"id": "slowness",
 										"amplifier": 1,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"id": "minecraft:weakness",
+										"id": "weakness",
 										"amplifier": 1,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"id": "minecraft:hunger",
+										"id": "hunger",
 										"amplifier": 1,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -453,18 +456,18 @@
 								"type": "origins:apply_effect",
 								"effects": [
 									{
-										"id": "minecraft:weakness",
+										"id": "weakness",
 										"amplifier": 1,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									},
 									{
-										"id": "minecraft:hunger",
+										"id": "hunger",
 										"amplifier": 1,
-										"duration": 10,
-										"show_icon": false,
+										"duration": 21,
+										"show_icon": true,
 										"show_particles": false,
 										"is_ambient": true
 									}
@@ -480,16 +483,14 @@
 							},
 							"action": {
 								"type": "origins:apply_effect",
-								"effects": [
-									{
-										"id": "minecraft:weakness",
-										"amplifier": 1,
-										"duration": 10,
-										"show_icon": false,
-										"show_particles": false,
-										"is_ambient": true
-									}
-								]
+								"effect": {
+									"id": "weakness",
+									"amplifier": 1,
+									"duration": 21,
+									"show_icon": true,
+									"show_particles": false,
+									"is_ambient": true
+								}
 							}
 						}
 					]
@@ -498,23 +499,11 @@
 		}
 	},
 
-	"blue_ification": {
-		"type": "origins:model_color",
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:thtransform_temperature",
-			"compare_to": 500,
-			"comparison": "<="
-		},
-		"green": 0.5,
-		"red": 0.5
-	},
-
 	"food_add_temp_drawback1": {
 		"type": "origins:modify_exhaustion",
 		"modifier": {
 			"amount": 0.5,
-			"operation": "multiply_base_additive"
+			"operation": "multiply_total_additive"
 		},
 		"condition": {
 			"type": "origins:and",
@@ -538,7 +527,7 @@
 		"type": "origins:modify_exhaustion",
 		"modifier": {
 			"amount": 0.25,
-			"operation": "multiply_base_additive"
+			"operation": "multiply_total_additive"
 		},
 		"condition": {
 			"type": "origins:and",
@@ -576,5 +565,17 @@
 			"compare_to": 500,
 			"comparison": "<="
 		}
+	},
+
+	"blue_ification": {
+		"type": "origins:model_color",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:thtransform_temperature",
+			"compare_to": 500,
+			"comparison": "<="
+		},
+		"green": 0.5,
+		"red": 0.5
 	}
 }

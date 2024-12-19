@@ -38,9 +38,6 @@
 
 	"temperal_timer": {
 		"type": "origins:cooldown",
-		"hud_render": {
-			"should_render": false
-		},
 		"cooldown": 10
 	},
 
@@ -76,7 +73,7 @@
 		"type": "origins:attribute",
 		"modifier": {
 			"attribute": "minecraft:generic.attack_speed",
-			"id": "thorigins:lightning_fox/thlightning_traits_fasterattack",
+			"id": "lightning_fox/thlightning_traits_fasterattack",
 			"operation": "add_multiplied_base",
 			"amount": 0.35
 		}
