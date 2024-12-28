@@ -254,7 +254,7 @@
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:resource",
-						"resource": "*:fox/thfluffy_snownness",
+						"resource": "*:fox/thfluffy_snowness",
 						"compare_to": 0,
 						"comparison": ">"
 					},

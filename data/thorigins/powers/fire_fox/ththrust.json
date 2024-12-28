@@ -153,14 +153,14 @@
 							},
 							{
 								"type": "origins:change_resource",
-								"resource": "*:optional_power/thfallsound_fall_disable_api",
+								"resource": "*:optional_power/thfallsound_disable_api",
 								"change": 1
 							}
 						]
 					},
 					"else_action": {
 						"type": "origins:change_resource",
-						"resource": "*:optional_power/thfallsound_fall_disable_api",
+						"resource": "*:optional_power/thfallsound_disable_api",
 						"change": -1
 					}
 				}
