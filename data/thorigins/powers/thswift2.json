@@ -15,29 +15,80 @@
 		}
 	],
 
-	"reduce_falldmg": {
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:status_effect",
+						"effect": "minecraft:jump_boost",
+						"min_amplifier": 1
+					},
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_jump_boost_amp",
+						"change": 2,
+						"operation": "set"
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:status_effect",
+						"effect": "minecraft:jump_boost",
+						"min_amplifier": 0
+					},
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_jump_boost_amp",
+						"change": 1,
+						"operation": "set"
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:constant",
+						"value": true
+					},
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_jump_boost_amp",
+						"change": 0,
+						"operation": "set"
+					}
+				}
+			]
+		}
+	},
+
+	"jump_boost_amp": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 2
+	},
+
+	"const_fall_dmg_reduction": {
 		"type": "origins:modify_damage_taken",
 		"damage_condition": {
 			"type": "origins:name",
 			"name": "fall"
 		},
 		"modifier": {
-			"operation": "multiply_base_additive",
-			"amount": -0.9
+			"amount": -12,
+			"operation": "add_base_early",
+			"modifier": {
+				"operation": "multiply_base_additive",
+				"amount": 2,
+				"modifier": {
+					"operation": "multiply_base_additive",
+					"resource": "*:*_jump_boost_amp"
+				}
+			}
 		},
 		"condition": {
-			"type": "origins:sneaking"
-		}
-	},
-
-	"remove_falldmg": {
-		"type": "origins:invulnerability",
-		"damage_condition": {
-			"type": "origins:name",
-			"name": "fall"
-		},
-		"condition": {
-			"type": "origins:and",
+			"type": "origins:all_of",
 			"conditions": [
 				{
 					"type": "origins:command",
@@ -46,49 +97,7 @@
 					"comparison": "<="
 				},
 				{
-					"type": "origins:or",
-					"conditions": [
-						{
-							"type": "origins:fall_distance",
-							"comparison": "<",
-							"compare_to": 36
-						},
-						{
-							"type": "origins:and",
-							"conditions": [
-								{
-									"type": "origins:fall_distance",
-									"comparison": "<",
-									"compare_to": 60
-								},
-								{
-									"type": "origins:status_effect",
-									"effect": "jump_boost",
-									"min_amplifier": 0,
-									"max_amplifier": 0
-								}
-							]
-						},
-						{
-							"type": "origins:and",
-							"conditions": [
-								{
-									"type": "origins:fall_distance",
-									"comparison": "<",
-									"compare_to": 84
-								},
-								{
-									"type": "origins:status_effect",
-									"effect": "jump_boost",
-									"min_amplifier": 1,
-									"max_amplifier": 127
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "origins:or",
+					"type": "origins:any_of",
 					"conditions": [
 						{
 							"type": "origins:command",
@@ -105,6 +114,21 @@
 					]
 				}
 			]
+		}
+	},
+
+	"landing_dmg_reduction": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "fall"
+		},
+		"modifier": {
+			"operation": "multiply_total_additive",
+			"amount": -0.6
+		},
+		"condition": {
+			"type": "origins:sneaking"
 		}
 	},
 
@@ -126,10 +150,20 @@
 					"inverted": true
 				},
 				{
-					"type": "origins:resource",
-					"resource": "*:fox/thfoxiality_predator_suppression",
-					"compare_to": 0,
-					"comparison": "=="
+					"type": "origins:any_of",
+					"conditions": [
+						{
+							"type": "origins:power",
+							"power": "*:fox/thfoxiality_predator_suppression",
+							"inverted": true
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/thfoxiality_predator_suppression",
+							"compare_to": 0,
+							"comparison": "=="
+						}
+					]
 				}
 			]
 		}
@@ -184,10 +218,20 @@
 					"inverted": true
 				},
 				{
-					"type": "origins:resource",
-					"resource": "*:fox/thfoxiality_predator_suppression",
-					"compare_to": 0,
-					"comparison": "=="
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:power",
+							"power": "*:fox/thfoxiality_predator_suppression",
+							"inverted": true
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/thfoxiality_predator_suppression",
+							"compare_to": 0,
+							"comparison": "=="
+						}
+					]
 				}
 			]
 		}

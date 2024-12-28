@@ -45,7 +45,7 @@
 	"lightning_fox.thbecome_lightning.name": "§6§l§n化身闪电",
 	"lightning_fox.thbecome_lightning.description": "成为闪电, 拥有飞行和伤害飞行沿途一切的能力。记得防水, 否则在这个状态之下, 你的能量会被水迅速分散。",
 	"thbecome_lightning.key": "主动能力, 按下 [%s] 进入雷电状态",
-	"thbecome_lightning.info": "雷电状态：\n§b1§r. 能够高速飞行\n§b2§r. 高速时熄灭周围的火焰\n§b3§r. 高速时雷击周围的生物\n§b4§r. 大量消耗饱食度\n§b5§r. 受到水的伤害\n§b6§r. 受到2倍的伤害\n\n§c没有饱食度时不能使用！",
+	"thbecome_lightning.info": "雷电状态：\n§b1§r. 能够高速飞行\n§b2§r. 高速时熄灭周围的火焰\n§b3§r. 高速时雷击周围的生物\n§b4§r. 大量消耗饱食度\n§b5§r. 受到水的伤害\n§b6§r. 受到2倍的伤害\n\n§c没有饱食度或穿着任何装备时不能使用！",
 
 	"lightning_fox.thelectric_beam.name": "§6§l§n闪电链",
 	"lightning_fox.thelectric_beam.description": "用电能束让你的敌人变成熟人。",
@@ -119,7 +119,7 @@
 
 	"kitsune.thphasing.name": "§6§l§n飞升",
 	"kitsune.thphasing.description": "你的躯体超凡脱俗, 不再受尘世之限",
-	"kitsune.thphasing.info": "在该状态下：\n§b1§r. 在空中行走\n§b2§r. 无视障碍物\n§b3§r. 受到的伤害折半\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
+	"kitsune.thphasing.info": "在该状态下：\n§b1§r. 没有穿着§e重甲§r时能够在空中行走\n§b2§r. 没有穿着§c任何装备§r时无视障碍物\n§b3§r. 受到的伤害折半\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
 	"kitsune.thphasing.key": "主动能力, 按下 [%s] 飞升进入空灵形态",
 
 	"kitsune.thheal.name": "§6§l§n灵之馈赠",
@@ -143,6 +143,7 @@
 	"kitsune.thfoxiality2.description": "你的天敌不再视你为食物, 你也能更好地看清黑暗。",
 	"thfoxiality2.info": "[§a+§r] §a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 破坏浆果丛可回收浆果\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 攀爬细雪方块\n[§a+§r] 受到狐狸信任\n§m[§c-§r§m] 惹怒附近的狼和北极熊§r",
 	"thfoxiality2.info1": "\n§m[§c-§r§m] 天敌的攻击将附带更致命的§5§l§m爪牙连击§r",
+	"thfoxiality2.info2": "§f۞§r §f你是一只§r§e§l仙兽§r §f۞§r\n\n[§e~§r] 针对 / 受到 §8§l亡灵生物§r 的伤害§e提升§r\n[§c-§r] 对其他§c§l所有生物§r造成的伤害降低\n[§e~§r] 你的部分能力对§8§l亡灵生物§r有不同的效果\n[§a+§r] 你对 §5霉运§r / §5失明§r / §5黑暗§r 效果§a免疫§r\n[§e~§r] 部分§a正面§r与§c负面§r状态效果在你身上有§e更高的强度§r\n",
 
 	"origin.thorigins.ninetails.name": "九尾",
 	"origin.thorigins.ninetails.description": "熟练了屠杀与谋略, 这个生物注定会成为其他生灵的噩梦。",
@@ -171,7 +172,7 @@
 	"ninetails.thphasing.name": "§6§l§n堕渊",
 	"ninetails.thphasing.description": "坠入深渊, 弃之尘世, 穿行于现实的面纱之间。",
 	"ninetails.thphasing.key": "主动能力, 按下 [%s] 堕落进入幽冥形态",
-	"ninetails.thphasing.info": "在该状态下：\n§b1§r. 在空中行走\n§b2§r. 无视障碍物\n§b3§r. 受到的伤害降低\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
+	"ninetails.thphasing.info": "在该状态下：\n§b1§r. 没有穿着§e重甲§r时能够在空中行走\n§b2§r. 没有穿着§c任何装备§r时无视障碍物\n§b3§r. 受到的伤害降低\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
 
 	"ninetails.thfluffy5.name": "§e§n毛绒绒*",
 	"ninetails.thfluffy5.description": "你的毛毛浸透了鲜血与死亡, 触感柔软顺滑, 但能激起触摸者的恐惧与敬畏。",
@@ -185,6 +186,7 @@
 	"thfoxiality3.info1": "\n[§c-§r] 你的天敌每次攻击你时将附带§a稍弱§r的§5§l爪牙连击§r",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] 狼和北极熊对你造成的伤害翻倍§r",
 	"thfoxiality3.info2": "你天敌的§5§l爪牙连击§r有以下效果:\n§m§b1§r§m. 给你施加§5§m缓慢§r§m+虚弱+反胃效果§r\n§r§b2§r. 给你造成§a略少§r的❂§l真实伤害§r\n§r§b3§r. 暂时§c禁用§r你的[§6§l掠袭++§r]\n§b4§r. 暂时§c无效化§r你[§a灵跃++§r]的第一个效果\n§b5§r. 暂时§c禁用§r你的自然生命恢复\n\n§8§o装备护甲和抗性提升有一定几率能让天敌对你的§l爪牙连击§r§8§o失败",
+	"thfoxiality3.info3": "§f☠§r §f你是一只§r§7§l亡灵妖兽§r §f☠§r\n\n[§a+§r] 受到来自§8§l亡灵生物§r的伤害§a略微减少§r\n[§c-§r] §5亡灵杀手§r附魔对你有效\n[§e~§r] 部分起源的能力对你有不同的效果\n[§e~§r] 部分状态效果对你无效, 或效果反转\n[§c-§r] 正因如此, 你偏爱的食物不再给你生命恢复效果\n[§c-§r] 带有§5亡灵杀手§r的§l§6木剑§r针对你§c效果极佳§r",
 
 	"origin.thorigins.ice_fox.name": "寒冰狐狸",
 	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n你不该看见这个页面的\n目前懒癌发作只做了毛绒绒*被动技能",

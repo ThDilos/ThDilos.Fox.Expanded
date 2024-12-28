@@ -19,6 +19,11 @@
 					"translate": "thfoxiality2.info1"
 				}
 			]
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": { "translate": "thfoxiality2.info2" }
 		}
 	],
 
@@ -141,5 +146,71 @@
 		"active_by_default": true,
 		"strength": 1,
 		"key": "nuh.uh"
+	},
+
+	"holyness": {
+		"type": "origins:modify_damage_dealt",
+		"target_condition": {
+			"type": "origins:in_tag",
+			"tag": "undead",
+			"inverted": true
+		},
+		"modifier": {
+			"operation": "multiply_total_multiplicative",
+			"amount": -0.25
+		}
+	},
+
+	"exorcise": {
+		"type": "origins:modify_damage_dealt",
+		"target_condition": {
+			"type": "origins:in_tag",
+			"tag": "undead"
+		},
+		"modifier": {
+			"operation": "multiply_total_multiplicative",
+			"amount": 0.5
+		}
+	},
+
+	"effects_amplified": {
+		"type": "origins:modify_status_effect_amplifier",
+		"status_effects": [
+			"minecraft:regeneration",
+			"minecraft:luck",
+			"minecraft:hero_of_the_village",
+			"minecraft:instant_health",
+			"minecraft:health_boost",
+			"minecraft:wither",
+			"minecraft:poison"
+		],
+		"modifier": {
+			"operation": "add_base_early",
+			"amount": 1
+		}
+	},
+
+	"effect_immune": {
+		"type": "origins:effect_immunity",
+		"effects": [
+			"minecraft:darkness",
+			"minecraft:blindness",
+			"minecraft:unluck"
+		]
+	},
+
+	"undead_vulnerable": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:attacker",
+			"entity_condition": {
+				"type": "origins:in_tag",
+				"tag": "undead"
+			}
+		},
+		"modifier": {
+			"operation": "multiply_total_multiplicative",
+			"amount": 0.25
+		}
 	}
 }

@@ -45,7 +45,7 @@
 	"lightning_fox.thbecome_lightning.name": "§6§l§nBecome Lightning",
 	"lightning_fox.thbecome_lightning.description": "Become lightning，fly freely and struck whoever you want. Remember to do adequate water protection，water is lethal to you in this state.",
 	"thbecome_lightning.key": "Active ability, press [%s] to enter lightning state",
-	"thbecome_lightning.info": "Lightning State:\n§b1§r. Able to fly quickly\n§b2§r. Extinguish nearby fire if you are fast enough\n§b3§r. Smite nearby entities if you are fast enough\n§b4§r. Exhaust quickly\n§b5§r. Take damage from water\n§b6§r. Receive 2x Damage\n\n§cYou can't use this skill if you have no hunger",
+	"thbecome_lightning.info": "Lightning State:\n§b1§r. Able to fly quickly\n§b2§r. Extinguish nearby fire if you are fast enough\n§b3§r. Smite nearby entities if you are fast enough\n§b4§r. Exhaust quickly\n§b5§r. Take damage from water\n§b6§r. Receive 2x Damage\n\n§cYou can't use this skill if you have no hunger or wearing anything!",
 
 	"lightning_fox.thelectric_beam.name": "§6§l§nElectric Beam",
 	"lightning_fox.thelectric_beam.description": "Overcharge your enermy with Electric beam.",
@@ -119,13 +119,13 @@
 
 	"kitsune.thphasing.name": "§6§l§nAscension",
 	"kitsune.thphasing.description": "Your body transcends the normal realm, no longer bounded by the physical world.",
-	"kitsune.thphasing.info": "While in this form:\n§b1§r. Able to walk on air\n§b2§r. Able to phase through walls\n§b3§r. Halve all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
+	"kitsune.thphasing.info": "While in this form:\n§b1§r. Able to walk on air when not equipping §eheavy armors§r\n§b2§r. Able to phase through walls when not equipping §canything§r\n§b3§r. Halve all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
 	"kitsune.thphasing.key": "Active ability, press [%s] to ascend into your ethereal form",
 
 	"kitsune.thheal.name": "§6§l§nSpiritual Grace",
 	"kitsune.thheal.description": "Your essence radiates with pure grace, uplifting the living and dispelling the cursed.",
 	"thheal.key": "Active ability, press [%s] to toggle regenerating aura\n\nPress [%s] while crouching to boost the vitality of all living beings around you\n\nPress [%s] against a mob with empty hands to heal it\n\nOn backpack, pick up a seed and [%s] on another seed will craft a Sweetberries\nIn same way, Glow Ink Sack + Sweetberries = GlowBerries",
-	"thheal.info": "Your spiritual power will harm the undead beings\n\n§8You might tame the wild creatures that you healed with touch :3",
+	"thheal.info": "Your spiritual power will harm the undead beings\n\n§8You might tame the wild creatures that you healed with touch",
 	"thheal.aura.blessed": "§2The soothing aura restored your vitality",
 	"thheal.aura.cursed": "§4The divine aura corroded your undead body",
 	"thheal.burst.blessed": "§2The spiritual presence awarded you with power and good fortune",
@@ -143,6 +143,7 @@
 	"kitsune.thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
 	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against prey mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n§m[§c-§r§m] Anger wolves and polar bears§r",
 	"thfoxiality2.info1": "\n§m[§c-§r§m] Predators do a deadlier §5§l§mEXTRA STRIKE §r§f§mto you after every hit",
+	"thfoxiality2.info2": "§f۞§r §fYou are a§r §e§lDivine Creature§r §f۞§r\n\n[§e~§r] You deal / receive §emore§r damage from / to §8§lUndead monsters§r\n[§c-§r] You deal less damage to §c§lall other Mobs§r\n[§e~§r] Part of your abilities work differently against §8§lUndead monsters§r\n[§a+§r] You are §aimmune§r to §5Unluck§r / §5Darkness§r / §5Blindness§r status effects\n[§e~§r] Some §aPositive§r & §cNegative§r status effects will have a higher amplitude on you",
 
 	"origin.thorigins.ninetails.name": "Ninetails",
 	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
@@ -171,7 +172,7 @@
 	"ninetails.thphasing.name": "§6§l§nAbyssion",
 	"ninetails.thphasing.description": "Plunge into the abyss, forsaking the living realm and slipping through the veil of reality.",
 	"ninetails.thphasing.key": "Active ability, press [%s] to descend into your abyssal form",
-	"ninetails.thphasing.info": "While in this form:\n§b1§r. Able to walk on air\n§b2§r. Able to phase through walls\n§b3§r. Reduce all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
+	"ninetails.thphasing.info": "While in this form:\n§b1§r. Able to walk on air when not equipping §eheavy armors§r\n§b2§r. Able to phase through walls when not equipping §canything§r\n§b3§r. Reduce all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
 
 	"ninetails.thfluffy5.name": "§e§nFluffy*",
 	"ninetails.thfluffy5.description": "Your fur, soaked in blood and death. Soft to the touch, but invokes fear and awe in those near.",
@@ -185,6 +186,7 @@
 	"thfoxiality3.info1": "\n[§c-§r] Predators do a §aweaker§r §5§lEXTRA STRIKE §r§fto you after every hit",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r",
 	"thfoxiality3.info2": "Your Predators' §5§lEXTRA STRIKE§r has the following effects:\n§m§b1§r§m. Applies §5§mSlowness§r§m + Weakness + Nausea to you§r\n§r§b2§r. Deals a §alesser§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Temporarily §cDisables§r your [§6§lPounce++§r]\n§b4§r. Temporarily §cNullifies§r your [§aAgility++§r]'s first effect\n§b5§r. Temporarily §cDisables§r your natural regeneration\n\n§8§oWearing armors and Resistance might make your predators' §lEXTRA STRIKE §r§8§ofail",
+	"thfoxiality3.info3": "§f☠§r §fYou are a§r §8§lUndead Demon§r §f☠§r\n\n[§a+§r] You receive §aless§r damage from §7Undead monsters§r\n[§c-§r] §5Smite§r Enchantment is effective against you\n[§e~§r] Certain Origins' abilities work differently against you\n[§e~§r] Some Status effects are reversed or nullified on you\n[§c-§r] Your preferred foods no longer gives you regeneration effect because of it\n[§c-§r] You are extra vulnerable to §l§6Wooden Sword§r with §5Smite§r",
 
 	"origin.thorigins.ice_fox.name": "Ice Fox",
 	"origin.thorigins.ice_fox.description": "Ice fox W.I.P :3 \nYou aren't supposed to see this\nI'm too lazy to code so all you can have rn is the Fluffy* skill",
