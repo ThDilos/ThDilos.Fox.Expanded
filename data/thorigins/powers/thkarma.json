@@ -14,35 +14,61 @@
 						"type": "origins:and",
 						"conditions": [
 							{
-								"type": "origins:command",
-								"command": "/time query daytime",
-								"compare_to": 14000,
-								"comparison": ">="
+								"type": "origins:resource",
+								"resource": "*:*_unlockable",
+								"compare_to": 1,
+								"comparison": "=="
 							},
 							{
-								"type": "origins:command",
-								"command": "/time query daytime",
-								"compare_to": 22000,
-								"comparison": "<"
+								"type": "origins:resource",
+								"resource": "*:*_karma_p",
+								"compare_to": 1000,
+								"comparison": "<="
 							},
 							{
-								"type": "origins:exposed_to_sky"
-							},
-							{
-								"type": "origins:moving",
-								"inverted": true
+								"type": "origins:resource",
+								"resource": "*:*_karma_n",
+								"compare_to": 1000,
+								"comparison": "<="
 							}
 						]
 					},
 					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_live_check",
-						"change": 100
-					},
-					"else_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_live_check",
-						"change": 20
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:command",
+									"command": "/time query daytime",
+									"compare_to": 14000,
+									"comparison": ">="
+								},
+								{
+									"type": "origins:command",
+									"command": "/time query daytime",
+									"compare_to": 22000,
+									"comparison": "<"
+								},
+								{
+									"type": "origins:exposed_to_sky"
+								},
+								{
+									"type": "origins:moving",
+									"inverted": true
+								}
+							]
+						},
+						"if_action": {
+							"type": "origins:change_resource",
+							"resource": "*:*_live_check",
+							"change": 100
+						},
+						"else_action": {
+							"type": "origins:change_resource",
+							"resource": "*:*_live_check",
+							"change": 20
+						}
 					}
 				},
 				{
@@ -280,6 +306,12 @@
 				"conditions": [
 					{
 						"type": "origins:resource",
+						"resource": "*:*_unlockable",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:resource",
 						"resource": "*:*_show_karma",
 						"compare_to": 0,
 						"comparison": ">"
@@ -345,6 +377,12 @@
 			"condition": {
 				"type": "origins:and",
 				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:*_unlockable",
+						"compare_to": 1,
+						"comparison": "=="
+					},
 					{
 						"type": "origins:resource",
 						"resource": "*:*_show_karma",

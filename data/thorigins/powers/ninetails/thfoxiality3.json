@@ -21,9 +21,14 @@
 			]
 		},
 		{
-			"type": "origins:keybind",
-			"text": "thfoxiality3.info2",
-			"sprite": "origins:textures/gui/badge/arrow_up.png"
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/arrow_up.png",
+			"text": { "translate": "thfoxiality3.info2" }
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": { "translate": "thfoxiality3.info3" }
 		}
 	],
 
@@ -516,6 +521,133 @@
 							"change": 100,
 							"operation": "set"
 						}
+					}
+				}
+			]
+		}
+	},
+
+	"undeadness": {
+		"type": "origins:entity_group",
+		"group": "undead"
+	},
+
+	"undead_resistence": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:attacker",
+			"entity_condition": {
+				"type": "origins:entity_group",
+				"group": "undead"
+			}
+		},
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.25
+		}
+	},
+
+	"wooden_sword_weakness": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:projectile",
+			"inverted": true
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:equipped_item",
+				"item_condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"item": "minecraft:wooden_sword"
+							}
+						},
+						{
+							"type": "origins:enchantment",
+							"enchantment": "minecraft:smite",
+							"compare_to": 0,
+							"comparison": ">"
+						}
+					]
+				},
+				"equipment_slot": "mainhand"
+			}
+		},
+		"modifier": {
+			"value": 1,
+			"operation": "multiply_total"
+		},
+		"bientity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:add_velocity",
+					"z": 3
+				},
+				{
+					"type": "origins:target_action",
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.generic.extinguish_fire",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 2
+							},
+							{
+								"type": "origins:spawn_particles",
+								"particle": "minecraft:smoke",
+								"speed": 0.01,
+								"spread": {
+									"x": 0.5,
+									"y": 0.5,
+									"z": 0.5
+								},
+								"offset_y": 0.5,
+								"count": 40
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.fox.screech",
+								"pitch": 1.8,
+								"volume": 0.7
+							},
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "minecraft:darkness",
+										"duration": 60,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true,
+										"amplifier": 0
+									},
+									{
+										"effect": "minecraft:weakness",
+										"duration": 60,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true,
+										"amplifier": 2
+									},
+									{
+										"effect": "minecraft:slowness",
+										"duration": 60,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true,
+										"amplifier": 4
+									}
+								]
+							}
+						]
 					}
 				}
 			]

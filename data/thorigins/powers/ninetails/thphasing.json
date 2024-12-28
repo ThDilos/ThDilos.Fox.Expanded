@@ -17,58 +17,145 @@
 			}
 		},
 		{
-			"type": "origins:keybind",
+			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/info.png",
-			"text": "ninetails.thphasing.info"
+			"text": { "translate": "ninetails.thphasing.info" }
 		}
 	],
 
 	"ticks": {
 		"type": "origins:action_over_time",
-		"interval": 4,
+		"interval": 1,
+		"rising_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scale delay set pehkui:motion 1 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:motion 3 @s"
+				}
+			]
+		},
+		"falling_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scale delay set pehkui:motion 1 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale reset pehkui:motion @s"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_heavily_armored",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
+		}
+	},
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"interval": 20,
 		"entity_action": {
-			"type": "origins:if_else",
-			"condition": {
-				"type": "origins:power_active",
-				"power": "*:*_toggle"
-			},
-			"if_action": {
-				"type": "origins:and",
-				"actions": [
-					{
-						"type": "origins:change_resource",
-						"resource": "*:thtransform_souls",
-						"change": -2
-					},
-					{
-						"type": "origins:set_fall_distance",
-						"fall_distance": 0
-					},
-					{
-						"type": "origins:execute_command",
-						"command": "/scale delay set pehkui:motion 1 @s"
-					},
-					{
-						"type": "origins:execute_command",
-						"command": "/scale set pehkui:motion 3 @s"
-					},
-					{
-						"type": "origins:apply_effect",
-						"effect": {
-							"effect": "weakness",
-							"amplifier": 99,
-							"duration": 5,
-							"is_ambient": true,
-							"show_icon": false,
-							"show_particles": false
-						}
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_souls",
+					"change": -40
+				},
+				{
+					"type": "origins:set_fall_distance",
+					"fall_distance": 0
+				},
+				{
+					"type": "origins:apply_effect",
+					"effect": {
+						"effect": "weakness",
+						"amplifier": 99,
+						"duration": 21,
+						"is_ambient": true,
+						"show_icon": false,
+						"show_particles": false
 					}
-				]
-			},
-			"else_action": {
-				"type": "origins:execute_command",
-				"command": "/scale reset pehkui:motion @s"
-			}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "head",
+								"item_condition": {
+									"type": "origins:armor_value",
+									"comparison": ">",
+									"compare_to": 2
+								}
+							},
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "chest",
+								"item_condition": {
+									"type": "origins:armor_value",
+									"comparison": ">",
+									"compare_to": 6
+								}
+							},
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "legs",
+								"item_condition": {
+									"type": "origins:armor_value",
+									"comparison": ">",
+									"compare_to": 5
+								}
+							},
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "feet",
+								"item_condition": {
+									"type": "origins:armor_value",
+									"comparison": ">",
+									"compare_to": 2
+								}
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_heavily_armored",
+						"change": 1,
+						"operation": "set"
+					},
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_heavily_armored",
+						"change": 0,
+						"operation": "set"
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_toggle"
 		}
 	},
 
@@ -107,11 +194,50 @@
 		}
 	},
 
+	"heavily_armored": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1
+	},
+
 	"phasing": {
 		"type": "origins:phasing",
 		"condition": {
-			"type": "origins:power_active",
-			"power": "*:*_toggle"
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "head",
+					"item_condition": {
+						"type": "origins:empty"
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "chest",
+					"item_condition": {
+						"type": "origins:empty"
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "legs",
+					"item_condition": {
+						"type": "origins:empty"
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "feet",
+					"item_condition": {
+						"type": "origins:empty"
+					}
+				},
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				}
+			]
 		},
 		"view_distance": 20
 	},
@@ -175,10 +301,21 @@
 	"float_on_air": {
 		"type": "origins:climbing",
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_float_detector",
-			"compare_to": 0,
-			"comparison": ">"
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_float_detector",
+					"compare_to": 0,
+					"comparison": ">"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_heavily_armored",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
 		}
 	},
 
@@ -205,6 +342,12 @@
 				{
 					"type": "origins:sneaking",
 					"inverted": true
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_heavily_armored",
+					"compare_to": 0,
+					"comparison": "=="
 				}
 			]
 		}
@@ -215,8 +358,19 @@
 		"velocity": 0.02,
 		"take_fall_damage": false,
 		"condition": {
-			"type": "origins:power_active",
-			"power": "*:*_toggle"
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "*:*_toggle"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_heavily_armored",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
 		}
 	},
 
@@ -251,6 +405,31 @@
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_toggle"
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"inverted": true,
+			"condition": {
+				"type": "origins:equipped_item",
+				"item_condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"item": "minecraft:wooden_sword"
+							}
+						},
+						{
+							"type": "origins:enchantment",
+							"enchantment": "minecraft:smite",
+							"compare_to": 0,
+							"comparison": ">"
+						}
+					]
+				},
+				"equipment_slot": "mainhand"
+			}
 		}
 	}
 }

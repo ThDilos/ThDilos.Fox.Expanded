@@ -144,8 +144,32 @@
 											{
 												"type": "origins:target_action",
 												"action": {
-													"type": "origins:execute_command",
-													"command": "/title @s actionbar {\"translate\":\"thheal.aura.cursed\"}"
+													"type": "origins:and",
+													"actions": [
+														{
+															"type": "origins:execute_command",
+															"command": "/title @s actionbar {\"translate\":\"thheal.aura.cursed\"}"
+														},
+														{
+															"type": "origins:play_sound",
+															"sound": "minecraft:entity.generic.extinguish_fire",
+															"category": "players",
+															"pitch": 1.5,
+															"volume": 0.6
+														},
+														{
+															"type": "origins:spawn_particles",
+															"particle": "minecraft:smoke",
+															"speed": 0.01,
+															"spread": {
+																"x": 0.5,
+																"y": 0.5,
+																"z": 0.5
+															},
+															"offset_y": 0.5,
+															"count": 20
+														}
+													]
 												}
 											}
 										]
@@ -324,6 +348,25 @@
 											{
 												"type": "origins:execute_command",
 												"command": "/title @s actionbar {\"translate\":\"thheal.burst.cursed\"}"
+											},
+											{
+												"type": "origins:play_sound",
+												"sound": "minecraft:entity.generic.extinguish_fire",
+												"category": "players",
+												"pitch": 1.5,
+												"volume": 0.6
+											},
+											{
+												"type": "origins:spawn_particles",
+												"particle": "minecraft:smoke",
+												"speed": 0.01,
+												"spread": {
+													"x": 0.5,
+													"y": 0.5,
+													"z": 0.5
+												},
+												"offset_y": 0.5,
+												"count": 20
 											}
 										]
 									}
@@ -488,6 +531,25 @@
 										{
 											"type": "origins:execute_command",
 											"command": "/particle minecraft:soul ^ ^2 ^ 0 0 0 1 0"
+										},
+										{
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.generic.extinguish_fire",
+											"category": "players",
+											"pitch": 1.5,
+											"volume": 0.6
+										},
+										{
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:smoke",
+											"speed": 0.01,
+											"spread": {
+												"x": 0.5,
+												"y": 0.5,
+												"z": 0.5
+											},
+											"offset_y": 0.5,
+											"count": 20
 										}
 									]
 								}
