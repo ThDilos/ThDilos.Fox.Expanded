@@ -45,6 +45,33 @@
 			"type": "origins:and",
 			"actions": [
 				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:fox/thtrackers_origin_tracker",
+						"compare_to": 5,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:power",
+							"power": "*:thtransform"
+						},
+						"if_action": {
+							"type": "origins:change_resource",
+							"resource": "*:thtransform_cooldown",
+							"change": -600
+						}
+					},
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:fox/thtrackers_origin_tracker",
+						"change": 5,
+						"operation": "set"
+					}
+				},
+				{
 					"type": "origins:change_resource",
 					"resource": "*:fox/thfluffy_effect_timer",
 					"change": -40

@@ -1,0 +1,32 @@
+{
+	"type": "origins:action_on_callback",
+	"hidden": true,
+
+	"entity_action_gained": {
+		"type": "origins:if_else",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:fox/thtrackers_origin_tracker",
+			"compare_to": 0,
+			"comparison": "=="
+		},
+		"if_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:power",
+				"power": "*:thtransform"
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:thtransform_cooldown",
+				"change": -600
+			}
+		},
+		"else_action": {
+			"type": "origins:change_resource",
+			"resource": "*:fox/thtrackers_origin_tracker",
+			"change": 0,
+			"operation": "set"
+		}
+	}
+}
