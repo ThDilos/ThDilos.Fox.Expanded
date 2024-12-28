@@ -3,18 +3,18 @@ loaderVersion="[36,)"
 license="ARR"
 issueTrackerURL="https://github.com/ThDilos/ThDilos.Fox.Origin/issues"
 description='''
-ThDilos' Custom Made Fox Origins Expanded. Moderately overpowered.
+Fox Evolutions for ThDilos Fox Origin.
 '''
 
 [[mods]]
 modId="thorigins2"
-version="3.1.1"
+version="3.1.2"
 displayName="ThDilos Fox Origins Expanded"
 
 [[dependencies.thorigins2]]
 modId="thorigins"
 mandatory=true
-versionRange="[4.0.1,)"
+versionRange="[4.1.2,)"
 ordering="NONE"
 side="BOTH"
 
