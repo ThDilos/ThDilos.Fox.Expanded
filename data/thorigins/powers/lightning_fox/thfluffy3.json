@@ -4,8 +4,8 @@
 	"description": { "translate": "lightning_fox.thfluffy3.description" },
 	"badges": [
 		{
-			"type": "origins:keybind",
-			"text": "origin.thorigin.passive",
+			"type": "origins:tooltip",
+			"text": { "translate": "origin.thorigin.passive" },
 			"sprite": "minecraft:textures/block/yellow_wool.png"
 		},
 		{

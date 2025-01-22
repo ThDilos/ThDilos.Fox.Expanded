@@ -4,8 +4,8 @@
 	"description": { "translate": "ninetails.thfoxiality3.description" },
 	"badges": [
 		{
-			"type": "origins:keybind",
-			"text": "origin.thorigin.passive",
+			"type": "origins:tooltip",
+			"text": { "translate": "origin.thorigin.passive" },
 			"sprite": "minecraft:textures/item/glow_berries.png"
 		},
 		{

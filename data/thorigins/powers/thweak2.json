@@ -4,14 +4,14 @@
 	"description": { "translate": "thweak2.description" },
 	"badges": [
 		{
-			"type": "origins:keybind",
+			"type": "origins:tooltip",
 			"sprite": "minecraft:textures/item/kelp.png",
-			"text": "origin.thorigin.passive"
+			"text": { "translate": "origin.thorigin.passive" }
 		},
 		{
-			"type": "origins:keybind",
+			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/info.png",
-			"text": "thweak2.info"
+			"text": { "translate": "thweak2.info" }
 		}
 	],
 

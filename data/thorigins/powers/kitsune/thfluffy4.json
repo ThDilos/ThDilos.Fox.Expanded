@@ -4,8 +4,8 @@
 	"description": { "translate": "kitsune.thfluffy4.description" },
 	"badges": [
 		{
-			"type": "origins:keybind",
-			"text": "origin.thorigin.passive",
+			"type": "origins:tooltip",
+			"text": { "translate": "origin.thorigin.passive" },
 			"sprite": "minecraft:textures/block/white_wool.png"
 		},
 		{

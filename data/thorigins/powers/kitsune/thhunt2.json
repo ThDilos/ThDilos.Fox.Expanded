@@ -29,9 +29,9 @@
 			]
 		},
 		{
-			"type": "origins:keybind",
+			"type": "origins:tooltip",
 			"sprite": "origins:textures/gui/badge/arrow_up.png",
-			"text": "thhunt.info1"
+			"text": { "translate": "thhunt.info1" }
 		}
 	],
 
@@ -989,6 +989,15 @@
 		}
 	},
 
+	"invis_high_version": {
+		"type": "origins:prevent_feature_render",
+		"features": ["elytra", "cape", "held_item", "head"],
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_invisibility"
+		}
+	},
+	
 	"sense_danger": {
 		"type": "origins:entity_glow",
 		"bientity_condition": {

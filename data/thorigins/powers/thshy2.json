@@ -4,9 +4,9 @@
 	"description": { "translate": "thshy2.description" },
 	"badges": [
 		{
-			"type": "origins:keybind",
+			"type": "origins:tooltip",
 			"sprite": "minecraft:textures/item/turtle_egg.png",
-			"text": "origin.thorigin.passive"
+			"text": { "translate": "origin.thorigin.passive" }
 		},
 		{
 			"type": "origins:tooltip",
