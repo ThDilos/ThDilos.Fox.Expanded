@@ -175,7 +175,16 @@
 		"retain_state": false,
 		"key": "nuh.uh",
 		"condition": {
-			"type": "origins:sneaking"
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:moving",
+					"inverted": true
+				},
+				{
+					"type": "origins:sneaking"
+				}
+			]
 		}
 	},
 

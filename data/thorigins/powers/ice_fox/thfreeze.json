@@ -11,7 +11,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:*_timer",
-					"change": -5
+					"change": -3
 				},
 				{
 					"type": "origins:if_else",

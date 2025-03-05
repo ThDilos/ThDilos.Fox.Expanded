@@ -82,19 +82,21 @@
 					"change": -100
 				},
 				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thelectric_beam",
-					"change": -80
+					"type": "origins:trigger_cooldown",
+					"power": "*:lightning_fox/thelectric_beam"
+				},
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:lightning_fox/thrailgun_cooldown"
+				},
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:lightning_fox/thdischarge_cooldown"
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thrailgun_cooldown",
-					"change": -300
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:lightning_fox/thdischarge_cooldown",
-					"change": -200
+					"resource": "*:lightning_fox/thrailgun_ready",
+					"change": -20
 				},
 				{
 					"type": "origins:change_resource",

@@ -294,34 +294,6 @@
 						"type": "origins:and",
 						"conditions": [
 							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:resource",
-										"resource": "*:ninetails/thchoice_choice",
-										"compare_to": 1,
-										"comparison": "=="
-									},
-									{
-										"type": "origins:resource",
-										"resource": "*:ninetails/thchoice_choice",
-										"compare_to": 3,
-										"comparison": "=="
-									}
-								]
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:ninetails/thchoice_showtime",
-								"compare_to": 0,
-								"comparison": ">"
-							}
-						]
-					},
-					{
-						"type": "origins:and",
-						"conditions": [
-							{
 								"type": "origins:origin",
 								"layer": "thorigins:origin",
 								"origin": "thorigins:kitsune"
@@ -505,7 +477,7 @@
 				},
 				"if_action": {
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.untransformable\",\"color\":\"red\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.untransformable\",\"color\":\"red\",\"bold\":true}"
 				},
 				"else_action": {
 					"type": "origins:if_else",
@@ -544,6 +516,12 @@
 										"resource": "*:*_lock_ninetails",
 										"compare_to": 0,
 										"comparison": "=="
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:*_lock_ice",
+										"compare_to": 0,
+										"comparison": "=="
 									}
 								]
 							},
@@ -574,7 +552,7 @@
 						},
 						"if_action": {
 							"type": "origins:execute_command",
-							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.sleepin_notransform\",\"color\":\"red\",\"bold\":\"true\"}"
+							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.sleepin_notransform\",\"color\":\"red\",\"bold\":true}"
 						},
 						"else_action": {
 							"type": "origins:and",
@@ -614,7 +592,7 @@
 						},
 						"if_action": {
 							"type": "origins:execute_command",
-							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.no_element\",\"color\":\"red\",\"bold\":\"true\"}"
+							"command": "/title @s actionbar {\"translate\":\"origins.thorigins.no_element\",\"color\":\"red\",\"bold\":true}"
 						}
 					}
 				}
@@ -688,7 +666,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.lightning\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.lightning\",\"color\":\"yellow\",\"bold\":true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -755,7 +733,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.fire\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.fire\",\"color\":\"yellow\",\"bold\":true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -777,7 +755,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.kitsune\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.kitsune\",\"color\":\"yellow\",\"bold\":true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -799,7 +777,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\":true}"
 				},
 				{
 					"type": "origins:play_sound",
@@ -821,7 +799,7 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ice\",\"color\":\"yellow\",\"bold\":\"true\"}"
+					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ice\",\"color\":\"yellow\",\"bold\":true}"
 				},
 				{
 					"type": "origins:play_sound",

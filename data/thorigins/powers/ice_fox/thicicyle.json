@@ -1,0 +1,302 @@
+{
+	"type": "origins:multiple",
+	"name": { "translate": "ice_fox.thicicyle.name" },
+	"description": { "translate": "ice_fox.thicicyle.description" },
+	"badges": [
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": {
+				"translate": "thicicyle.info0",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.use",
+						"color": "aqua"
+					},
+					{
+						"keybind": "key.origins.secondary_active",
+						"color": "aqua"
+					}
+				]
+			}
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": {
+				"translate": "thicicyle.info1"
+			}
+		}
+	],
+
+	"_init_": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add UUID0 dummy \"UUID0\""
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute store result score @s UUID0 run data get entity @s UUID[0]"
+				}
+			]
+		}
+	},
+
+	"cooldown": {
+		"type": "origins:cooldown",
+		"cooldown": 3
+	},
+
+	"no_awoo": {
+		"type": "origins:cooldown",
+		"cooldown": 50
+	},
+
+	"awoo": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 16,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar1.png",
+			"bar_index": 0
+		}
+	},
+
+	"shoot": {
+		"type": "origins:active_self",
+		"key": {
+			"key": "key.origins.primary_active",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_cooldown",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_no_awoo"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_awoo",
+								"change": -1
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:block.amethyst_block.resonate player @s ~ ~ ~ 1 1.5"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tag @s add shooting"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_cooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/particle minecraft:electric_spark ^ ^0.7 ^0.7 0 0 0 0.4 20"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 2,
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/summon fox ^ ^0.7 ^0.7 {Age:-6000,DeathLootTable:\"minecraft:empty\",Silent:1b,NoAI:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icicyle\"],HandItems:[{id:ice,components:{custom_model_data:159752},Count:1}],HandDropChances:[0f]}"
+										},
+										{
+											"type": "origins:area_of_effect",
+											"shape": "sphere",
+											"radius": 3,
+											"bientity_condition": {
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:and",
+													"conditions": [
+														{
+															"type": "origins:power",
+															"power": "*:ice_fox/icicyle",
+															"source": "thorigins:temp",
+															"inverted": true
+														},
+														{
+															"type": "origins:command",
+															"command": "/execute if entity @s[tag=icicyle]",
+															"compare_to": 1,
+															"comparison": "=="
+														}
+													]
+												}
+											},
+											"bientity_action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:target_action",
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:grant_power",
+																	"power": "*:ice_fox/icicyle",
+																	"source": "thorigins:temp"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "/execute store result score @s UUID0 run data get entity @e[tag=shooting,limit=1,sort=nearest,distance=..3] UUID[0]"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "/data modify entity @s Rotation set from entity @e[tag=shooting,limit=1,sort=nearest] Rotation"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "/tag @e[tag=shooting,limit=1,sort=nearest] remove shooting"
+																}
+															]
+														}
+													},
+													{
+														"type": "origins:if_else",
+														"condition": {
+															"type": "origins:actor_condition",
+															"condition": {
+																"type": "origins:resource",
+																"resource": "*:*_using",
+																"compare_to": 0,
+																"comparison": ">"
+															}
+														},
+														"if_action": {
+															"type": "origins:mount"
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_awoo",
+			"compare_to": 0,
+			"comparison": ">"
+		}
+	},
+
+	"replenish": {
+		"type": "origins:action_over_time",
+		"interval": 25,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_awoo",
+			"change": 1
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_no_awoo",
+			"compare_to": 0,
+			"comparison": "=="
+		}
+	},
+
+	"clear": {
+		"type": "origins:active_self",
+		"key": "key.origins.secondary_active",
+		"cooldown": 10,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:note",
+					"offset_y": 1,
+					"speed": 0,
+					"count": 1
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.fox.ambient",
+					"category": "players",
+					"pitch": 1.5,
+					"volume": 1.0
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:play_sound",
+						"sound": "minecraft:block.amethyst_block.resonate",
+						"category": "players",
+						"pitch": 1.5,
+						"volume": 0.8
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @s add temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[tag=icicyle] if score @s UUID0 = @e[tag=temp,limit=1] UUID0 run resource set @s thorigins:ice_fox/icicyle_time_alive 6"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @s remove temp"
+				}
+			]
+		}
+	},
+
+	"using": {
+		"type": "origins:cooldown",
+		"cooldown": 2
+	},
+
+	"check_use": {
+		"type": "origins:active_self",
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:trigger_cooldown",
+			"power": "*:*_using"
+		},
+		"condition": {
+			"type": "origins:equipped_item",
+			"equipment_slot": "mainhand",
+			"item_condition": {
+				"type": "origins:empty"
+			}
+		}
+	}
+}

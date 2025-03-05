@@ -52,12 +52,21 @@
 			"source": "thorigins:inherited"
 		}
 	},
-
-	"total_freeze_immunity": {
+	
+	"immunities": {
 		"type": "origins:invulnerability",
 		"damage_condition": {
-			"type": "origins:name",
-			"name": "freeze"
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:name",
+					"name": "cactus"
+				},
+				{
+					"type": "origins:name",
+					"name": "freeze"
+				}
+			]
 		}
 	},
 

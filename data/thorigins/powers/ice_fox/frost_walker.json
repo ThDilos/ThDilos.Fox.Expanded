@@ -1,0 +1,98 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"_init_": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:hitbox_height 0.1 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:hitbox_width 0.1 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:model_height 0.01 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:model_width 0.01 @s"
+				}
+			]
+		}
+	},
+
+	"invis": {
+		"type": "origins:invisibility",
+		"render_armor": false,
+		"render_outline": false
+	},
+
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/kill @s"
+		},
+		"condition": {
+			"type": "origins:fluid_height",
+			"fluid": "minecraft:lava",
+			"compare_to": 0,
+			"comparison": ">"
+		}
+	},
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @e[type=boat,distance=..8]",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/data modify entity @n[type=minecraft:armor_stand] ArmorItems[0].components.minecraft:enchantments.levels.minecraft:frost_walker set value 4"
+					},
+					"else_action": {
+						"type": "origins:execute_command",
+						"command": "/data modify entity @n[type=minecraft:armor_stand] ArmorItems[0].components.minecraft:enchantments.levels.minecraft:frost_walker set value 1"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @a[tag=foxie]",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/kill @s"
+					}
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "feet",
+					"item_action": {
+						"type": "origins:damage",
+						"amount": -1000
+					}
+				}
+			]
+		}
+	}
+}
