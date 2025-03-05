@@ -689,6 +689,13 @@
 		}
 	},
 
+	"forge_dmg_fix": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 0,
+		"start_value": 0
+	},
+
 	"falling_vulnerability": {
 		"type": "origins:modify_damage_taken",
 		"bientity_condition": {
@@ -706,11 +713,16 @@
 				"value": -1,
 				"modifier": {
 					"operation": "addition",
-					"resource": "*:fox/universal_settings_op_ness",
-					"value": 0,
+					"resource": "*:*_forge_dmg_fix",
+					"value": 4,
 					"modifier": {
-						"value": -0.99,
-						"operation": "multiply_base"
+						"operation": "addition",
+						"resource": "*:fox/universal_settings_op_ness",
+						"value": 0,
+						"modifier": {
+							"value": -0.99,
+							"operation": "multiply_base"
+						}
 					}
 				}
 			}

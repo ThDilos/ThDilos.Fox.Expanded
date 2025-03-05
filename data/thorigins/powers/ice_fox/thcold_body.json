@@ -1,0 +1,212 @@
+{
+	"type": "origins:multiple",
+	"name": "ice_fox.thcold_body.name",
+	"description": "ice_fox.thcold_body.description",
+	"badges": [
+		{
+			"type": "origins:tooltip",
+			"sprite": "minecraft:textures/item/snowball.png",
+			"text": {
+				"translate": "origin.thorigin.passive"
+			}
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": {
+				"translate": "thcold_body.info"
+			}
+		}
+	],
+
+	"_init_": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:command",
+				"command": "/execute if entity @e[type=minecraft:armor_stand,limit=1,sort=nearest,tag=icefoxpaws]",
+				"compare_to": 0,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:execute_command",
+						"command": "/summon armor_stand ~ ~ ~ {Invisible:1b,NoBasePlate:1b,DisabledSlots:4144959,CustomName:'[{\"text\":\"Ice Fox Frost Walker\"}]',Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icefoxpaws\"],ArmorItems:[{id:leather_boots,tag:{Enchantments:[{id:frost_walker,lvl:2}],Unbreakable:1b},Count:1}],ArmorDropChances:[0f]}"
+					},
+					{
+						"type": "origins:delay",
+						"ticks": 1,
+						"action": {
+							"type": "origins:area_of_effect",
+							"radius": 3,
+							"shape": "sphere",
+							"bientity_condition": {
+								"type": "origins:target_condition",
+								"condition": {
+									"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:entity_type",
+											"entity_type": "minecraft:armor_stand"
+										},
+										{
+											"type": "origins:nbt",
+											"nbt": "{\"Tags\":[\"icefoxpaws\"]}"
+										}
+									]
+								}
+							},
+							"bientity_action": {
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:grant_power",
+									"power": "*:ice_fox/frost_walker",
+									"source": "thorigins:temp"
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"entity_action_removed": {
+			"type": "origins:execute_command",
+			"command": "/kill @e[type=armor_stand,tag=icefoxpaws,limit=1,sort=nearest,distance=..16]"
+		}
+	},
+
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:riding"
+			},
+			"if_action": {
+				"type": "origins:riding_action",
+				"recursive": true,
+				"action": {
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:riding",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:entity_type",
+							"entity_type": "minecraft:player"
+						},
+						"if_action": {
+							"type": "origins:execute_command",
+							"command": "/tp @e[type=armor_stand,tag=icefoxpaws,limit=1,sort=nearest] ~ ~ ~"
+						},
+						"else_action": {
+							"type": "origins:execute_command",
+							"command": "/tp @e[type=armor_stand,tag=icefoxpaws,limit=1,sort=nearest] ^ ^ ^3"
+						}
+					}
+				}
+			},
+			"else_action": {
+				"type": "origins:execute_command",
+				"command": "/tp @e[type=armor_stand,tag=icefoxpaws,limit=1,sort=nearest] ~ ~ ~"
+			}
+		}
+	},
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:fluid_height",
+								"fluid": "minecraft:lava",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:command",
+								"command": "/execute if entity @e[type=minecraft:armor_stand,limit=1,sort=nearest,tag=icefoxpaws]",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/summon armor_stand ~ ~ ~ {Invisible:1b,NoBasePlate:1b,DisabledSlots:4144959,CustomName:'[{\"text\":\"Ice Fox Frost Walker\"}]',Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icefoxpaws\"],ArmorItems:[{id:leather_boots,tag:{Enchantments:[{id:frost_walker,lvl:2}],Unbreakable:1b},Count:1}],ArmorDropChances:[0f]}"
+					}
+				},
+				{
+					"type": "origins:area_of_effect",
+					"radius": 8,
+					"shape": "sphere",
+					"bientity_condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:armor_stand"
+								},
+								{
+									"type": "origins:nbt",
+									"nbt": "{\"Tags\":[\"icefoxpaws\"]}"
+								}
+							]
+						}
+					},
+					"bientity_action": {
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:grant_power",
+							"power": "*:ice_fox/frost_walker",
+							"source": "thorigins:temp"
+						}
+					}
+				}
+			]
+		}
+	},
+
+	"cold_blood": {
+		"type": "origins:effect_immunity",
+		"effect": "minecraft:poison"
+	},
+
+	"low_temp_affinity": {
+		"type": "origins:stacking_status_effect",
+		"min_stacks": 0,
+		"max_stacks": 5,
+		"duration_per_stack": 100,
+		"effect": {
+			"effect": "minecraft:resistance",
+			"amplifier": 0,
+			"duration": 100,
+			"is_ambient": true,
+			"show_icon": true,
+			"show_particles": false
+		},
+		"condition": {
+			"type": "origins:biome",
+			"condition": {
+				"type": "origins:temperature",
+				"compare_to": 0.5,
+				"comparison": "<"
+			}
+		}
+	}
+}

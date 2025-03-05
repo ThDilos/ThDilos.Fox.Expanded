@@ -1,0 +1,609 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"_init_": {
+		"type": "origins:action_on_callback",
+		"entity_action_gained": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scale delay set pehkui:hitbox_width 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale delay set pehkui:hitbox_height 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:hitbox_width 0.6 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:hitbox_height 0.4 @s"
+				}
+			]
+		}
+	},
+
+	"destroy_terrain": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1
+	},
+
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:passenger"
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/data modify entity @s Rotation set from entity @e[tag=!icicyle,limit=1,sort=nearest,distance=..1] Rotation"
+					}
+				},
+				{
+					"type": "origins:heal",
+					"amount": 1
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_time_alive",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_time_alive",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_time_alive",
+						"compare_to": 95,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:play_sound",
+						"sound": "minecraft:entity.firework_rocket.launch",
+						"volume": 0.6,
+						"pitch": 1.6,
+						"category": "players"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_time_alive",
+						"compare_to": 95,
+						"comparison": "<"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:block_collision",
+									"inverted": true,
+									"block_condition": {
+										"type": "origins:movement_blocking"
+									},
+									"offset_x": 0,
+									"offset_y": 0,
+									"offset_z": 0
+								},
+								"if_action": {
+									"type": "origins:if_else",
+									"condition": {
+										"type": "origins:fluid_height",
+										"fluid": "minecraft:water",
+										"compare_to": 0,
+										"comparison": ">"
+									},
+									"if_action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "/tp @s ^ ^ ^0.3"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "/particle minecraft:bubble ^ ^ ^-3 0 0 0 0 5"
+											}
+										]
+									},
+
+									"else_action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "/tp @s ^ ^ ^0.8"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "/particle minecraft:snowflake ^ ^ ^-3 0 0 0 0 5"
+											}
+										]
+									}
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tag @s add temp"
+							},
+							{
+								"type": "origins:raycast",
+								"distance": 0.5,
+								"bientity_condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:command",
+										"command": "/execute unless score @s[type=!experience_orb,tag=!icicyle,tag=!icefoxpaws,tag=!sleepin_fox] UUID0 = @e[distance=..2,tag=icicyle,tag=temp,limit=1] UUID0",
+										"compare_to": 1,
+										"comparison": "=="
+									}
+								},
+								"bientity_action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:target_action",
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/tag @s add temp3"
+											}
+										},
+										{
+											"type": "origins:target_action",
+											"action": {
+												"type": "origins:play_sound",
+												"sound": "minecraft:item.trident.hit",
+												"volume": 1,
+												"pitch": 0.2,
+												"category": "players"
+											}
+										},
+										{
+											"type": "origins:actor_action",
+											"action": {
+												"type": "origins:change_resource",
+												"resource": "*:*_time_alive",
+												"change": -100
+											}
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tag @s remove temp"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_time_alive",
+						"compare_to": 5,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"volume": 0.4,
+								"pitch": 1.2,
+								"category": "players"
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.amethyst_block.hit",
+								"category": "players",
+								"pitch": 1,
+								"volume": 1
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_time_alive",
+				"compare_to": 0,
+				"comparison": "=="
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_time_alive",
+				"change": 1
+			}
+		}
+	},
+
+	"time_alive": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 100,
+		"start_value": 100,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:passenger_action",
+					"action": {
+						"type": "origins:dismount"
+					}
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.generic.explode",
+					"category": "players",
+					"pitch": 1.5,
+					"volume": 0.6
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.glass.break",
+					"volume": 0.4,
+					"pitch": 1.2,
+					"category": "players"
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:explosion",
+					"count": 5,
+					"spread": {
+						"x": 1,
+						"y": 1,
+						"z": 1
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:snowflake ^ ^ ^ 0 0 0 0.15 50"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:item_snowball ^ ^ ^ 0 0 0 0.15 25"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle block ice ^ ^ ^ 0 0 0 0.5 75"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:flash ^ ^ ^ 0 0 0 1 1 force"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @s add temp"
+				},
+				{
+					"type": "origins:area_of_effect",
+					"radius": 3,
+					"shape": "sphere",
+					"bientity_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:extinguish"
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:command",
+										"command": "/execute if score @s[tag=!icicyle] UUID0 = @e[tag=temp,limit=1,sort=nearest,tag=icicyle] UUID0",
+										"compare_to": 1,
+										"comparison": "=="
+									}
+								},
+								"if_action": {
+									"type": "origins:add_velocity",
+									"z": 0.5
+								},
+								"else_action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:target_action",
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/tag @s add temp2"
+											}
+										},
+										{
+											"type": "origins:add_velocity",
+											"z": 0.3
+										}
+									]
+								}
+							}
+						]
+					},
+					"bientity_condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:living"
+						}
+					}
+				},
+				{
+					"type": "origins:area_of_effect",
+					"radius": 200,
+					"shape": "sphere",
+					"bientity_condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:living"
+								},
+								{
+									"type": "origins:command",
+									"command": "/execute if score @s[tag=!icicyle] UUID0 = @e[tag=temp,limit=1,sort=nearest,tag=icicyle] UUID0",
+									"compare_to": 1,
+									"comparison": "=="
+								}
+							]
+						}
+					},
+					"bientity_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:resource",
+										"resource": "*:fox/universal_settings_destroy_terrain",
+										"compare_to": 0,
+										"comparison": "=="
+									}
+								},
+								"if_action": {
+									"type": "apoli:actor_action",
+									"action": {
+										"type": "origins:change_resource",
+										"resource": "*:*_destroy_terrain",
+										"change": -1
+									}
+								}
+							},
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:area_of_effect",
+									"radius": 203,
+									"shape": "sphere",
+									"bientity_condition": {
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:living"
+												},
+												{
+													"type": "origins:command",
+													"command": "/execute if entity @s[tag=temp2,tag=!icicyle]",
+													"compare_to": 1,
+													"comparison": "=="
+												}
+											]
+										}
+									},
+									"bientity_action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:damage",
+												"amount": 3,
+												"source": {
+													"name": "freeze.player"
+												},
+												"damage_type": "freeze.player"
+											},
+											{
+												"type": "origins:damage",
+												"amount": 3,
+												"source": {
+													"name": "explosion"
+												},
+												"damage_type": "explosion.player"
+											},
+											{
+												"type": "origins:if_else",
+												"condition": {
+													"type": "origins:target_condition",
+													"condition": {
+														"type": "origins:command",
+														"command": "/execute if entity @s[tag=temp3]",
+														"compare_to": 1,
+														"comparison": "=="
+													}
+												},
+												"if_action": {
+													"type": "origins:and",
+													"actions": [
+														{
+															"type": "origins:actor_action",
+															"action": {
+																"type": "origins:execute_command",
+																"command": "/playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 0.6 1.8"
+															}
+														},
+														{
+															"type": "origins:damage",
+															"amount": 5,
+															"source": {
+																"name": "trident"
+															},
+															"damage_type": "trident"
+														}
+													]
+												}
+											},
+											{
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:apply_effect",
+													"effect": {
+														"effect": "minecraft:slowness",
+														"show_particles": false,
+														"is_ambient": true,
+														"amplifier": 2,
+														"duration": 100,
+														"show_icon": true
+													}
+												}
+											},
+											{
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:power",
+														"power": "*:ice_fox/thfreeze",
+														"source": "thorigins:temp"
+													},
+													"if_action": {
+														"type": "origins:change_resource",
+														"resource": "*:ice_fox/thfreeze_timer",
+														"change": 25
+													},
+													"else_action": {
+														"type": "origins:grant_power",
+														"power": "*:ice_fox/thfreeze",
+														"source": "thorigins:temp"
+													}
+												}
+											},
+											{
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:execute_command",
+													"command": "/tag @s remove temp2"
+												}
+											},
+											{
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:execute_command",
+													"command": "/tag @s remove temp3"
+												}
+											}
+										]
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_destroy_terrain",
+						"compare_to": 1,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/fill ^0.5 ^0.5 ^0.5 ^-0.5 ^-0.5 ^-0.5 minecraft:ice replace water"
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/tp @s ~ ~400 ~"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/data modify entity @s CustomName set value \"\""
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/data remove entity @s HandItems[0]"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/kill @s"
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"invis": {
+		"type": "origins:invisibility",
+		"render_armor": true,
+		"render_outline": false
+	},
+
+	"invul": {
+		"type": "origins:invulnerability",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "inWall"
+		}
+	},
+
+	"no_col": {
+		"type": "origins:prevent_entity_collision"
+	},
+
+	"final_glo": {
+		"type": "origins:self_glow",
+		"blue": 0.8,
+		"red": 0.1,
+		"green": 0.1,
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_time_alive",
+			"compare_to": 5,
+			"comparison": "<"
+		}
+	}
+}

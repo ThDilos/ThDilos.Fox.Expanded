@@ -11,7 +11,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:*_timer",
-					"change": -5
+					"change": -3
 				},
 				{
 					"type": "origins:if_else",
@@ -40,6 +40,11 @@
 			"type": "origins:revoke_power",
 			"power": "*:ice_fox/thfreeze",
 			"source": "thorigins:temp"
+		},
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 8
 		}
 	},
 
@@ -65,6 +70,20 @@
 			"resource": "*:*_timer",
 			"compare_to": 50,
 			"comparison": ">"
+		}
+	},
+
+	"slow": {
+		"type": "origins:modify_attribute",
+		"attribute": "minecraft:generic.movement_speed",
+		"modifier": {
+			"operation": "multiply_total",
+			"resource": "*:*_timer",
+			"value": 0,
+			"modifier": {
+				"value": -1.01,
+				"operation": "multiply_base"
+			}
 		}
 	}
 }

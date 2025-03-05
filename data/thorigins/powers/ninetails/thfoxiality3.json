@@ -253,7 +253,86 @@
 		"type": "origins:toggle_night_vision",
 		"active_by_default": true,
 		"strength": 1,
-		"key": "nuh.uh"
+		"key": "nuh.uh",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/universal_settings_passive_nightvision",
+					"compare_to": 1,
+					"comparison": "==" 
+				},
+				{
+					"type": "origins:equipped_item",
+					"inverted": true,
+					"equipment_slot": "offhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"tag": "thorigins:night_vision_blocking"
+						}
+					}
+				}
+			]
+		}
+	},
+	
+	"blind_effect": {
+		"type": "origins:active_self",
+		"key": "key.swapOffhand",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:fox/universal_settings_passive_nightvision",
+						"compare_to": 1,
+						"comparison": "==" 
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "offhand",
+						"inverted": true,
+						"item_condition": {
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "thorigins:night_vision_blocking"
+							}
+						}
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "mainhand",
+						"item_condition": {
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "thorigins:night_vision_blocking"
+							}
+						}
+					},
+					{
+						"type": "origins:brightness",
+						"compare_to": 0.5,
+						"comparison": "<="
+					}
+				]
+			},
+			"if_action": {
+				"type": "origins:apply_effect",
+				"effect": {
+					"effect": "minecraft:blindness",
+					"amplifier": 0,
+					"duration": 15,
+					"is_ambient": true,
+					"show_icon": false,
+					"show_particles": false
+				}
+			}
+		}
 	},
 
 	"modified_vicious_wolves_bears": {
@@ -472,7 +551,17 @@
 							"actions": [
 								{
 									"type": "origins:damage",
-									"amount": 2,
+									"amount": 1,
+									"damage_type": "thorigins:predator_bite",
+									"source": {
+										"unblockable": true,
+										"bypasses_armor": true,
+										"name": "thorigins:predator_bite"
+									}
+								},
+								{
+									"type": "origins:damage",
+									"amount": 1,
 									"damage_type": "thorigins:predator_bite",
 									"source": {
 										"unblockable": true,

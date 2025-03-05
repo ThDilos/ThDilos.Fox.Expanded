@@ -122,6 +122,11 @@
 				"comparison": ">"
 			},
 			{
+				"type": "origins:power_active",
+				"power": "*:lightning_fox/thbecome_lightning_toggle",
+				"inverted": true
+			},
+			{
 				"type": "origins:resource",
 				"resource": "*:lightning_fox/thdischarge_charging",
 				"compare_to": 0,

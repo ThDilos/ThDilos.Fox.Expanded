@@ -79,7 +79,7 @@
 	"fire_fox.thcannon.name": "§6§l§nInferno Cannon",
 	"fire_fox.thcannon.description": "Unleash the heat stored within your body to incinerate everything in your path.",
 	"thcannon.key": "Active ability, press [%s] to choose a Fire Power, hold [%s] to warm up\n\nFor Fire Power 4, press [%s] to cast after warmed up",
-	"thcannon.info": "[§c-§r] You can't move during firing / warming up\n\nFire Power Index\n§b0§r. Deactivated\n§b1§r. Firecharge\n§b2§r. Fireball\n§b3§r. Laser Cutter\n§b4§r. THE BIG ONE",
+	"thcannon.info": "[§c-§r] You can't move during firing / warming up\n[§c-§r] You slowly exhaust when firing / warming up\n\nFire Power Index\n§b0§r. Deactivated\n§b1§r. Firecharge\n§b2§r. Fireball\n§b3§r. Laser Cutter\n§b4§r. THE BIG ONE",
 
 	"fire_fox.ththrust.name": "§6§l§nFlame Wings",
 	"fire_fox.ththrust.description": "Temporarily create a pair of flame wings to soar the skies.",
@@ -141,9 +141,9 @@
 
 	"kitsune.thfoxiality2.name": "§e§nFoxiality++",
 	"kitsune.thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
-	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against prey mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n§m[§c-§r§m] Anger wolves and polar bears§r",
+	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent Night Vision when no <§eLights§r> in Offhand\n[§a+§r] Higher damage against prey mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n§m[§c-§r§m] Anger wolves and polar bears§r",
 	"thfoxiality2.info1": "\n§m[§c-§r§m] Predators do a deadlier §5§l§mEXTRA STRIKE §r§f§mto you after every hit",
-	"thfoxiality2.info2": "§f۞§r §fYou are a§r §e§lDivine Creature§r §f۞§r\n\n[§e~§r] You deal / receive §emore§r damage from / to §8§lUndead monsters§r\n[§c-§r] You deal less damage to §c§lall other Mobs§r\n[§e~§r] Part of your abilities work differently against §8§lUndead monsters§r\n[§a+§r] You are §aimmune§r to §5Unluck§r / §5Darkness§r / §5Blindness§r status effects\n[§e~§r] Some §aPositive§r & §cNegative§r status effects will have a higher amplitude on you",
+	"thfoxiality2.info2": "§f۞§r §fYou are a§r §e§lDivine Creature§r §f۞§r\n\n[§e~§r] You deal / receive §emore§r damage from / to §8§lUndead monsters§r\n[§c-§r] You deal less damage to §c§lall other Mobs§r\n[§e~§r] Part of your abilities work differently against §8§lUndead monsters§r\n[§a+§r] You are §aimmune§r to §5Unluck§r / §5Darkness§r status effects\n[§e~§r] Some §aPositive§r & §cNegative§r status effects will have a higher amplitude on you\n[§c-§r] You are vulnerable to §5Nether§rite Sword",
 
 	"origin.thorigins.ninetails.name": "Ninetails",
 	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
@@ -182,14 +182,23 @@
 
 	"ninetails.thfoxiality3.name": "§e§nFoxiality++",
 	"ninetails.thfoxiality3.description": "You are able to see clearer in the dark, and your natural predators find it harder to threaten you.",
-	"thfoxiality3.info": "[§a+§r] §aStronger§r Permanent night vision\n[§a+§r] Higher damage against preys mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n[§c-§r] Anger wolves and polar bears",
+	"thfoxiality3.info": "[§a+§r] §aStronger§r Permanent Night Vision when no <§eLights§r> in Offhand\n[§a+§r] Higher damage against preys mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n[§c-§r] Anger wolves and polar bears",
 	"thfoxiality3.info1": "\n[§c-§r] Predators do a §aweaker§r §5§lEXTRA STRIKE §r§fto you after every hit",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r",
 	"thfoxiality3.info2": "Your Predators' §5§lEXTRA STRIKE§r has the following effects:\n§m§b1§r§m. Applies §5§mSlowness§r§m + Weakness + Nausea to you§r\n§r§b2§r. Deals a §alesser§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Temporarily §cDisables§r your [§6§lPounce++§r]\n§b4§r. Temporarily §cNullifies§r your [§aAgility++§r]'s first effect\n§b5§r. Temporarily §cDisables§r your natural regeneration\n\n§8§oWearing armors and Resistance might make your predators' §lEXTRA STRIKE §r§8§ofail",
 	"thfoxiality3.info3": "§f☠§r §fYou are a§r §8§lUndead Demon§r §f☠§r\n\n[§a+§r] You receive §aless§r damage from §7Undead monsters§r\n[§c-§r] §5Smite§r Enchantment is effective against you\n[§e~§r] Certain Origins' abilities work differently against you\n[§e~§r] Some Status effects are reversed or nullified on you\n[§c-§r] Your preferred foods no longer gives you regeneration effect because of it\n[§c-§r] You are extra vulnerable to §l§6Wooden Sword§r with §5Smite§r",
 
 	"origin.thorigins.ice_fox.name": "Ice Fox",
-	"origin.thorigins.ice_fox.description": "Ice fox W.I.P :3 \nYou aren't supposed to see this\nI'm too lazy to code so all you can have rn is the Fluffy* skill",
+	"origin.thorigins.ice_fox.description": "Ice fox W.I.P :3 \nYou aren't supposed to see this\nFurther made an active skill and a passive skill, pretty cool, you can try them out :3",
+
+	"ice_fox.thicicyle.name": "§6§l§nIce Shard",
+	"ice_fox.thicicyle.description": "Materialize a highly-pressurized ice shard to penetrate or freeze enemies. Or for travelling?",
+	"thicicyle.info0": "Active ability, press [%s] to summon an ice shard that travels forwards\n\nWhile holding nothing, hold [%s] and summon an ice shard will mount yourself onto it\n\nPress [%s] to detonate all your ice shards at once",
+	"thicicyle.info1": "Ice Shard self-expires after 5s\n\nUpon expiring, or triggering, it creates a small explosion that damage all surrounding entities and apply §bFREEZE§r\n\nDirectly penetrating an entity will have higher damage",
+
+	"ice_fox.thcold_body.name": "§e§nIcy Body",
+	"ice_fox.thcold_body.description": "Your body temperature is well below freezing point, your blood is cooler than liquid nitrogen.",
+	"thcold_body.info": "[§a+§r] Immune to Poison and Hunger Effect\n[§e~§r] §cICE BOATING YEEAAAAAAAAA",
 
 	"ice_fox.thfluffy6.name": "Fluffy*",
 	"ice_fox.thfluffy6.description": "Soft Fur with a hard layer of ice beneath, gives you natural armor and resistance to slice and piercing. but swim slow cuz water freezes around you and increases drag:3333",

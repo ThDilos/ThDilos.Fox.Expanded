@@ -79,7 +79,7 @@
 	"fire_fox.thcannon.name": "§6§l§n焚焰炮",
 	"fire_fox.thcannon.description": "释放体内储存的热量, 焚尽沿途的一切。",
 	"thcannon.key": "主动能力, 按下 [%s] 选择火焰形态, 长按 [%s] 发射\n\n火力为4时, 充能完成后按下 [%s] 发射",
-	"thcannon.info": "[§c-§r] 发射/充能时无法移动\n\n火力值目录\n§b0§r. 停用\n§b1§r. 火焰弹\n§b2§r. 火球\n§b3§r. 镭射激光\n§b4§r. 超 大 份",
+	"thcannon.info": "[§c-§r] 发射/充能时无法移动\n[§c-§r] 发射/充能时缓慢消耗饱食度\n\n火力值目录\n§b0§r. 停用\n§b1§r. 火焰弹\n§b2§r. 火球\n§b3§r. 镭射激光\n§b4§r. 超 大 份",
 
 	"fire_fox.ththrust.name": "§6§l§n烈焰之翼",
 	"fire_fox.ththrust.description": "临时制造一双助你翱翔的炽热羽翼。",
@@ -141,9 +141,9 @@
 
 	"kitsune.thfoxiality2.name": "§e§n狐狸本性++",
 	"kitsune.thfoxiality2.description": "你的天敌不再视你为食物, 你也能更好地看清黑暗。",
-	"thfoxiality2.info": "[§a+§r] §a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 破坏浆果丛可回收浆果\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 攀爬细雪方块\n[§a+§r] 受到狐狸信任\n§m[§c-§r§m] 惹怒附近的狼和北极熊§r",
+	"thfoxiality2.info": "[§a+§r] 副手无<§e光§r>时§a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 破坏浆果丛可回收浆果\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 攀爬细雪方块\n[§a+§r] 受到狐狸信任\n§m[§c-§r§m] 惹怒附近的狼和北极熊§r",
 	"thfoxiality2.info1": "\n§m[§c-§r§m] 天敌的攻击将附带更致命的§5§l§m爪牙连击§r",
-	"thfoxiality2.info2": "§f۞§r §f你是一只§r§e§l仙兽§r §f۞§r\n\n[§e~§r] 针对 / 受到 §8§l亡灵生物§r 的伤害§e提升§r\n[§c-§r] 对其他§c§l所有生物§r造成的伤害降低\n[§e~§r] 你的部分能力对§8§l亡灵生物§r有不同的效果\n[§a+§r] 你对 §5霉运§r / §5失明§r / §5黑暗§r 效果§a免疫§r\n[§e~§r] 部分§a正面§r与§c负面§r状态效果在你身上有§e更高的强度§r\n",
+	"thfoxiality2.info2": "§f۞§r §f你是一只§r§e§l仙兽§r §f۞§r\n\n[§e~§r] 针对 / 受到 §8§l亡灵生物§r 的伤害§e提升§r\n[§c-§r] 对其他§c§l所有生物§r造成的伤害降低\n[§e~§r] 你的部分能力对§8§l亡灵生物§r有不同的效果\n[§a+§r] 你对 §5霉运§r / §5黑暗§r 效果§a免疫§r\n[§e~§r] 部分§a正面§r与§c负面§r状态效果在你身上有§e更高的强度§r\n\n[§c-§r] §5下界§r合金剑针对你有更致命的效果",
 
 	"origin.thorigins.ninetails.name": "九尾",
 	"origin.thorigins.ninetails.description": "熟练了屠杀与谋略, 这个生物注定会成为其他生灵的噩梦。",
@@ -182,14 +182,23 @@
 
 	"ninetails.thfoxiality3.name": "§e§n狐狸本性++",
 	"ninetails.thfoxiality3.description": "你能更好地看清黑暗, 你的天敌不再能很好地利用你的弱点。",
-	"thfoxiality3.info": "[§a+§r] §a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 受到狐狸信任\n[§c-§r] 惹怒附近的狼和北极熊",
+	"thfoxiality3.info": "[§a+§r] 副手无<§e光§r>时§a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 受到狐狸信任\n[§c-§r] 惹怒附近的狼和北极熊",
 	"thfoxiality3.info1": "\n[§c-§r] 你的天敌每次攻击你时将附带§a稍弱§r的§5§l爪牙连击§r",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] 狼和北极熊对你造成的伤害翻倍§r",
 	"thfoxiality3.info2": "你天敌的§5§l爪牙连击§r有以下效果:\n§m§b1§r§m. 给你施加§5§m缓慢§r§m+虚弱+反胃效果§r\n§r§b2§r. 给你造成§a略少§r的❂§l真实伤害§r\n§r§b3§r. 暂时§c禁用§r你的[§6§l掠袭++§r]\n§b4§r. 暂时§c无效化§r你[§a灵跃++§r]的第一个效果\n§b5§r. 暂时§c禁用§r你的自然生命恢复\n\n§8§o装备护甲和抗性提升有一定几率能让天敌对你的§l爪牙连击§r§8§o失败",
 	"thfoxiality3.info3": "§f☠§r §f你是一只§r§7§l亡灵妖兽§r §f☠§r\n\n[§a+§r] 受到来自§8§l亡灵生物§r的伤害§a略微减少§r\n[§c-§r] §5亡灵杀手§r附魔对你有效\n[§e~§r] 部分起源的能力对你有不同的效果\n[§e~§r] 部分状态效果对你无效, 或效果反转\n[§c-§r] 正因如此, 你偏爱的食物不再给你生命恢复效果\n[§c-§r] 带有§5亡灵杀手§r的§l§6木剑§r针对你§c效果极佳§r",
 
 	"origin.thorigins.ice_fox.name": "寒冰狐狸",
-	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n你不该看见这个页面的\n目前懒癌发作只做了毛绒绒*被动技能",
+	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n你不该看见这个页面的\n目前多做了一个主动一个被动技能, 挺酷的你试试 :3",
+
+	"ice_fox.thicicyle.name": "§6§l§n冰砾",
+	"ice_fox.thicicyle.description": "凭空凝聚高压冰锥来穿透/冻僵敌人, 或者用来旅行?",
+	"thicicyle.info0": "主动技能, 按下 [%s] 召唤一个往前移动的冰锥\n\n手中无物时, 按住 [%s] 并召唤冰锥会让你骑上冰锥\n\n按下 [%s] 同时引爆所有的冰锥",
+	"thicicyle.info1": "冰锥在5s后自动触发\n\n触发时, 发出一个小范围爆炸, 伤害并§b冰冻§r周围所有实体\n\n直接穿透实体能造成更高伤害",
+
+	"ice_fox.thcold_body.name": "§e§n寒冰之躯",
+	"ice_fox.thcold_body.description": "你的体温远远低于水凝点, 你的血液之寒胜于液氮.",
+	"thcold_body.info": "[§a+§r] 免疫中毒效果\n[§e~§r] §c无限冰船 YEAHHHHHHH",
 
 	"ice_fox.thfluffy6.name": "毛绒绒*",
 	"ice_fox.thfluffy6.description": "你的毛毛柔软, 但内层结了坚冰, 让你有天然的护甲,并能抵抗大部分穿刺和划伤。但是游泳会比较困难, 毕竟你周围的水结冰了阻力大幅增加:3333",

@@ -145,7 +145,86 @@
 		"type": "origins:toggle_night_vision",
 		"active_by_default": true,
 		"strength": 1,
-		"key": "nuh.uh"
+		"key": "nuh.uh",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/universal_settings_passive_nightvision",
+					"compare_to": 1,
+					"comparison": "==" 
+				},
+				{
+					"type": "origins:equipped_item",
+					"inverted": true,
+					"equipment_slot": "offhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"tag": "thorigins:night_vision_blocking"
+						}
+					}
+				}
+			]
+		}
+	},
+
+	"blind_effect": {
+		"type": "origins:active_self",
+		"key": "key.swapOffhand",
+		"cooldown": 0,
+		"entity_action": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:fox/universal_settings_passive_nightvision",
+						"compare_to": 1,
+						"comparison": "==" 
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "offhand",
+						"inverted": true,
+						"item_condition": {
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "thorigins:night_vision_blocking"
+							}
+						}
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "mainhand",
+						"item_condition": {
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "thorigins:night_vision_blocking"
+							}
+						}
+					},
+					{
+						"type": "origins:brightness",
+						"compare_to": 0.5,
+						"comparison": "<="
+					}
+				]
+			},
+			"if_action": {
+				"type": "origins:apply_effect",
+				"effect": {
+					"effect": "minecraft:blindness",
+					"amplifier": 0,
+					"duration": 15,
+					"is_ambient": true,
+					"show_icon": false,
+					"show_particles": false
+				}
+			}
+		}
 	},
 
 	"holyness": {
@@ -194,7 +273,6 @@
 		"type": "origins:effect_immunity",
 		"effects": [
 			"minecraft:darkness",
-			"minecraft:blindness",
 			"minecraft:unluck"
 		]
 	},
@@ -211,6 +289,114 @@
 		"modifier": {
 			"operation": "multiply_total",
 			"value": 0.25
+		}
+	},
+
+	"netherite_sword_weakness": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:projectile",
+			"inverted": true
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:equipped_item",
+				"item_condition": {
+					"type": "origins:ingredient",
+					"ingredient": {
+						"item": "minecraft:netherite_sword"
+					}
+				},
+				"equipment_slot": "mainhand"
+			}
+		},
+		"modifier": {
+			"value": 0.25,
+			"operation": "multiply_total"
+		},
+		"bientity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:add_velocity",
+					"z": 3
+				},
+				{
+					"type": "origins:target_action",
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.generic.extinguish_fire",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 2
+							},
+							{
+								"type": "origins:spawn_particles",
+								"particle": "minecraft:white_ash",
+								"speed": 0.01,
+								"spread": {
+									"x": 0.5,
+									"y": 0.5,
+									"z": 0.5
+								},
+								"offset_y": 0.5,
+								"count": 40
+							},
+							{
+								"type": "origins:spawn_particles",
+								"particle": "minecraft:smoke",
+								"speed": 0.01,
+								"spread": {
+									"x": 0.5,
+									"y": 0.5,
+									"z": 0.5
+								},
+								"offset_y": 0.5,
+								"count": 10
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.fox.screech",
+								"pitch": 1.8,
+								"volume": 0.7
+							},
+							{
+								"type": "origins:apply_effect",
+								"effects": [
+									{
+										"effect": "minecraft:nausea",
+										"duration": 60,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true,
+										"amplifier": 0
+									},
+									{
+										"effect": "minecraft:weakness",
+										"duration": 60,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true,
+										"amplifier": 2
+									},
+									{
+										"effect": "minecraft:slowness",
+										"duration": 60,
+										"show_icon": true,
+										"show_particles": false,
+										"is_ambient": true,
+										"amplifier": 4
+									}
+								]
+							}
+						]
+					}
+				}
+			]
 		}
 	}
 }

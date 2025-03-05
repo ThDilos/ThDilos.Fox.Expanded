@@ -668,14 +668,30 @@
 	"hungry_fail_sound": {
 		"type": "origins:active_self",
 		"condition": {
-			"type": "origins:food_level",
-			"comparison": "<=",
-			"compare_to": 0
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_max_jump_count",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:food_level",
+					"comparison": "<=",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thfoxiality_predator_suppression",
+					"compare_to": 0,
+					"comparison": ">"
+				}
+			]
 		},
 		"entity_action": {
-			"type": "origins:play_sound",
-			"sound": "minecraft:entity.fox.sleep",
-			"volume": 1
+			"type": "origins:execute_command",
+			"command": "/playsound minecraft:entity.fox.sleep player @s ~ ~ ~ 0.5 1.2"
 		},
 		"key": "key.origins.primary_active",
 		"cooldown": 40
@@ -775,6 +791,13 @@
 		}
 	},
 
+	"forge_dmg_fix": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 0,
+		"start_value": 0
+	},
+
 	"falling_vulnerability": {
 		"type": "origins:modify_damage_taken",
 		"bientity_condition": {
@@ -792,11 +815,16 @@
 				"value": -1,
 				"modifier": {
 					"operation": "addition",
-					"resource": "*:fox/universal_settings_op_ness",
-					"value": 0,
+					"resource": "*:*_forge_dmg_fix",
+					"value": 4,
 					"modifier": {
-						"value": -0.99,
-						"operation": "multiply_base"
+						"operation": "addition",
+						"resource": "*:fox/universal_settings_op_ness",
+						"value": 0,
+						"modifier": {
+							"value": -0.99,
+							"operation": "multiply_base"
+						}
 					}
 				}
 			}
