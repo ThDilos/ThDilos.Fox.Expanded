@@ -203,7 +203,7 @@
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:thtransform_temperature",
-						"change": 250
+						"change": 100
 					}
 				}
 			]
