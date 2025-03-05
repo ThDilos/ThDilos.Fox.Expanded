@@ -451,8 +451,17 @@
 			"type": "origins:and",
 			"conditions": [
 				{
-					"type": "origins:power_active",
-					"power": "*:*_toggle"
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:power_active",
+							"power": "*:lightning_fox/thdischarge_switch"
+						},
+						{
+							"type": "origins:power_active",
+							"power": "*:*_toggle"
+						}
+					]
 				},
 				{
 					"type": "origins:fluid_height",
