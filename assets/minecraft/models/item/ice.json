@@ -1,0 +1,17 @@
+{
+	"credit": "Designed by ThDilos, for Ice Fox Origin",
+
+	"parent": "minecraft:block/ice",
+	"textures": {
+		"layer0": "minecraft:block/ice"
+	},
+
+	"overrides": [
+		{
+			"predicate": {
+				"custom_model_data": 159752
+			},
+			"model": "thorigins2/icicyle"
+		}
+	]
+}
