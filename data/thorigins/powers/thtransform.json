@@ -294,34 +294,6 @@
 						"type": "origins:and",
 						"conditions": [
 							{
-								"type": "origins:or",
-								"conditions": [
-									{
-										"type": "origins:resource",
-										"resource": "*:ninetails/thchoice_choice",
-										"compare_to": 1,
-										"comparison": "=="
-									},
-									{
-										"type": "origins:resource",
-										"resource": "*:ninetails/thchoice_choice",
-										"compare_to": 3,
-										"comparison": "=="
-									}
-								]
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:ninetails/thchoice_showtime",
-								"compare_to": 0,
-								"comparison": ">"
-							}
-						]
-					},
-					{
-						"type": "origins:and",
-						"conditions": [
-							{
 								"type": "origins:origin",
 								"layer": "thorigins:origin",
 								"origin": "thorigins:kitsune"
@@ -542,6 +514,12 @@
 									{
 										"type": "origins:resource",
 										"resource": "*:*_lock_ninetails",
+										"compare_to": 0,
+										"comparison": "=="
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:*_lock_ice",
 										"compare_to": 0,
 										"comparison": "=="
 									}
