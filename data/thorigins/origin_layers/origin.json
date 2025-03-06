@@ -162,36 +162,6 @@
 				]
 			},
 			"origins": ["thorigins:default_fox"]
-		},
-		{
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:or",
-						"inverted": true,
-						"conditions": [
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:fox",
-								"layer": "origins:origin"
-							},
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:element_fox",
-								"layer": "origins:origin"
-							}
-						]
-					},
-					{
-						"type": "origins:command",
-						"command": "/execute if data entity @s ForgeCaps",
-						"compare_to": 0,
-						"comparison": ">"
-					}
-				]
-			},
-			"origins": ["thorigins:empty"]
 		}
 	],
 	"missing_name": "MISSING NAME",
