@@ -7,11 +7,11 @@
 		"origins": "1.13.0-alpha.12+mc.1.21.1",
 		"pehkui": ">=3.3.3",
 		"minecraft": ">=1.21.1",
-		"thorigins": ">=4.2.0"
+		"thorigins": ">=4.3.0"
 	},
 	"name": "ThDilos' Custom Fox Origins Expanded",
 	"id": "thorigins2",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"description": "Fox Evolutions for ThDilos Fox Origin.",
 	"license": "Unknown",
 	"pack_format": 15,

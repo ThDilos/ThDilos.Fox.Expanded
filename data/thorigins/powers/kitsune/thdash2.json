@@ -273,17 +273,20 @@
 		"start_value": 0
 	},
 
-	"dash_effect": {
-		"type": "origins:resource",
-		"min": 0,
-		"max": 1,
-		"max_action": {
+	"dash0": {
+		"type": "origins:active_self",
+		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_dash_effect",
-					"change": -1
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.fox.sniff",
+					"volume": 1.0,
+					"pitch": 1.0
+				},
+				{
+					"type": "origins:exhaust",
+					"amount": 0.1
 				},
 				{
 					"type": "origins:if_else_list",
@@ -446,30 +449,6 @@
 					}
 				}
 			]
-		}
-	},
-
-	"dash0": {
-		"type": "origins:active_self",
-		"entity_action": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:play_sound",
-					"sound": "minecraft:entity.fox.sniff",
-					"volume": 1.0,
-					"pitch": 1.0
-				},
-				{
-					"type": "origins:exhaust",
-					"amount": 0.1
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:*_dash_effect",
-					"change": 1
-				}
-			]
 		},
 		"cooldown": 30,
 		"hud_render": {
@@ -521,9 +500,168 @@
 					"amount": 1
 				},
 				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:kitsune/thhunt2_hunt_stage",
+								"compare_to": 0,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:nothing"
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:command",
+								"command": "/execute if entity @s[y_rotation=-160..-135]",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_magnetoreception_direction",
+								"change": 2,
+								"operation": "set"
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:command",
+								"command": "/execute if entity @s[y_rotation=-340..-315]",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_magnetoreception_direction",
+								"change": 1,
+								"operation": "set"
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:constant",
+								"value": true
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_magnetoreception_direction",
+								"change": 0,
+								"operation": "set"
+							}
+						}
+					]
+				},
+				{
 					"type": "origins:change_resource",
-					"resource": "*:*_dash_effect",
-					"change": 1
+					"resource": "*:*_left_ground",
+					"change": 1,
+					"operation": "set"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:status_effect",
+								"effect": "jump_boost",
+								"min_amplifier": 1,
+								"max_amplifier": 127
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:add_velocity",
+										"z": 2.1,
+										"space": "local",
+										"client": true,
+										"server": true
+									},
+									{
+										"type": "origins:add_velocity",
+										"y": 0.5,
+										"space": "world",
+										"client": true,
+										"server": true
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/advancement grant @s only thorigins:fox_origin/enhanced_pounce"
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:status_effect",
+								"effect": "jump_boost",
+								"min_amplifier": 0,
+								"max_amplifier": 0
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:add_velocity",
+										"z": 1.8,
+										"space": "local",
+										"client": true,
+										"server": true
+									},
+									{
+										"type": "origins:add_velocity",
+										"y": 0.4,
+										"space": "world",
+										"client": true,
+										"server": true
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:status_effect",
+								"effect": "jump_boost",
+								"inverted": true
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:add_velocity",
+										"z": 1.5,
+										"space": "local",
+										"client": true,
+										"server": true
+									},
+									{
+										"type": "origins:add_velocity",
+										"y": 0.3,
+										"space": "world",
+										"client": true,
+										"server": true
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:snowflake",
+					"count": 30,
+					"speed": 0,
+					"force": false,
+					"offset_y": 0,
+					"spread": {
+						"x": 0.8,
+						"y": 0.15,
+						"z": 0.8
+					}
 				}
 			]
 		},
@@ -677,10 +815,46 @@
 		"bientity_action": {
 			"type": "origins:actor_action",
 			"action": {
-				"type": "origins:play_sound",
-				"sound": "minecraft:entity.fox.bite",
-				"volume": 1.5,
-				"pitch": 1.0
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:play_sound",
+						"sound": "minecraft:entity.fox.bite",
+						"volume": 1.5,
+						"pitch": 1.0
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "/advancement grant @s only thorigins:fox_origin/pounce_hit"
+					},
+					{
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:all_of",
+							"conditions": [
+								{
+									"type": "origins:resource",
+									"resource": "*:*_magnetoreception_direction",
+									"compare_to": 2,
+									"comparison": "=="
+								},
+								{
+									"type": "origins:food_level",
+									"compare_to": 20,
+									"comparison": "=="
+								},
+								{
+									"type": "origins:power_active",
+									"power": "*:kitsune/thhunt2_damage_bonus_midnight"
+								}
+							]
+						},
+						"if_action": {
+							"type": "origins:execute_command",
+							"command": "/advancement grant @s only thorigins:fox_origin/all_modifier"
+						}
+					}
+				]
 			}
 		},
 		"damage_condition": {
