@@ -1,0 +1,10 @@
+{
+    "type": "origins:multiple",
+    "name": "ice_fox.thblizzard.name",
+    "description": "ice_fox.thblizzard.description",
+    "badges": [],
+
+    "placeholder": {
+        "type": "origins:simple"
+    }
+}

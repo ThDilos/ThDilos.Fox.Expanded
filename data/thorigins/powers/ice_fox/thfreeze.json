@@ -85,5 +85,26 @@
 				"operation": "multiply_base"
 			}
 		}
+	},
+
+	"disable_regen": {
+		"type": "origins:disable_regen",
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_blue_ification"
+		}
+	},
+
+	"damage_damper": {
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"resource": "*:*_timer",
+			"value": 0,
+			"modifier": {
+				"value": -1.5,
+				"operation": "multiply_base"
+			}
+		}
 	}
 }
