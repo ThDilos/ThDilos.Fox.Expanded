@@ -91,8 +91,8 @@
 							"type": "origins:and",
 							"conditions": [
 								{
-									"type": "origins:entity_type",
-									"entity_type": "minecraft:fox"
+									"type": "origins:in_tag",
+									"tag": "thorigins:fox"
 								},
 								{
 									"type": "origins:nbt",
@@ -136,6 +136,55 @@
 				{
 					"type": "origins:execute_command",
 					"command": "/execute as @e[type=fox,tag=uuidappended,tag=!hatting,tag=!sleepin] at @s unless entity @a[distance=..15,tag=foxie] run tag @s remove uuidappended"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/universal_settings_passive_nightvision",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thtrackers_nightvision_fix",
+								"compare_to": 1,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:equipped_item",
+							"inverted": true,
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "thorigins:night_vision_blocking"
+								}
+							}
+						},
+						"if_action": {
+							"type": "origins:apply_effect",
+							"effect": {
+								"effect": "minecraft:night_vision",
+								"is_ambient": true,
+								"show_icon": false,
+								"show_particles": false,
+								"duration": -1,
+								"amplifier": 0
+							}
+						},
+						"else_action": {
+							"type": "origins:clear_effect",
+							"effect": "minecraft:night_vision"
+						}
+					}
 				}
 			]
 		}
@@ -153,7 +202,7 @@
 					"type": "origins:resource",
 					"resource": "*:fox/universal_settings_passive_nightvision",
 					"compare_to": 1,
-					"comparison": "==" 
+					"comparison": "=="
 				},
 				{
 					"type": "origins:equipped_item",
@@ -167,63 +216,6 @@
 					}
 				}
 			]
-		}
-	},
-
-	"blind_effect": {
-		"type": "origins:active_self",
-		"key": "key.swapOffhand",
-		"cooldown": 0,
-		"entity_action": {
-			"type": "origins:if_else",
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:resource",
-						"resource": "*:fox/universal_settings_passive_nightvision",
-						"compare_to": 1,
-						"comparison": "==" 
-					},
-					{
-						"type": "origins:equipped_item",
-						"equipment_slot": "offhand",
-						"inverted": true,
-						"item_condition": {
-							"type": "origins:ingredient",
-							"ingredient": {
-								"tag": "thorigins:night_vision_blocking"
-							}
-						}
-					},
-					{
-						"type": "origins:equipped_item",
-						"equipment_slot": "mainhand",
-						"item_condition": {
-							"type": "origins:ingredient",
-							"ingredient": {
-								"tag": "thorigins:night_vision_blocking"
-							}
-						}
-					},
-					{
-						"type": "origins:brightness",
-						"compare_to": 0.5,
-						"comparison": "<="
-					}
-				]
-			},
-			"if_action": {
-				"type": "origins:apply_effect",
-				"effect": {
-					"effect": "minecraft:blindness",
-					"amplifier": 0,
-					"duration": 15,
-					"is_ambient": true,
-					"show_icon": false,
-					"show_particles": false
-				}
-			}
 		}
 	},
 
@@ -271,10 +263,7 @@
 
 	"effect_immune": {
 		"type": "origins:effect_immunity",
-		"effects": [
-			"minecraft:darkness",
-			"minecraft:unluck"
-		]
+		"effects": ["minecraft:darkness", "minecraft:unluck"]
 	},
 
 	"undead_vulnerable": {

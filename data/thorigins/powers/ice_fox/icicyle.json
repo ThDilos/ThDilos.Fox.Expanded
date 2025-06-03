@@ -341,7 +341,7 @@
 											"type": "origins:target_action",
 											"action": {
 												"type": "origins:execute_command",
-												"command": "/tag @s add temp2"
+												"command": "/tag @s[type=!item] add temp2"
 											}
 										},
 										{
