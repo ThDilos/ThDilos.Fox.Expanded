@@ -29,9 +29,19 @@
 					"type": "origins:delay",
 					"ticks": 1,
 					"action": {
-						"type": "origins:revoke_power",
-						"power": "*:fox/thweak_heavy_armor",
-						"source": "thorigins:inherited"
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:revoke_power",
+								"power": "*:fox/thweak_heavy_armor",
+								"source": "thorigins:inherited"
+							},
+							{
+								"type": "origins:revoke_power",
+								"power": "*:fox/thweak_heavy_armor_effects",
+								"source": "thorigins:inherited"
+							}
+						]
 					}
 				}
 			]
