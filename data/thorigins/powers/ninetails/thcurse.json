@@ -31,7 +31,7 @@
 		}
 	},
 
-	"notification": {
+	"_init_": {
 		"type": "origins:action_on_callback",
 		"entity_action_gained": {
 			"type": "origins:and",
@@ -90,10 +90,6 @@
 					"command": "/title @s actionbar {\"translate\":\"thcurse.removed\"}"
 				}
 			]
-		},
-		"condition": {
-			"type": "origins:entity_type",
-			"entity_type": "minecraft:player"
 		}
 	},
 
@@ -102,6 +98,11 @@
 		"min": 0,
 		"max": 200,
 		"start_value": 200,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 14
+		},
 		"max_action": {
 			"type": "origins:delay",
 			"ticks": 1,
@@ -203,6 +204,29 @@
 					"sound": "minecraft:entity.allay.item_given",
 					"pitch": 2,
 					"volume": 1
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": {
+						"type": "minecraft:block",
+						"params": "minecraft:redstone_block"
+					},
+					"offset_y": 0.3,
+					"speed": 1,
+					"count": 20,
+					"force": false,
+					"spread": {
+						"x": 0.3,
+						"y": 0,
+						"z": 0.3
+					}
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"category": "players",
+					"pitch": 1.6,
+					"volume": 0.5
 				}
 			]
 		},
@@ -219,6 +243,15 @@
 					"power": "*:thtransform_show_soul"
 				}
 			]
+		}
+	},
+
+	"armor_nullify": {
+		"type": "origins:modify_attribute",
+		"attribute": "minecraft:generic.armor",
+		"modifier": {
+			"operation": "multiply_total_multiplicative",
+			"value": -0.5
 		}
 	},
 
