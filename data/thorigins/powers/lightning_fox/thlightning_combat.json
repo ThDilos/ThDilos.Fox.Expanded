@@ -19,7 +19,7 @@
 
 	"ticks": {
 		"type": "origins:action_over_time",
-		"interval": 1,
+		"interval": 4,
 		"entity_action": {
 			"type": "origins:if_else",
 			"condition": {
@@ -29,8 +29,32 @@
 				"comparison": ">"
 			},
 			"if_action": {
-				"type": "origins:trigger_cooldown",
-				"power": "*:*_buff_duration"
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:execute_command",
+						"command": "/kill @e[type=lightning_bolt,distance=..2]"
+					},
+					{
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_buff_duration"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "*:lightning_fox/thdischarge_cooldown",
+						"change": -300
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "*:lightning_fox/thelectric_beam",
+						"change": -200
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "*:lightning_fox/thrailgun_cooldown",
+						"change": -600
+					}
+				]
 			}
 		}
 	},
