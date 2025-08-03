@@ -208,7 +208,7 @@
 		}
 	},
 
-	"shoot": {
+	"actions": {
 		"type": "origins:active_self",
 		"key": "key.attack",
 		"entity_action": {
@@ -260,218 +260,245 @@
 						]
 					},
 					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_shoot",
+						"change": 1
+					}
+				}
+			]
+		}
+	},
+
+	"shoot": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_shoot",
+					"change": -1
+				},
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:lightning_fox/thlightning_combat_buff_duration"
+				},
+				{
+					"type": "origins:raycast",
+					"command_along_ray": "/function thorigins:railgun/railgun_particles",
+					"distance": 100,
+					"shape_type": "collider",
+					"fluid_handling": "source_only",
+					"block_action": {
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:lightning_fox/thlightning_combat_buff_duration"
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.generic.explode player @a ~ ~ ~ 2 2"
 							},
 							{
-								"type": "origins:raycast",
-								"command_along_ray": "/function thorigins:railgun/railgun_particles",
-								"distance": 100,
-								"shape_type": "collider",
-								"fluid_handling": "source_only",
-								"block_action": {
+								"type": "origins:execute_command",
+								"command": "/particle minecraft:explosion_emitter ~ ~ ~ 0 0 0 0 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tag @e[distance=..5] add railgun_splash"
+							}
+						]
+					},
+					"bientity_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:add_velocity",
+								"z": 6
+							},
+							{
+								"type": "origins:damage",
+								"amount": 40,
+								"damage_type": "minecraft:fly_into_wall",
+								"source": {
+									"name": "flyIntoWall.player"
+								}
+							},
+							{
+								"type": "origins:target_action",
+								"action": {
 									"type": "origins:and",
 									"actions": [
 										{
-											"type": "origins:execute_command",
-											"command": "/playsound minecraft:entity.generic.explode player @a ~ ~ ~ 2 2"
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:electric_spark",
+											"count": 20,
+											"spread": {
+												"x": 0.5,
+												"y": 0.5,
+												"z": 0.5
+											},
+											"speed": 1
 										},
 										{
-											"type": "origins:execute_command",
-											"command": "/particle minecraft:explosion_emitter ~ ~ ~ 0 0 0 0 1"
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/tag @e[distance=..5] add railgun_splash"
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.zombie.break_wooden_door",
+											"volume": 0.8,
+											"pitch": 1.5,
+											"category": "players"
 										}
 									]
+								}
+							},
+							{
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 0.5 1"
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:area_of_effect",
+								"radius": 110,
+								"bientity_condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:nbt",
+										"nbt": "{\"Tags\":[\"railgun_splash\"]}"
+									}
 								},
 								"bientity_action": {
 									"type": "origins:and",
 									"actions": [
 										{
-											"type": "origins:add_velocity",
-											"z": 6
-										},
-										{
 											"type": "origins:damage",
-											"amount": 30,
-											"damage_type": "minecraft:fly_into_wall",
-											"source": {
-												"name": "flyIntoWall.player"
-											}
+											"amount": 8,
+											"damage_type": "minecraft:player_explosion"
 										},
 										{
 											"type": "origins:target_action",
 											"action": {
-												"type": "origins:and",
-												"actions": [
-													{
-														"type": "origins:spawn_particles",
-														"particle": "minecraft:electric_spark",
-														"count": 20,
-														"spread": {
-															"x": 0.5,
-															"y": 0.5,
-															"z": 0.5
-														},
-														"speed": 1
-													},
-													{
-														"type": "origins:play_sound",
-														"sound": "minecraft:entity.zombie.break_wooden_door",
-														"volume": 0.8,
-														"pitch": 1.5,
-														"category": "players"
-													}
-												]
-											}
-										},
-										{
-											"type": "origins:actor_action",
-											"action": {
 												"type": "origins:execute_command",
-												"command": "/playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 0.5 1"
+												"command": "/tag @s remove railgun_splash"
 											}
 										}
 									]
 								}
-							},
-							{
-								"type": "origins:delay",
-								"ticks": 1,
-								"action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:area_of_effect",
-											"radius": 110,
-											"bientity_condition": {
-												"type": "origins:target_condition",
-												"condition": {
-													"type": "origins:nbt",
-													"nbt": "{\"Tags\":[\"railgun_splash\"]}"
-												}
-											},
-											"bientity_action": {
-												"type": "origins:and",
-												"actions": [
-													{
-														"type": "origins:damage",
-														"amount": 8,
-														"damage_type": "minecraft:player_explosion"
-													},
-													{
-														"type": "origins:target_action",
-														"action": {
-															"type": "origins:execute_command",
-															"command": "/tag @s remove railgun_splash"
-														}
-													}
-												]
-											}
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/tag @s remove railgun_splash"
-										}
-									]
-								}
-							},
-							{
-								"type": "origins:if_else",
-								"condition": {
-									"type": "origins:resource",
-									"resource": "*:fox/universal_settings_destroy_terrain",
-									"compare_to": 1,
-									"comparison": "=="
-								},
-								"if_action": {
-									"type": "origins:raycast",
-									"command_along_ray": "/summon creeper ^ ^ ^5 {ignited:1,ExplosionRadius:1.5,Fuse:0,Invulnerable:true,NoAI:true,NoGravity:true,Silent:true}",
-									"command_step": 0.5,
-									"distance": 100,
-									"shape_type": "collider",
-									"fluid_handling": "source_only",
-									"block_action": {
-										"type": "origins:explode",
-										"create_fire": false,
-										"power": 8,
-										"destruction_type": "break"
-									},
-									"bientity_action": {
-										"type": "origins:target_action",
-										"action": {
-											"type": "origins:execute_command",
-											"command": "/summon creeper ^ ^ ^ {ignited:1,ExplosionRadius:2,Fuse:0}"
-										}
-									}
-								},
-								"else_action": {
-									"type": "origins:raycast",
-									"command_step": 0.5,
-									"distance": 100,
-									"shape_type": "collider",
-									"fluid_handling": "source_only",
-									"block_action": {
-										"type": "origins:explode",
-										"create_fire": false,
-										"power": 8,
-										"destruction_type": "none"
-									}
-								}
-							},
-							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:*_cooldown"
-							},
-							{
-								"type": "origins:change_resource",
-								"resource": "*:*_ready",
-								"change": 20,
-								"operation": "set"
-							},
-							{
-								"type": "origins:add_velocity",
-								"space": "local",
-								"z": -0.5,
-								"client": true,
-								"server": true
-							},
-							{
-								"type": "origins:add_velocity",
-								"space": "world",
-								"y": 0.25,
-								"client": true,
-								"server": true
 							},
 							{
 								"type": "origins:execute_command",
-								"command": "/particle minecraft:sonic_boom ~ ~1 ~ 0 0 0 1 1"
-							},
-							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:entity.fox.spit",
-								"volume": 2,
-								"pitch": 1,
-								"category": "players"
-							},
-							{
-								"type": "origins:play_sound",
-								"sound": "minecraft:block.amethyst_cluster.hit",
-								"pitch": 2,
-								"volume": 2,
-								"category": "players"
-							},
-							{
-								"type": "origins:exhaust",
-								"amount": 40
+								"command": "/tag @s remove railgun_splash"
 							}
 						]
 					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thtrackers_destroy_terrain",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/universal_settings_destroy_terrain",
+								"compare_to": 1,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:raycast",
+						"command_along_ray": "/summon creeper ^ ^ ^5 {ignited:1,ExplosionRadius:1.5,Fuse:0,Invulnerable:true,NoAI:true,NoGravity:true,Silent:true}",
+						"command_step": 0.5,
+						"distance": 100,
+						"shape_type": "collider",
+						"fluid_handling": "source_only",
+						"block_action": {
+							"type": "origins:explode",
+							"create_fire": false,
+							"power": 8,
+							"destruction_type": "break"
+						},
+						"bientity_action": {
+							"type": "origins:target_action",
+							"action": {
+								"type": "origins:execute_command",
+								"command": "/summon creeper ^ ^ ^ {ignited:1,ExplosionRadius:2,Fuse:0}"
+							}
+						}
+					},
+					"else_action": {
+						"type": "origins:raycast",
+						"command_step": 0.5,
+						"distance": 100,
+						"shape_type": "collider",
+						"fluid_handling": "source_only",
+						"block_action": {
+							"type": "origins:explode",
+							"create_fire": false,
+							"power": 8,
+							"destruction_type": "none"
+						}
+					}
+				},
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_cooldown"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_ready",
+					"change": 20,
+					"operation": "set"
+				},
+				{
+					"type": "origins:add_velocity",
+					"space": "local",
+					"z": -0.5,
+					"client": true,
+					"server": true
+				},
+				{
+					"type": "origins:add_velocity",
+					"space": "world",
+					"y": 0.25,
+					"client": true,
+					"server": true
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:sonic_boom ~ ~1 ~ 0 0 0 1 1"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.fox.spit",
+					"volume": 2,
+					"pitch": 1,
+					"category": "players"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.amethyst_cluster.hit",
+					"pitch": 2,
+					"volume": 2,
+					"category": "players"
+				},
+				{
+					"type": "origins:exhaust",
+					"amount": 40
 				}
 			]
 		}
