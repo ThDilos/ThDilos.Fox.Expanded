@@ -204,6 +204,10 @@
 				}
 			]
 		},
+		"block_condition": {
+			"type": "origins:in_tag",
+			"tag": "thorigins:unphasable"
+		},
 		"view_distance": 20
 	},
 
@@ -377,19 +381,35 @@
 			"condition": {
 				"type": "origins:equipped_item",
 				"item_condition": {
-					"type": "origins:and",
+					"type": "origins:or",
 					"conditions": [
 						{
 							"type": "origins:ingredient",
-							"ingredient": {
-								"item": "minecraft:wooden_sword"
-							}
+							"ingredient": [
+								{
+									"item": "minecraft:iron_axe"
+								},
+								{
+									"item": "minecraft:iron_sword"
+								}
+							]
 						},
 						{
-							"type": "origins:enchantment",
-							"enchantment": "minecraft:smite",
-							"compare_to": 0,
-							"comparison": ">"
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:ingredient",
+									"ingredient": {
+										"item": "minecraft:wooden_sword"
+									}
+								},
+								{
+									"type": "origins:enchantment",
+									"enchantment": "minecraft:smite",
+									"compare_to": 0,
+									"comparison": ">"
+								}
+							]
 						}
 					]
 				},
