@@ -335,7 +335,7 @@
 		"type": "origins:modify_velocity",
 		"axes": ["y"],
 		"modifier": {
-			"operation": "set_base",
+			"operation": "set_total",
 			"value": 0.0016667,
 			"modifier": {
 				"operation": "multiply_total",
@@ -396,7 +396,7 @@
 		"type": "origins:modify_velocity",
 		"axes": ["y"],
 		"modifier": {
-			"operation": "set_base",
+			"operation": "set_total",
 			"value": 0.0016667,
 			"modifier": {
 				"operation": "multiply_total",
@@ -702,8 +702,6 @@
 			"z": 7.5,
 			"y": 7.5
 		},
-		"visible_in_first_person": true,
-		"visible_while_invisible": true,
 		"count": 1000,
 		"speed": 0.2,
 		"condition": {

@@ -920,10 +920,21 @@
 		},
 		"action_result": "consume",
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_unlockable",
-			"compare_to": 1,
-			"comparison": "=="
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_unlockable",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:fox/thtrackers_forge",
+					"compare_to": 0,
+					"comparison": "=="
+				}
+			]
 		}
 	}
 }
