@@ -1,0 +1,24 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+
+    "fire": {
+        "type": "origins:simple"
+    },
+
+    "lightning": {
+        "type": "origins:simple"
+    },
+
+    "kitsune": {
+        "type": "origins:simple"
+    },
+
+    "ninetails": {
+        "type": "origins:simple"
+    },
+
+    "ice": {
+        "type": "origins:simple"
+    }
+}
