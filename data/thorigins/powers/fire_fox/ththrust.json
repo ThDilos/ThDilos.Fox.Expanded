@@ -328,11 +328,6 @@
 							"type": "origins:and",
 							"actions": [
 								{
-									"type": "origins:change_resource",
-									"resource": "*:*_upward_boost_effect",
-									"change": -1
-								},
-								{
 									"type": "origins:add_velocity",
 									"y": 1.5
 								},

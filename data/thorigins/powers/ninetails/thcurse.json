@@ -209,7 +209,11 @@
 					"type": "origins:spawn_particles",
 					"particle": {
 						"type": "minecraft:block",
-						"params": "minecraft:redstone_block"
+						"params": {
+							"block_state": {
+								"Name": "minecraft:redstone_block"
+							}
+						}
 					},
 					"offset_y": 0.3,
 					"speed": 1,
@@ -251,7 +255,7 @@
 		"attribute": "minecraft:generic.armor",
 		"modifier": {
 			"operation": "multiply_total_multiplicative",
-			"value": -0.5
+			"amount": -0.5
 		}
 	},
 

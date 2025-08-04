@@ -240,7 +240,11 @@
 					"type": "origins:spawn_particles",
 					"particle": {
 						"type": "minecraft:block",
-						"params": "ice"
+						"params": {
+							"block_state": {
+								"Name": "ice"
+							}
+						}
 					},
 					"count": 20
 				},
@@ -256,6 +260,19 @@
 			"operation": "multiply_total_additive",
 			"amount": -0.25,
 			"id": "ice_fox/thfluffy6_damage_reduction"
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:ingredient",
+					"ingredient": {
+						"tag": "swords"
+					}
+				}
+			}
 		},
 		"damage_condition": {
 			"type": "origins:or",

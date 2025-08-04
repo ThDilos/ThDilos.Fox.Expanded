@@ -1,7 +1,7 @@
 {
 	"type": "origins:multiple",
-	"name": "ice_fox.thblizzard.name",
-	"description": "ice_fox.thblizzard.description",
+	"name": { "translate": "ice_fox.thblizzard.name" },
+	"description": { "translate": "ice_fox.thblizzard.description" },
 	"badges": [
 		{
 			"type": "origins:tooltip",
@@ -296,7 +296,7 @@
 										{
 											"type": "origins:apply_effect",
 											"effect": {
-												"effect": "minecraft:darkness",
+												"id": "minecraft:darkness",
 												"duration": 200,
 												"amplifier": 0,
 												"is_ambient": false,
@@ -336,17 +336,17 @@
 		"axes": ["y"],
 		"modifier": {
 			"operation": "set_total",
-			"value": 0.0016667,
+			"amount": 0.0016667,
 			"modifier": {
-				"operation": "multiply_total",
-				"value": 60,
+				"operation": "multiply_total_additive",
+				"amount": 60,
 				"modifier": {
-					"operation": "addition",
-					"value": 0,
+					"operation": "add_total_late",
+					"amount": 0,
 					"resource": "*:*_timer",
 					"modifier": {
-						"operation": "multiply_total",
-						"value": -2
+						"operation": "multiply_total_additive",
+						"amount": -2
 					}
 				}
 			}
@@ -397,14 +397,14 @@
 		"axes": ["y"],
 		"modifier": {
 			"operation": "set_total",
-			"value": 0.0016667,
+			"amount": 0.0016667,
 			"modifier": {
-				"operation": "multiply_total",
-				"value": 0,
+				"operation": "multiply_total_additive",
+				"amount": 0,
 				"resource": "*:*_timer",
 				"modifier": {
-					"operation": "multiply_total",
-					"value": -2
+					"operation": "multiply_total_additive",
+					"amount": -2
 				}
 			}
 		},

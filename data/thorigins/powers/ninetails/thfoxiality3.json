@@ -709,8 +709,8 @@
 	"xp_gain_boost": {
 		"type": "origins:modify_xp_gain",
 		"modifier": {
-			"operation": "multiply_total",
-			"value": 0.5
+			"operation": "multiply_total_additive",
+			"amount": 0.5
 		}
 	}
 }

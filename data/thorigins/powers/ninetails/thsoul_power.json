@@ -247,7 +247,7 @@
 												{
 													"type": "origins:apply_effect",
 													"effect": {
-														"effect": "minecraft:darkness",
+														"id": "minecraft:darkness",
 														"duration": 300,
 														"amplifier": 0,
 														"is_ambient": true,

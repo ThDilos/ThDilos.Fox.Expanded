@@ -115,9 +115,9 @@
 		"modifier": {
 			"operation": "multiply_total_additive",
 			"resource": "*:*_timer",
-			"value": 0,
+			"amount": 0,
 			"modifier": {
-				"value": -1.0075,
+				"amount": -1.0075,
 				"operation": "multiply_base_additive"
 			}
 		}
@@ -149,10 +149,10 @@
 		"modifier": {
 			"operation": "multiply_total_additive",
 			"resource": "*:*_timer",
-			"value": 0,
+			"amount": 0,
 			"modifier": {
 				"operation": "multiply_total_additive",
-				"value": -0.995
+				"amount": -0.995
 			}
 		}
 	}
