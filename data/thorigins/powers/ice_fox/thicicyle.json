@@ -18,7 +18,7 @@
 						"color": "aqua"
 					},
 					{
-						"keybind": "key.origins.secondary_active",
+						"keybind": "key.pickItem",
 						"color": "aqua"
 					}
 				]
@@ -30,25 +30,15 @@
 			"text": {
 				"translate": "thicicyle.info1"
 			}
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/arrow_up.png",
+			"text": {
+				"translate": "thfreeze.info"
+			}
 		}
 	],
-
-	"_init_": {
-		"type": "origins:action_on_callback",
-		"entity_action_added": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:execute_command",
-					"command": "/scoreboard objectives add UUID0 dummy \"UUID0\""
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/execute store result score @s UUID0 run data get entity @s UUID[0]"
-				}
-			]
-		}
-	},
 
 	"cooldown": {
 		"type": "origins:cooldown",
@@ -92,13 +82,26 @@
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:trigger_cooldown",
-								"power": "*:*_no_awoo"
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:*_awoo",
+									"compare_to": 0,
+									"comparison": ">"
+								},
+								"if_action": {
+									"type": "origins:change_resource",
+									"resource": "*:*_awoo",
+									"change": -1
+								},
+								"else_action": {
+									"type": "origins:exhaust",
+									"amount": 2
+								}
 							},
 							{
-								"type": "origins:change_resource",
-								"resource": "*:*_awoo",
-								"change": -1
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_no_awoo"
 							},
 							{
 								"type": "origins:execute_command",
@@ -118,7 +121,7 @@
 							},
 							{
 								"type": "origins:delay",
-								"ticks": 2,
+								"ticks": 1,
 								"action": {
 									"type": "origins:and",
 									"actions": [
@@ -205,10 +208,31 @@
 			]
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_awoo",
-			"compare_to": 0,
-			"comparison": ">"
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_awoo",
+					"compare_to": 0,
+					"comparison": ">"
+				},
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource": "*:ice_fox/thblizzard_snowflake",
+							"compare_to": 1,
+							"comparison": "=="
+						},
+						{
+							"type": "origins:food_level",
+							"compare_to": 0,
+							"comparison": ">"
+						}
+					]
+				}
+			]
 		}
 	},
 
@@ -221,16 +245,30 @@
 			"change": 1
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_no_awoo",
-			"compare_to": 0,
-			"comparison": "=="
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_no_awoo",
+					"compare_to": 0,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:in_rain"
+				},
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:water",
+					"compare_to": 0,
+					"comparison": ">"
+				}
+			]
 		}
 	},
 
 	"clear": {
 		"type": "origins:active_self",
-		"key": "key.origins.secondary_active",
+		"key": "key.pickItem",
 		"cooldown": 10,
 		"entity_action": {
 			"type": "origins:and",

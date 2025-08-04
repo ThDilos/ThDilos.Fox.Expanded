@@ -1,12 +1,5 @@
 {
 	"type": "origins:multiple",
-	"badges": [
-		{
-			"type": "origins:tooltip",
-			"sprite": "origins:textures/gui/badge/active.png",
-			"text": { "translate": "origins.gui.badge.active" }
-		}
-	],
 	"hidden": true,
 
 	"ticks": {
@@ -262,6 +255,110 @@
 		}
 	},
 
+	"grant_evolution_passes": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_lock_fire",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:evolution_pass_fire",
+						"source": "thorigins:universal"
+					},
+					"else_action": {
+						"type": "origins:revoke_power",
+						"power": "*:evolution_pass_fire",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_lock_lightning",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:evolution_pass_lightning",
+						"source": "thorigins:universal"
+					},
+					"else_action": {
+						"type": "origins:revoke_power",
+						"power": "*:evolution_pass_lightning",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_lock_kitsune",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:evolution_pass_kitsune",
+						"source": "thorigins:universal"
+					},
+					"else_action": {
+						"type": "origins:revoke_power",
+						"power": "*:evolution_pass_kitsune",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_lock_ninetails",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:evolution_pass_ninetails",
+						"source": "thorigins:universal"
+					},
+					"else_action": {
+						"type": "origins:revoke_power",
+						"power": "*:evolution_pass_ninetails",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_lock_ice",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:evolution_pass_ice",
+						"source": "thorigins:universal"
+					},
+					"else_action": {
+						"type": "origins:revoke_power",
+						"power": "*:evolution_pass_ice",
+						"source": "thorigins:universal"
+					}
+				}
+			]
+		}
+	},
+
 	"temperature": {
 		"type": "origins:resource",
 		"min": 0,
@@ -271,9 +368,8 @@
 			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
 			"bar_index": 15,
 			"condition": {
-				"type": "origins:origin",
-				"layer": "thorigins:origin",
-				"origin": "thorigins:fire_fox"
+				"type": "origins:power",
+				"power": "thorigins:fire_fox/loadin_fire"
 			}
 		},
 		"start_value": 5000
@@ -294,9 +390,8 @@
 						"type": "origins:and",
 						"conditions": [
 							{
-								"type": "origins:origin",
-								"layer": "thorigins:origin",
-								"origin": "thorigins:kitsune"
+								"type": "origins:power",
+								"power": "thorigins:kitsune/loadin_kitsune"
 							},
 							{
 								"type": "origins:resource",
@@ -321,14 +416,12 @@
 								"type": "origins:or",
 								"conditions": [
 									{
-										"type": "origins:origin",
-										"layer": "thorigins:origin",
-										"origin": "thorigins:kitsune"
+										"type": "origins:power",
+										"power": "thorigins:kitsune/loadin_kitsune"
 									},
 									{
-										"type": "origins:origin",
-										"layer": "thorigins:origin",
-										"origin": "thorigins:ninetails"
+										"type": "origins:power",
+										"power": "thorigins:ninetails/loadin_ninetails"
 									}
 								]
 							},
@@ -612,47 +705,7 @@
 		"hud_render": {
 			"should_render": true,
 			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-			"bar_index": 9,
-			"condition": {
-				"type": "origins:and",
-				"conditions": [
-					{
-						"type": "origins:resource",
-						"resource": "*:*_cooldown",
-						"compare_to": 0,
-						"comparison": ">"
-					},
-					{
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:*_lock_lightning",
-								"compare_to": 0,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_lock_fire",
-								"compare_to": 0,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_lock_kitsune",
-								"compare_to": 0,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_lock_ninetails",
-								"compare_to": 0,
-								"comparison": "=="
-							}
-						]
-					}
-				]
-			}
+			"bar_index": 9
 		}
 	},
 
@@ -665,6 +718,11 @@
 			"type": "origins:and",
 			"actions": [
 				{
+					"type": "origins:grant_power",
+					"power": "*:evolution_pass_lightning",
+					"source": "thorigins:universal"
+				},
+				{
 					"type": "origins:execute_command",
 					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.lightning\",\"color\":\"yellow\",\"bold\":true}"
 				},
@@ -675,6 +733,11 @@
 					"pitch": 1.0
 				}
 			]
+		},
+		"max_action": {
+			"type": "origins:revoke_power",
+			"power": "*:evolution_pass_lightning",
+			"source": "thorigins:universal"
 		}
 	},
 
@@ -732,6 +795,11 @@
 			"type": "origins:and",
 			"actions": [
 				{
+					"type": "origins:grant_power",
+					"power": "*:evolution_pass_fire",
+					"source": "thorigins:universal"
+				},
+				{
 					"type": "origins:execute_command",
 					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.fire\",\"color\":\"yellow\",\"bold\":true}"
 				},
@@ -742,6 +810,11 @@
 					"pitch": 1.0
 				}
 			]
+		},
+		"max_action": {
+			"type": "origins:revoke_power",
+			"power": "*:evolution_pass_fire",
+			"source": "thorigins:universal"
 		}
 	},
 
@@ -754,6 +827,11 @@
 			"type": "origins:and",
 			"actions": [
 				{
+					"type": "origins:grant_power",
+					"power": "*:evolution_pass_kitsune",
+					"source": "thorigins:universal"
+				},
+				{
 					"type": "origins:execute_command",
 					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.kitsune\",\"color\":\"yellow\",\"bold\":true}"
 				},
@@ -764,6 +842,11 @@
 					"pitch": 1.0
 				}
 			]
+		},
+		"max_action": {
+			"type": "origins:revoke_power",
+			"power": "*:evolution_pass_kitsune",
+			"source": "thorigins:universal"
 		}
 	},
 
@@ -776,6 +859,11 @@
 			"type": "origins:and",
 			"actions": [
 				{
+					"type": "origins:grant_power",
+					"power": "*:evolution_pass_ninetails",
+					"source": "thorigins:universal"
+				},
+				{
 					"type": "origins:execute_command",
 					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ninetails\",\"color\":\"yellow\",\"bold\":true}"
 				},
@@ -786,6 +874,11 @@
 					"pitch": 1.0
 				}
 			]
+		},
+		"max_action": {
+			"type": "origins:revoke_power",
+			"power": "*:evolution_pass_ninetails",
+			"source": "thorigins:universal"
 		}
 	},
 
@@ -798,6 +891,11 @@
 			"type": "origins:and",
 			"actions": [
 				{
+					"type": "origins:grant_power",
+					"power": "*:evolution_pass_ice",
+					"source": "thorigins:universal"
+				},
+				{
 					"type": "origins:execute_command",
 					"command": "/title @s actionbar {\"translate\":\"origins.thorigins.unlock.ice\",\"color\":\"yellow\",\"bold\":true}"
 				},
@@ -808,6 +906,11 @@
 					"pitch": 1.0
 				}
 			]
+		},
+		"max_action": {
+			"type": "origins:revoke_power",
+			"power": "*:evolution_pass_ice",
+			"source": "thorigins:universal"
 		}
 	}
 }

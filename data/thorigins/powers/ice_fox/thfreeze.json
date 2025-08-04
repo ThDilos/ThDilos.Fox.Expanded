@@ -26,6 +26,47 @@
 						"power": "*:ice_fox/thfreeze",
 						"source": "thorigins:temp"
 					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_timer",
+						"compare_to": 50,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/data modify entity @s[type=!#minecraft:skeletons] TicksFrozen set value 140"
+					}
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:fluid_height",
+								"fluid": "minecraft:lava",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_timer",
+								"change": -100
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:on_fire"
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_timer",
+								"change": -40
+							}
+						}
+					]
 				}
 			]
 		}
@@ -68,6 +109,20 @@
 		}
 	},
 
+	"slow": {
+		"type": "origins:modify_attribute",
+		"attribute": "minecraft:generic.movement_speed",
+		"modifier": {
+			"operation": "multiply_total_additive",
+			"resource": "*:*_timer",
+			"value": 0,
+			"modifier": {
+				"value": -1.0075,
+				"operation": "multiply_base_additive"
+			}
+		}
+	},
+
 	"disable_regen": {
 		"type": "origins:disable_regen",
 		"condition": {
@@ -83,8 +138,21 @@
 			"resource": "*:*_timer",
 			"amount": 0,
 			"modifier": {
-				"amount": -1.5,
+				"amount": -1.005,
 				"operation": "multiply_base_additive"
+			}
+		}
+	},
+
+	"damage_enhancer": {
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"operation": "multiply_total_additive",
+			"resource": "*:*_timer",
+			"value": 0,
+			"modifier": {
+				"operation": "multiply_total_additive",
+				"value": -0.995
 			}
 		}
 	}

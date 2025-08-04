@@ -225,6 +225,57 @@
 									"type": "origins:play_sound",
 									"sound": "minecraft:entity.zombie_villager.converted",
 									"pitch": 2
+								},
+								{
+									"type": "origins:area_of_effect",
+									"radius": 30,
+									"shape": "sphere",
+									"bientity_condition": {
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:origin",
+											"origin": "thorigins:ninetails",
+											"layer": "thorigins:origin"
+										},
+										"inverted": true
+									},
+									"bientity_action": {
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:apply_effect",
+													"effect": {
+														"effect": "minecraft:darkness",
+														"duration": 300,
+														"amplifier": 0,
+														"is_ambient": true,
+														"show_icon": true,
+														"show_particles": false
+													}
+												},
+												{
+													"type": "origins:grant_power",
+													"power": "thorigins:ninetails/thfear",
+													"source": "thorigins:temp"
+												},
+												{
+													"type": "origins:change_resource",
+													"resource": "thorigins:ninetails/thfear_timer",
+													"change": 200
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/playsound minecraft:entity.fox.aggro player @s ~ ~ ~ 0.7 1.0"
+												},
+												{
+													"type": "origins:play_sound",
+													"sound": "minecraft:entity.fox.aggro"
+												}
+											]
+										}
+									}
 								}
 							]
 						}
@@ -558,7 +609,6 @@
 		"type": "origins:resource",
 		"min": 0,
 		"max": 2,
-		"hud_render": { "should_render": false },
 		"min_action": {
 			"type": "origins:change_resource",
 			"resource": "*:*_confirmation_cd",

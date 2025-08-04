@@ -8,13 +8,30 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:execute_command",
-					"command": "/title @s actionbar {\"translate\":\"thfear.added\"}"
-				},
-				{
 					"type": "origins:change_resource",
 					"resource": "*:*_timer",
 					"change": 100
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_timer",
+							"compare_to": 100,
+							"comparison": ">"
+						},
+						"if_action": {
+							"type": "origins:execute_command",
+							"command": "/title @s actionbar {\"translate\":\"thfear.added_by_skill\"}"
+						},
+						"else_action": {
+							"type": "origins:execute_command",
+							"command": "/title @s actionbar {\"translate\":\"thfear.added\"}"
+						}
+					}
 				}
 			]
 		},
@@ -77,7 +94,7 @@
 	"timer": {
 		"type": "origins:resource",
 		"min": 0,
-		"max": 100,
+		"max": 1000,
 		"start_value": 100,
 		"min_action": {
 			"type": "origins:revoke_power",

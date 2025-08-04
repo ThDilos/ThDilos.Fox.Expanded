@@ -52,7 +52,7 @@
 			"source": "thorigins:inherited"
 		}
 	},
-	
+
 	"immunities": {
 		"type": "origins:invulnerability",
 		"damage_condition": {
@@ -134,7 +134,7 @@
 							"if_action": {
 								"type": "origins:change_resource",
 								"resource": "thorigins:ice_fox/thfreeze_timer",
-								"change": 20
+								"change": 10
 							},
 							"else_action": {
 								"type": "origins:grant_power",
@@ -227,9 +227,34 @@
 
 	"damage_reduction": {
 		"type": "origins:modify_damage_taken",
+		"self_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:item.shield.block",
+					"pitch": 1.2,
+					"volume": 1
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": {
+						"type": "minecraft:block",
+						"params": "ice"
+					},
+					"count": 20
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:snowflake",
+					"count": 10,
+					"speed": 0.1
+				}
+			]
+		},
 		"modifier": {
 			"operation": "multiply_total_additive",
-			"amount": -0.5,
+			"amount": -0.25,
 			"id": "ice_fox/thfluffy6_damage_reduction"
 		},
 		"damage_condition": {

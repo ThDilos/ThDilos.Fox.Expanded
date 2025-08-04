@@ -256,14 +256,18 @@
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_healing_aura_switch"
+		},
+		"bientity_condition": {
+			"type": "origins:distance",
+			"compare_to": 10,
+			"comparison": "<="
 		}
 	},
 
 	"healing_aura_switch": {
 		"type": "origins:toggle",
 		"key": "nuh.uh",
-		"active_by_default": false,
-		"retain_state": true
+		"active_by_default": false
 	},
 
 	"active_self": {
@@ -525,7 +529,7 @@
 						"actions": [
 							{
 								"type": "origins:damage",
-								"amount": 3,
+								"amount": 5,
 								"damage_type": "minecraft:magic",
 								"source": {
 									"name": "magic.player"
@@ -577,6 +581,17 @@
 									"type": "origins:and",
 									"actions": [
 										{
+											"type": "origins:apply_effect",
+											"effect": {
+												"effect": "minecraft:luck",
+												"amplifier": 2,
+												"duration": 600,
+												"show_particles": false,
+												"show_icon": true,
+												"is_ambient": true
+											}
+										},
+										{
 											"type": "origins:heal",
 											"amount": 4
 										},
@@ -616,64 +631,42 @@
 			]
 		},
 		"bientity_condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:target_condition",
-					"condition": {
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:relative_health",
-								"compare_to": 1,
-								"comparison": "<"
-							},
-							{
-								"type": "origins:in_tag",
-								"tag": "undead"
-							}
-						]
+			"type": "origins:actor_condition",
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:resource",
+						"resource": "*:kitsune/thchoice_choice",
+						"compare_to": 3,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:equipped_item",
+						"equipment_slot": "mainhand",
+						"item_condition": {
+							"type": "origins:empty"
+						}
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:*_boop_cd",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					{
+						"type": "origins:resource",
+						"resource": "*:thtransform_souls",
+						"compare_to": 100,
+						"comparison": ">="
+					},
+					{
+						"type": "origins:gamemode",
+						"gamemode": "spectator",
+						"inverted": true
 					}
-				},
-				{
-					"type": "origins:actor_condition",
-					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:kitsune/thchoice_choice",
-								"compare_to": 3,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:equipped_item",
-								"equipment_slot": "mainhand",
-								"item_condition": {
-									"type": "origins:empty"
-								}
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:*_boop_cd",
-								"compare_to": 0,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:resource",
-								"resource": "*:thtransform_souls",
-								"compare_to": 100,
-								"comparison": ">="
-							},
-							{
-								"type": "origins:gamemode",
-								"gamemode": "spectator",
-								"inverted": true
-							}
-						]
-					}
-				}
-			]
+				]
+			}
 		}
 	},
 

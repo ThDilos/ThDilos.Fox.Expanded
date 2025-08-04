@@ -220,6 +220,11 @@
 				}
 			]
 		},
+		"blacklist": true,
+		"block_condition": {
+			"type": "origins:in_tag",
+			"tag": "thorigins:unphasable"
+		},
 		"view_distance": 20
 	},
 
@@ -386,6 +391,28 @@
 		"condition": {
 			"type": "origins:power_active",
 			"power": "*:*_toggle"
+		},
+		"bientity_condition": {
+			"type": "origins:actor_condition",
+			"inverted": true,
+			"condition": {
+				"type": "origins:equipped_item",
+				"item_condition": {
+					"type": "origins:ingredient",
+					"ingredient": [
+						{
+							"item": "minecraft:iron_axe"
+						},
+						{
+							"item": "minecraft:iron_sword"
+						},
+						{
+							"item": "minecraft:netherite_sword"
+						}
+					]
+				},
+				"equipment_slot": "mainhand"
+			}
 		}
 	}
 }

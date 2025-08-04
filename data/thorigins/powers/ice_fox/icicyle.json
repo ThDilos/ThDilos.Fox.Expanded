@@ -316,7 +316,25 @@
 							{
 								"type": "origins:target_action",
 								"action": {
-									"type": "origins:extinguish"
+									"type": "origins:if_else",
+									"condition": {
+										"type": "origins:on_fire"
+									},
+									"if_action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:extinguish"
+											},
+											{
+												"type": "origins:play_sound",
+												"sound": "minecraft:block.fire.extinguish",
+												"category": "players",
+												"pitch": 1.3,
+												"volume": 1
+											}
+										]
+									}
 								}
 							},
 							{
@@ -332,7 +350,7 @@
 								},
 								"if_action": {
 									"type": "origins:add_velocity",
-									"z": 0.5
+									"z": 0.6
 								},
 								"else_action": {
 									"type": "origins:and",
@@ -346,7 +364,7 @@
 										},
 										{
 											"type": "origins:add_velocity",
-											"z": 0.3
+											"z": 0.5
 										}
 									]
 								}
@@ -375,14 +393,26 @@
 								"condition": {
 									"type": "origins:target_condition",
 									"condition": {
-										"type": "origins:resource",
-										"resource": "*:fox/universal_settings_destroy_terrain",
-										"compare_to": 0,
-										"comparison": "=="
+										"type": "origins:and",
+										"inverted": true,
+										"conditions": [
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/thtrackers_destroy_terrain",
+												"compare_to": 1,
+												"comparison": "=="
+											},
+											{
+												"type": "origins:resource",
+												"resource": "*:fox/universal_settings_destroy_terrain",
+												"compare_to": 1,
+												"comparison": "=="
+											}
+										]
 									}
 								},
 								"if_action": {
-									"type": "apoli:actor_action",
+									"type": "origins:actor_action",
 									"action": {
 										"type": "origins:change_resource",
 										"resource": "*:*_destroy_terrain",
@@ -521,8 +551,17 @@
 						"comparison": "=="
 					},
 					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/fill ^0.5 ^0.5 ^0.5 ^-0.5 ^-0.5 ^-0.5 minecraft:ice replace water"
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/fill ^0.5 ^0.5 ^0.5 ^-0.5 ^-0.5 ^-0.5 minecraft:ice replace water"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/fill ^1.5 ^1.5 ^1.5 ^-1.5 ^-1.5 ^-1.5 minecraft:air replace fire"
+							}
+						]
 					}
 				},
 				{
@@ -570,9 +609,10 @@
 
 	"final_glo": {
 		"type": "origins:self_glow",
-		"blue": 1,
-		"red": 0.2,
-		"green": 1,
+		"blue": 1.0,
+		"red": 0.6,
+		"green": 0.6,
+		"use_teams": false,
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:*_time_alive",
