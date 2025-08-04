@@ -204,6 +204,7 @@
 				}
 			]
 		},
+		"blacklist": true,
 		"block_condition": {
 			"type": "origins:in_tag",
 			"tag": "thorigins:unphasable"
