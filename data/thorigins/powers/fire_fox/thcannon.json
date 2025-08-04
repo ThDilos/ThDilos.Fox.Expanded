@@ -484,10 +484,21 @@
 									{
 										"type": "origins:if_else",
 										"condition": {
-											"type": "origins:resource",
-											"resource": "*:fox/universal_settings_destroy_terrain",
-											"compare_to": 1,
-											"comparison": "=="
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:resource",
+													"resource": "*:fox/thtrackers_destroy_terrain",
+													"compare_to": 1,
+													"comparison": "=="
+												},
+												{
+													"type": "origins:resource",
+													"resource": "*:fox/universal_settings_destroy_terrain",
+													"compare_to": 1,
+													"comparison": "=="
+												}
+											]
 										},
 										"if_action": {
 											"type": "origins:raycast",
@@ -739,6 +750,12 @@
 			"conditions": [
 				{
 					"type": "origins:resource",
+					"resource": "*:fox/thtrackers_destroy_terrain",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
 					"resource": "*:fox/universal_settings_destroy_terrain",
 					"compare_to": 1,
 					"comparison": "=="
@@ -786,10 +803,21 @@
 			"type": "origins:and",
 			"conditions": [
 				{
-					"type": "origins:resource",
-					"resource": "*:fox/universal_settings_destroy_terrain",
-					"compare_to": 0,
-					"comparison": "=="
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/thtrackers_destroy_terrain",
+							"compare_to": 0,
+							"comparison": "=="
+						},
+						{
+							"type": "origins:resource",
+							"resource": "*:fox/universal_settings_destroy_terrain",
+							"compare_to": 0,
+							"comparison": "=="
+						}
+					]
 				},
 				{
 					"type": "origins:resource",
@@ -888,10 +916,21 @@
 							{
 								"type": "origins:if_else",
 								"condition": {
-									"type": "origins:resource",
-									"resource": "*:fox/universal_settings_destroy_terrain",
-									"compare_to": 1,
-									"comparison": "=="
+									"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:resource",
+											"resource": "*:fox/thtrackers_destroy_terrain",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										{
+											"type": "origins:resource",
+											"resource": "*:fox/universal_settings_destroy_terrain",
+											"compare_to": 1,
+											"comparison": "=="
+										}
+									]
 								},
 								"if_action": {
 									"type": "origins:raycast",
@@ -902,7 +941,7 @@
 									"distance": 150,
 									"command_step": 1,
 									"command_along_ray": "/function thorigins:cannon/biglaser_with_creeper",
-									"before_action": {
+									"block_action": {
 										"type": "origins:explode",
 										"create_fire": true,
 										"damage_self": false,
@@ -919,7 +958,7 @@
 									"distance": 150,
 									"command_step": 1,
 									"command_along_ray": "/function thorigins:cannon/biglaser_only_particle",
-									"before_action": {
+									"block_action": {
 										"type": "origins:explode",
 										"create_fire": true,
 										"damage_self": false,

@@ -5,25 +5,12 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:resource",
-						"resource": "thorigins:thtransform_lock_lightning",
-						"comparison": "==",
-						"compare_to": 0
+						"type": "origins:power",
+						"power": "thorigins:evolution_pass_lightning"
 					},
 					{
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:fox",
-								"layer": "origins:origin"
-							},
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:element_fox",
-								"layer": "origins:origin"
-							}
-						]
+						"type": "origins:power",
+						"power": "thorigins:thtransform"
 					}
 				]
 			},
@@ -34,25 +21,12 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:resource",
-						"resource": "thorigins:thtransform_lock_fire",
-						"comparison": "==",
-						"compare_to": 0
+						"type": "origins:power",
+						"power": "thorigins:evolution_pass_fire"
 					},
 					{
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:fox",
-								"layer": "origins:origin"
-							},
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:element_fox",
-								"layer": "origins:origin"
-							}
-						]
+						"type": "origins:power",
+						"power": "thorigins:thtransform"
 					}
 				]
 			},
@@ -63,25 +37,12 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:resource",
-						"resource": "thorigins:thtransform_lock_kitsune",
-						"comparison": "==",
-						"compare_to": 0
+						"type": "origins:power",
+						"power": "thorigins:evolution_pass_kitsune"
 					},
 					{
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:fox",
-								"layer": "origins:origin"
-							},
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:element_fox",
-								"layer": "origins:origin"
-							}
-						]
+						"type": "origins:power",
+						"power": "thorigins:thtransform"
 					}
 				]
 			},
@@ -92,25 +53,12 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:resource",
-						"resource": "thorigins:thtransform_lock_ninetails",
-						"comparison": "==",
-						"compare_to": 0
+						"type": "origins:power",
+						"power": "thorigins:evolution_pass_ninetails"
 					},
 					{
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:fox",
-								"layer": "origins:origin"
-							},
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:element_fox",
-								"layer": "origins:origin"
-							}
-						]
+						"type": "origins:power",
+						"power": "thorigins:thtransform"
 					}
 				]
 			},
@@ -121,25 +69,12 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:resource",
-						"resource": "thorigins:thtransform_lock_ice",
-						"comparison": "==",
-						"compare_to": 0
+						"type": "origins:power",
+						"power": "thorigins:evolution_pass_ice"
 					},
 					{
-						"type": "origins:or",
-						"conditions": [
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:fox",
-								"layer": "origins:origin"
-							},
-							{
-								"type": "origins:origin",
-								"origin": "thorigins:element_fox",
-								"layer": "origins:origin"
-							}
-						]
+						"type": "origins:power",
+						"power": "thorigins:thtransform"
 					}
 				]
 			},
@@ -147,19 +82,8 @@
 		},
 		{
 			"condition": {
-				"type": "origins:or",
-				"conditions": [
-					{
-						"type": "origins:origin",
-						"origin": "thorigins:fox",
-						"layer": "origins:origin"
-					},
-					{
-						"type": "origins:origin",
-						"origin": "thorigins:element_fox",
-						"layer": "origins:origin"
-					}
-				]
+				"type": "origins:power",
+				"power": "thorigins:thtransform"
 			},
 			"origins": ["thorigins:default_fox"]
 		}

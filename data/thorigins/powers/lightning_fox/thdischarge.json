@@ -156,7 +156,7 @@
 	
 	"cooldown": {
 		"type": "origins:cooldown",
-		"cooldown": 200,
+		"cooldown": 300,
 		"hud_render": {
 			"should_render": true,
 			"bar_index": 0,
@@ -357,7 +357,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 5,
+											"amount": 10,
 											"damage_type": "thorigins:foxie_zap",
 											"source": {
 												"name": "thorigins:foxie_zap.player"
@@ -432,7 +432,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 10,
+											"amount": 20,
 											"damage_type": "thorigins:foxie_zap",
 											"source": {
 												"name": "thorigins:foxie_zap.player"
@@ -507,7 +507,7 @@
 										"shape": "sphere",
 										"bientity_action": {
 											"type": "origins:damage",
-											"amount": 20,
+											"amount": 30,
 											"damage_type": "thorigins:foxie_zap",
 											"source": {
 												"name": "thorigins:foxie_zap.item"

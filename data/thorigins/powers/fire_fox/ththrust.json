@@ -18,6 +18,10 @@
 						"color": "aqua"
 					},
 					{
+						"keybind": "key.jump",
+						"color": "aqua"
+					},
+					{
 						"keybind": "key.sneak",
 						"color": "aqua"
 					}
@@ -303,9 +307,57 @@
 					"pitch": 1.4
 				},
 				{
-					"type": "origins:add_velocity",
-					"z": 0.5,
-					"space": "local"
+					"type": "origins:change_resource",
+					"resource": "*:thtransform_temperature",
+					"change": -50
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:fall_flying"
+					},
+					"if_action": {
+						"type": "origins:add_velocity",
+						"z": 0.5,
+						"space": "local"
+					},
+					"else_action": {
+						"type": "origins:delay",
+						"ticks": 1,
+						"action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:change_resource",
+									"resource": "*:*_upward_boost_effect",
+									"change": -1
+								},
+								{
+									"type": "origins:add_velocity",
+									"y": 1.5
+								},
+								{
+									"type": "origins:spawn_particles",
+									"particle": "minecraft:explosion",
+									"count": 1,
+									"speed": 0,
+									"offset_y": -0.1
+								},
+								{
+									"type": "origins:play_sound",
+									"sound": "minecraft:entity.generic.explode",
+									"volume": 0.5,
+									"pitch": 1.7,
+									"category": "players"
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "*:thtransform_temperature",
+									"change": -50
+								}
+							]
+						}
+					}
 				}
 			]
 		},
@@ -313,7 +365,29 @@
 			"type": "origins:and",
 			"conditions": [
 				{
-					"type": "origins:fall_flying"
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:fall_flying"
+						},
+						{
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:on_block"
+								},
+								{
+									"type": "origins:command",
+									"command": "/execute if entity @s[x_rotation=-90..-80]",
+									"compare_to": 0,
+									"comparison": ">"
+								},
+								{
+									"type": "origins:sneaking"
+								}
+							]
+						}
+					]
 				},
 				{
 					"type": "origins:resource",
@@ -464,10 +538,21 @@
 					"else_action": {
 						"type": "origins:if_else",
 						"condition": {
-							"type": "origins:resource",
-							"resource": "*:fox/universal_settings_destroy_terrain",
-							"compare_to": 1,
-							"comparison": "=="
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:resource",
+									"resource": "*:fox/thtrackers_destroy_terrain",
+									"compare_to": 1,
+									"comparison": "=="
+								},
+								{
+									"type": "origins:resource",
+									"resource": "*:fox/universal_settings_destroy_terrain",
+									"compare_to": 1,
+									"comparison": "=="
+								}
+							]
 						},
 						"if_action": {
 							"type": "origins:explode",
