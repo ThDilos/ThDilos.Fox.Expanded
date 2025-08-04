@@ -693,17 +693,21 @@
 	},
 
 	"snowstorm": {
-		"type": "origins:particle",
-		"particle": "minecraft:snowflake",
-		"frequency": 4,
-		"offset_y": -5,
-		"spread": {
-			"x": 7.5,
-			"z": 7.5,
-			"y": 7.5
+		"type": "origins:action_over_time",
+		"interval": 4,
+		"entity_action": {
+			"type": "origins:spawn_particles",
+			"particle": "minecraft:snowflake",
+			"frequency": 4,
+			"offset_y": -5,
+			"spread": {
+				"x": 7.5,
+				"z": 7.5,
+				"y": 7.5
+			},
+			"count": 1000,
+			"speed": 0.2
 		},
-		"count": 1000,
-		"speed": 0.2,
 		"condition": {
 			"type": "origins:resource",
 			"resource": "*:*_using_blizzard",
