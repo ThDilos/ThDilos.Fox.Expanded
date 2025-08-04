@@ -7,7 +7,7 @@
 
 	"thtransform_interface.name": "§6§l§n变身",
 	"thtransform_interface.description": "变成一只拥有神通的狐狸!",
-	"thtransform.key": "主动能力, 按下 [%s] 进行变身",
+	"thtransform.key": "主动能力, 按下 [%s] 进行变身\n\n§8用到的键位:\n加载快捷栏",
 	"cannot_forward_karma": "你已经走到了当前修行之路的尽头",
 	"unlock_karma_path": "汲取了龙蛋的力量, 你开启了另一条修行之路。",
 	"completed_karma_path": "你已经完成修炼",
@@ -59,7 +59,7 @@
 
 	"lightning_fox.thlightning_combat.name": "§a§n雷电化身",
 	"lightning_fox.thlightning_combat.description": "掌握雷神之力。",
-	"thlightning_combat.info": "[§a+§r] 使用主动技能, 被雷击时, 你会过载并被强化一段时间\n[§a+§r] 空爪攻击时在爪子上附加闪电\n[§a+§r] 如果你绝缘不好, 敌人攻击你时可能会被电击\n[§a+§r] 保持下蹲可产生一个抵消大部分伤害的电场",
+	"thlightning_combat.info": "[§a+§r] 使用主动技能, 被雷击时, 你会过载并被强化一段时间\n[§a+§r] b\n[§a+§r] 空爪攻击时在爪子上附加闪电\n[§a+§r] 如果你绝缘不好, 敌人攻击你时可能会被电击\n[§a+§r] 保持下蹲可产生一个抵消大部分伤害的电场",
 
 	"lightning_fox.thlightning_traits.name": "§e§n生物电强化",
 	"lightning_fox.thlightning_traits.description": "你能超频自己的身体, 能量消耗也随之上升。",
@@ -83,7 +83,7 @@
 
 	"fire_fox.ththrust.name": "§6§l§n烈焰之翼",
 	"fire_fox.ththrust.description": "临时制造一双助你翱翔的炽热羽翼。",
-	"ththrust.key0": "以热能为原料, 在下落时按下 [%s] 飞行\n\n飞行时按下 [%s] 向前推进\n持续按住以获得持续性的推进\n\n使用烈焰之翼飞行时, 按下 [%s] 终止飞行",
+	"ththrust.key0": "以热能为原料, 在下落时按下 [%s] 飞行\n\n飞行时按下 [%s] 向前推进\n持续按住以获得持续性的推进\n在地面时：潜行、看向正上方并按下[%s]以快速获得高度\n\n使用烈焰之翼飞行时, 按下 [%s] 终止飞行",
 	"ththrust.key1": "如果你激活了[§6§l焚焰炮§r] 并按住 [%s], 你会在高速度碰撞时产生爆炸\n\n火力值 <= 2时, 爆炸只是个小玩笑:3\n不然的话, >:3",
 	"ththrust.info": "[§c-§r] 落入水中会立刻熄灭烈焰之翼\n[§c-§r] 雨中飞行会消耗更多热能",
 
@@ -119,7 +119,7 @@
 
 	"kitsune.thphasing.name": "§6§l§n飞升",
 	"kitsune.thphasing.description": "你的躯体超凡脱俗, 不再受尘世之限",
-	"kitsune.thphasing.info": "在该状态下：\n§b1§r. 没有穿着§e重甲§r时能够在空中行走\n§b2§r. 没有穿着§c任何装备§r时无视障碍物\n§b3§r. 受到的伤害折半\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
+	"kitsune.thphasing.info": "在该状态下：\n§b1§r. 没有穿着§e重甲§r时能够在空中行走\n§b2§r. 没有穿着§c任何装备§r时无视障碍物\n§b3§r. 受到来自铁剑/斧之外的伤害减半\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
 	"kitsune.thphasing.key": "主动能力, 按下 [%s] 飞升进入空灵形态",
 
 	"kitsune.thheal.name": "§6§l§n灵之馈赠",
@@ -143,7 +143,7 @@
 	"kitsune.thfoxiality2.description": "你的天敌不再视你为食物, 你也能更好地看清黑暗。",
 	"thfoxiality2.info": "[§a+§r] 副手无<§e光§r>时§a更强的§r永久夜视\n[§a+§r] 对猎物的伤害大幅提高\n[§a+§r] 无视浆果丛\n[§a+§r] 破坏浆果丛可回收浆果\n[§a+§r] 起床时获取随机物品\n[§c-§r] 不在阴影下无法入睡\n[§a+§r] 对人鱼族和羽人族起源玩家造成更多伤害\n[§c-§r] 受到更多来自烈焰族起源玩家的伤害\n[§a+§r] 用爪子光速挖掘(空手)\n[§a+§r] 更远的拾取距离\n[§a+§r] 攀爬细雪方块\n[§a+§r] 受到狐狸信任\n§m[§c-§r§m] 惹怒附近的狼和北极熊§r\n§m[§c-§r§m] 追猎你的狼和北极熊获得速度Buffs",
 	"thfoxiality2.info1": "\n§m[§c-§r§m] 天敌的攻击将附带更致命的§5§l§m爪牙连击§r",
-	"thfoxiality2.info2": "§f۞§r §f你是一只§r§e§l仙兽§r §f۞§r\n\n[§e~§r] 针对 / 受到 §8§l亡灵生物§r 的伤害§e提升§r\n[§c-§r] 对其他§c§l所有生物§r造成的伤害降低\n[§e~§r] 你的部分能力对§8§l亡灵生物§r有不同的效果\n[§a+§r] 你对 §5霉运§r / §5黑暗§r 效果§a免疫§r\n[§e~§r] 部分§a正面§r与§c负面§r状态效果在你身上有§e更高的强度§r\n\n[§c-§r] §5下界§r合金剑针对你有更致命的效果",
+	"thfoxiality2.info2": "§f۞§r §f你是一只§r§e§l仙兽§r §f۞§r\n\n[§e~§r] 针对 / 受到 §8§l亡灵生物§r 的伤害§e提升§r\n[§c-§r] 对其他§c§l所有生物§r造成的伤害降低\n[§e~§r] 你的部分能力对§8§l亡灵生物§r有不同的效果\n[§a+§r] 你对 §5霉运§r / §5黑暗§r 效果§a免疫§r\n[§e~§r] 部分§a正面§r与§c负面§r状态效果在你身上有§e更高的强度§r\n[§c-§r] §5下界§r合金剑针对你有更致命的效果\n[§a+§r] 获取更多的经验值",
 
 	"origin.thorigins.ninetails.name": "九尾",
 	"origin.thorigins.ninetails.description": "熟练了屠杀与谋略, 这个生物注定会成为其他生灵的噩梦。",
@@ -172,13 +172,14 @@
 	"ninetails.thphasing.name": "§6§l§n堕渊",
 	"ninetails.thphasing.description": "坠入深渊, 弃之尘世, 穿行于现实的面纱之间。",
 	"ninetails.thphasing.key": "主动能力, 按下 [%s] 堕落进入幽冥形态",
-	"ninetails.thphasing.info": "在该状态下：\n§b1§r. 没有穿着§e重甲§r时能够在空中行走\n§b2§r. 没有穿着§c任何装备§r时无视障碍物\n§b3§r. 受到的伤害降低\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
+	"ninetails.thphasing.info": "在该状态下：\n§b1§r. 没有穿着§e重甲§r时能够在空中行走\n§b2§r. 没有穿着§c任何装备§r时无视障碍物\n§b3§r. 受到来自铁剑/斧之外的伤害降低\n§b4§r. 无法使用武器\n§b5§r. 无法近战攻击",
 
 	"ninetails.thfluffy5.name": "§e§n毛绒绒*",
 	"ninetails.thfluffy5.description": "你的毛毛浸透了鲜血与死亡, 触感柔软顺滑, 但能激起触摸者的恐惧与敬畏。",
 	"thfluffy5.info": "[§e~§r] 强加[§c胆小§r]的恐惧效果给贴近你的生物",
-	"thfear.added": "§4在触摸到这个被诅咒的皮毛的瞬间, 你被恐惧感淹没",
+	"thfear.added": "§4在触摸到这个被诅咒的狐毛的瞬间, 你被恐惧感淹没",
 	"thfear.removed": "§4压抑的恐惧渐渐消失, 留下了不安的平静",
+	"thfear.added_by_skill": "§4一股恐惧与不安的感觉爬上你的脊梁...",
 
 	"ninetails.thfoxiality3.name": "§e§n狐狸本性++",
 	"ninetails.thfoxiality3.description": "你能更好地看清黑暗, 你的天敌不再能很好地利用你的弱点。",
@@ -186,23 +187,30 @@
 	"thfoxiality3.info1": "\n[§c-§r] 你的天敌每次攻击你时将附带§a稍弱§r的§5§l爪牙连击§r",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] 狼和北极熊对你造成的伤害翻倍§r",
 	"thfoxiality3.info2": "你天敌的§5§l爪牙连击§r有以下效果:\n§m§b1§r§m. 给你施加§5§m缓慢§r§m+虚弱+反胃效果§r\n§r§b2§r. 给你造成§a略少§r的❂§l真实伤害§r\n§r§b3§r. 暂时§c禁用§r你的[§6§l掠袭++§r]\n§b4§r. 暂时§c无效化§r你[§a灵跃++§r]的第一个效果\n§b5§r. 暂时§c禁用§r你的自然生命恢复\n\n§8§o装备护甲和抗性提升有一定几率能让天敌对你的§l爪牙连击§r§8§o失败",
-	"thfoxiality3.info3": "§f☠§r §f你是一只§r§7§l亡灵妖兽§r §f☠§r\n\n[§a+§r] 受到来自§8§l亡灵生物§r的伤害§a略微减少§r\n[§c-§r] §5亡灵杀手§r附魔对你有效\n[§e~§r] 部分起源的能力对你有不同的效果\n[§e~§r] 部分状态效果对你无效, 或效果反转\n[§c-§r] 正因如此, 你偏爱的食物不再给你生命恢复效果\n[§c-§r] 带有§5亡灵杀手§r的§l§6木剑§r针对你§c效果极佳§r",
+	"thfoxiality3.info3": "§f☠§r §f你是一只§r§7§l亡灵妖兽§r §f☠§r\n\n[§a+§r] 受到来自§8§l亡灵生物§r的伤害§a略微减少§r\n[§c-§r] §5亡灵杀手§r附魔对你有效\n[§e~§r] 部分起源的能力对你有不同的效果\n[§e~§r] 部分状态效果对你无效, 或效果反转\n[§c-§r] 正因如此, 你偏爱的食物不再给你生命恢复效果\n[§c-§r] 带有§5亡灵杀手§r的§l§6木剑§r针对你§c效果极佳§r\n[§a+§r] 获取更多的经验值",
 
 	"origin.thorigins.ice_fox.name": "寒冰狐狸",
-	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n你不该看见这个页面的\n目前多做了一个主动一个被动技能, 挺酷的你试试 :3",
+	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n多做了个暴风雪技能，顺带加强了下战斗力",
 
 	"ice_fox.thicicyle.name": "§6§l§n冰砾",
 	"ice_fox.thicicyle.description": "凭空凝聚高压冰锥来穿透/冻僵敌人, 或者用来旅行?",
 	"thicicyle.info0": "主动技能, 按下 [%s] 召唤一个往前移动的冰锥\n\n手中无物时, 按住 [%s] 并召唤冰锥会让你骑上冰锥\n\n按下 [%s] 同时引爆所有的冰锥",
 	"thicicyle.info1": "冰锥在5s后自动触发\n\n触发时, 发出一个小范围爆炸, 伤害并§b冰冻§r周围所有实体\n\n直接穿透实体能造成更高伤害",
 
+	"thfreeze.info": "§b冰冻§r的效果:\n取决于目标剩下的§b冰冻§r值\n§b1§r. 移速降低\n§b2§r. 伤害输出降低\n§b3§r. 受到更多伤害\n§b4§r. 持续受到冰冻伤害\n§b5§r. 禁用自然生命恢复",
+
+	"ice_fox.thblizzard.name": "§6§l§n暴风雪",
+	"ice_fox.thblizzard.description": "雪崩里的每一片雪花都是无辜的，除了你这一片 >:3",
+	"thblizzard.info": "主动技能, 按住 [%s] 漂浮在半空中, 用 [%s] 和 [%s] 控制上升与下降\n\n继续按住 [%s], 会制造一个环绕你的局部暴风雪，持续§b冰冻§r并失明内部的生物\n\n潜行时按下 [%s] 退出漂浮",
+	"thblizzard.info1": "漂浮时: 主动技能§6§l§n冰砾§r在没有冰锥剩下时会消耗食物点\n\n漂浮与制造雪暴都会消耗你的食物点",
+
 	"ice_fox.thcold_body.name": "§e§n寒冰之躯",
 	"ice_fox.thcold_body.description": "你的体温远远低于水凝点, 你的血液之寒胜于液氮.",
-	"thcold_body.info": "[§a+§r] 免疫中毒效果\n[§e~§r] §c无限冰船 YEAHHHHHHH",
+	"thcold_body.info": "[§a+§r] 免疫中毒效果\n[§e~§r] §c无限冰船 YEAHHHHHHH§r（注：该技能在下个版本也许会删掉， 服务器环境下不稳定，还影响游玩效果...）\n[§a+§r] 处于寒冷群系内时获得抗性提升效果",
 
-	"ice_fox.thfluffy6.name": "毛绒绒*",
-	"ice_fox.thfluffy6.description": "你的毛毛柔软, 但内层结了坚冰, 让你有天然的护甲,并能抵抗大部分穿刺和划伤。但是游泳会比较困难, 毕竟你周围的水结冰了阻力大幅增加:3333",
-	"thfluffy6.info": "给靠近你的所有人降温 :3 差不多做完了吧这个技能, 布吉岛",
+	"ice_fox.thfluffy6.name": "§e§n毛绒绒*",
+	"ice_fox.thfluffy6.description": "你的毛毛柔软, 但内层结了坚冰, 让你有天然的护甲，并能抵抗大部分穿刺和划伤，但更惧怕火焰了。",
+	"thfluffy6.info": "[§e~§r] §b冰冻§r你周围的生物\n[§a+§r] 天然的护甲点数/韧性\n[§a+§r] 免疫刺伤\n[§a+§r] 降低来自的剑/弹射物伤害\n[§c-§r] 游泳速度降低\n[§c-§r] 受到§c更多++§r火焰§m/爆炸§r伤害\n[§a+§r] 冰冻抗性\n[§c-§r] 毛发受潮时速度下降\n[§e~§r] 保持静止把水甩干\n[§c-§r] 干燥的绒毛容易着火",
 
 	"layer.thorigins.origin.name": "元素之力",
 

@@ -7,7 +7,7 @@
 
 	"thtransform_interface.name": "§6§l§nChange Form",
 	"thtransform_interface.description": "Become a fox with paranormal abilities!",
-	"thtransform.key": "Active ability, press [%s] to perform transformation",
+	"thtransform.key": "Active ability, press [%s] to perform transformation\n\n§8Keybind Used:\nLoad Hotbar Activator",
 	"cannot_forward_karma": "You have reached the end of your current karmic journey",
 	"unlock_karma_path": "With the power of the Dragon Egg, you have set foot on a new karmic path.",
 	"completed_karma_path": "You have completed both of the karmic paths",
@@ -59,7 +59,7 @@
 
 	"lightning_fox.thlightning_combat.name": "§a§nAspect of Lightning",
 	"lightning_fox.thlightning_combat.description": "Channel with the power of lightning.",
-	"thlightning_combat.info": "[§a+§r] If you are struck by lightning, or use any Active Skills, you'll become overcharged and receive positive effects for a few seconds\n[§a+§r] Attach lightning in your paws when attack with no weapon\n[§a+§r] Have a chance to electrocute your attacker if you are poorly insulated\n[§a+§r] Stay crouching to generate a static field that nullifies part of incoming damage",
+	"thlightning_combat.info": "[§a+§r] If you are struck by lightning, or use any Active Skills, you'll become overcharged and receive positive effects for a few seconds\n[§a+§r] Struck by lightning will refresh most of your active skills' cooldown\n[§a+§r] Attach lightning in your paws when attack with no weapon\n[§a+§r] Have a chance to electrocute your attacker if you are poorly insulated\n[§a+§r] Stay crouching to generate a static field that nullifies part of incoming damage",
 
 	"lightning_fox.thlightning_traits.name": "§e§nEnhanced Bioelectricity",
 	"lightning_fox.thlightning_traits.description": "You can overclock your body for better performance, but at a cost of higher energy requirement.",
@@ -83,7 +83,7 @@
 
 	"fire_fox.ththrust.name": "§6§l§nFlame Wings",
 	"fire_fox.ththrust.description": "Temporarily create a pair of flame wings to soar the skies.",
-	"ththrust.key0": "At the cost of stored temperature, press [%s] when falling to fly\n\nWhile flying, press [%s] to thrust forward.\nHold it for a continuous small thrust\n\nWhen flying with flame wings, press [%s] to close them in mid-air",
+	"ththrust.key0": "At the cost of stored temperature, press [%s] when falling to fly\n\nWhile flying: press [%s] to thrust forward.\nHold it for a continuous small thrust\n\nWhen on the ground: sneak, look up and press [%s] to boost upwards\n\nWhen flying with flame wings, press [%s] to close them in mid-air",
 	"ththrust.key1": "If you've activated [§6§lInferno Cannon§r] and are holding [%s], you would create an explosion upon high-speed impact\n\nWhen Fire Power <= 2, explosion is fake and rather a safe prank :3\nElse, >:3",
 	"ththrust.info": "[§c-§r] Falling in water will immediately extinguish the flame wings\n[§c-§r] Flying in rain will lose more temperature",
 
@@ -119,7 +119,7 @@
 
 	"kitsune.thphasing.name": "§6§l§nAscension",
 	"kitsune.thphasing.description": "Your body transcends the normal realm, no longer bounded by the physical world.",
-	"kitsune.thphasing.info": "While in this form:\n§b1§r. Able to walk on air when not equipping §eheavy armors§r\n§b2§r. Able to phase through walls when not equipping §canything§r\n§b3§r. Halve all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
+	"kitsune.thphasing.info": "While in this form:\n§b1§r. Able to walk on air when not equipping §eheavy armors§r\n§b2§r. Able to phase through walls when not equipping §canything§r\n§b3§r. Halve all incoming damage except from iron sword / axe\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
 	"kitsune.thphasing.key": "Active ability, press [%s] to ascend into your ethereal form",
 
 	"kitsune.thheal.name": "§6§l§nSpiritual Grace",
@@ -143,7 +143,7 @@
 	"kitsune.thfoxiality2.description": "Your natural predators no longer consider you a food source, you are also able to see clearer in the dark.",
 	"thfoxiality2.info": "[§a+§r] §aStronger§r Permanent Night Vision when no <§eLights§r> in Offhand\n[§a+§r] Higher damage against prey mobs\n[§a+§r] Ignore berry bushes\n[§a+§r] Breaking berry bushes gives you sweet berries\n[§a+§r] Receive a random item when waking up\n[§c-§r] Can't fall asleep when not under shades\n[§a+§r] Do more damage to Merling and Avian\n[§c-§r] Receive more damage from Blazeborn\n[§a+§r] Dig extremely fast with claws(empty handed)\n[§a+§r] Boosted Pickup Range\n[§a+§r] Climb in Powder Snow\n[§a+§r] Trusted by foxes\n§m[§c-§r§m] Anger wolves and polar bears§r\n§m[§c-§r§m] Wolves and polar bears receive Speed Buffs when targeting you",
 	"thfoxiality2.info1": "\n§m[§c-§r§m] Predators do a deadlier §5§l§mEXTRA STRIKE §r§f§mto you after every hit",
-	"thfoxiality2.info2": "§f۞§r §fYou are a§r §e§lDivine Creature§r §f۞§r\n\n[§e~§r] You deal / receive §emore§r damage from / to §8§lUndead monsters§r\n[§c-§r] You deal less damage to §c§lall other Mobs§r\n[§e~§r] Part of your abilities work differently against §8§lUndead monsters§r\n[§a+§r] You are §aimmune§r to §5Unluck§r / §5Darkness§r status effects\n[§e~§r] Some §aPositive§r & §cNegative§r status effects will have a higher amplitude on you\n[§c-§r] You are vulnerable to §5Nether§rite Sword",
+	"thfoxiality2.info2": "§f۞§r §fYou are a§r §e§lDivine Creature§r §f۞§r\n\n[§e~§r] You deal / receive §emore§r damage from / to §8§lUndead monsters§r\n[§c-§r] You deal less damage to §c§lall other Mobs§r\n[§e~§r] Part of your abilities work differently against §8§lUndead monsters§r\n[§a+§r] You are §aimmune§r to §5Unluck§r / §5Darkness§r status effects\n[§e~§r] Some §aPositive§r & §cNegative§r status effects will have a higher amplitude on you\n[§c-§r] You are vulnerable to §5Nether§rite Sword\n[§a+§r] Absorb more experience from xp orbs",
 
 	"origin.thorigins.ninetails.name": "Ninetails",
 	"origin.thorigins.ninetails.description": "Mastered the Arts of Killing and Deception. This Creature is a Nightmare to Most Living Beings",
@@ -172,13 +172,14 @@
 	"ninetails.thphasing.name": "§6§l§nAbyssion",
 	"ninetails.thphasing.description": "Plunge into the abyss, forsaking the living realm and slipping through the veil of reality.",
 	"ninetails.thphasing.key": "Active ability, press [%s] to descend into your abyssal form",
-	"ninetails.thphasing.info": "While in this form:\n§b1§r. Able to walk on air when not equipping §eheavy armors§r\n§b2§r. Able to phase through walls when not equipping §canything§r\n§b3§r. Reduce all incoming damage\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
+	"ninetails.thphasing.info": "While in this form:\n§b1§r. Able to walk on air when not equipping §eheavy armors§r\n§b2§r. Able to phase through walls when not equipping §canything§r\n§b3§r. Reduce all incoming damage except from iron sword / axe\n§b4§r. Cannot use weapons\n§b5§r. Cannot melee",
 
 	"ninetails.thfluffy5.name": "§e§nFluffy*",
 	"ninetails.thfluffy5.description": "Your fur, soaked in blood and death. Soft to the touch, but invokes fear and awe in those near.",
 	"thfluffy5.info": "[§e~§r] Apply effects from [§cTimidity§r] to mobs close to you",
 	"thfear.added": "§4A surge of dread overwhelms you as the cursed fur brushes against you",
 	"thfear.removed": "§4The oppressive fear fades, leaving you with a sense of uneasy calm",
+	"thfear.added_by_skill": "§4A sudden sense of dread and unease creeps over you",
 
 	"ninetails.thfoxiality3.name": "§e§nFoxiality++",
 	"ninetails.thfoxiality3.description": "You are able to see clearer in the dark, and your natural predators find it harder to threaten you.",
@@ -186,23 +187,30 @@
 	"thfoxiality3.info1": "\n[§c-§r] Predators do a §aweaker§r §5§lEXTRA STRIKE §r§fto you after every hit",
 	"thfoxiality3.info1_legacy": "\n§m[§c-§r§m] Wolves and Polar Bears do more damage to you§r",
 	"thfoxiality3.info2": "Your Predators' §5§lEXTRA STRIKE§r has the following effects:\n§m§b1§r§m. Applies §5§mSlowness§r§m + Weakness + Nausea to you§r\n§r§b2§r. Deals a §alesser§r amount of ❂§lTRUE DAMAGE§r\n§b3§r. Temporarily §cDisables§r your [§6§lPounce++§r]\n§b4§r. Temporarily §cNullifies§r your [§aAgility++§r]'s first effect\n§b5§r. Temporarily §cDisables§r your natural regeneration\n\n§8§oWearing armors and Resistance might make your predators' §lEXTRA STRIKE §r§8§ofail",
-	"thfoxiality3.info3": "§f☠§r §fYou are a§r §8§lUndead Demon§r §f☠§r\n\n[§a+§r] You receive §aless§r damage from §7Undead monsters§r\n[§c-§r] §5Smite§r Enchantment is effective against you\n[§e~§r] Certain Origins' abilities work differently against you\n[§e~§r] Some Status effects are reversed or nullified on you\n[§c-§r] Your preferred foods no longer gives you regeneration effect because of it\n[§c-§r] You are extra vulnerable to §l§6Wooden Sword§r with §5Smite§r",
+	"thfoxiality3.info3": "§f☠§r §fYou are a§r §8§lUndead Demon§r §f☠§r\n\n[§a+§r] You receive §aless§r damage from §7Undead monsters§r\n[§c-§r] §5Smite§r Enchantment is effective against you\n[§e~§r] Certain Origins' abilities work differently against you\n[§e~§r] Some Status effects are reversed or nullified on you\n[§c-§r] Your preferred foods no longer gives you regeneration effect because of it\n[§c-§r] You are extra vulnerable to §l§6Wooden Sword§r with §5Smite§r\n[§a+§r] Absorb more experience from xp orbs",
 
 	"origin.thorigins.ice_fox.name": "Ice Fox",
-	"origin.thorigins.ice_fox.description": "Ice fox W.I.P :3 \nYou aren't supposed to see this\nFurther made an active skill and a passive skill, pretty cool, you can try them out :3",
+	"origin.thorigins.ice_fox.description": "Ice fox forever W.I.P :3\nMade a blizzard power since last time, and buffed attack power",
 
 	"ice_fox.thicicyle.name": "§6§l§nIce Shard",
 	"ice_fox.thicicyle.description": "Materialize a highly-pressurized ice shard to penetrate or freeze enemies. Or for travelling?",
 	"thicicyle.info0": "Active ability, press [%s] to summon an ice shard that travels forwards\n\nWhile holding nothing, hold [%s] and summon an ice shard will mount yourself onto it\n\nPress [%s] to detonate all your ice shards at once",
 	"thicicyle.info1": "Ice Shard self-expires after 5s\n\nUpon expiring, or triggering, it creates a small explosion that damage all surrounding entities and apply §bFREEZE§r\n\nDirectly penetrating an entity will have higher damage",
 
+	"thfreeze.info": "Effect of §bFREEZE§r:\nBased on how high the §bFREEZE§rness is left\n§b1§r. Movement speed decreases\n§b2§r. Damage dealt decreases\n§b3§r. Damage received increases\n§b4§r. Receive freeze damage\n§b5§r. Disable Natural Regeneration",
+
+	"ice_fox.thblizzard.name": "§6§l§nBlizzard",
+	"ice_fox.thblizzard.description": "Snowflake Generation (Literally)",
+	"thblizzard.info": "Active ability, hold [%s] to float in midair, use [%s] and [%s] to go up and down\n\nContinue holding [%s], create a sub-regional blizzard around you that §bFREEZE§rs and blinds creatures within\n\nPress [%s] while sneaking to exit the floating mode",
+	"thblizzard.info1": "While floating: Active Skill §6§l§nIce Shard§r will consume food points if no shard is left\n\nFloating and Creating Snowstorm will both consume food points while activated",
+
 	"ice_fox.thcold_body.name": "§e§nIcy Body",
 	"ice_fox.thcold_body.description": "Your body temperature is well below freezing point, your blood is cooler than liquid nitrogen.",
-	"thcold_body.info": "[§a+§r] Immune to Poison and Hunger Effect\n[§e~§r] §cICE BOATING YEEAAAAAAAAA",
+	"thcold_body.info": "[§a+§r] Immune to Poison and Hunger Effect\n[§e~§r] §cICE BOATING YEEAAAAAAAAA §r(Note: This Skill might be removed in the next ver. due to its instability in server and influence to normal gameplay)\n[§a+§r] Receive resistance effect in Cold Biomes",
 
-	"ice_fox.thfluffy6.name": "Fluffy*",
-	"ice_fox.thfluffy6.description": "Soft Fur with a hard layer of ice beneath, gives you natural armor and resistance to slice and piercing. but swim slow cuz water freezes around you and increases drag:3333",
-	"thfluffy6.info": "Give chills to everyone around you :3 This power is almost done perhaps?",
+	"ice_fox.thfluffy6.name": "§e§nFluffy*",
+	"ice_fox.thfluffy6.description": "Soft Fur with a hard layer of ice beneath, resilient against slice and piercing but more vulnerable to fire.",
+	"thfluffy6.info": "[§e~§r] §bFREEZE§r mobs around you\n[§a+§r] Natural Armor Points/Toughness\n[§a+§r] Immunity against pricking damage\n[§a+§r] Reduced incoming swords / projectiles damage\n[§c-§r] Slower swimming speed\n[§c-§r] Receive §cMUCH§r more fire §mand explosion§r damage\n[§a+§r] Freeze Immunity\n[§c-§r] Slow down when in water / rain for a bit\n[§e~§r] Stand Still to Shake and dry off\n[§c-§r] Dry fluff catches fire easily",
 
 	"layer.thorigins.origin.name": "element",
 
