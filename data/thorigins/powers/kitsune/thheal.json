@@ -714,8 +714,8 @@
 			"type": "origins:consume",
 			"amount": 1
 		},
-		"result": {
-			"item": "minecraft:sweet_berries",
+		"result_stack": {
+			"id": "minecraft:sweet_berries",
 			"amount": 1
 		}
 	},
@@ -747,8 +747,8 @@
 			"type": "origins:consume",
 			"amount": 1
 		},
-		"result": {
-			"item": "minecraft:glow_berries",
+		"result_stack": {
+			"id": "minecraft:glow_berries",
 			"amount": 1
 		}
 	}
