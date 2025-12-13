@@ -190,27 +190,57 @@
 	"thfoxiality3.info3": "§f☠§r §fYou are a§r §8§lUndead Demon§r §f☠§r\n\n[§a+§r] You receive §aless§r damage from §7Undead monsters§r\n[§c-§r] §5Smite§r Enchantment is effective against you\n[§e~§r] Certain Origins' abilities work differently against you\n[§e~§r] Some Status effects are reversed or nullified on you\n[§c-§r] Your preferred foods no longer gives you regeneration effect because of it\n[§c-§r] You are extra vulnerable to §l§6Wooden Sword§r with §5Smite§r\n[§a+§r] Absorb more experience from xp orbs",
 
 	"origin.thorigins.ice_fox.name": "Ice Fox",
-	"origin.thorigins.ice_fox.description": "Ice fox forever W.I.P :3\nMade a blizzard power since last time, and buffed attack power",
+	"origin.thorigins.ice_fox.description": "Mythical Fox Who Can Manipulate Ice. Turning them Into The Sharpest Spear or the Hardest Shield At Will",
 
 	"ice_fox.thicicyle.name": "§6§l§nIce Shard",
 	"ice_fox.thicicyle.description": "Materialize a highly-pressurized ice shard to penetrate or freeze enemies. Or for travelling?",
-	"thicicyle.info0": "Active ability, press [%s] to summon an ice shard that travels forwards\n\nWhile holding nothing, hold [%s] and summon an ice shard will mount yourself onto it\n\nPress [%s] to detonate all your ice shards at once",
-	"thicicyle.info1": "Ice Shard self-expires after 5s\n\nUpon expiring, or triggering, it creates a small explosion that damage all surrounding entities and apply §bFREEZE§r\n\nDirectly penetrating an entity will have higher damage",
+	"thicicyle.info0": "Active ability, press [%s] to summon an ice shard that travels forwards\n\nWhile empty handed, hold [%s] and summon an ice shard will mount yourself onto it\n\nPress [%s] to detonate all your ice shards at once",
+	"thicicyle.info1": "Ice Shard self-expires after 5s\n\nUpon expiring, or triggering, it creates a small explosion that damage all surrounding entities and apply §bFREEZE§r\n\n§8Directly penetrating an entity will have higher damage",
 
 	"thfreeze.info": "Effect of §bFREEZE§r:\nBased on how high the §bFREEZE§rness is left\n§b1§r. Movement speed decreases\n§b2§r. Damage dealt decreases\n§b3§r. Damage received increases\n§b4§r. Receive freeze damage\n§b5§r. Disable Natural Regeneration",
 
 	"ice_fox.thblizzard.name": "§6§l§nBlizzard",
-	"ice_fox.thblizzard.description": "Snowflake Generation (Literally)",
-	"thblizzard.info": "Active ability, hold [%s] to float in midair, use [%s] and [%s] to go up and down\n\nContinue holding [%s], create a sub-regional blizzard around you that §bFREEZE§rs and blinds creatures within\n\nPress [%s] while sneaking to exit the floating mode",
+	"ice_fox.thblizzard.description": "Gently float like a snowflake, engulf whoever invaded your space with a roaring snowstorm.",
+	"thblizzard.info": "Active ability\nHold [%s] to float in midair, use [%s] and [%s] to lift and sink\n\nContinue holding [%s], create a sub-regional blizzard around you that §bFREEZE§rs and blinds creatures within\n\nPress [%s] while sneaking to exit the floating mode",
 	"thblizzard.info1": "While floating: Active Skill §6§l§nIce Shard§r will consume food points if no shard is left\n\nFloating and Creating Snowstorm will both consume food points while activated",
 
+	"ice_fox.thshield.name": "§6§l§nIce Shield",
+	"ice_fox.thshield.description": "Protect yourself and those you cherish with layers of hardened ice.",
+	"thshield.key": "Active ability\n§b§l§nIcy Shield§r\nHold [%s] to convert §a3§r Ice Shards into a layer of §bIce Shield§r on your fur.\nWhile empty handed, keep interacting with another mob to create §bIce Shield§r on them.\n\n§9§l§nShield Burst§r\nDouble tap and hold [%s] to sense surrounding creatures.\nShield carriers and ice shards are highlighted in §9blue§r.\n\nIn this state, use [%s] to detonate all existing §rIce Shields§r applied by you.",
+	"thshield.info": "Effects of §bIce Shield§r\n§b1§r. Maximum 5 Layers of §bIce Shield§r\n§b2§r. Consume 1 layer, negate incoming damages depending on layers left. §8(from 100% to 60%)§r\n§b3§r. Immunity against freezing and pricking damages\n§b4§r. Extinguish fire on the shield carrier",
+	"ice_shield.granted_by_self": "§bA layer of hardened ice covers your fur, granting you §eextra defence",
+	"ice_shield.granted_by_fox": "§bThe Ice fox used magic to cover your body with hardened ice, granting you §eextra defence",
+	"ice_shield.revoked": "§bThe ice shield on your body was shattered",
+
+	"ice_fox.thaurora.name": "§a§nRevontulet",
+	"ice_fox.thaurora.description": "\"Each night a fox would run through the sky, paint it with the northern light.\"",
+	"thaurora.info": "Standing under the night sky will fill you with Aurora Energy\n\nEffects of Aurora Energy:\n[§a+§r] Boosted healing from all sources\n[§a+§r] Constant regeneration effect\n[§a+§r] See even clearer in the dark\n[§a+§r] §6§lIce Shards§r replenish twice as fast\n[§a+§r] Movement Speed when floating using §6§l§nBlizzard§r is 200% faster",
+
 	"ice_fox.thcold_body.name": "§e§nIcy Body",
-	"ice_fox.thcold_body.description": "Your body temperature is well below freezing point, your blood is cooler than liquid nitrogen.",
-	"thcold_body.info": "[§a+§r] Immune to Poison and Hunger Effect\n[§e~§r] §cICE BOATING YEEAAAAAAAAA §r(Note: This Skill might be removed in the next ver. due to its instability in server and influence to normal gameplay)\n[§a+§r] Receive resistance effect in Cold Biomes",
+	"ice_fox.thcold_body.description": "Your body has evolved to perform better in cold environment.",
+	"thcold_body.info": "[§a+§r] Immune to Poison and Hunger Effect\n[§e~§r] You have icy paws equivalent to frost walker\n[§a+§r] Receive resistance effect in Cold Biomes\n[§c-§r] Receive weakness and slowness in Hot Biomes",
 
 	"ice_fox.thfluffy6.name": "§e§nFluffy*",
 	"ice_fox.thfluffy6.description": "Soft Fur with a hard layer of ice beneath, resilient against slice and piercing but more vulnerable to fire.",
-	"thfluffy6.info": "[§e~§r] §bFREEZE§r mobs around you\n[§a+§r] Natural Armor Points/Toughness\n[§a+§r] Immunity against pricking damage\n[§a+§r] Reduced incoming swords / projectiles damage\n[§c-§r] Slower swimming speed\n[§c-§r] Receive §cMUCH§r more fire §mand explosion§r damage\n[§a+§r] Freeze Immunity\n[§c-§r] Slow down when in water / rain for a bit\n[§e~§r] Stand Still to Shake and dry off\n[§c-§r] Dry fluff catches fire easily",
+	"thfluffy6.info": "[§e~§r] §bFREEZE§r mobs around you §8when not sneaking§r\n[§a+§r] Natural Armor Points/Toughness\n[§a+§r] Immunity against pricking damage\n[§a+§r] Reduced incoming swords / projectiles damage\n[§c-§r] Slower swimming speed\n[§c-§r] Receive §cMUCH§r more fire §mand explosion§r damage\n[§a+§r] Freeze Immunity\n[§c-§r] Slow down when in water / rain for a bit\n[§e~§r] Stand Still to Shake and dry off\n[§c-§r] Dry fluff catches fire easily",
+
+	"thorigins.advancements.evolution_root.title": "Evolutions",
+	"thorigins.advancements.evolution_root.description": "Little Fox is Full of Potential!",
+
+	"thorigins.advancements.unlock_lightning.title": "§eOvercharged Zoomies",
+	"thorigins.advancements.unlock_lightning.description": "Unlock the Lightning Fox Evolution\n\n§8Chance to unlock by THUNDERSTRUCK",
+
+	"thorigins.advancements.unlock_fire.title": "§cArson :3",
+	"thorigins.advancements.unlock_fire.description": "Unlock the Fire Fox Evolution\n\n§8Complete all 23 Vanilla Nether Advancements",
+
+	"thorigins.advancements.unlock_kitsune.title": "§6Spirit of Health and Life",
+	"thorigins.advancements.unlock_kitsune.description": "Unlock the Kitsune Evolution\n\n§8Karma reaches +200%",
+
+	"thorigins.advancements.unlock_ninetails.title": "§4Demon of Blood and Death",
+	"thorigins.advancements.unlock_ninetails.description": "Unlock the Ninetails Evolution\n\n§8Karma reaches -200%",
+
+	"thorigins.advancements.unlock_ice.title": "§bSnowy Pilgrimage",
+	"thorigins.advancements.unlock_ice.description": "Unlock the Ice Fox Evolution\n\n§8Visit all 18 Vanilla Overworld biomes where snowfall can occur under building limit",
 
 	"layer.thorigins.origin.name": "element",
 
