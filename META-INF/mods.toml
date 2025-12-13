@@ -3,12 +3,12 @@ loaderVersion="[36,)"
 license="ARR"
 issueTrackerURL="https://github.com/ThDilos/ThDilos.Fox.Origin/issues"
 description='''
-Fox Evolutions for ThDilos Fox Origin.
+Added a few evolutions for the base fox.
 '''
 
 [[mods]]
 modId="thorigins2"
-version="3.4.0"
+version="3.5.0"
 displayName="ThDilos Fox Origins Expanded"
 
 [[dependencies.thorigins2]]
