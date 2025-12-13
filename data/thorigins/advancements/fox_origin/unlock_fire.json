@@ -1,0 +1,338 @@
+{
+	"parent": "thorigins:fox_origin/evolution_root",
+	"criteria": {
+		"root": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": { "minecraft:nether/root": true }
+					}
+				}
+			}
+		},
+		"return_to_sender": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/return_to_sender": true
+						}
+					}
+				}
+			}
+		},
+		"find_bastion": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/find_bastion": true
+						}
+					}
+				}
+			}
+		},
+		"obtain_ancient_debris": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/obtain_ancient_debris": true
+						}
+					}
+				}
+			}
+		},
+		"fast_travel": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": { "minecraft:nether/fast_travel": true }
+					}
+				}
+			}
+		},
+		"find_fortress": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/find_fortress": true
+						}
+					}
+				}
+			}
+		},
+		"obtain_crying_obsidian": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/obtain_crying_obsidian": true
+						}
+					}
+				}
+			}
+		},
+		"distract_piglin": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/distract_piglin": true
+						}
+					}
+				}
+			}
+		},
+		"ride_strider": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/ride_strider": true
+						}
+					}
+				}
+			}
+		},
+		"uneasy_alliance": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/uneasy_alliance": true
+						}
+					}
+				}
+			}
+		},
+		"loot_bastion": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/loot_bastion": true
+						}
+					}
+				}
+			}
+		},
+		"netherite_armor": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/netherite_armor": true
+						}
+					}
+				}
+			}
+		},
+		"get_wither_skull": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/get_wither_skull": true
+						}
+					}
+				}
+			}
+		},
+		"obtain_blaze_rod": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/obtain_blaze_rod": true
+						}
+					}
+				}
+			}
+		},
+		"charge_respawn_anchor": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/charge_respawn_anchor": true
+						}
+					}
+				}
+			}
+		},
+		"ride_strider_in_overworld_lava": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/ride_strider_in_overworld_lava": true
+						}
+					}
+				}
+			}
+		},
+		"explore_nether": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/explore_nether": true
+						}
+					}
+				}
+			}
+		},
+		"summon_wither": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/summon_wither": true
+						}
+					}
+				}
+			}
+		},
+		"brew_potion": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": { "minecraft:nether/brew_potion": true }
+					}
+				}
+			}
+		},
+		"create_beacon": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/create_beacon": true
+						}
+					}
+				}
+			}
+		},
+		"all_potions": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": { "minecraft:nether/all_potions": true }
+					}
+				}
+			}
+		},
+		"create_full_beacon": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"minecraft:nether/create_full_beacon": true
+						}
+					}
+				}
+			}
+		},
+		"all_effects": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"type_specific": {
+						"type": "player",
+						"advancements": { "minecraft:nether/all_effects": true }
+					}
+				}
+			}
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.unlock_fire.description",
+			"fallback": "Unlock the Fire Fox Evolution\n\n§8Complete all 23 Vanilla Nether Advancements"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:blaze_powder"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.unlock_fire.title",
+			"fallback": "§cArson :3"
+		}
+	},
+	"requirements": [
+		[ "root" ],
+		[ "return_to_sender" ],
+		[ "find_bastion" ],
+		[ "obtain_ancient_debris" ],
+		[ "fast_travel" ],
+		[ "find_fortress" ],
+		[ "obtain_crying_obsidian" ],
+		[ "distract_piglin" ],
+		[ "ride_strider" ],
+		[ "uneasy_alliance" ],
+		[ "loot_bastion" ],
+		[ "netherite_armor" ],
+		[ "get_wither_skull" ],
+		[ "obtain_blaze_rod" ],
+		[ "charge_respawn_anchor" ],
+		[ "ride_strider_in_overworld_lava" ],
+		[ "explore_nether" ],
+		[ "summon_wither" ],
+		[ "brew_potion" ],
+		[ "create_beacon" ],
+		[ "all_potions" ],
+		[ "create_full_beacon" ],
+		[ "all_effects" ]
+	],
+	"sends_telemetry_event": true
+}

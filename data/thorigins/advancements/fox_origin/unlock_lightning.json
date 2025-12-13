@@ -1,0 +1,28 @@
+{
+	"parent": "thorigins:fox_origin/evolution_root",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.unlock_lightning.description",
+			"fallback": "Unlock the Lightning Fox Evolution\n\n§8Chance to unlock by THUNDERSTRUCK"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:glow_berries"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.unlock_lightning.title",
+			"fallback": "§eOvercharged Zoomies"
+		}
+	},
+	"requirements": [["to_be_granted"]],
+	"sends_telemetry_event": true
+}

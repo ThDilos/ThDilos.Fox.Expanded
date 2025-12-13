@@ -1,0 +1,332 @@
+{
+	"parent": "thorigins:fox_origin/evolution_root",
+	"criteria": {
+		"frozen_river": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:frozen_river"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"snowy_plains": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:snowy_plains"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"ice_spikes": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:ice_spikes"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"grove": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:grove"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"frozen_peaks": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:frozen_peaks"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"jagged_peaks": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:jagged_peaks"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"snowy_slopes": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:snowy_slopes"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"snowy_taiga": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:snowy_taiga"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"snowy_beach": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:snowy_beach"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"frozen_ocean": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:frozen_ocean"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"windswept_hills": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:windswept_hills"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"windswept_gravelly_hills": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:windswept_gravelly_hills"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"windswept_forest": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:windswept_forest"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"stony_shore": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:stony_shore"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"deep_frozen_ocean": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:deep_frozen_ocean"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"old_growth_spruce_taiga": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:old_growth_spruce_taiga"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"taiga": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:taiga"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		},
+		"old_growth_pine_taiga": {
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"biome": "minecraft:old_growth_pine_taiga"
+							}
+						}
+					}
+				]
+			},
+			"trigger": "minecraft:location"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.unlock_ice.description",
+			"fallback": "Unlock the Ice Fox Evolution\n\n§8Visit all 18 Vanilla Overworld biomes where snowfall can occur under building limit!"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:snow_block"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.unlock_ice.title",
+			"fallback": "§bSnowy Pilgrimage"
+		}
+	},
+	"requirements": [
+		["frozen_river"],
+		["snowy_plains"],
+		["ice_spikes"],
+		["grove"],
+		["frozen_peaks"],
+		["jagged_peaks"],
+		["snowy_slopes"],
+		["snowy_taiga"],
+		["snowy_beach"],
+		["frozen_ocean"],
+		["windswept_hills"],
+		["windswept_gravelly_hills"],
+		["windswept_forest"],
+		["stony_shore"],
+		["deep_frozen_ocean"],
+		["old_growth_spruce_taiga"],
+		["taiga"],
+		["old_growth_pine_taiga"]
+	],
+	"sends_telemetry_event": true
+}
