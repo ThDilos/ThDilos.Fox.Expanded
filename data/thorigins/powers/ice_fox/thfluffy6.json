@@ -149,15 +149,15 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:riding",
-						"inverted": true
-					},
-					{
 						"type": "origins:invert",
-						"condition": {
-							"type": "origins:riding",
+						"condition": {			
+							"type": "origins:riding_recursive",
 							"inverted": true
 						}
+					},
+					{
+						"type": "origins:riding_recursive",
+						"inverted": true
 					},
 					{
 						"type": "origins:or",
@@ -210,9 +210,17 @@
 			}
 		},
 		"condition": {
-			"type": "origins:gamemode",
-			"gamemode": "spectator",
-			"inverted": true
+			"type": "origins:or",
+			"inverted": true,
+			"conditions": [
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator"
+				},
+				{
+					"type": "origins:sneaking"
+				}
+			]
 		}
 	},
 
