@@ -355,8 +355,14 @@
 										{
 											"type": "origins:target_action",
 											"action": {
-												"type": "origins:execute_command",
-												"command": "/tag @s[type=!item] add temp2"
+												"type": "origins:if_else",
+												"condition": {
+													"type": "origins:living"
+												},
+												"if_action": {
+													"type": "origins:execute_command",
+													"command": "/tag @s add temp2"
+												}
 											}
 										},
 										{
@@ -594,14 +600,6 @@
 		"type": "origins:invisibility",
 		"render_armor": true,
 		"render_outline": false
-	},
-
-	"invul": {
-		"type": "origins:invulnerability",
-		"damage_condition": {
-			"type": "origins:name",
-			"name": "inWall"
-		}
 	},
 
 	"no_col": {

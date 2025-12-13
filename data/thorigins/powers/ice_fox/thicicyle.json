@@ -127,7 +127,7 @@
 									"actions": [
 										{
 											"type": "origins:execute_command",
-											"command": "/summon fox ^ ^0.7 ^0.7 {Age:-6000,DeathLootTable:\"minecraft:empty\",Silent:1b,NoAI:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icicyle\"],HandItems:[{id:ice,tag:{CustomModelData:159752},Count:1}],HandDropChances:[0f],CustomName:'[{\"text\":\"Ice Fox\\'s Icicyle\",\"color\":\"aqua\"}]'}"
+											"command": "/summon fox ^ ^0.7 ^0.7 {Invulnerable:1b,Age:-6000,DeathLootTable:\"minecraft:empty\",Silent:1b,NoAI:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icicyle\"],HandItems:[{id:ice,tag:{CustomModelData:159752},Count:1}],HandDropChances:[0f],CustomName:'[{\"text\":\"Ice Fox\\'s Icicyle\",\"color\":\"aqua\"}]'}"
 										},
 										{
 											"type": "origins:area_of_effect",
