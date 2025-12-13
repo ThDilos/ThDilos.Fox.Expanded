@@ -97,7 +97,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:thtransform_souls",
-					"change": 50
+					"change": 500
 				},
 				{
 					"type": "origins:trigger_cooldown",
@@ -232,13 +232,24 @@
 									"radius": 30,
 									"shape": "sphere",
 									"bientity_condition": {
-										"type": "origins:target_condition",
-										"condition": {
-											"type": "origins:origin",
-											"origin": "thorigins:ninetails",
-											"layer": "thorigins:origin"
-										},
-										"inverted": true
+										"type": "origins:and",
+										"conditions": [
+											{
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:living"
+												}
+											},
+											{
+												"type": "origins:target_condition",
+												"condition": {
+													"type": "origins:origin",
+													"origin": "thorigins:ninetails",
+													"layer": "thorigins:origin"
+												},
+												"inverted": true
+											}
+										]
 									},
 									"bientity_action": {
 										"type": "origins:target_action",
@@ -327,6 +338,12 @@
 									"command_step": 1,
 									"shape_type": "visual",
 									"fluid_handling": "any",
+									"bientity_condition": {
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:living"
+										}
+									},
 									"bientity_action": {
 										"type": "origins:and",
 										"actions": [
@@ -457,7 +474,7 @@
 							{
 								"type": "origins:change_resource",
 								"resource": "*:thtransform_souls",
-								"change": 100
+								"change": 300
 							},
 							{
 								"type": "origins:trigger_cooldown",
@@ -489,7 +506,7 @@
 									{
 										"effect": "minecraft:wither",
 										"amplifier": 0,
-										"duration": 100,
+										"duration": 300,
 										"show_icon": true,
 										"is_ambient": true,
 										"show_particles": false
@@ -497,7 +514,7 @@
 									{
 										"effect": "minecraft:blindness",
 										"amplifier": 0,
-										"duration": 100,
+										"duration": 300,
 										"show_icon": true,
 										"is_ambient": true,
 										"show_particles": false
@@ -505,7 +522,7 @@
 									{
 										"effect": "minecraft:nausea",
 										"amplifier": 0,
-										"duration": 100,
+										"duration": 300,
 										"show_icon": true,
 										"is_ambient": true,
 										"show_particles": false
@@ -590,7 +607,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:thtransform_souls",
-					"change": -50
+					"change": -100
 				},
 				{
 					"type": "origins:change_resource",
@@ -662,7 +679,7 @@
 				{
 					"type": "origins:resource",
 					"resource": "*:thtransform_souls",
-					"compare_to": 50,
+					"compare_to": 100,
 					"comparison": ">="
 				},
 				{

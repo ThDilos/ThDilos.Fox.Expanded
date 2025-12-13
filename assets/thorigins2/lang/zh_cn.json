@@ -190,27 +190,57 @@
 	"thfoxiality3.info3": "§f☠§r §f你是一只§r§7§l亡灵妖兽§r §f☠§r\n\n[§a+§r] 受到来自§8§l亡灵生物§r的伤害§a略微减少§r\n[§c-§r] §5亡灵杀手§r附魔对你有效\n[§e~§r] 部分起源的能力对你有不同的效果\n[§e~§r] 部分状态效果对你无效, 或效果反转\n[§c-§r] 正因如此, 你偏爱的食物不再给你生命恢复效果\n[§c-§r] 带有§5亡灵杀手§r的§l§6木剑§r针对你§c效果极佳§r\n[§a+§r] 获取更多的经验值",
 
 	"origin.thorigins.ice_fox.name": "寒冰狐狸",
-	"origin.thorigins.ice_fox.description": "寒冰狐狸 W.I.P :3 \n多做了个暴风雪技能，顺带加强了下战斗力",
+	"origin.thorigins.ice_fox.description": "能自由操控寒冰的神话狐狸，一念之间能将冰块打造为最锋利的矛，或是最坚固的盾。",
 
 	"ice_fox.thicicyle.name": "§6§l§n冰砾",
-	"ice_fox.thicicyle.description": "凭空凝聚高压冰锥来穿透/冻僵敌人, 或者用来旅行?",
-	"thicicyle.info0": "主动技能, 按下 [%s] 召唤一个往前移动的冰锥\n\n手中无物时, 按住 [%s] 并召唤冰锥会让你骑上冰锥\n\n按下 [%s] 同时引爆所有的冰锥",
-	"thicicyle.info1": "冰锥在5s后自动触发\n\n触发时, 发出一个小范围爆炸, 伤害并§b冰冻§r周围所有实体\n\n直接穿透实体能造成更高伤害",
+	"ice_fox.thicicyle.description": "凭空凝聚出高压冰锥来穿透/冻僵敌人, 或者用来旅行?",
+	"thicicyle.info0": "主动技能, 按下 [%s] 召唤一个往前移动的冰锥\n\n空手时, 按住 [%s] 并召唤冰锥会让你骑上冰锥\n\n按下 [%s] 同时引爆所有的冰锥",
+	"thicicyle.info1": "冰锥在5s后自动触发\n\n触发时, 发出一个小范围爆炸, 伤害并§b冰冻§r周围所有实体\n\n§8直接穿透目标能造成更高伤害",
 
 	"thfreeze.info": "§b冰冻§r的效果:\n取决于目标剩下的§b冰冻§r值\n§b1§r. 移速降低\n§b2§r. 伤害输出降低\n§b3§r. 受到更多伤害\n§b4§r. 持续受到冰冻伤害\n§b5§r. 禁用自然生命恢复",
 
 	"ice_fox.thblizzard.name": "§6§l§n暴风雪",
-	"ice_fox.thblizzard.description": "雪崩里的每一片雪花都是无辜的，除了你这一片 >:3",
+	"ice_fox.thblizzard.description": "如雪花般浮游半空，用呼啸的雪暴淹没一切来犯者。",
 	"thblizzard.info": "主动技能, 按住 [%s] 漂浮在半空中, 用 [%s] 和 [%s] 控制上升与下降\n\n继续按住 [%s], 会制造一个环绕你的局部暴风雪，持续§b冰冻§r并失明内部的生物\n\n潜行时按下 [%s] 退出漂浮",
 	"thblizzard.info1": "漂浮时: 主动技能§6§l§n冰砾§r在没有冰锥剩下时会消耗食物点\n\n漂浮与制造雪暴都会消耗你的食物点",
 
+	"ice_fox.thshield.name": "§6§l§n寒冰盾",
+	"ice_fox.thshield.description": "用层层坚冰保护自己和你珍视的生命。",
+	"thshield.key": "主动技能，\n§b§l§n冰盾§r\n按住 [%s] 转化§a3§r枚冰砾为一层狐毛上的§b冰盾§r。\n空手时，持续与另一个生物互动，以在他们身上附加一层§b冰盾§r。\n\n§9§l§n盾爆§r\n双击并按住 [%s] 感应周围的生物。\n持冰盾者和冰砾高亮为§9蓝色§r。\n\n在该状态下，使用 [%s] 引爆范围内你施加的所有§r冰盾§r.",
+	"thshield.info": "§b冰盾§r的效果\n§b1§r. 最多覆盖 5 层§b冰盾§r\n§b2§r. 消耗 1 层，抵消外来伤害，效果取决于剩余层数 §8(从100%到60%)§r\n§b3§r. 免疫冰冻和尖刺伤害\n§b4§r. 扑灭持盾者身上的火焰",
+	"ice_shield.granted_by_self": "§b一层坚冰覆盖了你的狐毛，给予你§e额外防御",
+	"ice_shield.granted_by_fox": "§b寒冰狐狸在你身上覆盖了一层魔法坚冰盾，给予你§e额外防御",
+	"ice_shield.revoked": "§b你身上的寒冰盾碎裂了",
+
+	"ice_fox.thaurora.name": "§a§n极光",
+	"ice_fox.thaurora.description": "“每个夜晚都有一只狐狸跑过无垠的夜空，用蓬松的尾巴绘出一条条壮观的北方之光。”",
+	"thaurora.info": "站立于夜空之下会让你充满极光能量\n\n极光能量的效果：\n[§a+§r] 增强所有来源的生命恢复效果\n[§a+§r] 持续的生命恢复效果\n[§a+§r] 在黑暗中看得更清晰\n[§a+§r] §6§l冰砾§r的补充速度翻一倍\n[§a+§r] 使用§6§l§n暴风雪§r漂浮时的移动速度加快200%",
+
 	"ice_fox.thcold_body.name": "§e§n寒冰之躯",
-	"ice_fox.thcold_body.description": "你的体温远远低于水凝点, 你的血液之寒胜于液氮.",
-	"thcold_body.info": "[§a+§r] 免疫中毒效果\n[§e~§r] §c无限冰船 YEAHHHHHHH§r（注：该技能在下个版本也许会删掉， 服务器环境下不稳定，还影响游玩效果...）\n[§a+§r] 处于寒冷群系内时获得抗性提升效果",
+	"ice_fox.thcold_body.description": "你的狐体进化得能在低温环境下表现更佳。",
+	"thcold_body.info": "[§a+§r] 免疫中毒效果\n[§e~§r] 冰凉的四爪有类似于寒冰行者附魔的效果\n[§a+§r] 处于寒冷群系内时获得抗性提升效果\n[§c-§r] 处于炎热群系内时获得虚弱和缓慢效果",
 
 	"ice_fox.thfluffy6.name": "§e§n毛绒绒*",
 	"ice_fox.thfluffy6.description": "你的毛毛柔软, 但内层结了坚冰, 让你有天然的护甲，并能抵抗大部分穿刺和划伤，但更惧怕火焰了。",
-	"thfluffy6.info": "[§e~§r] §b冰冻§r你周围的生物\n[§a+§r] 天然的护甲点数/韧性\n[§a+§r] 免疫刺伤\n[§a+§r] 降低来自的剑/弹射物伤害\n[§c-§r] 游泳速度降低\n[§c-§r] 受到§c更多++§r火焰§m/爆炸§r伤害\n[§a+§r] 冰冻抗性\n[§c-§r] 毛发受潮时速度下降\n[§e~§r] 保持静止把水甩干\n[§c-§r] 干燥的绒毛容易着火",
+	"thfluffy6.info": "[§e~§r] §b冰冻§r你周围的生物§8(除非你保持潜行)§r\n[§a+§r] 天然的护甲点数/韧性\n[§a+§r] 免疫刺伤\n[§a+§r] 降低来自的剑/弹射物伤害\n[§c-§r] 游泳速度降低\n[§c-§r] 受到§c更多++§r火焰§m/爆炸§r伤害\n[§a+§r] 冰冻抗性\n[§c-§r] 毛发受潮时速度下降\n[§e~§r] 保持静止把水甩干\n[§c-§r] 干燥的绒毛容易着火",
+
+	"thorigins.advancements.evolution_root.title": "进化",
+	"thorigins.advancements.evolution_root.description": "小狐狸充满了潜力！",
+
+	"thorigins.advancements.unlock_lightning.title": "§e带电刺毛团",
+	"thorigins.advancements.unlock_lightning.description": "解锁闪电狐狸进化\n\n§8被闪电击中时小概率解锁",
+
+	"thorigins.advancements.unlock_fire.title": "§c纵火 :3",
+	"thorigins.advancements.unlock_fire.description": "解锁火焰狐狸进化\n\n§8完成原版全部23个下界进度",
+
+	"thorigins.advancements.unlock_kitsune.title": "§6生与命之灵",
+	"thorigins.advancements.unlock_kitsune.description": "解锁灵狐进化\n\n§8业报值达到 +200%",
+
+	"thorigins.advancements.unlock_ninetails.title": "§4血与死之魔",
+	"thorigins.advancements.unlock_ninetails.description": "解锁九尾进化\n\n§8业报值达到 -200%",
+
+	"thorigins.advancements.unlock_ice.title": "§b冰雪圣巡",
+	"thorigins.advancements.unlock_ice.description": "解锁寒冰狐狸进化\n\n§8拜访原版全部18个在建筑高度内会下雪的主世界群系",
 
 	"layer.thorigins.origin.name": "元素之力",
 

@@ -1,0 +1,31 @@
+{
+	"parent": "thorigins:fox_origin/root",
+	"criteria": {
+		"chose_fox": {
+			"trigger": "origins:chose_origin",
+			"conditions": {
+				"origin": "thorigins:fox"
+			}
+		}
+	},
+	"display": {
+		"announce_to_chat": false,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.evolution_root.description",
+			"fallback": "Little Fox is Full of Potential!"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:dragon_egg"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.evolution_root.title",
+			"fallback": "Evolutions"
+		}
+	},
+	"requirements": [["chose_fox"]],
+	"sends_telemetry_event": true
+}

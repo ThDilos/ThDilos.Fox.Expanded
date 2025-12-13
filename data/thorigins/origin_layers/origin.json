@@ -5,12 +5,23 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:power",
-						"power": "thorigins:evolution_pass_lightning"
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_lightning"
 					},
 					{
-						"type": "origins:power",
-						"power": "thorigins:thtransform"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:fox",
+								"layer": "origins:origin"
+							},
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:element_fox",
+								"layer": "origins:origin"
+							}
+						]
 					}
 				]
 			},
@@ -21,12 +32,23 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:power",
-						"power": "thorigins:evolution_pass_fire"
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_fire"
 					},
 					{
-						"type": "origins:power",
-						"power": "thorigins:thtransform"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:fox",
+								"layer": "origins:origin"
+							},
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:element_fox",
+								"layer": "origins:origin"
+							}
+						]
 					}
 				]
 			},
@@ -37,12 +59,23 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:power",
-						"power": "thorigins:evolution_pass_kitsune"
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_kitsune"
 					},
 					{
-						"type": "origins:power",
-						"power": "thorigins:thtransform"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:fox",
+								"layer": "origins:origin"
+							},
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:element_fox",
+								"layer": "origins:origin"
+							}
+						]
 					}
 				]
 			},
@@ -53,12 +86,23 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:power",
-						"power": "thorigins:evolution_pass_ninetails"
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_ninetails"
 					},
 					{
-						"type": "origins:power",
-						"power": "thorigins:thtransform"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:fox",
+								"layer": "origins:origin"
+							},
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:element_fox",
+								"layer": "origins:origin"
+							}
+						]
 					}
 				]
 			},
@@ -69,12 +113,23 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:power",
-						"power": "thorigins:evolution_pass_ice"
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_ice"
 					},
 					{
-						"type": "origins:power",
-						"power": "thorigins:thtransform"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:fox",
+								"layer": "origins:origin"
+							},
+							{
+								"type": "origins:origin",
+								"origin": "thorigins:element_fox",
+								"layer": "origins:origin"
+							}
+						]
 					}
 				]
 			},
@@ -82,8 +137,19 @@
 		},
 		{
 			"condition": {
-				"type": "origins:power",
-				"power": "thorigins:thtransform"
+				"type": "origins:or",
+				"conditions": [
+					{
+						"type": "origins:origin",
+						"origin": "thorigins:fox",
+						"layer": "origins:origin"
+					},
+					{
+						"type": "origins:origin",
+						"origin": "thorigins:element_fox",
+						"layer": "origins:origin"
+					}
+				]
 			},
 			"origins": ["thorigins:default_fox"]
 		}

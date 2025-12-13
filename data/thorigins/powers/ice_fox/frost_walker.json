@@ -9,11 +9,15 @@
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/scale set pehkui:hitbox_height 0.1 @s"
+					"command": "/data merge entity @s {Invisible:1b,NoBasePlate:1b,DisabledSlots:4144959,CustomName:'[{\"text\":\"Ice Fox Frost Walker\"}]',Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icefoxpaws\"],ArmorItems:[{id:leather_boots,tag:{Enchantments:[{id:frost_walker,lvl:2}],Unbreakable:1b},Count:1}],ArmorDropChances:[0f]}"
 				},
 				{
 					"type": "origins:execute_command",
-					"command": "/scale set pehkui:hitbox_width 0.1 @s"
+					"command": "/scale set pehkui:hitbox_height 0.01 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:hitbox_width 0.01 @s"
 				},
 				{
 					"type": "origins:execute_command",
@@ -64,32 +68,24 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/data modify entity @s ArmorItems[0].tag.Enchantments[0].lvl set value 4"
+						"command": "/item replace entity @s armor.feet with minecraft:leather_boots{Enchantments:[{id:frost_walker,lvl:4}]}"
 					},
 					"else_action": {
 						"type": "origins:execute_command",
-						"command": "/data modify entity @s ArmorItems[0].tag.Enchantments[0].lvl set value 1"
+						"command": "/item replace entity @s armor.feet with minecraft:leather_boots{Enchantments:[{id:frost_walker,lvl:1}]}"
 					}
 				},
 				{
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:command",
-						"command": "/execute if entity @a[tag=foxie]",
+						"command": "/execute if entity @a[tag=foxie,distance=..8]",
 						"compare_to": 0,
 						"comparison": "=="
 					},
 					"if_action": {
 						"type": "origins:execute_command",
 						"command": "/kill @s"
-					}
-				},
-				{
-					"type": "origins:equipped_item_action",
-					"equipment_slot": "feet",
-					"action": {
-						"type": "origins:damage",
-						"amount": -1000
 					}
 				}
 			]
