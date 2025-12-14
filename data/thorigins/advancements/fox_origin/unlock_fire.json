@@ -5,9 +5,13 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
-						"advancements": { "minecraft:nether/root": true }
+						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
+							"minecraft:nether/root": true
+						}
 					}
 				}
 			}
@@ -16,9 +20,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/return_to_sender": true
 						}
 					}
@@ -29,9 +35,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/find_bastion": true
 						}
 					}
@@ -42,9 +50,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/obtain_ancient_debris": true
 						}
 					}
@@ -55,9 +65,13 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
-						"advancements": { "minecraft:nether/fast_travel": true }
+						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
+							"minecraft:nether/fast_travel": true
+						}
 					}
 				}
 			}
@@ -66,9 +80,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/find_fortress": true
 						}
 					}
@@ -79,9 +95,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/obtain_crying_obsidian": true
 						}
 					}
@@ -92,9 +110,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/distract_piglin": true
 						}
 					}
@@ -105,9 +125,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/ride_strider": true
 						}
 					}
@@ -118,9 +140,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/uneasy_alliance": true
 						}
 					}
@@ -131,9 +155,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/loot_bastion": true
 						}
 					}
@@ -144,9 +170,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/netherite_armor": true
 						}
 					}
@@ -157,9 +185,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/get_wither_skull": true
 						}
 					}
@@ -170,9 +200,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/obtain_blaze_rod": true
 						}
 					}
@@ -183,9 +215,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/charge_respawn_anchor": true
 						}
 					}
@@ -196,9 +230,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/ride_strider_in_overworld_lava": true
 						}
 					}
@@ -209,9 +245,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/explore_nether": true
 						}
 					}
@@ -222,9 +260,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/summon_wither": true
 						}
 					}
@@ -235,9 +275,13 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
-						"advancements": { "minecraft:nether/brew_potion": true }
+						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
+							"minecraft:nether/brew_potion": true
+						}
 					}
 				}
 			}
@@ -246,9 +290,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/create_beacon": true
 						}
 					}
@@ -259,9 +305,13 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
-						"advancements": { "minecraft:nether/all_potions": true }
+						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
+							"minecraft:nether/all_potions": true
+						}
 					}
 				}
 			}
@@ -270,9 +320,11 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
 						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
 							"minecraft:nether/create_full_beacon": true
 						}
 					}
@@ -283,9 +335,13 @@
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
+					"nbt": "{Tags: [\"foxie\"]}",
 					"type_specific": {
 						"type": "player",
-						"advancements": { "minecraft:nether/all_effects": true }
+						"advancements": {
+							"thorigins:fox_origin/evolution_root": true,
+							"minecraft:nether/all_effects": true
+						}
 					}
 				}
 			}
@@ -301,7 +357,7 @@
 		"frame": "challenge",
 		"hidden": false,
 		"icon": {
-			"item": "minecraft:blaze_powder"
+			"id": "minecraft:blaze_powder"
 		},
 		"show_toast": true,
 		"title": {
@@ -310,29 +366,29 @@
 		}
 	},
 	"requirements": [
-		[ "root" ],
-		[ "return_to_sender" ],
-		[ "find_bastion" ],
-		[ "obtain_ancient_debris" ],
-		[ "fast_travel" ],
-		[ "find_fortress" ],
-		[ "obtain_crying_obsidian" ],
-		[ "distract_piglin" ],
-		[ "ride_strider" ],
-		[ "uneasy_alliance" ],
-		[ "loot_bastion" ],
-		[ "netherite_armor" ],
-		[ "get_wither_skull" ],
-		[ "obtain_blaze_rod" ],
-		[ "charge_respawn_anchor" ],
-		[ "ride_strider_in_overworld_lava" ],
-		[ "explore_nether" ],
-		[ "summon_wither" ],
-		[ "brew_potion" ],
-		[ "create_beacon" ],
-		[ "all_potions" ],
-		[ "create_full_beacon" ],
-		[ "all_effects" ]
+		["root"],
+		["return_to_sender"],
+		["find_bastion"],
+		["obtain_ancient_debris"],
+		["fast_travel"],
+		["find_fortress"],
+		["obtain_crying_obsidian"],
+		["distract_piglin"],
+		["ride_strider"],
+		["uneasy_alliance"],
+		["loot_bastion"],
+		["netherite_armor"],
+		["get_wither_skull"],
+		["obtain_blaze_rod"],
+		["charge_respawn_anchor"],
+		["ride_strider_in_overworld_lava"],
+		["explore_nether"],
+		["summon_wither"],
+		["brew_potion"],
+		["create_beacon"],
+		["all_potions"],
+		["create_full_beacon"],
+		["all_effects"]
 	],
 	"sends_telemetry_event": true
 }
