@@ -9,7 +9,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:frozen_river"
+								"biomes": "minecraft:frozen_river"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -32,7 +32,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:snowy_plains"
+								"biomes": "minecraft:snowy_plains"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -55,7 +55,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:ice_spikes"
+								"biomes": "minecraft:ice_spikes"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -78,7 +78,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:grove"
+								"biomes": "minecraft:grove"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -101,7 +101,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:frozen_peaks"
+								"biomes": "minecraft:frozen_peaks"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -124,7 +124,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:jagged_peaks"
+								"biomes": "minecraft:jagged_peaks"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -147,7 +147,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:snowy_slopes"
+								"biomes": "minecraft:snowy_slopes"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -170,7 +170,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:snowy_taiga"
+								"biomes": "minecraft:snowy_taiga"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -193,7 +193,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:snowy_beach"
+								"biomes": "minecraft:snowy_beach"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -216,7 +216,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:frozen_ocean"
+								"biomes": "minecraft:frozen_ocean"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -239,7 +239,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:windswept_hills"
+								"biomes": "minecraft:windswept_hills"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -262,7 +262,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:windswept_gravelly_hills"
+								"biomes": "minecraft:windswept_gravelly_hills"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -285,7 +285,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:windswept_forest"
+								"biomes": "minecraft:windswept_forest"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -308,7 +308,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:stony_shore"
+								"biomes": "minecraft:stony_shore"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -331,7 +331,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:deep_frozen_ocean"
+								"biomes": "minecraft:deep_frozen_ocean"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -354,7 +354,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:old_growth_spruce_taiga"
+								"biomes": "minecraft:old_growth_spruce_taiga"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -377,7 +377,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:taiga"
+								"biomes": "minecraft:taiga"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
@@ -400,7 +400,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"biome": "minecraft:old_growth_pine_taiga"
+								"biomes": "minecraft:old_growth_pine_taiga"
 							},
 							"nbt": "{Tags: [\"foxie\"]}",
 							"type_specific": {
