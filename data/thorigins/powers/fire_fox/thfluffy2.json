@@ -112,7 +112,7 @@
 					"condition": {
 						"type": "origins:resource",
 						"resource": "*:fox/thfluffy_wetness",
-						"compare_to": 100,
+						"compare_to": 50,
 						"comparison": ">="
 					},
 					"if_action": {
@@ -149,7 +149,7 @@
 					"condition": {
 						"type": "origins:resource",
 						"resource": "*:fox/thfluffy_snowness",
-						"compare_to": 100,
+						"compare_to": 50,
 						"comparison": ">="
 					},
 					"if_action": {

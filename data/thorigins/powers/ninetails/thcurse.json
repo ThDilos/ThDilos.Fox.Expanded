@@ -240,7 +240,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:thtransform_souls",
-					"change": 25
+					"change": 200
 				},
 				{
 					"type": "origins:trigger_cooldown",

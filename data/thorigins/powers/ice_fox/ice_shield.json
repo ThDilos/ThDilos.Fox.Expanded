@@ -1,0 +1,1264 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"_init_": {
+		"type": "origins:action_on_callback",
+		"entity_action_gained": {
+			"type": "origins:play_sound",
+			"sound": "minecraft:block.glass.break",
+			"category": "players",
+			"pitch": 1.9,
+			"volume": 0.6
+		},
+		"entity_action_added": {
+			"type": "origins:execute_command",
+			"command": "/tag @s add shield_carrier"
+		},
+		"entity_action_lost": {
+			"type": "origins:execute_command",
+			"command": "/tag @s remove shield_carrier"
+		}
+	},
+
+	"show_time": {
+		"type": "origins:cooldown",
+		"cooldown": 60
+	},
+
+	"show_count": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"key": {
+			"continuous": true,
+			"key": "key.sneak"
+		},
+		"entity_action": {
+			"type": "origins:trigger_cooldown",
+			"power": "*:*_show_time"
+		}
+	},
+
+	"change_shield_count": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 2,
+		"start_value": 1,
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_show_time"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_change_shield_count",
+					"change": 1
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_shield_count",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:on_fire"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:delay",
+								"ticks": 1,
+								"action": {
+									"type": "origins:extinguish"
+								}
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.fire.extinguish",
+								"pitch": 1.3,
+								"volume": 0.8,
+								"category": "players"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.9,
+								"volume": 0.6
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 2,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.8,
+								"volume": 0.6
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 3,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.7,
+								"volume": 0.6
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 4,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 0.6
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 5,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 0.28
+							}
+						}
+					]
+				}
+			]
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_show_time"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_change_shield_count",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_shield_count",
+					"change": 1
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": {
+						"type": "minecraft:block",
+						"params": {
+							"block_state": {
+								"Name": "ice"
+							}
+						}
+					},
+					"offset_y": 1,
+					"speed": 0.5,
+					"count": 75
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 2,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.8,
+								"volume": 0.4
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 3,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.7,
+								"volume": 0.3
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 4,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.6,
+								"volume": 0.3
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 5,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.glass.break",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 0.28
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"shield_count": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 9,
+		"start_value": 1,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
+			"bar_index": 21,
+			"order": -999,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_show_time",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		},
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.glass.break",
+					"category": "players",
+					"pitch": 0.8,
+					"volume": 0.6
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": {
+						"type": "minecraft:block",
+						"params": {
+							"block_state": {
+								"Name": "ice"
+							}
+						}
+					},
+					"offset_y": 1,
+					"speed": 0.5,
+					"count": 75
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:flash ~ ~1 ~ 0 0 0 1 1 force"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/title @s actionbar {\"text\":\"\",\"extra\":[{\"translate\":\"ice_shield.revoked\",\"fallback\":\"§bThe ice shield on your body was shattered\",\"with\":[{\"selector\":\"@e[tag=interacted,limit=1,sort=nearest]\",\"color\":\"aqua\"}]}]}"
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:revoke_power",
+						"power": "*:ice_fox/ice_shield",
+						"source": "thorigins:temp"
+					}
+				}
+			]
+		}
+	},
+
+	"icy_protection": {
+		"type": "origins:invulnerability",
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:name",
+					"name": "cactus"
+				},
+				{
+					"type": "origins:name",
+					"name": "freeze"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:origin",
+			"origin": "thorigins:ice_fox",
+			"layer": "thorigins:origin",
+			"inverted": true
+		}
+	},
+
+	"shield_effect": {
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"operation": "multiply_total_additive",
+			"resource": "*:*_shield_count",
+			"amount": 0,
+			"modifier": {
+				"operation": "multiply_total_additive",
+				"amount": -1.2
+			}
+		},
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:name",
+					"name": "onFire"
+				},
+				{
+					"type": "origins:in_tag",
+					"tag": "minecraft:bypasses_armor",
+					"inverted": true
+				}
+			]
+		},
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:spawn_particles",
+						"particle": {
+							"type": "minecraft:block",
+							"params": {
+								"block_state": {
+									"Name": "ice"
+								}
+							}
+						},
+						"offset_y": 1,
+						"speed": 0.5,
+						"count": 75
+					},
+					{
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_show_time"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "*:*_change_shield_count",
+						"change": -1
+					},
+					{
+						"type": "origins:trigger_cooldown",
+						"power": "*:*_effect_cd"
+					}
+				]
+			}
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_effect_cd",
+			"compare_to": 0,
+			"comparison": "=="
+		}
+	},
+
+	"effect_cd": {
+		"type": "origins:cooldown",
+		"cooldown": 5
+	},
+
+	"detonating": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1
+	},
+
+	"ticks": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_detonation",
+			"change": 1
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_detonating",
+			"compare_to": 1,
+			"comparison": "=="
+		}
+	},
+
+	"detonation": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 10,
+		"start_value": 0,
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_detonating",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_detonation",
+					"change": -1
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @s add immune_to_shield_burst"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/particle minecraft:flash ^ ^ ^ 0 0 0 1 1 force"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.glass.break",
+					"pitch": 1.5,
+					"volume": 2,
+					"category": "players"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 5,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:play_sound",
+										"sound": "minecraft:entity.generic.explode",
+										"category": "players",
+										"pitch": 0.8,
+										"volume": 1.6
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": "minecraft:explosion",
+										"count": 5,
+										"spread": {
+											"x": 1,
+											"y": 1,
+											"z": 1
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:snowflake ~ ~1 ~ 0 0 0 0.15 125"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:item_snowball ~ ~1 ~ 0 0 0 0.15 125"
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": {
+											"type": "minecraft:block",
+											"params": {
+												"block_state": {
+													"Name": "ice"
+												}
+											}
+										},
+										"offset_y": 1,
+										"speed": 0.5,
+										"count": 250
+									},
+									{
+										"type": "origins:area_of_effect",
+										"radius": 7,
+										"shape": "sphere",
+										"bientity_condition": {
+											"type": "origins:can_see"
+										},
+										"bientity_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:add_velocity",
+													"z": 5
+												},
+												{
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:target_condition",
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:nbt",
+																	"nbt": "{Tags:[\"immune_to_shield_burst\"]}",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:power",
+																	"power": "*:ice_fox/thshield",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:living"
+																}
+															]
+														}
+													},
+													"if_action": {
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:damage",
+																"amount": 10,
+																"source": {
+																	"name": "freeze"
+																},
+																"damage_type": "freeze"
+															},
+															{
+																"type": "origins:damage",
+																"amount": 10,
+																"source": {
+																	"name": "explosion"
+																},
+																"damage_type": "explosion"
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:apply_effect",
+																	"effect": {
+																		"id": "minecraft:slowness",
+																		"show_particles": false,
+																		"is_ambient": true,
+																		"amplifier": 2,
+																		"duration": 100,
+																		"show_icon": true
+																	}
+																}
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:if_else",
+																	"condition": {
+																		"type": "origins:power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	},
+																	"if_action": {
+																		"type": "origins:change_resource",
+																		"resource": "*:ice_fox/thfreeze_timer",
+																		"change": 200
+																	},
+																	"else_action": {
+																		"type": "origins:grant_power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	}
+																}
+															}
+														]
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 4,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:play_sound",
+										"sound": "minecraft:entity.generic.explode",
+										"category": "players",
+										"pitch": 1.2,
+										"volume": 1.4
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": "minecraft:explosion",
+										"count": 4,
+										"spread": {
+											"x": 1,
+											"y": 1,
+											"z": 1
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:snowflake ~ ~1 ~ 0 0 0 0.15 100"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:item_snowball ~ ~1 ~ 0 0 0 0.15 100"
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": {
+											"type": "minecraft:block",
+											"params": {
+												"block_state": {
+													"Name": "ice"
+												}
+											}
+										},
+										"offset_y": 1,
+										"speed": 0.5,
+										"count": 200
+									},
+									{
+										"type": "origins:area_of_effect",
+										"radius": 6.5,
+										"shape": "sphere",
+										"bientity_condition": {
+											"type": "origins:can_see"
+										},
+										"bientity_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:add_velocity",
+													"z": 4.5
+												},
+												{
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:target_condition",
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:nbt",
+																	"nbt": "{Tags:[\"immune_to_shield_burst\"]}",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:power",
+																	"power": "*:ice_fox/thshield",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:living"
+																}
+															]
+														}
+													},
+													"if_action": {
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:damage",
+																"amount": 8,
+																"source": {
+																	"name": "freeze"
+																},
+																"damage_type": "freeze"
+															},
+															{
+																"type": "origins:damage",
+																"amount": 8,
+																"source": {
+																	"name": "explosion"
+																},
+																"damage_type": "explosion"
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:apply_effect",
+																	"effect": {
+																		"id": "minecraft:slowness",
+																		"show_particles": false,
+																		"is_ambient": true,
+																		"amplifier": 2,
+																		"duration": 250,
+																		"show_icon": true
+																	}
+																}
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:if_else",
+																	"condition": {
+																		"type": "origins:power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	},
+																	"if_action": {
+																		"type": "origins:change_resource",
+																		"resource": "*:ice_fox/thfreeze_timer",
+																		"change": 200
+																	},
+																	"else_action": {
+																		"type": "origins:grant_power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	}
+																}
+															}
+														]
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 3,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:play_sound",
+										"sound": "minecraft:entity.generic.explode",
+										"category": "players",
+										"pitch": 1.4,
+										"volume": 1.1
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": "minecraft:explosion",
+										"count": 3,
+										"spread": {
+											"x": 1,
+											"y": 1,
+											"z": 1
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:snowflake ~ ~1 ~ 0 0 0 0.15 75"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:item_snowball ~ ~1 ~ 0 0 0 0.15 75"
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": {
+											"type": "minecraft:block",
+											"params": {
+												"block_state": {
+													"Name": "ice"
+												}
+											}
+										},
+										"offset_y": 1,
+										"speed": 0.5,
+										"count": 150
+									},
+									{
+										"type": "origins:area_of_effect",
+										"radius": 6,
+										"shape": "sphere",
+										"bientity_condition": {
+											"type": "origins:can_see"
+										},
+										"bientity_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:add_velocity",
+													"z": 4
+												},
+												{
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:target_condition",
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:nbt",
+																	"nbt": "{Tags:[\"immune_to_shield_burst\"]}",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:power",
+																	"power": "*:ice_fox/thshield",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:living"
+																}
+															]
+														}
+													},
+													"if_action": {
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:damage",
+																"amount": 7,
+																"source": {
+																	"name": "freeze"
+																},
+																"damage_type": "freeze"
+															},
+															{
+																"type": "origins:damage",
+																"amount": 7,
+																"source": {
+																	"name": "explosion"
+																},
+																"damage_type": "explosion"
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:apply_effect",
+																	"effect": {
+																		"id": "minecraft:slowness",
+																		"show_particles": false,
+																		"is_ambient": true,
+																		"amplifier": 2,
+																		"duration": 200,
+																		"show_icon": true
+																	}
+																}
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:if_else",
+																	"condition": {
+																		"type": "origins:power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	},
+																	"if_action": {
+																		"type": "origins:change_resource",
+																		"resource": "*:ice_fox/thfreeze_timer",
+																		"change": 150
+																	},
+																	"else_action": {
+																		"type": "origins:grant_power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	}
+																}
+															}
+														]
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 2,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:play_sound",
+										"sound": "minecraft:entity.generic.explode",
+										"category": "players",
+										"pitch": 1.6,
+										"volume": 1.0
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": "minecraft:explosion",
+										"count": 2,
+										"spread": {
+											"x": 1,
+											"y": 1,
+											"z": 1
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:snowflake ~ ~1 ~ 0 0 0 0.15 50"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:item_snowball ~ ~1 ~ 0 0 0 0.15 50"
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": {
+											"type": "minecraft:block",
+											"params": {
+												"block_state": {
+													"Name": "ice"
+												}
+											}
+										},
+										"offset_y": 1,
+										"speed": 0.5,
+										"count": 100
+									},
+									{
+										"type": "origins:area_of_effect",
+										"radius": 5.5,
+										"shape": "sphere",
+										"bientity_condition": {
+											"type": "origins:can_see"
+										},
+										"bientity_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:add_velocity",
+													"z": 3.5
+												},
+												{
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:target_condition",
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:nbt",
+																	"nbt": "{Tags:[\"immune_to_shield_burst\"]}",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:power",
+																	"power": "*:ice_fox/thshield",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:living"
+																}
+															]
+														}
+													},
+													"if_action": {
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:damage",
+																"amount": 5,
+																"source": {
+																	"name": "freeze"
+																},
+																"damage_type": "freeze"
+															},
+															{
+																"type": "origins:damage",
+																"amount": 5,
+																"source": {
+																	"name": "explosion"
+																},
+																"damage_type": "explosion"
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:apply_effect",
+																	"effect": {
+																		"id": "minecraft:slowness",
+																		"show_particles": false,
+																		"is_ambient": true,
+																		"amplifier": 2,
+																		"duration": 150,
+																		"show_icon": true
+																	}
+																}
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:if_else",
+																	"condition": {
+																		"type": "origins:power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	},
+																	"if_action": {
+																		"type": "origins:change_resource",
+																		"resource": "*:ice_fox/thfreeze_timer",
+																		"change": 120
+																	},
+																	"else_action": {
+																		"type": "origins:grant_power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	}
+																}
+															}
+														]
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:*_shield_count",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:play_sound",
+										"sound": "minecraft:entity.generic.explode",
+										"category": "players",
+										"pitch": 1.8,
+										"volume": 0.8
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": "minecraft:explosion",
+										"count": 1,
+										"spread": {
+											"x": 1,
+											"y": 1,
+											"z": 1
+										}
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:snowflake ~ ~ ~ 0 0 0 0.15 25"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/particle minecraft:item_snowball ~ ~ ~ 0 0 0 0.15 25"
+									},
+									{
+										"type": "origins:spawn_particles",
+										"particle": {
+											"type": "minecraft:block",
+											"params": {
+												"block_state": {
+													"Name": "ice"
+												}
+											}
+										},
+										"offset_y": 1,
+										"speed": 0.5,
+										"count": 50
+									},
+									{
+										"type": "origins:area_of_effect",
+										"radius": 5,
+										"shape": "sphere",
+										"bientity_condition": {
+											"type": "origins:can_see"
+										},
+										"bientity_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:add_velocity",
+													"z": 3
+												},
+												{
+													"type": "origins:if_else",
+													"condition": {
+														"type": "origins:target_condition",
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:nbt",
+																	"nbt": "{Tags:[\"immune_to_shield_burst\"]}",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:power",
+																	"power": "*:ice_fox/thshield",
+																	"inverted": true
+																},
+																{
+																	"type": "origins:living"
+																}
+															]
+														}
+													},
+													"if_action": {
+														"type": "origins:and",
+														"actions": [
+															{
+																"type": "origins:damage",
+																"amount": 3,
+																"source": {
+																	"name": "freeze"
+																},
+																"damage_type": "freeze"
+															},
+															{
+																"type": "origins:damage",
+																"amount": 3,
+																"source": {
+																	"name": "explosion"
+																},
+																"damage_type": "explosion"
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:apply_effect",
+																	"effect": {
+																		"id": "minecraft:slowness",
+																		"show_particles": false,
+																		"is_ambient": true,
+																		"amplifier": 2,
+																		"duration": 100,
+																		"show_icon": true
+																	}
+																}
+															},
+															{
+																"type": "origins:target_action",
+																"action": {
+																	"type": "origins:if_else",
+																	"condition": {
+																		"type": "origins:power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	},
+																	"if_action": {
+																		"type": "origins:change_resource",
+																		"resource": "*:ice_fox/thfreeze_timer",
+																		"change": 100
+																	},
+																	"else_action": {
+																		"type": "origins:grant_power",
+																		"power": "*:ice_fox/thfreeze",
+																		"source": "thorigins:temp"
+																	}
+																}
+															}
+														]
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @s remove immune_to_shield_burst"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_shield_count",
+					"change": -5
+				}
+			]
+		}
+	},
+
+	"final_glo": {
+		"type": "origins:self_glow",
+		"blue": 1.0,
+		"red": 0.6,
+		"green": 0.6,
+		"use_teams": false,
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_detonating",
+			"compare_to": 1,
+			"comparison": "=="
+		}
+	}
+}

@@ -173,6 +173,7 @@
 
 	"use_blaze_rod": {
 		"type": "origins:active_self",
+		"cooldown": 5,
 		"key": "key.use",
 		"condition": {
 			"type": "origins:and",
@@ -201,7 +202,7 @@
 				{
 					"type": "origins:change_resource",
 					"resource": "*:thtransform_temperature",
-					"change": 1000,
+					"change": 500,
 					"operation": "add"
 				},
 				{

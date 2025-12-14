@@ -90,115 +90,24 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:and",
-						"conditions": [
-							{
-								"type": "origins:resource",
-								"resource": "*:*_lock_fire",
-								"compare_to": 1,
-								"comparison": "=="
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/root"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/return_to_sender"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/find_bastion"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/obtain_ancient_debris"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/fast_travel"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/find_fortress"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/obtain_crying_obsidian"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/distract_piglin"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/ride_strider"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/uneasy_alliance"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/loot_bastion"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/use_lodestone"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/netherite_armor"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/get_wither_skull"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/obtain_blaze_rod"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/charge_respawn_anchor"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/ride_strider_in_overworld_lava"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/explore_nether"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/summon_wither"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/brew_potion"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/create_beacon"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/all_potions"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/create_full_beacon"
-							},
-							{
-								"type": "origins:advancement",
-								"advancement": "nether/all_effects"
-							}
-						]
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_fire"
 					},
 					"if_action": {
 						"type": "origins:change_resource",
 						"resource": "*:*_lock_fire",
+						"change": -1
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_ice"
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_lock_ice",
 						"change": -1
 					}
 				},
@@ -249,110 +158,6 @@
 								"command": "/origin set @s thorigins:origin origins:empty"
 							}
 						]
-					}
-				}
-			]
-		}
-	},
-
-	"grant_evolution_passes": {
-		"type": "origins:action_on_callback",
-		"entity_action_added": {
-			"type": "origins:and",
-			"actions": [
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_lock_fire",
-						"compare_to": 0,
-						"comparison": "=="
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "*:evolution_pass_fire",
-						"source": "thorigins:universal"
-					},
-					"else_action": {
-						"type": "origins:revoke_power",
-						"power": "*:evolution_pass_fire",
-						"source": "thorigins:universal"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_lock_lightning",
-						"compare_to": 0,
-						"comparison": "=="
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "*:evolution_pass_lightning",
-						"source": "thorigins:universal"
-					},
-					"else_action": {
-						"type": "origins:revoke_power",
-						"power": "*:evolution_pass_lightning",
-						"source": "thorigins:universal"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_lock_kitsune",
-						"compare_to": 0,
-						"comparison": "=="
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "*:evolution_pass_kitsune",
-						"source": "thorigins:universal"
-					},
-					"else_action": {
-						"type": "origins:revoke_power",
-						"power": "*:evolution_pass_kitsune",
-						"source": "thorigins:universal"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_lock_ninetails",
-						"compare_to": 0,
-						"comparison": "=="
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "*:evolution_pass_ninetails",
-						"source": "thorigins:universal"
-					},
-					"else_action": {
-						"type": "origins:revoke_power",
-						"power": "*:evolution_pass_ninetails",
-						"source": "thorigins:universal"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:resource",
-						"resource": "*:*_lock_ice",
-						"compare_to": 0,
-						"comparison": "=="
-					},
-					"if_action": {
-						"type": "origins:grant_power",
-						"power": "*:evolution_pass_ice",
-						"source": "thorigins:universal"
-					},
-					"else_action": {
-						"type": "origins:revoke_power",
-						"power": "*:evolution_pass_ice",
-						"source": "thorigins:universal"
 					}
 				}
 			]
@@ -718,9 +523,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:grant_power",
-					"power": "*:evolution_pass_lightning",
-					"source": "thorigins:universal"
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/unlock_lightning"
 				},
 				{
 					"type": "origins:execute_command",
@@ -735,9 +539,8 @@
 			]
 		},
 		"max_action": {
-			"type": "origins:revoke_power",
-			"power": "*:evolution_pass_lightning",
-			"source": "thorigins:universal"
+			"type": "origins:execute_command",
+			"command": "/advancement revoke @s only thorigins:fox_origin/unlock_lightning"
 		}
 	},
 
@@ -795,9 +598,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:grant_power",
-					"power": "*:evolution_pass_fire",
-					"source": "thorigins:universal"
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/unlock_fire"
 				},
 				{
 					"type": "origins:execute_command",
@@ -812,9 +614,8 @@
 			]
 		},
 		"max_action": {
-			"type": "origins:revoke_power",
-			"power": "*:evolution_pass_fire",
-			"source": "thorigins:universal"
+			"type": "origins:execute_command",
+			"command": "/advancement revoke @s only thorigins:fox_origin/unlock_fire"
 		}
 	},
 
@@ -827,9 +628,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:grant_power",
-					"power": "*:evolution_pass_kitsune",
-					"source": "thorigins:universal"
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/unlock_kitsune"
 				},
 				{
 					"type": "origins:execute_command",
@@ -844,9 +644,8 @@
 			]
 		},
 		"max_action": {
-			"type": "origins:revoke_power",
-			"power": "*:evolution_pass_kitsune",
-			"source": "thorigins:universal"
+			"type": "origins:execute_command",
+			"command": "/advancement revoke @s only thorigins:fox_origin/unlock_kitsune"
 		}
 	},
 
@@ -859,9 +658,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:grant_power",
-					"power": "*:evolution_pass_ninetails",
-					"source": "thorigins:universal"
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/unlock_ninetails"
 				},
 				{
 					"type": "origins:execute_command",
@@ -876,9 +674,8 @@
 			]
 		},
 		"max_action": {
-			"type": "origins:revoke_power",
-			"power": "*:evolution_pass_ninetails",
-			"source": "thorigins:universal"
+			"type": "origins:execute_command",
+			"command": "/advancement revoke @s only thorigins:fox_origin/unlock_ninetails"
 		}
 	},
 
@@ -891,9 +688,8 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:grant_power",
-					"power": "*:evolution_pass_ice",
-					"source": "thorigins:universal"
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/unlock_ice"
 				},
 				{
 					"type": "origins:execute_command",
@@ -908,9 +704,8 @@
 			]
 		},
 		"max_action": {
-			"type": "origins:revoke_power",
-			"power": "*:evolution_pass_ice",
-			"source": "thorigins:universal"
+			"type": "origins:execute_command",
+			"command": "/advancement revoke @s only thorigins:fox_origin/unlock_ice"
 		}
 	}
 }

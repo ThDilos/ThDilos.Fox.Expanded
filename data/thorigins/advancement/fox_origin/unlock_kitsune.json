@@ -1,0 +1,28 @@
+{
+	"parent": "thorigins:fox_origin/evolution_root",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.unlock_kitsune.description",
+			"fallback": "Unlock the Kitsune Evolution\n\n§8Karma reaches +200%"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:glowstone"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.unlock_kitsune.title",
+			"fallback": "§6Spirit of Health and Life"
+		}
+	},
+	"requirements": [["to_be_granted"]],
+	"sends_telemetry_event": true
+}

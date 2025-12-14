@@ -48,6 +48,15 @@
 		}
 	],
 
+	"_init_": {
+		"type": "origins:action_on_callback",
+		"entity_action_removed": {
+			"type": "origins:change_resource",
+			"resource": "*:optional_power/thfallsound_disable_api",
+			"change": -1
+		}
+	},
+
 	"thrust_indicator": {
 		"type": "origins:resource",
 		"min": 0,

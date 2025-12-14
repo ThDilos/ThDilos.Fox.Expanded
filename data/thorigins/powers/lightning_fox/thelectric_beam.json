@@ -86,9 +86,15 @@
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:grant_power",
-								"power": "*:lightning_fox/tharc",
-								"source": "thorigins:temp"
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:living"
+								},
+								"if_action": {
+									"type": "origins:grant_power",
+									"power": "*:lightning_fox/tharc",
+									"source": "thorigins:temp"
+								}
 							},
 							{
 								"type": "origins:play_sound",

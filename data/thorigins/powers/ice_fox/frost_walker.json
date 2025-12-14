@@ -4,16 +4,20 @@
 
 	"_init_": {
 		"type": "origins:action_on_callback",
-		"entity_action_added": {
+		"entity_action_gained": {
 			"type": "origins:and",
 			"actions": [
 				{
 					"type": "origins:execute_command",
-					"command": "/scale set pehkui:hitbox_height 0.1 @s"
+					"command": "/data merge entity @s {Silent:1b,Invulnerable:1b,Invisible:1b,NoBasePlate:1b,DisabledSlots:4144959,CustomName:'[{\"text\":\"Ice Fox Frost Walker\"}]',Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b,Silent:1b,Tags:[\"icefoxpaws\"],ArmorItems:[{id:leather_boots,tag:{Enchantments:[{id:frost_walker,lvl:2}],Unbreakable:1b},Count:1}],ArmorDropChances:[0f]}"
 				},
 				{
 					"type": "origins:execute_command",
-					"command": "/scale set pehkui:hitbox_width 0.1 @s"
+					"command": "/scale set pehkui:hitbox_height 0.01 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scale set pehkui:hitbox_width 0.01 @s"
 				},
 				{
 					"type": "origins:execute_command",
@@ -31,6 +35,15 @@
 		"type": "origins:invisibility",
 		"render_armor": false,
 		"render_outline": false
+	},
+
+	"invis_high_version": {
+		"type": "origins:prevent_feature_render",
+		"features": ["elytra", "cape", "held_item", "head"],
+		"condition": {
+			"type": "origins:power_active",
+			"power": "*:*_invis"
+		}
 	},
 
 	"ticks": {
@@ -64,32 +77,24 @@
 					},
 					"if_action": {
 						"type": "origins:execute_command",
-						"command": "/data modify entity @n[type=minecraft:armor_stand] ArmorItems[0].components.minecraft:enchantments.levels.minecraft:frost_walker set value 4"
+						"command": "/item replace entity @s armor.feet with minecraft:leather_boots[minecraft:enchantments={frost_walker:4}]"
 					},
 					"else_action": {
 						"type": "origins:execute_command",
-						"command": "/data modify entity @n[type=minecraft:armor_stand] ArmorItems[0].components.minecraft:enchantments.levels.minecraft:frost_walker set value 1"
+						"command": "/item replace entity @s armor.feet with minecraft:leather_boots[minecraft:enchantments={frost_walker:1}]"
 					}
 				},
 				{
 					"type": "origins:if_else",
 					"condition": {
 						"type": "origins:command",
-						"command": "/execute if entity @a[tag=foxie]",
+						"command": "/execute if entity @a[tag=foxie,distance=..8]",
 						"compare_to": 0,
 						"comparison": "=="
 					},
 					"if_action": {
 						"type": "origins:execute_command",
 						"command": "/kill @s"
-					}
-				},
-				{
-					"type": "origins:equipped_item_action",
-					"equipment_slot": "feet",
-					"item_action": {
-						"type": "origins:damage",
-						"amount": -1000
 					}
 				}
 			]

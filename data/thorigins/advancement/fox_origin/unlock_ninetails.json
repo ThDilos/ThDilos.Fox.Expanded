@@ -1,0 +1,28 @@
+{
+	"parent": "thorigins:fox_origin/evolution_root",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.unlock_ninetails.description",
+			"fallback": "Unlock the Ninetails Evolution\n\n§8Karma reaches -200%"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:bone_block"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.unlock_ninetails.title",
+			"fallback": "§4Demon of Blood and Death"
+		}
+	},
+	"requirements": [["to_be_granted"]],
+	"sends_telemetry_event": true
+}

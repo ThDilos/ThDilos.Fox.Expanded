@@ -295,8 +295,17 @@
 					"command": "/particle minecraft:item_snowball ^ ^ ^ 0 0 0 0.15 25"
 				},
 				{
-					"type": "origins:execute_command",
-					"command": "/particle block ice ^ ^ ^ 0 0 0 0.5 75"
+					"type": "origins:spawn_particles",
+					"particle": {
+						"type": "minecraft:block",
+						"params": {
+							"block_state": {
+								"Name": "ice"
+							}
+						}
+					},
+					"speed": 0.5,
+					"count": 75
 				},
 				{
 					"type": "origins:execute_command",
@@ -358,8 +367,24 @@
 										{
 											"type": "origins:target_action",
 											"action": {
-												"type": "origins:execute_command",
-												"command": "/tag @s[type=!item] add temp2"
+												"type": "origins:if_else",
+												"condition": {
+													"type": "origins:and",
+													"conditions": [
+														{
+															"type": "origins:power",
+															"power": "*:fox/thhat",
+															"inverted": true
+														},
+														{
+															"type": "origins:living"
+														}
+													]
+												},
+												"if_action": {
+													"type": "origins:execute_command",
+													"command": "/tag @s add temp2"
+												}
 											}
 										},
 										{
@@ -593,14 +618,6 @@
 		"type": "origins:invisibility",
 		"render_armor": true,
 		"render_outline": false
-	},
-
-	"invul": {
-		"type": "origins:invulnerability",
-		"damage_condition": {
-			"type": "origins:name",
-			"name": "inWall"
-		}
 	},
 
 	"no_col": {
