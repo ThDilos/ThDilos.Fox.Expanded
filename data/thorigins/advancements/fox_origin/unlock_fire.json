@@ -357,7 +357,7 @@
 		"frame": "challenge",
 		"hidden": false,
 		"icon": {
-			"id": "minecraft:blaze_powder"
+			"item": "minecraft:blaze_powder"
 		},
 		"show_toast": true,
 		"title": {

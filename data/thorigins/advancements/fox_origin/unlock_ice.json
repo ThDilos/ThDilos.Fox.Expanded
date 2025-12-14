@@ -426,7 +426,7 @@
 		"frame": "challenge",
 		"hidden": false,
 		"icon": {
-			"id": "minecraft:snow_block"
+			"item": "minecraft:snow_block"
 		},
 		"show_toast": true,
 		"title": {
