@@ -22,17 +22,8 @@
 	"_init_": {
 		"type": "origins:action_on_callback",
 		"entity_action_added": {
-			"type": "origins:if_else",
-			"condition": {
-				"type": "origins:command",
-				"command": "/execute if entity @e[type=minecraft:armor_stand,limit=1,sort=nearest,tag=icefoxpaws,distance=..8]",
-				"compare_to": 0,
-				"comparison": "=="
-			},
-			"if_action": {
-				"type": "origins:execute_command",
-				"command": "/execute summon armor_stand run power grant @s thorigins:ice_fox/frost_walker thorigins:temp"
-			}
+			"type": "origins:execute_command",
+			"command": "/execute unless entity @e[type=minecraft:armor_stand,limit=1,sort=nearest,tag=icefoxpaws,distance=..8] summon armor_stand run power grant @s thorigins:ice_fox/frost_walker thorigins:temp"
 		},
 		"entity_action_removed": {
 			"type": "origins:execute_command",
