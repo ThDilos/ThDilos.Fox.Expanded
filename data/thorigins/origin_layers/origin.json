@@ -5,8 +5,19 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:advancement",
-						"advancement": "thorigins:fox_origin/unlock_lightning"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:advancement",
+								"advancement": "thorigins:fox_origin/unlock_lightning"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "thorigins:thtransform_lock_lightning",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
 					},
 					{
 						"type": "origins:or",
@@ -32,8 +43,19 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:advancement",
-						"advancement": "thorigins:fox_origin/unlock_fire"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:advancement",
+								"advancement": "thorigins:fox_origin/unlock_fire"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "thorigins:thtransform_lock_fire",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
 					},
 					{
 						"type": "origins:or",
@@ -59,8 +81,19 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:advancement",
-						"advancement": "thorigins:fox_origin/unlock_kitsune"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:advancement",
+								"advancement": "thorigins:fox_origin/unlock_kitsune"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "thorigins:thtransform_lock_kitsune",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
 					},
 					{
 						"type": "origins:or",
@@ -86,8 +119,19 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:advancement",
-						"advancement": "thorigins:fox_origin/unlock_ninetails"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:advancement",
+								"advancement": "thorigins:fox_origin/unlock_ninetails"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "thorigins:thtransform_lock_ninetails",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
 					},
 					{
 						"type": "origins:or",
@@ -113,8 +157,19 @@
 				"type": "origins:and",
 				"conditions": [
 					{
-						"type": "origins:advancement",
-						"advancement": "thorigins:fox_origin/unlock_ice"
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:advancement",
+								"advancement": "thorigins:fox_origin/unlock_ice"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "thorigins:thtransform_lock_ice",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
 					},
 					{
 						"type": "origins:or",
