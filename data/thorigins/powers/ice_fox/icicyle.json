@@ -445,9 +445,9 @@
 												"type": "origins:damage",
 												"amount": 3,
 												"source": {
-													"name": "freeze.player"
+													"name": "freeze"
 												},
-												"damage_type": "freeze.player"
+												"damage_type": "freeze"
 											},
 											{
 												"type": "origins:damage",
@@ -455,7 +455,7 @@
 												"source": {
 													"name": "explosion"
 												},
-												"damage_type": "explosion.player"
+												"damage_type": "explosion"
 											},
 											{
 												"type": "origins:if_else",

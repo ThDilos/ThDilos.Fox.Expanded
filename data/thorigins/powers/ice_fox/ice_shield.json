@@ -541,9 +541,9 @@
 																"type": "origins:damage",
 																"amount": 10,
 																"source": {
-																	"name": "freeze.player"
+																	"name": "freeze"
 																},
-																"damage_type": "freeze.player"
+																"damage_type": "freeze"
 															},
 															{
 																"type": "origins:damage",
@@ -551,7 +551,7 @@
 																"source": {
 																	"name": "explosion"
 																},
-																"damage_type": "explosion.player"
+																"damage_type": "explosion"
 															},
 															{
 																"type": "origins:target_action",
@@ -680,9 +680,9 @@
 																"type": "origins:damage",
 																"amount": 8,
 																"source": {
-																	"name": "freeze.player"
+																	"name": "freeze"
 																},
-																"damage_type": "freeze.player"
+																"damage_type": "freeze"
 															},
 															{
 																"type": "origins:damage",
@@ -690,7 +690,7 @@
 																"source": {
 																	"name": "explosion"
 																},
-																"damage_type": "explosion.player"
+																"damage_type": "explosion"
 															},
 															{
 																"type": "origins:target_action",
@@ -819,9 +819,9 @@
 																"type": "origins:damage",
 																"amount": 7,
 																"source": {
-																	"name": "freeze.player"
+																	"name": "freeze"
 																},
-																"damage_type": "freeze.player"
+																"damage_type": "freeze"
 															},
 															{
 																"type": "origins:damage",
@@ -829,7 +829,7 @@
 																"source": {
 																	"name": "explosion"
 																},
-																"damage_type": "explosion.player"
+																"damage_type": "explosion"
 															},
 															{
 																"type": "origins:target_action",
@@ -958,9 +958,9 @@
 																"type": "origins:damage",
 																"amount": 5,
 																"source": {
-																	"name": "freeze.player"
+																	"name": "freeze"
 																},
-																"damage_type": "freeze.player"
+																"damage_type": "freeze"
 															},
 															{
 																"type": "origins:damage",
@@ -968,7 +968,7 @@
 																"source": {
 																	"name": "explosion"
 																},
-																"damage_type": "explosion.player"
+																"damage_type": "explosion"
 															},
 															{
 																"type": "origins:target_action",
@@ -1097,9 +1097,9 @@
 																"type": "origins:damage",
 																"amount": 3,
 																"source": {
-																	"name": "freeze.player"
+																	"name": "freeze"
 																},
-																"damage_type": "freeze.player"
+																"damage_type": "freeze"
 															},
 															{
 																"type": "origins:damage",
@@ -1107,7 +1107,7 @@
 																"source": {
 																	"name": "explosion"
 																},
-																"damage_type": "explosion.player"
+																"damage_type": "explosion"
 															},
 															{
 																"type": "origins:target_action",
