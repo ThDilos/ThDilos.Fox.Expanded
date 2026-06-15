@@ -8,13 +8,13 @@ Added a few evolutions for the base fox.
 
 [[mods]]
 modId="thorigins2"
-version="3.5.0"
+version="4.0.0"
 displayName="ThDilos Fox Origins Expanded"
 
 [[dependencies.thorigins2]]
 modId="thorigins"
 mandatory=true
-versionRange="[4.4.0,)"
+versionRange="[5.0.0,)"
 ordering="NONE"
 side="BOTH"
 
