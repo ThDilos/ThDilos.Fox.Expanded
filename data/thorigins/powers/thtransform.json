@@ -90,6 +90,20 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
+						"type": "origins:power",
+						"power": "*:thstorage2",
+						"source": "thorigins:universal",
+						"inverted": true
+					},
+					"if_action": {
+						"type": "origins:grant_power",
+						"power": "*:thstorage2",
+						"source": "thorigins:universal"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
 						"type": "origins:advancement",
 						"advancement": "thorigins:fox_origin/unlock_fire"
 					},
@@ -151,6 +165,11 @@
 							{
 								"type": "origins:revoke_power",
 								"power": "*:fox/universal_settings",
+								"source": "thorigins:universal"
+							},
+							{
+								"type": "origins:revoke_power",
+								"power": "*:thstorage2",
 								"source": "thorigins:universal"
 							},
 							{

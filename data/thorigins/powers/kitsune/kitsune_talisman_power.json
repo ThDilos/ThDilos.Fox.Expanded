@@ -1,0 +1,355 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_cleanse_burst",
+			"change": 0,
+			"operation": "set"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_pressing",
+			"compare_to": 0,
+			"comparison": "=="
+		}
+	},
+
+	"init": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.kitsune.kitsune_talisman.cleanse_cd dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players add @s thorigins.kitsune.kitsune_talisman.cleanse_cd 0"
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:change_resource",
+			"resource": "*:*_cleanse_burst",
+			"change": 0,
+			"operation": "set"
+		}
+	},
+
+	"halved_dmg": {
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.5
+		},
+		"bientity_condition": {
+			"type": "origins:target_condition",
+			"inverted": true,
+			"condition": {
+				"type": "origins:entity_group",
+				"group": "undead"
+			}
+		}
+	},
+
+	"pressing": {
+		"type": "origins:cooldown",
+		"cooldown": 5
+	},
+
+	"perm_regen": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:apply_effect",
+			"effect": {
+				"effect": "minecraft:regeneration",
+				"duration": -1,
+				"amplifier": 0,
+				"show_icon": true,
+				"is_ambient": true,
+				"show_particles": false
+			}
+		},
+		"entity_action_lost": {
+			"type": "origins:clear_effect",
+			"effect": "minecraft:regeneration"
+		}
+	},
+
+	"cleanse_burst": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 10,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 14,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_cleanse_burst",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_cleanse_burst",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:grant_power",
+					"power": "*:cooldown_ticker",
+					"source": "thorigins:temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players set @s thorigins.kitsune.kitsune_talisman.cleanse_cd 30"
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:flash",
+					"count": 1,
+					"speed": 0
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.fox.screech",
+					"pitch": 1.1,
+					"volume": 3,
+					"category": "players"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:block.fire.extinguish",
+					"pitch": 1.4,
+					"volume": 1.2,
+					"category": "players"
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.generic.explode",
+					"volume": 0.8,
+					"pitch": 1.7,
+					"category": "players"
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:firework",
+					"count": 1,
+					"speed": 0
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:soul_fire_flame",
+					"count": 80,
+					"speed": 2
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:snowflake",
+					"count": 80,
+					"speed": 2
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:end_rod",
+					"count": 100,
+					"speed": 2
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:end_rod",
+					"count": 100,
+					"speed": 1.5
+				},
+				{
+					"type": "origins:spawn_particles",
+					"particle": "minecraft:end_rod",
+					"count": 100,
+					"speed": 3
+				},
+				{
+					"type": "origins:play_sound",
+					"sound": "minecraft:entity.wither.death",
+					"volume": 0.3,
+					"pitch": 1.8,
+					"category": "players"
+				},
+				{
+					"type": "origins:feed",
+					"food": -4,
+					"saturation": 0
+				},
+				{
+					"type": "origins:area_of_effect",
+					"radius": 16,
+					"shape": "sphere",
+					"include_target": true,
+					"bientity_condition": {
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:entity_group",
+							"group": "undead"
+						}
+					},
+					"bientity_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:damage",
+								"damage_type": "magic",
+								"amount": 10
+							},
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:set_on_fire",
+									"duration": 5
+								}
+							},
+							{
+								"type": "origins:add_velocity",
+								"z": 6
+							},
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:play_sound",
+											"sound": "minecraft:entity.generic.extinguish_fire",
+											"category": "players",
+											"pitch": 1.5,
+											"volume": 0.6
+										},
+										{
+											"type": "origins:spawn_particles",
+											"particle": "minecraft:smoke",
+											"speed": 0.01,
+											"spread": {
+												"x": 0.5,
+												"y": 0.5,
+												"z": 0.5
+											},
+											"offset_y": 0.5,
+											"count": 20
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+
+	"active": {
+		"type": "origins:active_self",
+		"cooldown": 3,
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_pressing"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:food_level",
+								"compare_to": 4,
+								"comparison": "<"
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/title @s actionbar {\"translate\":\"thorigins.kitsune_talisman.no_food_point\",\"fallback\":\"§cYou do not have enough food points to use this ability!\"}"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/playsound minecraft:entity.fox.teleport player @s ~ ~ ~ 1 0.5"
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:scoreboard",
+								"objective": "thorigins.kitsune.kitsune_talisman.cleanse_cd",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:grant_power",
+										"power": "*:cooldown_ticker",
+										"source": "thorigins:temp"
+									},
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:scoreboard",
+											"objective": "thorigins.kitsune.kitsune_talisman.cleanse_cd",
+											"compare_to": 28,
+											"comparison": "<="
+										},
+										"if_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:execute_command",
+													"command": "/title @s actionbar {\"translate\":\"thorigins.talisman.ability_on_cd\",\"fallback\":\"§cThis ability is on cooldown for another [%s§c] seconds!\",\"with\":[{\"score\":{\"name\":\"*\",\"objective\":\"thorigins.kitsune.kitsune_talisman.cleanse_cd\"},\"color\":\"yellow\"}]}"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/playsound minecraft:entity.fox.teleport player @s ~ ~ ~ 1 0.5"
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:constant",
+								"value": true
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_cleanse_burst",
+								"change": 1
+							}
+						}
+					]
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:sneaking",
+			"inverted": true
+		}
+	}
+}

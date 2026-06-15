@@ -3,7 +3,7 @@
 		"thorigins:kitsune/thchoice",
 		"thorigins:kitsune/thdash2",
 		"thorigins:kitsune/thphasing",
-		"thorigins:thstorage2",
+		"thorigins:thstorage2_interface",
 		"thorigins:kitsune/thheal",
 		"thorigins:fox/thfoxify",
 		"thorigins:kitsune/thhunt2",

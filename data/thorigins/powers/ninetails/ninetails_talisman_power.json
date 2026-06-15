@@ -1,0 +1,374 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "*:*_imprint_summon",
+			"change": 0,
+			"operation": "set"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_pressing",
+			"compare_to": 0,
+			"comparison": "=="
+		}
+	},
+
+	"init": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.ninetails.ninetails_talisman.imprinted_by_uuid0 dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.ninetails.ninetails_talisman.soul_imprint_cd dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players add @s thorigins.ninetails.ninetails_talisman.soul_imprint_cd 0"
+				}
+			]
+		}
+	},
+
+	"entity_group": {
+		"type": "origins:entity_group",
+		"group": "undead"
+	},
+
+	"atk_bonus_and_soul_imprint": {
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": 0.5
+		},
+		"bientity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:target_action",
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:grant_power",
+								"power": "*:ninetails/soul_imprint",
+								"source": "thorigins:temp"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:ninetails/soul_imprint_timer"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tag @s add thorigins.ninetails_talisman.target.temp"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:actor_action",
+					"action": {
+						"type": "origins:execute_command",
+						"command": "/execute at @e[tag=thorigins.ninetails_talisman.target.temp] store result score @e[limit=1,sort=nearest,tag=thorigins.ninetails_talisman.target.temp] thorigins.ninetails.ninetails_talisman.imprinted_by_uuid0 run data get entity @s UUID[0]"
+					}
+				},
+				{
+					"type": "origins:target_action",
+					"action": {
+						"type": "origins:execute_command",
+						"command": "/tag @s remove thorigins.ninetails_talisman.target.temp"
+					}
+				}
+			]
+		}
+	},
+
+	"no_armor": {
+		"type": "origins:attribute",
+		"modifier": {
+			"attribute": "minecraft:generic.armor",
+			"operation": "multiply_total",
+			"value": -1,
+			"name": "Ninetails Talisman Curse"
+		}
+	},
+
+	"highlight_imprinted": {
+		"type": "origins:entity_glow",
+		"bientity_condition": {
+			"type": "origins:target_condition",
+			"condition": {
+				"type": "origins:power",
+				"power": "*:ninetails/soul_imprint"
+			}
+		}
+	},
+
+	"pressing": {
+		"type": "origins:cooldown",
+		"cooldown": 5
+	},
+
+	"imprint_summon": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 5,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 18,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_imprint_summon",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_imprint_summon",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:grant_power",
+					"power": "*:cooldown_ticker",
+					"source": "thorigins:temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players set @s thorigins.ninetails.ninetails_talisman.soul_imprint_cd 5"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.ninetails.ninetails_talisman.self_uuid0.temp dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute store result score @s thorigins.ninetails.ninetails_talisman.self_uuid0.temp run data get entity @s UUID[0]"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e if score @e[limit=1,sort=nearest] thorigins.ninetails.ninetails_talisman.imprinted_by_uuid0 = @s thorigins.ninetails.ninetails_talisman.self_uuid0.temp run tag @e[limit=1,sort=nearest] add thorigins.ninetails.imprinted_target.temp"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @e[tag=thorigins.ninetails.imprinted_target.temp]",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:apply_effect",
+								"effect": {
+									"effect": "minecraft:invisibility",
+									"amplifier": 0,
+									"duration": 20,
+									"is_ambient": true,
+									"show_icon": true,
+									"show_particles": false
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tp @e[tag=thorigins.ninetails.imprinted_target.temp] ^ ^ ^1.5"
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.fox.teleport",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 1
+							},
+							{
+								"type": "origins:area_of_effect",
+								"radius": 3,
+								"shape": "sphere",
+								"bientity_condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:nbt",
+										"nbt": "{Tags:[\"thorigins.ninetails.imprinted_target.temp\"]}"
+									}
+								},
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "/playsound minecraft:block.beacon.power_select player @s ~ ~ ~ 0.4 2"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "/playsound minecraft:entity.allay.death player @s ~ ~ ~ 0.4 1.4"
+											},
+											{
+												"type": "origins:apply_effect",
+												"effects": [
+													{
+														"effect": "minecraft:blindness",
+														"amplifier": 4,
+														"duration": 20,
+														"is_ambient": true,
+														"show_icon": true,
+														"show_particles": false
+													},
+													{
+														"effect": "minecraft:slowness",
+														"amplifier": 4,
+														"duration": 20,
+														"is_ambient": true,
+														"show_icon": true,
+														"show_particles": false
+													},
+													{
+														"effect": "minecraft:nausea",
+														"amplifier": 0,
+														"duration": 50,
+														"is_ambient": true,
+														"show_icon": true,
+														"show_particles": false
+													}
+												]
+											},
+											{
+												"type": "origins:spawn_particles",
+												"particle": "minecraft:smoke",
+												"count": 40,
+												"speed": 0.02,
+												"force": false,
+												"spread": {
+													"x": 0.3,
+													"y": 0.2,
+													"z": 0.3
+												}
+											}
+										]
+									}
+								}
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"thorigins.ninetails_talisman.ability0.fail\",\"fallback\":\"§cNo marked entity detected.\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.wolf.whine player @s ~ ~ ~ 0.5 1"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @e[tag=thorigins.ninetails.imprinted_target.temp] remove thorigins.ninetails.imprinted_target.temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives remove thorigins.ninetails.ninetails_talisman.self_uuid0.temp"
+				}
+			]
+		}
+	},
+
+	"active": {
+		"type": "origins:active_self",
+		"cooldown": 3,
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_pressing"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:scoreboard",
+								"objective": "thorigins.ninetails.ninetails_talisman.soul_imprint_cd",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:grant_power",
+										"power": "*:cooldown_ticker",
+										"source": "thorigins:temp"
+									},
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:scoreboard",
+											"objective": "thorigins.ninetails.ninetails_talisman.soul_imprint_cd",
+											"compare_to": 4,
+											"comparison": "<="
+										},
+										"if_action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:execute_command",
+													"command": "/title @s actionbar {\"translate\":\"thorigins.talisman.ability_on_cd\",\"fallback\":\"§cThis ability is on cooldown for another [%s§c] seconds!\",\"with\":[{\"score\":{\"name\":\"*\",\"objective\":\"thorigins.ninetails.ninetails_talisman.soul_imprint_cd\"},\"color\":\"yellow\"}]}"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/playsound minecraft:entity.fox.teleport player @s ~ ~ ~ 1 0.5"
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:constant",
+								"value": true
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_imprint_summon",
+								"change": 1
+							}
+						}
+					]
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:sneaking",
+			"inverted": true
+		}
+	}
+}

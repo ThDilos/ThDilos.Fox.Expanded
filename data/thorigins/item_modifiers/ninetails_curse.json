@@ -1,0 +1,79 @@
+[
+	{
+		"function": "minecraft:set_lore",
+		"entity": "this",
+		"lore": [
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.ninetails_curse.footnote",
+				"fallback": "☠ Cursed by Ninetails [%s] ☠",
+				"with": [
+					{
+						"selector": "@s",
+						"color": "dark_red"
+					}
+				]
+			}
+		],
+		"replace": false,
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"nbt": "{ninetails_cursed:true}"
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_enchantments",
+		"enchantments": {
+			"minecraft:sharpness": 1
+		},
+		"add": true
+	},
+	{
+		"function": "minecraft:set_enchantments",
+		"enchantments": {
+			"minecraft:looting": 1
+		},
+		"add": true,
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"enchantments": [
+									{
+										"enchantment": "minecraft:looting",
+										"levels": {
+											"min": 5
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_nbt",
+		"tag": "{ninetails_cursed:true}"
+	}
+]

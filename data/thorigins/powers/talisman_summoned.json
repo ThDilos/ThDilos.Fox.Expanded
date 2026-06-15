@@ -1,0 +1,162 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"sfx": {
+		"type": "origins:action_on_callback",
+		"entity_action_gained": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/playsound minecraft:block.beacon.power_select player @s ~ ~ ~ 1 0.4"
+				},
+				{
+					"type": "origins:spawn_particles",
+					"count": 1,
+					"force": false,
+					"particle": {
+						"type": "minecraft:shriek",
+						"params": "0"
+					}
+				},
+				{
+					"type": "origins:choice",
+					"actions": [
+						{
+							"element": {
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:item.goat_horn.sound.1 player @s ~ ~ ~ 0.3 2"
+							},
+							"weight": 1
+						},
+						{
+							"element": {
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:item.goat_horn.sound.6 player @s ~ ~ ~ 0.3 2"
+							},
+							"weight": 1
+						},
+						{
+							"element": {
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:item.goat_horn.sound.7 player @s ~ ~ ~ 0.3 2"
+							},
+							"weight": 1
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"self_clear": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:revoke_power",
+					"power": "*:talisman_summoned",
+					"source": "thorigins:temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tellraw @s {\"translate\":\"thorigins.talisman.evocation_summoned.summoner_not_found\",\"fallback\":\"§cThe summoner is no longer reachable...\"}"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:command",
+			"command": "/execute if entity @e[scores={thorigins.talisman.created_by_uuid0=-2147483648..2147483647}]",
+			"compare_to": 0,
+			"comparison": "=="
+		}
+	},
+
+	"confirm": {
+		"type": "origins:active_self",
+		"key": "key.saveToolbarActivator",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.talisman_summoned.uuid0.temp dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute store result score @s thorigins.talisman_summoned.uuid0.temp run data get entity @s UUID[0]"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e[distance=0.1..] if score @s thorigins.talisman_summoned.uuid0.temp = @e[limit=1,sort=nearest] thorigins.talisman.created_by_uuid0 run tag @e[limit=1,sort=nearest] add thorigins.talisman_summoned.matched.temp"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @e[tag=thorigins.talisman_summoned.matched.temp]",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.fox.teleport",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 1
+							},
+							{
+								"type": "origins:apply_effect",
+								"effect": {
+									"effect": "minecraft:invisibility",
+									"duration": 20,
+									"amplifier": 0,
+									"is_ambient": true,
+									"show_icon": true,
+									"show_particles": false
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/execute at @e[tag=thorigins.talisman_summoned.matched.temp,limit=1] run tp @s ^ ^ ^-1"
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:entity.fox.teleport",
+								"category": "players",
+								"pitch": 1.5,
+								"volume": 1
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/resource change @e[tag=thorigins.talisman_summoned.matched.temp,limit=1] thorigins:evocation_stop_summoning 1"
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:execute_command",
+						"command": "/tellraw @s {\"translate\":\"thorigins.talisman.evocation_summoned.summoner_not_found\",\"fallback\":\"§cThe summoner is no longer reachable...\"}"
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives remove thorigins.talisman_summoned.uuid0.temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @e[tag=thorigins.talisman_summoned.matched.temp] remove thorigins.talisman_summoned.matched.temp"
+				},
+				{
+					"type": "origins:revoke_power",
+					"power": "*:talisman_summoned",
+					"source": "thorigins:temp"
+				}
+			]
+		}
+	}
+}

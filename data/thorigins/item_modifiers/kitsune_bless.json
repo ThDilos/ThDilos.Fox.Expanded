@@ -1,0 +1,78 @@
+[
+	{
+		"function": "minecraft:set_lore",
+		"entity": "this",
+		"lore": [
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.kitsune_bless.footnote",
+				"fallback": "۞ Blessed by Kitsune [%s] ۞",
+				"with": [
+					{
+						"selector": "@s",
+						"color": "yellow"
+					}
+				]
+			}
+		],
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"nbt": "{kitsune_blessed:true}"
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_enchantments",
+		"enchantments": {
+			"minecraft:smite": 1
+		},
+		"add": true
+	},
+	{
+		"function": "minecraft:set_enchantments",
+		"enchantments": {
+			"minecraft:fortune": 1
+		},
+		"add": true,
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"enchantments": [
+									{
+										"enchantment": "minecraft:fortune",
+										"levels": {
+											"min": 5
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_nbt",
+		"tag": "{kitsune_blessed:true}"
+	}
+]

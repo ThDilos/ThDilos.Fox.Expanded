@@ -1,0 +1,34 @@
+{
+	"type": "origins:action_over_time",
+	"entity_action": {
+		"type": "origins:and",
+		"actions": [
+			{
+				"type": "origins:execute_command",
+				"command": "/scoreboard players remove @s[scores={thorigins.kitsune.kitsune_talisman.cleanse_cd=0..}] thorigins.kitsune.kitsune_talisman.cleanse_cd 1"
+			},
+			{
+				"type": "origins:execute_command",
+				"command": "/scoreboard players remove @s[scores={thorigins.evocation.evocation_cd=0..}] thorigins.evocation.evocation_cd 1"
+			},
+			{
+				"type": "origins:execute_command",
+				"command": "/scoreboard players remove @s[scores={thorigins.ninetails.ninetails_talisman.soul_imprint_cd=0..}] thorigins.ninetails.ninetails_talisman.soul_imprint_cd 1"
+			},
+			{
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:command",
+					"command": "/execute if entity @s[scores={thorigins.evocation.evocation_cd=..0,thorigins.kitsune.kitsune_talisman.cleanse_cd=..0,thorigins.ninetails.ninetails_talisman.soul_imprint_cd=..0}]",
+					"compare_to": 0,
+					"comparison": ">"
+				},
+				"if_action": {
+					"type": "origins:revoke_power",
+					"power": "*:cooldown_ticker",
+					"source": "thorigins:temp"
+				}
+			}
+		]
+	}
+}

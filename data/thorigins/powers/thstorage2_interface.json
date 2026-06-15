@@ -1,0 +1,69 @@
+{
+	"type": "origins:simple",
+	"name": "thstorage2.name",
+	"description": "thstorage2.description",
+	"badges": [
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": {
+				"translate": "thstorage2.key",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					}
+				]
+			}
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/info.png",
+			"text": "thstorage.info"
+		},
+		{
+			"type": "origins:tooltip",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": {
+				"translate": "thstorage2.enchant.info",
+				"with": [
+					{
+						"keybind": "key.origins.primary_active",
+						"color": "aqua"
+					},
+					{
+						"translate": "argument.entity.options.level.description",
+						"color": "dark_aqua"
+					},
+					{
+						"translate": "item.minecraft.totem_of_undying",
+						"color": "yellow"
+					}
+				]
+			}
+		},
+		{
+			"type": "origins:crafting_recipe",
+			"sprite": "minecraft:textures/item/book.png",
+			"recipe": {
+				"id": "thorigins:tail_enchant_req",
+				"type": "minecraft:crafting_shaped",
+				"pattern": ["#@#", "@&@", "#@#"],
+				"key": {
+					"#": {
+						"item": "minecraft:amethyst_shard"
+					},
+					"@": {
+						"item": "minecraft:lapis_lazuli"
+					},
+					"&": {
+						"item": "minecraft:nether_star"
+					}
+				},
+				"result": {
+					"item": "minecraft:barrier"
+				}
+			}
+		}
+	]
+}
