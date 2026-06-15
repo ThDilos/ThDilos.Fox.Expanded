@@ -266,45 +266,45 @@
 												}
 											},
 											{
-										"type": "origins:target_action",
-										"action": {
-											"type": "origins:and",
-											"actions": [
-												{
-													"type": "origins:apply_effect",
-													"effect": {
-														"effect": "minecraft:darkness",
-														"duration": 300,
-														"amplifier": 0,
-														"is_ambient": true,
-														"show_icon": true,
-														"show_particles": false
-													}
-												},
-												{
-													"type": "origins:grant_power",
-													"power": "thorigins:ninetails/thfear",
-													"source": "thorigins:temp"
-												},
-												{
-													"type": "origins:change_resource",
-													"resource": "thorigins:ninetails/thfear_timer",
-													"change": 200
-												},
-												{
-													"type": "origins:execute_command",
-													"command": "/playsound minecraft:entity.fox.aggro player @s ~ ~ ~ 0.7 1.0"
-												},
-												{
-													"type": "origins:play_sound",
-													"sound": "minecraft:entity.fox.aggro"
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:and",
+													"actions": [
+														{
+															"type": "origins:apply_effect",
+															"effect": {
+																"effect": "minecraft:darkness",
+																"duration": 300,
+																"amplifier": 0,
+																"is_ambient": true,
+																"show_icon": true,
+																"show_particles": false
+															}
+														},
+														{
+															"type": "origins:grant_power",
+															"power": "thorigins:ninetails/thfear",
+															"source": "thorigins:temp"
+														},
+														{
+															"type": "origins:change_resource",
+															"resource": "thorigins:ninetails/thfear_timer",
+															"change": 200
+														},
+														{
+															"type": "origins:execute_command",
+															"command": "/playsound minecraft:entity.fox.aggro player @s ~ ~ ~ 0.7 1.0"
+														},
+														{
+															"type": "origins:play_sound",
+															"sound": "minecraft:entity.fox.aggro"
 														},
 														{
 															"type": "origins:execute_command",
 															"command": "/advancement grant @p[tag=temp] only thorigins:fox_origin/ninetails/instinctual_fear"
+														}
+													]
 												}
-											]
-										}
 											},
 											{
 												"type": "origins:actor_action",
@@ -410,6 +410,13 @@
 															}
 														]
 													}
+												}
+											},
+											{
+												"type": "origins:actor_action",
+												"action": {
+													"type": "origins:trigger_cooldown",
+													"power": "*:ninetails/thhunt3_hunt_stage"
 												}
 											}
 										]
@@ -639,20 +646,20 @@
 						"actions": [
 							{
 								"type": "origins:give",
-					"stack": {
+								"stack": {
 									"item": "minecraft:experience_bottle",
 									"amount": 1
 								}
-				},
-				{
-					"type": "origins:execute_command",
-					"command": "/playsound minecraft:entity.item.pickup player @s ~ ~ ~ 0.3 1"
-				},
-				{
-					"type": "origins:change_resource",
-					"resource": "*:thtransform_souls",
-					"change": -100
-},
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.item.pickup player @s ~ ~ ~ 0.3 1"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:thtransform_souls",
+								"change": -100
+							},
 							{
 								"type": "origins:execute_command",
 								"command": "/advancement grant @s only thorigins:fox_origin/ninetails/craft_bottle"

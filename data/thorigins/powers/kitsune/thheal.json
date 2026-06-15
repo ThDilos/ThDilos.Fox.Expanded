@@ -135,7 +135,7 @@
 										"actions": [
 											{
 												"type": "origins:damage",
-												"amount": 2,
+												"amount": 3,
 												"damage_type": "minecraft:magic",
 												"source": {
 													"name": "magic.player"
@@ -350,6 +350,11 @@
 												}
 											},
 											{
+												"type": "origins:damage",
+												"amount": 12,
+												"damage_type": "magic"
+											},
+											{
 												"type": "origins:execute_command",
 												"command": "/title @s actionbar {\"translate\":\"thheal.burst.cursed\"}"
 											},
@@ -426,7 +431,7 @@
 								}
 							}
 						},
-{
+						{
 							"type": "origins:execute_command",
 							"command": "/tag @s add temp"
 						},
@@ -437,20 +442,20 @@
 								"radius": 5,
 								"shape": "sphere",
 								"block_action": {
-"type": "origins:and",
+									"type": "origins:and",
 									"actions": [
 										{
 											"type": "origins:execute_command",
 											"command": "/advancement grant @p[tag=temp] only thorigins:fox_origin/kitsune/grow_plant"
 										},
 										{
-									"type": "origins:bonemeal",
-									"effects": true
-}
+											"type": "origins:bonemeal",
+											"effects": true
+										}
 									]
 								}
 							}
-},
+						},
 						{
 							"type": "origins:execute_command",
 							"command": "/tag @s remove temp"
@@ -533,6 +538,90 @@
 					}
 				},
 				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:target_condition",
+								"condition": {
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:zombie_villager"
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:execute_command",
+													"command": "/particle minecraft:soul ^ ^2 ^ 0 0 0 1 0"
+												},
+												{
+													"type": "origins:play_sound",
+													"sound": "minecraft:entity.generic.extinguish_fire",
+													"category": "players",
+													"pitch": 1.5,
+													"volume": 0.6
+												},
+												{
+													"type": "origins:spawn_particles",
+													"particle": "minecraft:smoke",
+													"speed": 0.01,
+													"spread": {
+														"x": 0.5,
+														"y": 0.5,
+														"z": 0.5
+													},
+													"offset_y": 0.5,
+													"count": 20
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/tag @s add temp"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/data modify entity @s ConversionTime set value 1"
+												},
+												{
+													"type": "origins:delay",
+													"ticks": 1,
+													"action": {
+														"type": "origins:execute_command",
+														"command": "/tag @e[type=villager,limit=1,sort=nearest] add tempVillager"
+													}
+												}
+											]
+										}
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 1,
+										"action": {
+											"type": "origins:actor_action",
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "/data modify entity @e[tag=tempVillager,type=minecraft:villager,limit=1,sort=nearest] Gossips append value {Target:[I;0,0,0,0],Type:\"major_positive\",Value:100}"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/data modify entity @e[tag=tempVillager,type=minecraft:villager,limit=1,sort=nearest] Gossips[{Target:[I;0,0,0,0]}].Target set from entity @s UUID"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/tag @e[type=villager,limit=1,sort=nearest,tag=tempVillager] remove tempVillager"
+													}
+												]
+											}
+										}
+									},
 									{
 										"type": "origins:actor_action",
 										"action": {
@@ -540,131 +629,141 @@
 											"command": "/advancement grant @s only thorigins:fox_origin/kitsune/purification"
 										}
 									}
-					"condition": {
-						"type": "origins:target_condition",
-						"condition": {
-							"type": "origins:entity_group",
-							"group": "undead"
-						}
-					},
-					"if_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:damage",
-								"amount": 5,
-								"damage_type": "minecraft:magic",
-								"source": {
-									"name": "magic.player"
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:target_condition",
+								"condition": {
+									"type": "origins:entity_group",
+									"group": "undead"
 								}
 							},
-							{
-								"type": "origins:target_action",
-								"action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:execute_command",
-											"command": "/title @s actionbar {\"translate\":\"thheal.boop.cursed\"}"
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/particle minecraft:soul ^ ^2 ^ 0 0 0 1 0"
-										},
-										{
-											"type": "origins:play_sound",
-											"sound": "minecraft:entity.generic.extinguish_fire",
-											"category": "players",
-											"pitch": 1.5,
-											"volume": 0.6
-										},
-										{
-											"type": "origins:spawn_particles",
-											"particle": "minecraft:smoke",
-											"speed": 0.01,
-											"spread": {
-												"x": 0.5,
-												"y": 0.5,
-												"z": 0.5
-											},
-											"offset_y": 0.5,
-											"count": 20
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:damage",
+										"amount": 5,
+										"damage_type": "minecraft:magic",
+										"source": {
+											"name": "magic.player"
 										}
-									]
-								}
-},
+									},
+									{
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:execute_command",
+													"command": "/title @s actionbar {\"translate\":\"thheal.boop.cursed\"}"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/particle minecraft:soul ^ ^2 ^ 0 0 0 1 0"
+												},
+												{
+													"type": "origins:play_sound",
+													"sound": "minecraft:entity.generic.extinguish_fire",
+													"category": "players",
+													"pitch": 1.5,
+													"volume": 0.6
+												},
+												{
+													"type": "origins:spawn_particles",
+													"particle": "minecraft:smoke",
+													"speed": 0.01,
+													"spread": {
+														"x": 0.5,
+														"y": 0.5,
+														"z": 0.5
+													},
+													"offset_y": 0.5,
+													"count": 20
+												}
+											]
+										}
+									},
 									{
 										"type": "origins:actor_action",
 										"action": {
 											"type": "origins:execute_command",
 											"command": "/advancement grant @s only thorigins:fox_origin/kitsune/purification"
 										}
+									}
+								]
 							}
-						]
-					},
-					"else_action": {
-						"type": "origins:and",
-						"actions": [
-							{
-								"type": "origins:target_action",
-								"action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:apply_effect",
-											"effect": {
-												"effect": "minecraft:luck",
-												"amplifier": 2,
-												"duration": 600,
-												"show_particles": false,
-												"show_icon": true,
-												"is_ambient": true
+						},
+						{
+							"condition": {
+								"type": "origins:constant",
+								"value": true
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:apply_effect",
+													"effect": {
+														"effect": "minecraft:luck",
+														"amplifier": 2,
+														"duration": 600,
+														"show_particles": false,
+														"show_icon": true,
+														"is_ambient": true
+													}
+												},
+												{
+													"type": "origins:heal",
+													"amount": 4
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/particle minecraft:heart ~ ~ ~ 0.2 1 0.2 0 3"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "/title @s actionbar {\"translate\":\"thheal.boop.blessed\"}"
+												}
+											]
+										}
+									},
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:target_condition",
+											"condition": {
+												"type": "origins:command",
+												"command": "/execute if data entity @s AngryAt",
+												"compare_to": 0,
+												"comparison": "=="
 											}
 										},
-										{
-											"type": "origins:heal",
-											"amount": 4
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/particle minecraft:heart ~ ~ ~ 0.2 1 0.2 0 3"
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/title @s actionbar {\"translate\":\"thheal.boop.blessed\"}"
+										"if_action": {
+											"type": "origins:chance",
+											"chance": 0.33,
+											"action": {
+												"type": "origins:tame"
+											}
 										}
-									]
-								}
-							},
-							{
-								"type": "origins:if_else",
-								"condition": {
-									"type": "origins:target_condition",
-									"condition": {
-										"type": "origins:command",
-										"command": "/execute if data entity @s AngryAt",
-										"compare_to": 0,
-										"comparison": "=="
-									}
-								},
-								"if_action": {
-									"type": "origins:chance",
-									"chance": 0.33,
-									"action": {
-										"type": "origins:tame"
-									}
-								}
-},
+									},
 									{
 										"type": "origins:actor_action",
 										"action": {
 											"type": "origins:execute_command",
 											"command": "/advancement grant @s only thorigins:fox_origin/kitsune/boop_heal"
 										}
+									}
+								]
 							}
-						]
-					}
-}
+						}
 					]
 				}
 			]
@@ -756,7 +855,7 @@
 		"result": {
 			"item": "minecraft:sweet_berries",
 			"amount": 1
-},
+		},
 		"entity_action": {
 			"type": "origins:execute_command",
 			"command": "/advancement grant @s only thorigins:fox_origin/kitsune/craft_berry"

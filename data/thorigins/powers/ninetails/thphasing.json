@@ -167,6 +167,7 @@
 
 	"phasing": {
 		"type": "origins:phasing",
+		"render_type": "blindness",
 		"condition": {
 			"type": "origins:and",
 			"conditions": [
