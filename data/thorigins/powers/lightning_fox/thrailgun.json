@@ -320,7 +320,7 @@
 								"amount": 40,
 								"damage_type": "minecraft:fly_into_wall",
 								"source": {
-									"name": "flyIntoWall.player"
+									"name": "flyIntoWall"
 								}
 							},
 							{
