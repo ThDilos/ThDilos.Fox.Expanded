@@ -1,0 +1,38 @@
+{
+	"parent": "thorigins:utils/totem_trigger",
+	"criteria": {
+        "breed_entity": {
+            "trigger": "minecraft:bred_animals",
+            "conditions": {
+                "player": {
+					"nbt": "{Tags:[\"foxie\"]}",
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"thorigins:fox_origin/root": true
+						}
+					}
+				}
+            }
+        }
+	},
+	"display": {
+		"announce_to_chat": false,
+		"background": "minecraft:textures/block/white_wool.png",
+		"description": {
+			"translate": "Utility Advancement, plz ignore",
+			"fallback": "Utility Advancement, plz ignore"
+		},
+		"frame": "task",
+		"hidden": true,
+		"icon": {
+			"item": "minecraft:barrier"
+		},
+		"show_toast": false,
+		"title": {
+			"translate": "[Breed Entity Trigger]",
+			"fallback": "[Breed Entity Trigger]"
+		}
+	},
+	"requirements": [["breed_entity"]]
+}

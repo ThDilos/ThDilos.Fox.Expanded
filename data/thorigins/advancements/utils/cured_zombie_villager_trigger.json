@@ -1,0 +1,38 @@
+{
+	"parent": "thorigins:utils/totem_trigger",
+	"criteria": {
+        "cured_zombie_villager": {
+            "trigger": "minecraft:cured_zombie_villager",
+            "conditions": {
+                "player": {
+					"nbt": "{Tags:[\"foxie\"]}",
+					"type_specific": {
+						"type": "player",
+						"advancements": {
+							"thorigins:fox_origin/root": true
+						}
+					}
+				}
+            }
+        }
+	},
+	"display": {
+		"announce_to_chat": false,
+		"background": "minecraft:textures/block/white_wool.png",
+		"description": {
+			"translate": "Utility Advancement, plz ignore",
+			"fallback": "Utility Advancement, plz ignore"
+		},
+		"frame": "task",
+		"hidden": true,
+		"icon": {
+			"item": "minecraft:barrier"
+		},
+		"show_toast": false,
+		"title": {
+			"translate": "[Cured Zombie Villager Trigger]",
+			"fallback": "[Cured Zombie Villager Trigger]"
+		}
+	},
+	"requirements": [["cured_zombie_villager"]]
+}

@@ -2,6 +2,31 @@
 	"type": "origins:multiple",
 	"hidden": false,
 
+	"init": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_kitsune"
+					},
+					{
+						"type": "origins:advancement",
+						"advancement": "thorigins:fox_origin/unlock_ninetails"
+					}
+				]
+			},
+			"if_action": {
+				"type": "origins:change_resource",
+				"resource": "*:*_unlockable",
+				"change": -1
+			}
+		}
+	},
+
 	"ticks_20": {
 		"type": "origins:action_over_time",
 		"interval": 20,
@@ -75,10 +100,19 @@
 						"type": "origins:and",
 						"conditions": [
 							{
-								"type": "origins:resource",
-								"resource": "*:thtransform_lock_kitsune",
-								"compare_to": 0,
-								"comparison": "=="
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:advancement",
+										"advancement": "thorigins:fox_origin/unlock_kitsune"
+									},
+									{
+										"type": "origins:resource",
+										"resource": "thorigins:thtransform_lock_kitsune",
+										"compare_to": 0,
+										"comparison": "=="
+									}
+								]
 							},
 							{
 								"type": "origins:resource",
@@ -118,10 +152,19 @@
 						"type": "origins:and",
 						"conditions": [
 							{
-								"type": "origins:resource",
-								"resource": "*:thtransform_lock_ninetails",
-								"compare_to": 0,
-								"comparison": "=="
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:advancement",
+										"advancement": "thorigins:fox_origin/unlock_ninetails"
+									},
+									{
+										"type": "origins:resource",
+										"resource": "thorigins:thtransform_lock_ninetails",
+										"compare_to": 0,
+										"comparison": "=="
+									}
+								]
 							},
 							{
 								"type": "origins:resource",
@@ -259,6 +302,84 @@
 						"resource": "*:*_unlockable",
 						"change": -1
 					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:advancement",
+						"advancement": "thorigins:utils/cured_zombie_villager_trigger"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/advancement revoke @s only thorigins:utils/cured_zombie_villager_trigger"
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:resource",
+											"resource": "*:*_unlockable",
+											"compare_to": 0,
+											"comparison": "=="
+										},
+										{
+											"type": "origins:or",
+											"inverted": true,
+											"conditions": [
+												{
+													"type": "origins:advancement",
+													"advancement": "thorigins:fox_origin/unlock_kitsune"
+												},
+												{
+													"type": "origins:resource",
+													"resource": "thorigins:thtransform_lock_kitsune",
+													"compare_to": 0,
+													"comparison": "=="
+												}
+											]
+										},
+										{
+											"type": "origins:or",
+											"conditions": [
+												{
+													"type": "origins:advancement",
+													"advancement": "thorigins:fox_origin/unlock_ninetails"
+												},
+												{
+													"type": "origins:resource",
+													"resource": "thorigins:thtransform_lock_ninetails",
+													"compare_to": 0,
+													"comparison": "=="
+												}
+											]
+										}
+									]
+								},
+								"if_action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/execute at @e[type=villager,limit=1,sort=nearest] run summon item ~ ~ ~ {PickupDelay:60,Item:{id:\"minecraft:emerald\",Count:1,tag:{is_special_item:1,curer_uuid:0,display:{Name:'[{\"translate\":\"thorigins.special_item.villager_emerald.name\"}]',Lore:['[{\"translate\":\"thorigins.special_item.villager_emerald.lore0\",\"italic\":false}]','[{\"translate\":\"thorigins.special_item.villager_emerald.lore1\",\"italic\":false}]','[{\"text\":\"\"}]','[{\"translate\":\"thorigins.special_item.foot_note\",\"italic\":false}]']}}},Tags:[\"to_be_modified\"]}"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/data modify entity @e[tag=to_be_modified,limit=1,sort=nearest,type=item] Item.tag.curer_uuid set from entity @s UUID"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/tag @e[type=item,tag=to_be_modified,limit=1,sort=nearest] remove to_be_modified"
+										}
+									]
+								}
+							}
+						]
+					}
 				}
 			]
 		}
@@ -297,8 +418,8 @@
 		},
 		"hud_render": {
 			"should_render": true,
-			"bar_index": 14,
-			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 0,
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar2.png",
 			"condition": {
 				"type": "origins:and",
 				"conditions": [
@@ -370,8 +491,8 @@
 		},
 		"hud_render": {
 			"should_render": true,
-			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
-			"bar_index": 19,
+			"bar_index": 1,
+			"sprite_location": "thorigins2:textures/thdilos_resource_bar2.png",
 			"condition": {
 				"type": "origins:and",
 				"conditions": [
@@ -585,168 +706,231 @@
 					}
 				},
 				"if_action": {
-					"type": "origins:if_else_list",
-					"actions": [
-						{
-							"condition": {
-								"type": "origins:target_condition",
-								"condition": {
-									"type": "origins:or",
-									"conditions": [
-										{
-											"type": "origins:entity_type",
-											"entity_type": "ender_dragon"
-										},
-										{
-											"type": "origins:entity_type",
-											"entity_type": "wither"
-										},
-										{
-											"type": "origins:entity_type",
-											"entity_type": "warden"
-										}
-									]
-								}
-							},
-							"action": {
-								"type": "origins:actor_action",
-								"action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:trigger_cooldown",
-											"power": "*:*_show_karma"
-										},
-										{
-											"type": "origins:if_else",
-											"condition": {
-												"type": "origins:resource",
-												"resource": "*:*_check_state",
-												"compare_to": 1,
-												"comparison": "=="
-											},
-											"if_action": {
-												"type": "origins:change_resource",
-												"resource": "*:*_karma_p",
-												"change": 200
-											},
-											"else_action": {
-												"type": "origins:change_resource",
-												"resource": "*:*_karma_n",
-												"change": 200
-											}
-										}
-									]
-								}
-							}
-						},
-						{
-							"condition": {
-								"type": "origins:target_condition",
-								"condition": {
-									"type": "origins:tamed"
-								}
-							},
-							"action": {
-								"type": "origins:actor_action",
-								"action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:trigger_cooldown",
-											"power": "*:*_show_karma"
-										},
-										{
-											"type": "origins:if_else",
-											"condition": {
-												"type": "origins:resource",
-												"resource": "*:*_check_state",
-												"compare_to": 1,
-												"comparison": "=="
-											},
-											"if_action": {
-												"type": "origins:change_resource",
-												"resource": "*:*_karma_p",
-												"change": -100
-											},
-											"else_action": {
-												"type": "origins:change_resource",
-												"resource": "*:*_karma_n",
-												"change": 100
-											}
-										}
-									]
-								}
-							}
-						},
-						{
-							"condition": {
-								"type": "origins:target_condition",
-								"condition": {
-									"type": "origins:entity_group",
-									"group": "undead"
-								}
-							},
-							"action": {
-								"type": "origins:actor_action",
-								"action": {
-									"type": "origins:if_else",
-									"condition": {
-										"type": "origins:resource",
-										"resource": "*:*_check_state",
-										"compare_to": 1,
-										"comparison": "=="
-									},
-									"if_action": {
-										"type": "origins:change_resource",
-										"resource": "*:*_karma_p",
-										"change": 5
-									},
-									"else_action": {
-										"type": "origins:change_resource",
-										"resource": "*:*_karma_n",
-										"change": 5
-									}
-								}
-							}
-						},
-						{
-							"condition": {
-								"type": "origins:constant",
-								"value": true
-							},
-							"action": {
-								"type": "origins:actor_action",
-								"action": {
-									"type": "origins:if_else",
-									"condition": {
-										"type": "origins:resource",
-										"resource": "*:*_check_state",
-										"compare_to": 1,
-										"comparison": "=="
-									},
-									"if_action": {
-										"type": "origins:change_resource",
-										"resource": "*:*_karma_p",
-										"change": -5
-									},
-									"else_action": {
-										"type": "origins:change_resource",
-										"resource": "*:*_karma_n",
-										"change": 5
-									}
-								}
-							}
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:actor_condition",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_unlockable",
+							"compare_to": 1,
+							"comparison": "=="
 						}
-					]
+					},
+					"if_action": {
+						"type": "origins:if_else_list",
+						"actions": [
+							{
+								"condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:or",
+										"conditions": [
+											{
+												"type": "origins:entity_type",
+												"entity_type": "ender_dragon"
+											},
+											{
+												"type": "origins:entity_type",
+												"entity_type": "wither"
+											},
+											{
+												"type": "origins:entity_type",
+												"entity_type": "warden"
+											}
+										]
+									}
+								},
+								"action": {
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:trigger_cooldown",
+												"power": "*:*_show_karma"
+											},
+											{
+												"type": "origins:if_else",
+												"condition": {
+													"type": "origins:resource",
+													"resource": "*:*_check_state",
+													"compare_to": 1,
+													"comparison": "=="
+												},
+												"if_action": {
+													"type": "origins:change_resource",
+													"resource": "*:*_karma_p",
+													"change": 200
+												},
+												"else_action": {
+													"type": "origins:change_resource",
+													"resource": "*:*_karma_n",
+													"change": 200
+												}
+											}
+										]
+									}
+								}
+							},
+							{
+								"condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:tamed"
+									}
+								},
+								"action": {
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:trigger_cooldown",
+												"power": "*:*_show_karma"
+											},
+											{
+												"type": "origins:if_else",
+												"condition": {
+													"type": "origins:resource",
+													"resource": "*:*_check_state",
+													"compare_to": 1,
+													"comparison": "=="
+												},
+												"if_action": {
+													"type": "origins:change_resource",
+													"resource": "*:*_karma_p",
+													"change": -100
+												},
+												"else_action": {
+													"type": "origins:change_resource",
+													"resource": "*:*_karma_n",
+													"change": 100
+												}
+											}
+										]
+									}
+								}
+							},
+							{
+								"condition": {
+									"type": "origins:target_condition",
+									"condition": {
+										"type": "origins:entity_group",
+										"group": "undead"
+									}
+								},
+								"action": {
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:resource",
+											"resource": "*:*_check_state",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										"if_action": {
+											"type": "origins:change_resource",
+											"resource": "*:*_karma_p",
+											"change": 5
+										},
+										"else_action": {
+											"type": "origins:change_resource",
+											"resource": "*:*_karma_n",
+											"change": 5
+										}
+									}
+								}
+							},
+							{
+								"condition": {
+									"type": "origins:constant",
+									"value": true
+								},
+								"action": {
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:resource",
+											"resource": "*:*_check_state",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										"if_action": {
+											"type": "origins:change_resource",
+											"resource": "*:*_karma_p",
+											"change": -5
+										},
+										"else_action": {
+											"type": "origins:change_resource",
+											"resource": "*:*_karma_n",
+											"change": 5
+										}
+									}
+								}
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:actor_condition",
+									"condition": {
+										"type": "origins:or",
+										"conditions": [
+											{
+												"type": "origins:advancement",
+												"advancement": "thorigins:fox_origin/unlock_kitsune"
+											},
+											{
+												"type": "origins:resource",
+												"resource": "thorigins:thtransform_lock_kitsune",
+												"compare_to": 0,
+												"comparison": "=="
+											}
+										]
+									}
+								},
+								{
+									"type": "origins:owner"
+								}
+							]
+						},
+						"if_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:execute_command",
+										"command": "/summon item ~ ~ ~ {PickupDelay:60,Item:{id:\"minecraft:bone\",Count:1,tag:{is_special_item:1,killer_uuid:0,display:{Name:'[{\"translate\":\"thorigins.special_item.pet_bone.name\"}]',Lore:['[{\"translate\":\"thorigins.special_item.pet_bone.lore0\",\"italic\":false}]','[{\"translate\":\"thorigins.special_item.pet_bone.lore1\",\"italic\":false}]','[{\"text\":\"\"}]','[{\"translate\":\"thorigins.special_item.foot_note\",\"italic\":false}]']}}},Tags:[\"to_be_modified\"]}"
+									}
+								},
+								{
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "/data modify entity @e[tag=to_be_modified,limit=1,sort=nearest,type=item] Item.tag.killer_uuid set from entity @s UUID"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "/tag @e[type=item,tag=to_be_modified,limit=1,sort=nearest] remove to_be_modified"
+											}
+										]
+									}
+								}
+							]
+						}
+					}
 				}
 			}
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_unlockable",
-			"compare_to": 1,
-			"comparison": "=="
 		}
 	},
 
@@ -802,30 +986,28 @@
 	},
 
 	"tame_or_feed_creature": {
-		"type": "origins:action_on_entity_use",
-		"bientity_action": {
+		"type": "origins:action_over_time",
+		"entity_action": {
 			"type": "origins:and",
 			"actions": [
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:target_condition",
-						"condition": {
-							"type": "origins:tamed",
-							"inverted": true
-						}
+						"type": "origins:advancement",
+						"advancement": "thorigins:utils/tame_entity_trigger"
 					},
 					"if_action": {
-						"type": "origins:delay",
-						"ticks": 1,
-						"action": {
-							"type": "origins:if_else",
-							"condition": {
-								"type": "origins:owner"
-							},
-							"if_action": {
-								"type": "origins:actor_action",
-								"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:resource",
+									"resource": "*:*_unlockable",
+									"compare_to": 1,
+									"comparison": "=="
+								},
+								"if_action": {
 									"type": "origins:and",
 									"actions": [
 										{
@@ -853,38 +1035,32 @@
 										}
 									]
 								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/advancement revoke @s only thorigins:utils/tame_entity_trigger"
 							}
-						}
+						]
 					}
 				},
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:target_condition",
-						"condition": {
-							"type": "origins:nbt",
-							"nbt": {
-								"InLove": 0
-							}
-						}
+						"type": "origins:advancement",
+						"advancement": "thorigins:utils/breed_entity_trigger"
 					},
 					"if_action": {
-						"type": "origins:delay",
-						"ticks": 1,
-						"action": {
-							"type": "origins:if_else",
-							"condition": {
-								"type": "origins:target_condition",
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else",
 								"condition": {
-									"type": "origins:command",
-									"command": "/data get entity @s InLove",
-									"compare_to": 0,
-									"comparison": ">"
-								}
-							},
-							"if_action": {
-								"type": "origins:actor_action",
-								"action": {
+									"type": "origins:resource",
+									"resource": "*:*_unlockable",
+									"compare_to": 1,
+									"comparison": "=="
+								},
+								"if_action": {
 									"type": "origins:and",
 									"actions": [
 										{
@@ -902,37 +1078,23 @@
 											"if_action": {
 												"type": "origins:change_resource",
 												"resource": "*:*_karma_p",
-												"change": 5
+												"change": 20
 											},
 											"else_action": {
 												"type": "origins:change_resource",
 												"resource": "*:*_karma_n",
-												"change": -5
+												"change": -20
 											}
 										}
 									]
 								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/advancement revoke @s only thorigins:utils/breed_entity_trigger"
 							}
-						}
+						]
 					}
-				}
-			]
-		},
-		"action_result": "consume",
-		"condition": {
-			"type": "origins:and",
-			"conditions": [
-				{
-					"type": "origins:resource",
-					"resource": "*:*_unlockable",
-					"compare_to": 1,
-					"comparison": "=="
-				},
-				{
-					"type": "origins:resource",
-					"resource": "*:fox/thtrackers_forge",
-					"compare_to": 0,
-					"comparison": "=="
 				}
 			]
 		}

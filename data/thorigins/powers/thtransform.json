@@ -280,6 +280,7 @@
 	"active_self": {
 		"type": "origins:active_self",
 		"key": "key.loadToolbarActivator",
+"cooldown": 20,
 		"entity_action": {
 			"type": "origins:if_else",
 			"condition": {
@@ -294,8 +295,72 @@
 					"comparison": "=="
 				},
 				"if_action": {
+"type": "origins:and",
+					"actions": [
+						{
 					"type": "origins:trigger_cooldown",
 					"power": "*:thkarma_show_karma"
+},
+						{
+							"type": "origins:execute_command",
+							"command": "/scoreboard objectives add tempObj dummy"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "/scoreboard objectives add tempConst dummy"
+						},
+						{
+							"type": "origins:if_else",
+							"condition": {
+								"type": "origins:resource",
+								"resource": "*:thkarma_check_state",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							"if_action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/scoreboard players set @s tempConst 10"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/execute store result score @s tempObj run resource get @s thorigins:thkarma_karma_p"
+									}
+								]
+							},
+							"else_action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/scoreboard players set @s tempConst -10"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/execute store result score @s tempObj run resource get @s thorigins:thkarma_karma_n"
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "/scoreboard players operation @s tempObj /= @s tempConst"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "/tellraw @s [{\"translate\":\"thorigins.current_karma\",\"fallback\":\"Your current karma: %s\",\"with\":[{\"score\":{\"name\":\"*\",\"objective\":\"tempObj\"}}],\"color\":\"aqua\"},{\"text\":\"%\"}]"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "/scoreboard objectives remove tempObj"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "/scoreboard objectives remove tempConst"
+						}
+					]
 				},
 				"else_action": {
 					"type": "origins:if_else",
@@ -321,24 +386,79 @@
 						"command": "/title @s actionbar {\"translate\":\"completed_karma_path\",\"color\":\"yellow\"}"
 					},
 					"else_action": {
-						"type": "origins:if_else",
+						"type": "origins:if_else_list",
+"actions": [
+							{
 						"condition": {
+"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:resource",
+											"resource": "*:*_lock_ninetails",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										{
+											"type": "origins:equipped_item",
+											"equipment_slot": "offhand",
+											"item_condition": {
+												"type": "origins:ingredient",
+												"ingredient": {
+													"item": "minecraft:nether_star"
+												}
+											}
+										},
+										{
 							"type": "origins:equipped_item",
 							"equipment_slot": "mainhand",
 							"item_condition": {
+"type": "origins:and",
+												"conditions": [
+													{
 								"type": "origins:ingredient",
 								"ingredient": {
-									"item": "minecraft:dragon_egg"
+									"item": "minecraft:bone"
 								}
+},
+													{
+														"type": "origins:nbt",
+														"nbt": "{is_special_item:1}"
 							}
+]
+											}
+										}
+									]
 						},
-						"if_action": {
+						"action": {
 							"type": "origins:and",
 							"actions": [
 								{
 									"type": "origins:execute_command",
-									"command": "/tellraw @s {\"translate\":\"unlock_karma_path\",\"color\":\"yellow\"}"
+									"command": "/scoreboard objectives add thorigins.temp.killer_uuid0 dummy"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/scoreboard objectives add thorigins.temp.uuid0 dummy"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/execute store result score @s thorigins.temp.killer_uuid0 run data get entity @s SelectedItem.tag.killer_uuid[0]"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/execute store result score @s thorigins.temp.uuid0 run data get entity @s UUID[0]"
+										},
+										{
+											"type": "origins:if_else",
+											"condition": {
+												"type": "origins:command",
+												"command": "/execute if score @s thorigins.temp.killer_uuid0 = @s thorigins.temp.uuid0",
+												"compare_to": 0,
+												"comparison": ">"
 								},
+"if_action": {
+												"type": "origins:and",
+												"actions": [
 								{
 									"type": "origins:equipped_item_action",
 									"equipment_slot": "mainhand",
@@ -347,40 +467,256 @@
 										"amount": 1
 									}
 								},
+{
+														"type": "origins:equipped_item_action",
+														"equipment_slot": "offhand",
+														"action": {
+															"type": "origins:consume",
+															"amount": 1
+														}
+													},
+													{
+														"type": "origins:play_sound",
+														"sound": "minecraft:entity.allay.death",
+														"volume": 0.3,
+														"pitch": 0.4,
+														"category": "players"
+													},
+													{
+														"type": "origins:spawn_particles",
+														"particle": "minecraft:soul",
+														"count": 30,
+														"spread": {
+															"x": 0.3,
+															"y": 0.2,
+															"z": 0.3
+														},
+														"speed": 0.02
+													},
+													{
+														"type": "origins:spawn_particles",
+														"particle": "minecraft:angry_villager",
+														"count": 3,
+														"spread": {
+															"x": 0.3,
+															"y": 0.2,
+															"z": 0.3
+														},
+														"offset_y": 0.3,
+														"speed": 0.02
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/summon minecraft:lightning_bolt ~ -666 ~"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/tellraw @s {\"translate\":\"unlock_karma_path\",\"color\":\"yellow\"}"
+													},
 								{
 									"type": "origins:change_resource",
 									"resource": "*:thkarma_unlockable",
 									"change": 1
+}
+												]
+								},
+											"else_action": {
+									"type": "origins:execute_command",
+									"command": "/tellraw @s {\"translate\":\"thorigins.not_your_pet_bone\",\"fallback\":\"This bone does not belong to you.\",\"color\":\"red\"}"
+											}
 								},
 								{
-									"type": "origins:feed",
-									"food": 20,
-									"saturation": 20.0
-								},
+									"type": "origins:execute_command",
+											"command": "/scoreboard objectives remove thorigins.temp.killer_uuid0"
+										},
+										{
+											"type": "origins:execute_command",
+									"command": "/scoreboard objectives remove thorigins.temp.uuid0"
+										}
+									]
+								}
+							},
+							{
+								"condition": {
+									"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:resource",
+											"resource": "*:*_lock_kitsune",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										{
+											"type": "origins:equipped_item",
+											"equipment_slot": "offhand",
+											"item_condition": {
+												"type": "origins:ingredient",
+									"ingredient": {
+													"item": "minecraft:nether_star"
+												}
+											}
+										},
+										{
+											"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+											"item_condition": {
+												"type": "origins:and",
+												"conditions": [
 								{
-									"type": "origins:play_sound",
-									"sound": "minecraft:entity.fox.eat",
-									"category": "players",
-									"pitch": 1.5,
-									"volume": 0.7
+									"type": "origins:ingredient",
+									"ingredient": {
+															"item": "minecraft:emerald"
+														}
+													},
+													{
+														"type": "origins:nbt",
+														"nbt": "{is_special_item:1}"
+													}
+												]
+											}
+										}
+									]
 								},
-								{
-									"type": "origins:delay",
-									"ticks": 2,
 									"action": {
+"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/scoreboard objectives add thorigins.temp.curer_uuid0 dummy"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/scoreboard objectives add thorigins.temp.uuid0 dummy"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/execute store result score @s thorigins.temp.curer_uuid0 run data get entity @s SelectedItem.tag.curer_uuid[0]"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/execute store result score @s thorigins.temp.uuid0 run data get entity @s UUID[0]"
+										},
+										{
+											"type": "origins:if_else",
+											"condition": {
+												"type": "origins:command",
+												"command": "/execute if score @s thorigins.temp.curer_uuid0 = @s thorigins.temp.uuid0",
+												"compare_to": 0,
+												"comparison": ">"
+											},
+											"if_action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:equipped_item_action",
+														"equipment_slot": "mainhand",
+														"action": {
+															"type": "origins:consume",
+															"amount": 1
+														}
+													},
+													{
+														"type": "origins:equipped_item_action",
+														"equipment_slot": "offhand",
+														"action": {
+															"type": "origins:consume",
+															"amount": 1
+														}
+													},
+													{
 										"type": "origins:play_sound",
-										"sound": "minecraft:entity.player.burp",
-										"category": "players",
+										"sound": "minecraft:entity.allay.ambient_with_item",
+										"volume": 0.3,
 										"pitch": 1.5,
-										"volume": 0.4
-									}
+										"category": "players"
+													},
+													{
+														"type": "origins:spawn_particles",
+														"particle": "minecraft:soul",
+														"count": 30,
+														"spread": {
+															"x": 0.3,
+															"y": 0.2,
+															"z": 0.3
+														},
+														"speed": 0.02
+													},
+													{
+														"type": "origins:spawn_particles",
+														"particle": "minecraft:happy_villager",
+														"count": 3,
+														"spread": {
+															"x": 0.3,
+															"y": 0.2,
+															"z": 0.3
+														},
+														"offset_y": 0.3,
+														"speed": 0.02
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/summon minecraft:lightning_bolt ~ -666 ~"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "/tellraw @s {\"translate\":\"unlock_karma_path\",\"color\":\"yellow\"}"
+													},
+													{
+														"type": "origins:change_resource",
+														"resource": "*:thkarma_unlockable",
+														"change": 1
 								}
 							]
 						},
 						"else_action": {
+"type": "origins:execute_command",
+												"command": "/tellraw @s {\"translate\":\"thorigins.not_your_emerald\",\"fallback\":\"This emerald does not belong to you.\",\"color\":\"red\"}"
+											}
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/scoreboard objectives remove thorigins.temp.curer_uuid0"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/scoreboard objectives remove thorigins.temp.uuid0"
+										}
+									]
+								}
+							},
+							{
+								"condition": {
+									"type": "origins:constant",
+									"value": true
+								},
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
 							"type": "origins:execute_command",
 							"command": "/title @s actionbar {\"translate\":\"cannot_forward_karma\",\"color\":\"red\"}"
-						}
+						},
+										{
+											"type": "origins:if_else",
+											"condition": {
+												"type": "origins:resource",
+												"resource": "*:*_lock_kitsune",
+												"compare_to": 1,
+												"comparison": "=="
+											},
+											"if_action": {
+												"type": "origins:execute_command",
+												"command": "/tellraw @s {\"translate\":\"forward_karma_hint\",\"with\":[{\"translate\":\"thorigins.special_item.villager_emerald.name\",\"hoverEvent\":{\"action\":\"show_item\",\"contents\":{\"id\":\"emerald\",\"count\":1,\"tag\":\"{display:{Name:'[{\\\"translate\\\":\\\"thorigins.special_item.villager_emerald.name\\\"}]',Lore:['[{\\\"translate\\\":\\\"thorigins.special_item.villager_emerald.lore0\\\",\\\"italic\\\":false}]','[{\\\"translate\\\":\\\"thorigins.special_item.villager_emerald.lore1\\\",\\\"italic\\\":false}]','[{\\\"text\\\":\\\"\\\"}]','[{\\\"translate\\\":\\\"thorigins.special_item.villager_emerald.hint\\\",\\\"italic\\\":false}]']}}\"}}}]}"
+											},
+											"else_action": {
+												"type": "origins:execute_command",
+												"command": "/tellraw @s {\"translate\":\"forward_karma_hint\",\"with\":[{\"translate\":\"thorigins.special_item.pet_bone.name\",\"hoverEvent\":{\"action\":\"show_item\",\"contents\":{\"id\":\"bone\",\"count\":1,\"tag\":\"{display:{Name:'[{\\\"translate\\\":\\\"thorigins.special_item.pet_bone.name\\\"}]',Lore:['[{\\\"translate\\\":\\\"thorigins.special_item.pet_bone.lore0\\\",\\\"italic\\\":false}]','[{\\\"translate\\\":\\\"thorigins.special_item.pet_bone.lore1\\\",\\\"italic\\\":false}]','[{\\\"text\\\":\\\"\\\"}]','[{\\\"translate\\\":\\\"thorigins.special_item.pet_bone.hint\\\",\\\"italic\\\":false}]']}}\"}}}]}"
+											}
+										}
+									]
+								}
+							}
+						]
 					}
 				}
 			},
