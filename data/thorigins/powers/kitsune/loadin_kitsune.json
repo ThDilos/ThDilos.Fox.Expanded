@@ -88,7 +88,7 @@
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:thshy2_fear_timer",
+					"resource": "*:fox/thshy_fear_timer",
 					"change": -100
 				},
 				{
@@ -199,7 +199,7 @@
 						"conditions": [
 							{
 								"type": "origins:power_active",
-								"power": "*:thshy2_shaking_of_fear"
+								"power": "*:fox/thshy_shaking_of_fear"
 							},
 							{
 								"type": "origins:power_active",
