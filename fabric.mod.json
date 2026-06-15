@@ -8,6 +8,7 @@
 		"thorigins": ">=5.0.0"
 	},
 	"name": "ThDilos' Custom Fox Origins Expanded",
+	"icon": "Expanded-Fox.png",
 	"id": "thorigins2",
 	"version": "4.0.0",
 	"description": "Added a few evolutions for the base fox.",
