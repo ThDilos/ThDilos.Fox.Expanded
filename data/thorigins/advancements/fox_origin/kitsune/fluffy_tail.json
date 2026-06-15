@@ -1,0 +1,30 @@
+{
+	"parent": "thorigins:fox_origin/kitsune/craft_berry",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.fluffy_tail.description",
+			"fallback": "Completely fill your nine tails with 576 wools"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:white_wool"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.fluffy_tail.title",
+			"fallback": "The World's Fluffiest Pillows"
+		}
+	},
+	"requirements": [["to_be_granted"]],
+	"rewards": {
+		"experience": 500
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/kitsune/purification",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.craft_berry.description",
+			"fallback": "Craft a sweet berries with two random seeds"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:sweet_berries"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.craft_berry.title",
+			"fallback": "Causality Alteration"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

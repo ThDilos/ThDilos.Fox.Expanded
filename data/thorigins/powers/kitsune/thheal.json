@@ -426,6 +426,10 @@
 								}
 							}
 						},
+{
+							"type": "origins:execute_command",
+							"command": "/tag @s add temp"
+						},
 						{
 							"type": "origins:block_action_at",
 							"block_action": {
@@ -433,10 +437,23 @@
 								"radius": 5,
 								"shape": "sphere",
 								"block_action": {
+"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/advancement grant @p[tag=temp] only thorigins:fox_origin/kitsune/grow_plant"
+										},
+										{
 									"type": "origins:bonemeal",
 									"effects": true
+}
+									]
 								}
 							}
+},
+						{
+							"type": "origins:execute_command",
+							"command": "/tag @s remove temp"
 						}
 					]
 				}
@@ -516,7 +533,13 @@
 					}
 				},
 				{
-					"type": "origins:if_else",
+									{
+										"type": "origins:actor_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/kitsune/purification"
+										}
+									}
 					"condition": {
 						"type": "origins:target_condition",
 						"condition": {
@@ -569,6 +592,13 @@
 										}
 									]
 								}
+},
+									{
+										"type": "origins:actor_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/kitsune/purification"
+										}
 							}
 						]
 					},
@@ -624,9 +654,18 @@
 										"type": "origins:tame"
 									}
 								}
+},
+									{
+										"type": "origins:actor_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/kitsune/boop_heal"
+										}
 							}
 						]
 					}
+}
+					]
 				}
 			]
 		},
@@ -717,6 +756,10 @@
 		"result": {
 			"item": "minecraft:sweet_berries",
 			"amount": 1
+},
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/advancement grant @s only thorigins:fox_origin/kitsune/craft_berry"
 		}
 	},
 

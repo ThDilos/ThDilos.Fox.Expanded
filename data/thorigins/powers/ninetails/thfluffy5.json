@@ -47,35 +47,63 @@
 			"radius": 0.8,
 			"shape": "sphere",
 			"bientity_action": {
-				"type": "origins:target_action",
-				"action": {
-					"type": "origins:if_else",
-					"condition": {
-						"type": "origins:power",
-						"power": "*:ninetails/thfear",
-						"source": "thorigins:temp"
-					},
-					"if_action": {
-						"type": "origins:if_else",
-						"condition": {
-							"type": "origins:resource",
-							"resource": "*:ninetails/thfear_timer",
-							"compare_to": 100,
-							"comparison": "<"
-						},
-						"if_action": {
-							"type": "origins:change_resource",
-							"resource": "*:ninetails/thfear_timer",
-							"change": 100,
-							"operation": "set"
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:execute_command",
+							"command": "/tag @s add temp"
 						}
 					},
-					"else_action": {
-						"type": "origins:grant_power",
-						"power": "*:ninetails/thfear",
-						"source": "thorigins:temp"
+					{
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:if_else",
+									"condition": {
+										"type": "origins:power",
+										"power": "*:ninetails/thfear",
+										"source": "thorigins:temp"
+									},
+									"if_action": {
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:resource",
+											"resource": "*:ninetails/thfear_timer",
+											"compare_to": 100,
+											"comparison": "<"
+										},
+										"if_action": {
+											"type": "origins:change_resource",
+											"resource": "*:ninetails/thfear_timer",
+											"change": 100,
+											"operation": "set"
+										}
+									},
+									"else_action": {
+										"type": "origins:grant_power",
+										"power": "*:ninetails/thfear",
+										"source": "thorigins:temp"
+									}
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "/advancement grant @p[tag=temp] only thorigins:fox_origin/ninetails/instinctual_fear"
+								}
+							]
+						}
+					},
+					{
+						"type": "origins:actor_action",
+						"action": {
+							"type": "origins:execute_command",
+							"command": "/tag @s remove temp"
+						}
 					}
-				}
+				]
 			},
 			"bientity_condition": {
 				"type": "origins:and",

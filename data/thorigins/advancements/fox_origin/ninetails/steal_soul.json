@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/ninetails/instinctual_fear",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.steal_soul.description",
+			"fallback": "Reap out a fraction of soul from a mob"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:sculk_vein"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.steal_soul.title",
+			"fallback": "\"You Are Mine\""
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

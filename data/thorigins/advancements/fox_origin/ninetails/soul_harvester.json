@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/unlock_ninetails",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.soul_harvester.description",
+			"fallback": "Kill a mob to harvest its soul for power"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:soul_lantern"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.soul_harvester.title",
+			"fallback": "Soul Harvester"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

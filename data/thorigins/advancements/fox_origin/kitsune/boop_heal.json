@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/kitsune/grow_plant",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.boop_heal.description",
+			"fallback": "Boop someone to heal and bless them with good fortune"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:emerald"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.boop_heal.title",
+			"fallback": "The Spirit's Grace"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

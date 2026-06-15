@@ -205,6 +205,30 @@
 					"condition": {
 						"type": "origins:on_block"
 					}
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_snowflake",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:ice_fox/thaurora_aurora_bar",
+								"compare_to": 0,
+								"comparison": ">"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/advancement grant @s only thorigins:fox_origin/ice_fox/aurora"
+					}
+				},
 				}
 			]
 		},

@@ -353,6 +353,19 @@
 								"type": "origins:and",
 								"actions": [
 									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:command",
+											"command": "/execute if entity @e[type=chicken,distance=..10]",
+											"compare_to": 10,
+											"comparison": ">="
+										},
+										"if_action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/family_bucket"
+										}
+									},
+									{
 										"type": "origins:area_of_effect",
 										"radius": 10,
 										"shape": "sphere",
@@ -425,6 +438,19 @@
 								"type": "origins:and",
 								"actions": [
 									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:command",
+											"command": "/execute if entity @e[type=chicken,distance=..20]",
+											"compare_to": 10,
+											"comparison": ">="
+										},
+										"if_action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/family_bucket"
+										}
+									},
+									{
 										"type": "origins:area_of_effect",
 										"radius": 20,
 										"shape": "sphere",
@@ -496,6 +522,19 @@
 							"action": {
 								"type": "origins:and",
 								"actions": [
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:command",
+											"command": "/execute if entity @e[type=chicken,distance=..20]",
+											"compare_to": 10,
+											"comparison": ">="
+										},
+										"if_action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/family_bucket"
+										}
+									},
 									{
 										"type": "origins:area_of_effect",
 										"radius": 20,

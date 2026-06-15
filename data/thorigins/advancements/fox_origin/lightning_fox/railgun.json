@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/unlock_lightning",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.railgun.description",
+			"fallback": "Successfully accelerate an iron nugget to 2307mph"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:iron_nugget"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.railgun.title",
+			"fallback": "Level 5 Esper"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

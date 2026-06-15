@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/ice_fox/ice_shield",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.ice_shard_fly.description",
+			"fallback": "Summon an ice shard and mount on it to fly"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:firework_rocket"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.ice_shard_fly.title",
+			"fallback": "Defying Gravity"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

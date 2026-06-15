@@ -355,6 +355,21 @@
 									"type": "origins:execute_command",
 									"command": "/playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 0.5 1"
 								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:distance",
+									"compare_to": 80,
+									"comparison": ">="
+								},
+								"if_action": {
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:execute_command",
+										"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/precision_strike"
+									}
+								}
 							}
 						]
 					}
@@ -499,6 +514,10 @@
 				{
 					"type": "origins:exhaust",
 					"amount": 40
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/railgun"
 				}
 			]
 		}

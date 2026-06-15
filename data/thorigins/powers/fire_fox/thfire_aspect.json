@@ -217,6 +217,10 @@
 						"volume": 0.7
 					},
 					"inventory_type": "inventory"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/fire_fox/eat_blaze_rod"
 				}
 			]
 		}

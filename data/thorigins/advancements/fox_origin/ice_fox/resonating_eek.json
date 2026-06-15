@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/unlock_ice",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.resonating_eek.description",
+			"fallback": "Eek and detonate at least 10 ice shards at once"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:amethyst_shard"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.resonating_eek.title",
+			"fallback": "Resonating Eek"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

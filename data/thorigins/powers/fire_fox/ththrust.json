@@ -581,6 +581,10 @@
 				{
 					"type": "origins:execute_command",
 					"command": "/playsound minecraft:entity.generic.explode player @s ~ ~ ~ 1.5 0.8"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/fire_fox/impact_explosion"
 				}
 			]
 		}

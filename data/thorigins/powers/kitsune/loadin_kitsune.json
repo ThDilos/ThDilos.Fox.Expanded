@@ -118,6 +118,28 @@
 		}
 	},
 
+	"fluffy_tail_advancement": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/advancement grant @s only thorigins:fox_origin/kitsune/fluffy_tail"
+		},
+		"condition": {
+			"type": "origins:inventory",
+			"inventory_types": ["power"],
+			"process_mode": "items",
+			"item_condition": {
+				"type": "origins:ingredient",
+				"ingredient": {
+					"tag": "minecraft:wool"
+				}
+			},
+			"compare_to": 576,
+			"comparison": ">=",
+			"power": "thorigins:thstorage2_tails"
+		}
+	},
+
 	"forge_advancement_fix": {
 		"type": "origins:action_on_hit",
 		"damage_condition": {

@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/ice_fox/aurora",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.ice_shield.description",
+			"fallback": "Grant someone an ice shield and detonate them"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:blue_ice"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.ice_shield.title",
+			"fallback": "Armored HE Bomb Vest"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

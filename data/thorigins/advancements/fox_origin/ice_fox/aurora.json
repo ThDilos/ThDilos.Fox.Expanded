@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/ice_fox/resonating_eek",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.aurora.description",
+			"fallback": "Paint the night sky with Aurora using [§6§l§nBlizzard§r]"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:nether_star"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.aurora.title",
+			"fallback": "The Northern Lights"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}
