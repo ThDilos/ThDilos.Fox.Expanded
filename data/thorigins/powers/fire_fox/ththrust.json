@@ -492,10 +492,6 @@
 				{
 					"type": "origins:name",
 					"name": "flyIntoWall"
-				},
-				{
-					"type": "origins:name",
-					"name": "flyIntoWall.player"
 				}
 			]
 		},
@@ -535,7 +531,7 @@
 							"amount": 0.01,
 							"damage_type": "minecraft:explosion",
 							"source": {
-								"name": "explosion.player"
+								"name": "explosion"
 							}
 						}
 					},
