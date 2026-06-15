@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/kitsune/boop_heal",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.purification.description",
+			"fallback": "Boop an undead mob to fracture its impure soul"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:glowstone"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.purification.title",
+			"fallback": "Purification"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

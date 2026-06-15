@@ -90,6 +90,14 @@
 			"distance": 30,
 			"command_step": 0.2,
 			"fluid_handling": "none",
+			"bientity_condition": {
+				"type": "origins:target_condition",
+				"condition": {
+					"type": "origins:nbt",
+					"nbt": "{Tags:[\"foxie_trust\"]}",
+					"inverted": true
+				}
+			},
 			"bientity_action": {
 				"type": "origins:and",
 				"actions": [
@@ -676,12 +684,137 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:and",
-						"actions": [
-							{
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:raycast",
+							"shape_type": "visual",
+							"block": true,
+							"entity": false,
+							"fluid_handling": "none",
+							"distance": 150,
+							"command_step": 1,
+							"before_action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/playsound minecraft:entity.allay.hurt player @s ~ ~ ~ 1 0.5"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/playsound minecraft:entity.vex.hurt player @s ~ ~ ~ 1 1"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/playsound minecraft:entity.dragon_fireball.explode player @s ~ ~ ~ 2 1.5"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "/playsound minecraft:entity.wither.death player @s ~ ~ ~ 2 2"
+									}
+								]
+							},
+							"block_action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "/tag @e[distance=..8,tag=!crepr,tag=!foxie_trust] add cannon_target"
+									},
+									{
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "/fill ~2 ~4 ~8 ~-2 ~-4 ~-8 fire replace air"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "/fill ~8 ~4 ~2 ~-8 ~-4 ~-2 fire replace air"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "/fill ~2 ~8 ~2 ~-2 ~-8 ~-2 fire replace air"
+											}
+										]
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:area_of_effect",
+							"radius": 170,
+							"shape": "sphere",
+							"bientity_condition": {
+								"type": "origins:target_condition",
+								"condition": {
+									"type": "origins:nbt",
+									"nbt": "{\"Tags\":[\"cannon_target\"]}"
+								}
+							},
+							"bientity_action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:damage",
+										"amount": 30,
+										"damage_type": "minecraft:fireworks"
+									},
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:target_condition",
+											"condition": {
+												"type": "origins:and",
+												"conditions": [
+													{
+														"type": "origins:health",
+														"compare_to": 0,
+														"comparison": "<="
+													},
+													{
+														"type": "origins:entity_type",
+														"entity_type": "minecraft:chicken"
+													}
+												]
+											}
+										},
+										"if_action": {
+											"type": "origins:actor_action",
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/advancement grant @s only thorigins:fox_origin/fire_fox/overcooked"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "/tag @a[tag=cannon_target] remove cannon_target"
+						},
+						{
+							"type": "origins:if_else",
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:fox/thtrackers_destroy_terrain",
+										"compare_to": 1,
+										"comparison": "=="
+									},
+									{
+										"type": "origins:resource",
+										"resource": "*:fox/universal_settings_destroy_terrain",
+										"compare_to": 1,
+										"comparison": "=="
+									}
+								]
+							},
+							"if_action": {
 								"type": "origins:raycast",
 								"shape_type": "visual",
 								"block": true,
@@ -689,150 +822,34 @@
 								"fluid_handling": "none",
 								"distance": 150,
 								"command_step": 1,
-								"before_action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:execute_command",
-											"command": "/playsound minecraft:entity.allay.hurt player @s ~ ~ ~ 1 0.5"
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/playsound minecraft:entity.vex.hurt player @s ~ ~ ~ 1 1"
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/playsound minecraft:entity.dragon_fireball.explode player @s ~ ~ ~ 2 1.5"
-										},
-										{
-											"type": "origins:execute_command",
-											"command": "/playsound minecraft:entity.wither.death player @s ~ ~ ~ 2 2"
-										}
-									]
-								},
+								"command_along_ray": "/function thorigins:cannon/biglaser_with_creeper",
 								"block_action": {
-									"type": "origins:and",
-									"actions": [
-										{
-											"type": "origins:execute_command",
-											"command": "/tag @e[distance=..8,,tag=!crepr] add cannon_target"
-										},
-										{
-											"type": "origins:delay",
-											"ticks": 1,
-											"action": {
-												"type": "origins:and",
-												"actions": [
-													{
-														"type": "origins:execute_command",
-														"command": "/fill ~2 ~4 ~8 ~-2 ~-4 ~-8 fire replace air"
-													},
-													{
-														"type": "origins:execute_command",
-														"command": "/fill ~8 ~4 ~2 ~-8 ~-4 ~-2 fire replace air"
-													},
-													{
-														"type": "origins:execute_command",
-														"command": "/fill ~2 ~8 ~2 ~-2 ~-8 ~-2 fire replace air"
-													}
-												]
-											}
-										}
-									]
+									"type": "origins:explode",
+									"create_fire": true,
+									"damage_self": false,
+									"destruction_type": "destroy",
+									"power": 10
 								}
 							},
-							{
-								"type": "origins:if_else",
-								"condition": {
-									"type": "origins:and",
-									"conditions": [
-										{
-											"type": "origins:resource",
-											"resource": "*:fox/thtrackers_destroy_terrain",
-											"compare_to": 1,
-											"comparison": "=="
-										},
-										{
-											"type": "origins:resource",
-											"resource": "*:fox/universal_settings_destroy_terrain",
-											"compare_to": 1,
-											"comparison": "=="
-										}
-									]
-								},
-								"if_action": {
-									"type": "origins:raycast",
-									"shape_type": "visual",
-									"block": true,
-									"entity": false,
-									"fluid_handling": "none",
-									"distance": 150,
-									"command_step": 1,
-									"command_along_ray": "/function thorigins:cannon/biglaser_with_creeper",
-									"block_action": {
-										"type": "origins:explode",
-										"create_fire": true,
-										"damage_self": false,
-										"destruction_type": "destroy",
-										"power": 10
-									}
-								},
-								"else_action": {
-									"type": "origins:raycast",
-									"shape_type": "visual",
-									"block": true,
-									"entity": false,
-									"fluid_handling": "none",
-									"distance": 150,
-									"command_step": 1,
-									"command_along_ray": "/function thorigins:cannon/biglaser_only_particle",
-									"block_action": {
-										"type": "origins:explode",
-										"create_fire": true,
-										"damage_self": false,
-										"destruction_type": "keep",
-										"power": 10
-									}
+							"else_action": {
+								"type": "origins:raycast",
+								"shape_type": "visual",
+								"block": true,
+								"entity": false,
+								"fluid_handling": "none",
+								"distance": 150,
+								"command_step": 1,
+								"command_along_ray": "/function thorigins:cannon/biglaser_only_particle",
+								"block_action": {
+									"type": "origins:explode",
+									"create_fire": true,
+									"damage_self": false,
+									"destruction_type": "keep",
+									"power": 10
 								}
 							}
-						]
-					}
-				},
-				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:area_of_effect",
-						"radius": 170,
-						"shape": "sphere",
-						"bientity_condition": {
-							"type": "origins:target_condition",
-							"condition": {
-								"type": "origins:nbt",
-								"nbt": "{\"Tags\":[\"cannon_target\"]}"
-							}
-						},
-						"bientity_action": {
-							"type": "origins:and",
-							"actions": [
-								{
-									"type": "origins:damage",
-									"amount": 30,
-									"damage_type": "minecraft:fireworks",
-									"source": {
-										"name": "fireworks.player"
-									}
-								},
-								{
-									"type": "origins:target_action",
-									"action": {
-										"type": "origins:execute_command",
-										"command": "/tag @s remove cannon_target"
-									}
-								}
-							]
 						}
-					}
+					]
 				},
 				{
 					"type": "origins:change_resource",

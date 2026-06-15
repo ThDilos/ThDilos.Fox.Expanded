@@ -88,7 +88,7 @@
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:thshy2_fear_timer",
+					"resource": "*:fox/thshy_fear_timer",
 					"change": -100
 				},
 				{

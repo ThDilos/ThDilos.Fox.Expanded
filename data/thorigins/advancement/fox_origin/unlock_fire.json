@@ -301,21 +301,6 @@
 				}
 			}
 		},
-		"all_potions": {
-			"trigger": "minecraft:location",
-			"conditions": {
-				"player": {
-					"nbt": "{Tags: [\"foxie\"]}",
-					"type_specific": {
-						"type": "player",
-						"advancements": {
-							"thorigins:fox_origin/evolution_root": true,
-							"minecraft:nether/all_potions": true
-						}
-					}
-				}
-			}
-		},
 		"create_full_beacon": {
 			"trigger": "minecraft:location",
 			"conditions": {
@@ -330,21 +315,6 @@
 					}
 				}
 			}
-		},
-		"all_effects": {
-			"trigger": "minecraft:location",
-			"conditions": {
-				"player": {
-					"nbt": "{Tags: [\"foxie\"]}",
-					"type_specific": {
-						"type": "player",
-						"advancements": {
-							"thorigins:fox_origin/evolution_root": true,
-							"minecraft:nether/all_effects": true
-						}
-					}
-				}
-			}
 		}
 	},
 	"display": {
@@ -352,7 +322,7 @@
 		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
 		"description": {
 			"translate": "thorigins.advancements.unlock_fire.description",
-			"fallback": "Unlock the Fire Fox Evolution\n\n§8Complete all 23 Vanilla Nether Advancements"
+			"fallback": "Unlock the Fire Fox Evolution\n\n§8Complete 21 Vanilla Nether Advancements (Except the 2 about potion effects)"
 		},
 		"frame": "challenge",
 		"hidden": false,
@@ -386,9 +356,6 @@
 		["summon_wither"],
 		["brew_potion"],
 		["create_beacon"],
-		["all_potions"],
-		["create_full_beacon"],
-		["all_effects"]
-	],
-	"sends_telemetry_event": true
+		["create_full_beacon"]
+	]
 }

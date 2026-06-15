@@ -1,0 +1,205 @@
+[
+	{
+		"function": "minecraft:set_name",
+		"entity": "this",
+		"name": {
+			"translate": "thorigins.kitsune_talisman.name",
+			"fallback": "§6Kitsune Talisman"
+		}
+	},
+	{
+		"function": "minecraft:set_lore",
+		"entity": "this",
+		"lore": [
+			{
+				"translate": "thorigins.kitsune_talisman.lore0",
+				"fallback": "§7An exquisite talisman with a nine-tailed fox figure carved out."
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.lore1",
+				"fallback": "§7It can negate incoming lethal damage once."
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.lore2",
+				"fallback": "§8§oYou can feel a mysterious power circulating through its carvings"
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability0.lore0",
+				"fallback": "§6Item Ability: Cleansing §e§lHOLD RIGHT CLICK"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability0.lore1",
+				"fallback": "§7Inject your power into the artifact, knocking back"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability0.lore2",
+				"fallback": "§7and dealing §c10§r §7damage to surrounding undead entities within §a16 blocks§r§7."
+			},
+			{
+				"translate": "thorigins.hunger_cost_lore",
+				"fallback": "§8Hunger Cost: [%s]",
+				"with": [
+					{
+						"text": "4",
+						"color": "dark_aqua",
+						"italic": false
+					}
+				]
+			},
+			{
+				"translate": "thorigins.cooldown_lore",
+				"fallback": "§8Cooldown: [%s]",
+				"with": [
+					{
+						"text": "30s",
+						"color": "green",
+						"italic": false
+					}
+				]
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability1.lore0",
+				"fallback": "§6Item Ability(§emainhand§6): Evocation §e§lSNEAK HOLD RIGHT CLICK"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability1.lore1",
+				"fallback": "§7Channel your faith with the talisman,"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability1.lore2",
+				"fallback": "§7call upon the source of the spiritual grace."
+			},
+			{
+				"translate": "thorigins.cooldown_lore",
+				"fallback": "§8Cooldown: [%s]",
+				"with": [
+					{
+						"text": "30s",
+						"color": "green",
+						"italic": false
+					}
+				]
+			},
+
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability2.lore0",
+				"fallback": "§6Item Ability: Serenity"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability2.lore1",
+				"fallback": "§7When in §emainhand / offhand:"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability2.lore2",
+				"fallback": "§7- Your Damage Dealt to non-undead mobs §c-50%"
+			},
+			{
+				"translate": "thorigins.kitsune_talisman.ability2.lore3",
+				"fallback": "§7- Permanent §aRegeneration I"
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.kitsune_bless.footnote",
+				"fallback": "۞ Blessed by Kitsune [%s] ۞",
+				"with": [
+					{
+						"selector": "@s",
+						"color": "yellow"
+					}
+				]
+			}
+		],
+		"mode": "append",
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"components": {
+									"minecraft:custom_data": {
+										"kitsune_blessed": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_attributes",
+		"modifiers": [
+			{
+				"attribute": "minecraft:generic.luck",
+				"name": "Kitsune Blessed",
+				"id": "thorigins:kitsune_talisman_blessing",
+				"amount": 5,
+				"operation": "add_value",
+				"slot": ["mainhand", "offhand"]
+			}
+		],
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"predicates": {
+									"minecraft:custom_data": {
+										"kitsune_blessed": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "apoli:add_power",
+		"power": "thorigins:evocation",
+		"slot": "mainhand",
+		"hidden": true
+	},
+	{
+		"function": "apoli:add_power",
+		"power": "thorigins:kitsune/kitsune_talisman_power",
+		"slot": "mainhand",
+		"hidden": true
+	},
+	{
+		"function": "apoli:add_power",
+		"power": "thorigins:kitsune/kitsune_talisman_power",
+		"slot": "offhand",
+		"hidden": true
+	},
+	{
+		"function": "minecraft:set_custom_data",
+		"tag": {
+			"kitsune_blessed": true
+		}
+	}
+]

@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/lightning_fox/thunder_struck",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.fluff_kill.description",
+			"fallback": "Kill something by bumping into them with your statically charged spiky fluff"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:cactus"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.fluff_kill.title",
+			"fallback": "Death by Snuggles"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

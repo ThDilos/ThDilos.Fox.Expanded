@@ -81,11 +81,63 @@
 									}
 								},
 								{
+									"type": "origins:if_else",
+									"condition": {
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:health",
+											"compare_to": 0,
+											"comparison": ">"
+										}
+									},
+									"if_action": {
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/tag @s add elligible_for_advancement"
+										}
+									}
+								},
+								{
 									"type": "origins:damage",
 									"amount": 1,
 									"damage_type": "minecraft:cactus",
 									"source": {
 										"name": "cactus.player"
+									}
+								},
+								{
+									"type": "origins:if_else",
+									"condition": {
+										"type": "origins:target_condition",
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:nbt",
+													"nbt": "{Tags: [\"elligible_for_advancement\"]}"
+												},
+												{
+													"type": "origins:health",
+													"compare_to": 0,
+													"comparison": "<="
+												}
+											]
+										}
+									},
+									"if_action": {
+										"type": "origins:actor_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/fluff_kill"
+										}
+									}
+								},
+								{
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:execute_command",
+										"command": "/tag @s remove elligible_for_advancement"
 									}
 								}
 							]
@@ -126,11 +178,63 @@
 										}
 									},
 									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:target_condition",
+											"condition": {
+												"type": "origins:health",
+												"compare_to": 0,
+												"comparison": ">"
+											}
+										},
+										"if_action": {
+											"type": "origins:target_action",
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/tag @s add elligible_for_advancement"
+											}
+										}
+									},
+									{
 										"type": "origins:damage",
 										"amount": 1,
 										"damage_type": "minecraft:cactus",
 										"source": {
 											"name": "cactus.player"
+										}
+									},
+									{
+										"type": "origins:if_else",
+										"condition": {
+											"type": "origins:target_condition",
+											"condition": {
+												"type": "origins:and",
+												"conditions": [
+													{
+														"type": "origins:nbt",
+														"nbt": "{Tags: [\"elligible_for_advancement\"]}"
+													},
+													{
+														"type": "origins:health",
+														"compare_to": 0,
+														"comparison": "<="
+													}
+												]
+											}
+										},
+										"if_action": {
+											"type": "origins:actor_action",
+											"action": {
+												"type": "origins:execute_command",
+												"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/fluff_kill"
+											}
+										}
+									},
+									{
+										"type": "origins:target_action",
+										"action": {
+											"type": "origins:execute_command",
+											"command": "/tag @s remove elligible_for_advancement"
 										}
 									}
 								]

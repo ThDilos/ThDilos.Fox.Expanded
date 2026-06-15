@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/ninetails/soul_harvester",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.instinctual_fear.description",
+			"fallback": "Cause someone to shake in fear by your presence"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:red_dye"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.instinctual_fear.title",
+			"fallback": "Instinctual Fear"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

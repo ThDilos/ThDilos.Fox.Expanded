@@ -205,6 +205,45 @@
 					"condition": {
 						"type": "origins:on_block"
 					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_snowflake",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:ice_fox/thaurora_aurora_bar",
+								"compare_to": 0,
+								"comparison": ">"
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/advancement grant @s only thorigins:fox_origin/ice_fox/aurora"
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_moving",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_disable_skill",
+						"change": 0,
+						"operation": "set"
+					}
 				}
 			]
 		},
@@ -474,6 +513,43 @@
 		}
 	},
 
+	"disable_skill": {
+		"type": "origins:resource",
+		"start_value": 0,
+		"min": 0,
+		"max": 20,
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "/playsound minecraft:block.beacon.deactivate player @s ~ ~ ~ 0.6 1.5"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_snowflake",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_disable_skill",
+					"change": 0,
+					"operation": "set"
+				}
+			]
+		},
+		"hud_render": {
+			"should_render": true,
+			"bar_index": 3,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_disable_skill",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		}
+	},
+
 	"down": {
 		"type": "origins:active_self",
 		"key": {
@@ -484,20 +560,56 @@
 			"type": "origins:and",
 			"actions": [
 				{
-					"type": "origins:change_resource",
-					"resource": "*:*_moving",
-					"change": 3
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:on_block"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_snowflake",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_blizzard_delay",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_disable_skill",
+						"change": 1
+					}
 				},
 				{
-					"type": "origins:add_velocity",
-					"y": -0.3,
-					"set": true
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:power_active",
+						"power": "*:*_up"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_moving",
+								"change": 3
+							},
+							{
+								"type": "origins:add_velocity",
+								"y": -0.3,
+								"set": true
+							}
+						]
+					}
 				}
 			]
-		},
-		"condition": {
-			"type": "origins:power_active",
-			"power": "*:*_up"
 		}
 	},
 

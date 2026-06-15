@@ -1,0 +1,30 @@
+{
+	"parent": "thorigins:fox_origin/lightning_fox/family_bucket",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.precision_strike.description",
+			"fallback": "Use [§6§l§nRailgun§r] to hit a target at least 80 blocks away"
+		},
+		"frame": "challenge",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:spyglass"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.precision_strike.title",
+			"fallback": "Precision Strike"
+		}
+	},
+	"requirements": [["to_be_granted"]],
+	"rewards": {
+		"experience": 500
+	}
+}

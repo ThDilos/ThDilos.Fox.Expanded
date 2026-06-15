@@ -104,7 +104,7 @@
 					"actions": [
 						{
 							"type": "origins:exhaust",
-							"amount": 0.1
+							"amount": 0.02
 						},
 						{
 							"type": "origins:delay",
@@ -394,7 +394,7 @@
 			"power": "*:*_toggle"
 		},
 		"modifier": {
-			"amount": 14,
+			"amount": 9,
 			"operation": "multiply_base_additive"
 		}
 	},

@@ -467,7 +467,7 @@
 												"type": "origins:damage",
 												"amount": 3,
 												"source": {
-													"name": "freeze.player"
+													"name": "freeze"
 												},
 												"damage_type": "freeze"
 											},

@@ -88,7 +88,7 @@
 				},
 				{
 					"type": "origins:change_resource",
-					"resource": "*:thshy2_fear_timer",
+					"resource": "*:fox/thshy_fear_timer",
 					"change": -100
 				},
 				{
@@ -118,6 +118,28 @@
 		}
 	},
 
+	"fluffy_tail_advancement": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "/advancement grant @s only thorigins:fox_origin/kitsune/fluffy_tail"
+		},
+		"condition": {
+			"type": "origins:inventory",
+			"inventory_types": ["power"],
+			"process_mode": "items",
+			"item_condition": {
+				"type": "origins:ingredient",
+				"ingredient": {
+					"tag": "minecraft:wool"
+				}
+			},
+			"compare_to": 576,
+			"comparison": ">=",
+			"power": "thorigins:thstorage2_tails"
+		}
+	},
+
 	"foxify_kitsune": {
 		"type": "origins:action_over_time",
 		"interval": 1,
@@ -131,7 +153,7 @@
 						"conditions": [
 							{
 								"type": "origins:power_active",
-								"power": "*:thshy2_shaking_of_fear"
+								"power": "*:fox/thshy_shaking_of_fear"
 							},
 							{
 								"type": "origins:power_active",

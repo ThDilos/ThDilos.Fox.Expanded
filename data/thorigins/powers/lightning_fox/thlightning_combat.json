@@ -116,11 +116,23 @@
 			"actions": [
 				{
 					"element": {
-						"type": "origins:target_action",
-						"action": {
-							"type": "origins:execute_command",
-							"command": "/summon lightning_bolt ~ ~ ~"
-						}
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:target_action",
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/summon lightning_bolt ~ ~ ~"
+								}
+							},
+							{
+								"type": "origins:actor_action",
+								"action": {
+									"type": "origins:execute_command",
+									"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/thunder_struck"
+								}
+							}
+						]
 					},
 					"weight": 1
 				},

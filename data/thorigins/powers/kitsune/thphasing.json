@@ -183,6 +183,7 @@
 
 	"phasing": {
 		"type": "origins:phasing",
+		"render_type": "blindness",
 		"condition": {
 			"type": "origins:all_of",
 			"conditions": [

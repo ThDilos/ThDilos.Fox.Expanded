@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/fire_fox/overcooked",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.impact_explosion.description",
+			"fallback": "Speed up and fly into a wall to trigger an impact explosion"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:tnt"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.impact_explosion.title",
+			"fallback": "Meteorite with Wings"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

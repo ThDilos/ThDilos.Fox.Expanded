@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/fire_fox/eat_blaze_rod",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.max_fire.description",
+			"fallback": "Reach maximum fire energy"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:magma_cream"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.max_fire.title",
+			"fallback": "Portable Sun"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

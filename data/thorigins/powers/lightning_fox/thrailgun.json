@@ -43,18 +43,26 @@
 		"type": "origins:action_over_time",
 		"interval": 1,
 		"entity_action": {
-			"type": "origins:give",
-			"stack": {
-				"id": "minecraft:iron_nugget",
-				"amount": 1
-			},
-			"preferred_slot": "mainhand"
+			"type": "origins:change_resource",
+			"resource": "*:*_hold_nugget",
+			"change": 1
 		},
 		"condition": {
-			"type": "origins:resource",
-			"resource": "*:lightning_fox/thrailgun_ready",
-			"comparison": "==",
-			"compare_to": 1
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_hold_nugget",
+					"compare_to": 1,
+					"comparison": "=="
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:lightning_fox/thrailgun_ready",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
 		}
 	},
 
@@ -76,6 +84,31 @@
 			"resource": "*:*_ready",
 			"comparison": ">",
 			"compare_to": 0
+		}
+	},
+
+	"hold_nugget": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 2,
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_hold_nugget",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:give",
+					"stack": {
+						"id": "minecraft:iron_nugget",
+						"amount": 1
+					},
+					"preferred_slot": "mainhand"
+				}
+			]
 		}
 	},
 
@@ -181,6 +214,12 @@
 					"inventory_type": "inventory"
 				},
 				{
+					"type": "origins:change_resource",
+					"resource": "*:*_hold_nugget",
+					"change": 1,
+					"operation": "set"
+				},
+				{
 					"type": "origins:play_sound",
 					"sound": "minecraft:entity.allay.ambient_without_item",
 					"volume": 0.8,
@@ -225,12 +264,9 @@
 						"type": "origins:and",
 						"actions": [
 							{
-								"type": "origins:give",
-								"stack": {
-									"id": "minecraft:iron_nugget",
-									"amount": 1
-								},
-								"preferred_slot": "mainhand"
+								"type": "origins:change_resource",
+								"resource": "*:*_hold_nugget",
+								"change": 2
 							},
 							{
 								"type": "origins:change_resource",
@@ -282,6 +318,12 @@
 					"change": -1
 				},
 				{
+					"type": "origins:change_resource",
+					"resource": "*:*_hold_nugget",
+					"change": 0,
+					"operation": "set"
+				},
+				{
 					"type": "origins:trigger_cooldown",
 					"power": "*:lightning_fox/thlightning_combat_buff_duration"
 				},
@@ -321,7 +363,7 @@
 								"amount": 30,
 								"damage_type": "minecraft:fly_into_wall",
 								"source": {
-									"name": "flyIntoWall.player"
+									"name": "flyIntoWall"
 								}
 							},
 							{
@@ -355,6 +397,21 @@
 								"action": {
 									"type": "origins:execute_command",
 									"command": "/playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 0.5 1"
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:distance",
+									"compare_to": 80,
+									"comparison": ">="
+								},
+								"if_action": {
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:execute_command",
+										"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/precision_strike"
+									}
 								}
 							}
 						]
@@ -500,6 +557,10 @@
 				{
 					"type": "origins:exhaust",
 					"amount": 40
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/advancement grant @s only thorigins:fox_origin/lightning_fox/railgun"
 				}
 			]
 		}

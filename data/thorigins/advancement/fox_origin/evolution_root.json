@@ -26,6 +26,5 @@
 			"fallback": "Evolutions"
 		}
 	},
-	"requirements": [["chose_fox"]],
-	"sends_telemetry_event": true
+	"requirements": [["chose_fox"]]
 }

@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/fire_fox/max_fire",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.overcooked.description",
+			"fallback": "Obliterate a chicken with maximum firepower"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:coal"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.overcooked.title",
+			"fallback": "Overcooked"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}

@@ -622,6 +622,20 @@
 		}
 	},
 
+	"grant_advancement": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"max_action": {
+			"type": "origins:delay",
+			"ticks": 10,
+			"action": {
+				"type": "origins:execute_command",
+				"command": "/advancement grant @s only thorigins:fox_origin/ice_fox/ice_shield"
+			}
+		}
+	},
+
 	"detonate": {
 		"type": "origins:active_self",
 		"key": "key.pickItem",
@@ -668,8 +682,67 @@
 					"command": "/tag @s add temp"
 				},
 				{
+					"type": "origins:selector_action",
+					"selector": "@e[tag=shield_carrier,distance=..50]",
+					"bientity_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:target_condition",
+							"condition": {
+								"type": "origins:command",
+								"command": "/execute if score @s ice_shield_owner_uuid0 = @e[tag=temp,limit=1,sort=nearest] UUID0",
+								"compare_to": 0,
+								"comparison": ">"
+							}
+						},
+						"if_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:change_resource",
+										"resource": "*:ice_fox/ice_shield_detonating",
+										"change": 1,
+										"operation": "set"
+									}
+								},
+								{
+									"type": "origins:actor_action",
+									"action": {
+										"type": "origins:change_resource",
+										"resource": "*:*_grant_advancement",
+										"change": 1
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @e[tag=temp2]",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:delay",
+						"ticks": 10,
+						"action": {
+							"type": "origins:execute_command",
+							"command": "/advancement grant @s only thorigins:fox_origin/ice_fox/ice_shield"
+						}
+					}
+				},
+				{
 					"type": "origins:execute_command",
-					"command": "/execute as @e[tag=shield_carrier,distance=..50] if score @s ice_shield_owner_uuid0 = @e[tag=temp,limit=1,sort=nearest] UUID0 run resource set @s thorigins:ice_fox/ice_shield_detonating 1"
+					"command": "/execute as @e[tag=temp2] run resource set @s thorigins:ice_fox/ice_shield_detonating 1"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @e[tag=temp2] remove temp2"
 				},
 				{
 					"type": "origins:execute_command",

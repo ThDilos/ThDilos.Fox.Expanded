@@ -1,0 +1,183 @@
+[
+	{
+		"function": "minecraft:set_name",
+		"entity": "this",
+		"name": {
+			"translate": "thorigins.ninetails_talisman.name",
+			"fallback": "§6Ninetails Talisman"
+		}
+	},
+	{
+		"function": "minecraft:set_lore",
+		"entity": "this",
+		"lore": [
+			{
+				"translate": "thorigins.ninetails_talisman.lore0",
+				"fallback": "§7An exquisite talisman with a nine-tailed fox figure carved out."
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.lore1",
+				"fallback": "§7It can negate incoming lethal damage once."
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.lore2",
+				"fallback": "§8§oYou can feel a mysterious power circulating through its carvings"
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability0.lore0",
+				"fallback": "§6Item Ability: Soul Imprint §e§lHOLD RIGHT CLICK"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability0.lore1",
+				"fallback": "§7Entities you damaged are marked for 10s. Marked entities:"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability0.lore2",
+				"fallback": "§7- Are highlighted for you"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability0.lore3",
+				"fallback": "§7- Healings are disabled"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability0.lore4",
+				"fallback": "§7Activate the ability to forcefully drag the marked entities back to you."
+			},
+			{
+				"translate": "thorigins.cooldown_lore",
+				"fallback": "§8Cooldown: [%s]",
+				"with": [
+					{
+						"text": "5s",
+						"color": "green",
+						"italic": false
+					}
+				]
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability1.lore0",
+				"fallback": "§6Item Ability(§emainhand§6): Evocation §e§lSNEAK HOLD RIGHT CLICK"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability1.lore1",
+				"fallback": "§7With drops of blood, channel your soul with the talisman,"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability1.lore2",
+				"fallback": "§7call upon the demonic source of the curse."
+			},
+			{
+				"translate": "thorigins.health_cost_lore",
+				"fallback": "§8Health Cost: [%s]",
+				"with": [
+					{
+						"text": "2",
+						"color": "dark_aqua",
+						"italic": false
+					}
+				]
+			},
+			{
+				"translate": "thorigins.cooldown_lore",
+				"fallback": "§8Cooldown: [%s]",
+				"with": [
+					{
+						"text": "30s",
+						"color": "green",
+						"italic": false
+					}
+				]
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability2.lore0",
+				"fallback": "§6Item Ability: Blood Thirst"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability2.lore1",
+				"fallback": "§7When in §emainhand / offhand:"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability2.lore2",
+				"fallback": "§7- You become UNDEAD (Inverted healing, Water breathing...)"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability2.lore3",
+				"fallback": "§7- Attack Damage §a+50%"
+			},
+			{
+				"translate": "thorigins.ninetails_talisman.ability2.lore4",
+				"fallback": "§7- Armor Points §c-100%"
+			},
+			{
+				"text": ""
+			},
+			{
+				"translate": "thorigins.ninetails_curse.footnote",
+				"fallback": "☠ Cursed by Ninetails [%s] ☠",
+				"with": [
+					{
+						"selector": "@s",
+						"color": "dark_red"
+					}
+				]
+			}
+		],
+		"mode": "append",
+		"conditions": [
+			{
+				"condition": "minecraft:inverted",
+				"term": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"equipment": {
+							"mainhand": {
+								"predicates": {
+									"minecraft:custom_data": {
+										"ninetails_cursed": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "apoli:add_power",
+		"power": "thorigins:evocation",
+		"slot": "mainhand",
+		"hidden": true
+	},
+	{
+		"function": "apoli:add_power",
+		"power": "thorigins:ninetails/ninetails_talisman_power",
+		"slot": "mainhand",
+		"hidden": true
+	},
+	{
+		"function": "apoli:add_power",
+		"power": "thorigins:ninetails/ninetails_talisman_power",
+		"slot": "offhand",
+		"hidden": true
+	},
+	{
+		"function": "minecraft:set_custom_data",
+		"tag": {
+			"ninetails_cursed": true
+		}
+	}
+]

@@ -1,0 +1,504 @@
+{
+	"type": "origins:multiple",
+	"hidden": true,
+
+	"ticks_20": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_evocation_summon",
+								"compare_to": 30,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_summoning",
+								"compare_to": 0,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_evocation_summon",
+								"change": 0,
+								"operation": "set"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_stop_summoning",
+								"change": 1
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tellraw @s {\"translate\":\"thorigins.talisman.evocation.no_respond\",\"fallback\":\"§c* But nobody came.\"}"
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.beacon.deactivate",
+								"volume": 0.5,
+								"pitch": 2
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/scoreboard players reset @s thorigins.talisman.created_by_uuid0"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_pressing",
+						"compare_to": 0,
+						"comparison": "=="
+					},
+					"if_action": {
+						"type": "origins:if_else",
+						"condition": {
+							"type": "origins:resource",
+							"resource": "*:*_summoning",
+							"compare_to": 0,
+							"comparison": "=="
+						},
+						"if_action": {
+							"type": "apoli:change_resource",
+							"resource": "*:*_evocation_summon",
+							"change": 0,
+							"operation": "set"
+						}
+					}
+				}
+			]
+		}
+	},
+
+	"init": {
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_summoning",
+						"change": -200
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.evocation.evocation_cd dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.talisman.created_by_uuid0 dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players add @s thorigins.evocation.evocation_cd 0"
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_summoning",
+						"compare_to": 4,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/tellraw @s {\"translate\":\"thorigins.talisman.evocation.interrupted\",\"fallback\":\"Evocation Interrupted.\"}"
+					}
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_stop_summoning",
+					"change": 1
+				}
+			]
+		}
+	},
+
+	"stop_summoning": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_stop_summoning",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_evocation_summon",
+					"change": 0,
+					"operation": "set"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_summoning",
+					"change": -200
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players reset @s thorigins.talisman.created_by_uuid0"
+				}
+			]
+		}
+	},
+
+	"summoning": {
+		"type": "origins:cooldown",
+		"cooldown": 200,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 1
+		}
+	},
+
+	"evocation_summon": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 30,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 8,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_evocation_summon",
+				"compare_to": 0,
+				"comparison": ">"
+			}
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:grant_power",
+					"power": "*:cooldown_ticker",
+					"source": "thorigins:temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard players set @s thorigins.evocation.evocation_cd 30"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute store result score @s thorigins.talisman.created_by_uuid0 run data get entity @s SelectedItem.components.minecraft:custom_data.created_by[0]"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives add thorigins.evocation.uuid0.temp dummy"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute as @e[distance=0.1..] store result score @s thorigins.evocation.uuid0.temp run data get entity @s UUID[0]"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/execute at @e if score @e[limit=1,sort=nearest] thorigins.evocation.uuid0.temp = @s thorigins.talisman.created_by_uuid0 run tag @e[limit=1,sort=nearest] add thorigins.evocation.matched.temp"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:command",
+						"command": "/execute if entity @e[tag=thorigins.evocation.matched.temp]",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "say here"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/power grant @e[tag=thorigins.evocation.matched.temp,limit=1] thorigins:talisman_summoned thorigins:temp"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tellraw @s {\"translate\":\"thorigins.talisman.evocation.request_sent\",\"fallback\":\"* Summon request sent. They have 10s to accept.\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/tellraw @a[tag=thorigins.evocation.matched.temp,limit=1] {\"text\":\"\",\"extra\":[{\"translate\":\"thorigins.talisman.evocation.request_received\",\"fallback\":\"* You are being summoned by %s, press [%s] in 10s to go to their position.\",\"with\":[{\"selector\":\"@s\",\"color\":\"aqua\"},{\"keybind\":\"key.saveToolbarActivator\",\"color\":\"aqua\"}]}]}"
+							},
+							{
+								"type": "origins:play_sound",
+								"sound": "minecraft:block.beacon.activate",
+								"volume": 0.5,
+								"pitch": 2
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_summoning"
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:custom_data",
+										"nbt": {
+											"ninetails_cursed": true
+										}
+									}
+								},
+								"if_action": {
+									"type": "origins:damage",
+									"amount": 2,
+									"damage_type": "thorigins:foxie_bite"
+								}
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:and",
+						"actions": [
+
+							{
+								"type": "origins:execute_command",
+								"command": "/tellraw @s {\"translate\":\"thorigins.talisman.evocation.target_not_found\",\"fallback\":\"§c* The entity seems to have travelled far beyond this realm to be contacted.\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/scoreboard players reset @s thorigins.talisman.created_by_uuid0"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.wolf.whine player @s ~ ~ ~ 0.5 1"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_evocation_summon",
+								"change": 0,
+								"operation": "set"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/scoreboard objectives remove thorigins.evocation.uuid0.temp"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/tag @a[tag=thorigins.evocation.matched.temp] remove thorigins.evocation.matched.temp"
+				}
+			]
+		}
+	},
+
+	"pressing": {
+		"type": "origins:cooldown",
+		"cooldown": 5
+	},
+
+	"active": {
+		"type": "origins:active_self",
+		"cooldown": 3,
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_summoning",
+								"compare_to": 0,
+								"comparison": ">"
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_summoning",
+								"compare_to": 180,
+								"comparison": "<"
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"thorigins.talisman.evocation.in_progress\",\"fallback\":\"§cEvocation is already in progress!\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.fox.teleport player @s ~ ~ ~ 1 0.5"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:health",
+								"compare_to": 2,
+								"comparison": "<="
+							},
+							{
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:custom_data",
+									"nbt": {
+										"ninetails_cursed": true
+									}
+								}
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "/title @s actionbar {\"translate\":\"thorigins.ninetails_talisman.no_health\",\"fallback\":\"§cYou do not have enough health to use this ability!\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "/playsound minecraft:entity.fox.teleport player @s ~ ~ ~ 1 0.5"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:scoreboard",
+						"objective": "thorigins.evocation.evocation_cd",
+						"compare_to": 0,
+						"comparison": ">"
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:grant_power",
+								"power": "*:cooldown_ticker",
+								"source": "thorigins:temp"
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:scoreboard",
+									"objective": "thorigins.evocation.evocation_cd",
+									"compare_to": 29,
+									"comparison": "<="
+								},
+								"if_action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "/title @s actionbar {\"translate\":\"thorigins.talisman.ability_on_cd\",\"fallback\":\"§cThis ability is on cooldown for another [%s§c] seconds!\",\"with\":[{\"score\":{\"name\":\"*\",\"objective\":\"thorigins.evocation.evocation_cd\"},\"color\":\"yellow\"}]}"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "/playsound minecraft:entity.fox.teleport player @s ~ ~ ~ 1 0.5"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:constant",
+						"value": true
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "*:*_pressing"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_evocation_summon",
+								"change": 1
+							}
+						]
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:totem_of_undying"
+								}
+							},
+							{
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:custom_data",
+										"nbt": {
+											"kitsune_blessed": true
+										}
+									},
+									{
+										"type": "origins:custom_data",
+										"nbt": {
+											"ninetails_cursed": true
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:sneaking"
+				}
+			]
+		}
+	}
+}

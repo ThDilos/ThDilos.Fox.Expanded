@@ -1,0 +1,27 @@
+{
+	"parent": "thorigins:fox_origin/lightning_fox/fluff_kill",
+	"criteria": {
+		"to_be_granted": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+		"description": {
+			"translate": "thorigins.advancements.family_bucket.description",
+			"fallback": "Use [§6§l§nDischarge§r] to fry 10 chickens at once"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"id": "minecraft:cooked_chicken"
+		},
+		"show_toast": true,
+		"title": {
+			"translate": "thorigins.advancements.family_bucket.title",
+			"fallback": "Family Bucket"
+		}
+	},
+	"requirements": [["to_be_granted"]]
+}
