@@ -22,9 +22,13 @@
 						"comparison": "=="
 					},
 					"if_action": {
-						"type": "origins:revoke_power",
-						"power": "*:ninetails/thcurse",
-						"source": "thorigins:temp"
+						"type": "origins:delay",
+						"ticks": 1,
+						"action": {
+							"type": "origins:revoke_power",
+							"power": "*:ninetails/thcurse",
+							"source": "thorigins:temp"
+						}
 					}
 				}
 			]

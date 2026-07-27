@@ -22,9 +22,13 @@
 						"comparison": "=="
 					},
 					"if_action": {
-						"type": "origins:revoke_power",
-						"power": "*:ice_fox/thfreeze",
-						"source": "thorigins:temp"
+						"type": "origins:delay",
+						"ticks": 1,
+						"action": {
+							"type": "origins:revoke_power",
+							"power": "*:ice_fox/thfreeze",
+							"source": "thorigins:temp"
+						}
 					}
 				},
 				{
@@ -78,9 +82,13 @@
 		"max": 100,
 		"start_value": 5,
 		"min_action": {
-			"type": "origins:revoke_power",
-			"power": "*:ice_fox/thfreeze",
-			"source": "thorigins:temp"
+			"type": "origins:delay",
+			"ticks": 1,
+			"action": {
+				"type": "origins:revoke_power",
+				"power": "*:ice_fox/thfreeze",
+				"source": "thorigins:temp"
+			}
 		}
 	},
 
