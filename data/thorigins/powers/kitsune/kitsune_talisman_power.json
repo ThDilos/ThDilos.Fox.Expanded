@@ -116,10 +116,8 @@
 					"command": "/scoreboard players set @s thorigins.kitsune.kitsune_talisman.cleanse_cd 30"
 				},
 				{
-					"type": "origins:spawn_particles",
-					"particle": "minecraft:flash",
-					"count": 1,
-					"speed": 0
+					"type": "origins:execute_command",
+					"command": "/particle flash ~ ~ ~ 0 0 0 0 1"
 				},
 				{
 					"type": "origins:play_sound",

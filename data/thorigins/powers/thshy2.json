@@ -57,13 +57,9 @@
 					"source": "thorigins:inherited"
 				},
 				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:revoke_power",
-						"power": "*:fox/thshy_fear_fear_source",
-						"source": "thorigins:inherited"
-					}
+					"type": "origins:revoke_power",
+					"power": "*:fox/thshy_fear_fear_source",
+					"source": "thorigins:inherited"
 				}
 			]
 		},

@@ -124,6 +124,7 @@
 	"thorigins.fox.container.inventory2": "毛毛尾巴次元",
 	"thstorage2.enchant.not_enough_lvl": "附魔这个物品需要[%s]经验等级！",
 	"thstorage2.enchant.no_item": "§c你的主爪没有持有物品！",
+	"thstorage2.enchant.reached_limit": "§c你的能力无法更进一步地提升该物品的属性！",
 
 	"kitsune.thphasing.name": "§6§l§n飞升",
 	"kitsune.thphasing.description": "你的躯体超凡脱俗, 不再受尘世之限",

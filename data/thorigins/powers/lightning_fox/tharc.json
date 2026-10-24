@@ -41,13 +41,9 @@
 				}
 			},
 			{
-				"type": "origins:delay",
-				"ticks": 1,
-				"action": {
-					"type": "origins:revoke_power",
-					"power": "*:lightning_fox/tharc",
-					"source": "thorigins:temp"
-				}
+				"type": "origins:revoke_power",
+				"power": "*:lightning_fox/tharc",
+				"source": "thorigins:temp"
 			},
 			{
 				"type": "origins:delay",

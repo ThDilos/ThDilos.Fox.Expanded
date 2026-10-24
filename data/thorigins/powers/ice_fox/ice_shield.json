@@ -322,13 +322,9 @@
 					"command": "/title @s actionbar {\"text\":\"\",\"extra\":[{\"translate\":\"ice_shield.revoked\",\"fallback\":\"§bThe ice shield on your body was shattered\",\"with\":[{\"selector\":\"@e[tag=interacted,limit=1,sort=nearest]\",\"color\":\"aqua\"}]}]}"
 				},
 				{
-					"type": "origins:delay",
-					"ticks": 1,
-					"action": {
-						"type": "origins:revoke_power",
-						"power": "*:ice_fox/ice_shield",
-						"source": "thorigins:temp"
-					}
+					"type": "origins:revoke_power",
+					"power": "*:ice_fox/ice_shield",
+					"source": "thorigins:temp"
 				}
 			]
 		}
