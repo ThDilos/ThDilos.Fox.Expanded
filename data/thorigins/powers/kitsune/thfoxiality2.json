@@ -108,6 +108,11 @@
 									"type": "origins:nbt",
 									"nbt": "{\"Tags\":[\"uuidappended\"]}",
 									"inverted": true
+								},
+								{
+									"type": "origins:nbt",
+									"nbt": "{NoAI:1b}",
+									"inverted": true
 								}
 							]
 						}
