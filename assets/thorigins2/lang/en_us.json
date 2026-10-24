@@ -124,6 +124,7 @@
 	"thorigins.fox.container.inventory2": "Fluffy Tail Dimensions",
 	"thstorage2.enchant.not_enough_lvl": "Enhancing this item requires [%s] Levels!",
 	"thstorage2.enchant.no_item": "§cThere is no item in your mainhand!",
+	"thstorage2.enchant.reached_limit": "§cYour ability cannot enhance this item any further!",
 
 	"kitsune.thphasing.name": "§6§l§nAscension",
 	"kitsune.thphasing.description": "Your body transcends the normal realm, no longer bounded by the physical world.",
