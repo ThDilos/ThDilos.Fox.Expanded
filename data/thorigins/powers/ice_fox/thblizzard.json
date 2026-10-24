@@ -181,53 +181,73 @@
 				{
 					"type": "origins:if_else",
 					"condition": {
-						"type": "origins:food_level",
+						"type": "origins:resource",
+						"resource": "*:*_timer",
 						"compare_to": 0,
-						"comparison": "=="
+						"comparison": ">"
 					},
 					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_snowflake",
-						"change": -1
-					}
-				},
-				{
-					"type": "origins:exhaust",
-					"amount": 1
-				},
-				{
-					"type": "origins:if_else",
-					"if_action": {
-						"type": "origins:change_resource",
-						"resource": "*:*_landed",
-						"change": 1
-					},
-					"condition": {
-						"type": "origins:on_block"
-					}
-				},
-				{
-					"type": "origins:if_else",
-					"condition": {
 						"type": "origins:and",
-						"conditions": [
+						"actions": [
 							{
-								"type": "origins:resource",
-								"resource": "*:*_snowflake",
-								"compare_to": 1,
-								"comparison": "=="
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:food_level",
+									"compare_to": 0,
+									"comparison": "=="
+								},
+								"if_action": {
+									"type": "origins:change_resource",
+									"resource": "*:*_snowflake",
+									"change": -1
+								}
 							},
 							{
-								"type": "origins:resource",
-								"resource": "*:ice_fox/thaurora_aurora_bar",
-								"compare_to": 0,
-								"comparison": ">"
+								"type": "origins:exhaust",
+								"amount": 1
+							},
+							{
+								"type": "origins:if_else",
+								"if_action": {
+									"type": "origins:change_resource",
+									"resource": "*:*_landed",
+									"change": 1
+								},
+								"condition": {
+									"type": "origins:on_block"
+								}
+							},
+							{
+								"type": "origins:if_else",
+								"condition": {
+									"type": "origins:and",
+									"conditions": [
+										{
+											"type": "origins:resource",
+											"resource": "*:*_snowflake",
+											"compare_to": 1,
+											"comparison": "=="
+										},
+										{
+											"type": "origins:resource",
+											"resource": "*:ice_fox/thaurora_aurora_bar",
+											"compare_to": 0,
+											"comparison": ">"
+										}
+									]
+								},
+								"if_action": {
+									"type": "origins:execute_command",
+									"command": "/advancement grant @s only thorigins:fox_origin/ice_fox/aurora"
+								}
 							}
 						]
 					},
-					"if_action": {
-						"type": "origins:execute_command",
-						"command": "/advancement grant @s only thorigins:fox_origin/ice_fox/aurora"
+					"else_action": {
+						"type": "origins:change_resource",
+						"resource": "*:*_disable_skill",
+						"change": 0,
+						"operation": "set"
 					}
 				},
 				{
@@ -246,12 +266,6 @@
 					}
 				}
 			]
-		},
-		"condition": {
-			"type": "origins:resource",
-			"resource": "*:*_timer",
-			"compare_to": 0,
-			"comparison": ">"
 		}
 	},
 
@@ -299,6 +313,11 @@
 										{
 											"type": "origins:entity_type",
 											"entity_type": "minecraft:armor_stand",
+											"inverted": true
+										},
+										{
+											"type": "origins:nbt",
+											"nbt": "{NoAI:1b}",
 											"inverted": true
 										}
 									]
@@ -352,6 +371,30 @@
 								"reference": "position"
 							}
 						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/thtrackers_destroy_terrain",
+								"compare_to": 1,
+								"comparison": "=="
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:fox/universal_settings_destroy_terrain",
+								"compare_to": 1,
+								"comparison": "=="
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:execute_command",
+						"command": "/fill ~7.5 ~7.5 ~7.5 ~-7.5 ~-7.5 ~-7.5 air replace fire"
 					}
 				}
 			]
